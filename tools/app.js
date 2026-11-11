@@ -156,7 +156,8 @@
             var pos = r.d.x.indexOf(terms[0]);
             var start = Math.max(0, pos - 60);
             var excerpt = (start > 0 ? '…' : '') + r.d.x.substr(start, 190);
-            return '<a href="' + r.d.p + '"><span class="sr-g">' + esc(r.d.g) + '</span><br>' +
+      var siteRoot = location.pathname.replace(/pages\/.*$/, ''); // جذر الموقع من أي عمق
+      return '<a href="' + siteRoot + r.d.p + '"><span class="sr-g">' + esc(r.d.g) + '</span><br>' +
               '<b>' + highlight(r.d.t, terms) + '</b><br><span class="sr-g">' + highlight(excerpt, terms) + '</span></a>';
           }).join('')
         : '<a href="#">لا نتائج — جرّب كلمات أقل</a>';

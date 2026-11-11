@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-مولّد موقع ENG540 — الإصدار 2 (تجربة تطبيق)
-يحوّل موسوعة الخدمات (138 ملف MD) إلى منصة تفاعلية:
-تبويبات الخدمات · متتبع 25 خطوة بحفظ التقدم · أقسام قابلة للطي ·
-فهرس محتويات لكل صفحة · وضع ليلي · بحث فوري · وسوم تحقق ملونة.
+مولّد موقع ENG540 — الإصدار 3 (معمارية مسارات سليمة)
+الإصلاح الجذري: كل روابط الصفحات العميقة تُبنى ببادئة صحيحة حسب العمق ../ , ../../ , ../../../
+- كل الروابط بين صفحات المعرفة: prefix + 'pages/<path>' بعد التحقق من الوجود
+- أصول CSS/JS/البحث: prefix + 'assets/...'
+- روابط المجلدات والملفات غير الموجودة تُحل تلقائياً لأول صفحة موجودة في المجلد
+- تبويبات الخدمة (نفس المجلد) تبقى أسماء ملفات مباشرة
++ SEO: sitemap.xml + robots.txt + 404.html + canonical/og
++ المنصة التفاعلية app.html (ببيانات مركزية app-data.js)
 """
-import json, os, re, shutil, sys, posixpath, html as htmllib
+import json, os, re, shutil, sys, posixpath, html as htmllib, glob
 from datetime import date
 
 sys.path.insert(0, '/root/DSH_Projects/pylibs')
@@ -51,7 +55,7 @@ SERVICE_FILES = [
     ('01-Platform-Steps.html', 'خطوات المنصة', '🖥️'),
     ('02-Requirements-Documents.html', 'المتطلبات والمستندات', '📋'),
     ('03-Executive-Workflow.html', 'خوارزمية 25 خطوة', '🧭'),
-    ('04-Technical-Field-Costs.md'.replace('.md', '.html'), 'الفني والتكاليف', '📐'),
+    ('04-Technical-Field-Costs.html', 'الفني والتكاليف', '📐'),
     ('05-Problems-Cases-Exam.html', 'المشكلات والاختبار', '🧪'),
 ]
 FILE_LABELS = {
@@ -69,27 +73,60 @@ TAG_PATTERNS = [
     (r'🧪\s*\[مثال توضيحي\]', '🧪 مثال توضيحي', 'tag-demo'),
 ]
 
+# ---------- أدوات المسارات (جوهر الإصلاح) ----------
+
+def page_prefix(rel_page):
+    """بادئة المسار النسبي الصحيحة حسب عمق الصفحة تحت pages/.
+    الأمثلة: '00-STRATEGY/X.html' → '../../' · '03-SERVICES/SVC/X.html' → '../../../'"""
+    return '../' * len(rel_page.split('/'))
+
+ALL_PAGES = set()  # مسارات html النهائية نسبةً إلى pages/
+
+def resolve_pages_link(p):
+    """يحل مساراً (بامتداد أو مجلداً) إلى صفحة موجودة فعلاً في ALL_PAGES."""
+    p = str(p).strip().rstrip('/')
+    if not p:
+        return None
+    cands = [p if p.endswith('.html') else p + '.html',
+             p.rstrip('/') + '/README.html']
+    for c in cands:
+        if c in ALL_PAGES:
+            return c
+    prefix = p + '/'
+    subs = sorted(x for x in ALL_PAGES if x.startswith(prefix))
+    if subs:
+        return subs[0]
+    parent = posixpath.dirname(p)
+    if parent and parent != p:
+        return resolve_pages_link(parent)
+    return None
+
+def link(p, prefix):
+    """رابط مطلق-الشكل صحيح من أي عمق: prefix + pages/<resolved>."""
+    r = resolve_pages_link(p)
+    return (prefix + 'pages/' + r) if r else (prefix + 'index.html')
+
 def md2html(text):
     return md_lib.markdown(text, extensions=[
         'markdown.extensions.tables', 'markdown.extensions.fenced_code',
         'markdown.extensions.sane_lists'])
 
-def rel_href_fix(html_text, page_dir):
+def rel_href_fix(html_text, page_dir, prefix):
+    """يصلح روابط .md والمجلدات في محتوى MD إلى روابط صفحات صحيحة من أي عمق."""
     def fix(m):
         href = m.group(1)
-        if href.startswith(('http', 'mailto:', '#')):
+        if href.startswith(('http', 'mailto:', 'tel:', '#', 'data:')) \
+           or '${' in href or '?' in href:
             return m.group(0)
         target = posixpath.normpath(posixpath.join(page_dir, href))
         if target.startswith('..'):
             return m.group(0)
-        t = target[:-3] + '.html' if target.endswith('.md') else target
-        return 'href="' + htmllib.escape(t) + '"'
-    return re.sub(r'href="([^"]+\.md)"', fix, html_text)
+        return 'href="' + htmllib.escape(link(target, prefix)) + '"'
+    return re.sub(r'href="([^"]+)"', fix, html_text)
 
 # ---------- التقسيم البنيوي ----------
 
 def split_md_sections(text):
-    """يرجع (h1, [(h2 أو None، نص المقطع)])"""
     title = None
     blocks, cur, cur_h2 = [], [], None
     for ln in text.splitlines():
@@ -107,13 +144,10 @@ def split_md_sections(text):
     return title, blocks
 
 STEP_RE = re.compile(r'<h3>(?:<[^>]+>)*\s*الخطوة\s*(\d+)')
-
 KEY_P_RE = re.compile(r'<p><strong>\s*مفتاح[^<]*</strong>(.*?)</p>', re.S)
-
 H3_SPLIT_RE = re.compile(r'(<h3>.*?</h3>)')
 
 def wrap_h3_key(sec_html):
-    """يغلّف مقطع h3 «مفتاح …» وما بعده حتى نهاية المقطع في صندوق مطوي."""
     parts = H3_SPLIT_RE.split(sec_html)
     for i in range(1, len(parts), 2):
         if 'مفتاح' in parts[i]:
@@ -124,13 +158,11 @@ def wrap_h3_key(sec_html):
     return sec_html
 
 def enhance_key(sec_html):
-    """يحوّل فقرة «مفتاح الإجابات» إلى صندوق مطوي يُفتح بالضغط."""
     return KEY_P_RE.sub(
         r'<details class="keybox"><summary>🔑 مفتاح الإجابات — اضغط للعرض قبل الإجابة!</summary>'
         r'<div class="key-body"><p><strong>مفتاح:</strong>\1</p></div></details>', sec_html)
 
 def enhance_steps(sec_html):
-    """يحول عناوين «الخطوة N» إلى بطاقات متتبعة قابلة للتعليم."""
     parts = re.split(r'(<h3>.*?</h3>)', sec_html)
     out, i = [], 0
     while i < len(parts):
@@ -150,8 +182,7 @@ def enhance_steps(sec_html):
             i += 1
     return ''.join(out)
 
-def build_body(blocks, rel_page):
-    """يبني جسم الصفحة: مقدمة + مقاطع h2 قابلة للطي + فهرس محتويات."""
+def build_body(blocks):
     toc, secs = [], []
     for i, (h2, md) in enumerate(blocks):
         if h2 is None:
@@ -173,7 +204,7 @@ def build_body(blocks, rel_page):
             f'<div class="sec-body">{sec_html}</div></section>')
     return toc, ''.join(secs)
 
-def service_tabs(rel_page):
+def service_tabs(prefix, rel_page):
     parts = rel_page.split('/')
     if len(parts) >= 3 and parts[0] == '03-SERVICES':
         svc, cur = parts[1], parts[2]
@@ -181,16 +212,16 @@ def service_tabs(rel_page):
             f'<a class="tab{" active" if f == cur else ""}" href="{f}">'
             f'<span class="tab-ic">{ic}</span><span>{t}</span></a>'
             for f, t, ic in SERVICE_FILES)
-        tabs += (f'<a class="tab tab-app" href="../../app.html?view=services&srv=SRV-{svc.split("-")[0]}">'
+        tabs += (f'<a class="tab tab-app" href="{prefix}app.html?view=services&srv=SRV-{svc.split("-")[0]}">'
                  '⚡ هذه الخدمة في المنصة التفاعلية</a>')
         return (f'<div class="svc-hub"><div class="svc-hub-t">الخدمة {svc.split("-")[0]} — '
                 f'{SERVICE_TITLES.get(svc, svc)}</div><nav class="svc-tabs">{tabs}</nav></div>')
     return ''
 
-def render_page(title, body_html, rel_prefix, cur_path, breadcrumb, tabs, toc, steps_total):
-    nav = build_nav(cur_path)
+def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps_total):
+    nav = build_nav(rel_page, prefix)
     bc = ' <span class="crumb-sep">‹</span> '.join(
-        f'<a href="../{p}">{htmllib.escape(t)}</a>' if p else f'<span>{htmllib.escape(t)}</span>'
+        f'<a href="{p}">{htmllib.escape(t)}</a>' if p else f'<span>{htmllib.escape(t)}</span>'
         for t, p in breadcrumb)
     toc_html = ''
     if len(toc) >= 3:
@@ -204,16 +235,22 @@ def render_page(title, body_html, rel_prefix, cur_path, breadcrumb, tabs, toc, s
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{htmllib.escape(title)} — ENG540</title>
+<meta name="description" content="{htmllib.escape(title)} — موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية، بمصادر رسمية موثقة ووسوم تحقق.">
+<link rel="canonical" href="https://eng540.github.io/eng540-services/pages/{htmllib.escape(rel_page)}">
+<meta property="og:title" content="{htmllib.escape(title)} — ENG540">
+<meta property="og:description" content="موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية — مصادر رسمية موثقة.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://eng540.github.io/eng540-services/pages/{htmllib.escape(rel_page)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{rel_prefix}assets/style.css">
+<link rel="stylesheet" href="{prefix}assets/style.css">
 </head>
 <body>
 <div class="read-progress" id="readProgress"></div>
 <header class="site-header">
-  <a class="brand" href="{rel_prefix}index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
-  <a class="app-btn" href="{rel_prefix}app.html">⚡ المنصة التفاعلية</a>
-  <a class="about-link" href="{rel_prefix}pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <a class="brand" href="{prefix}index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="app-btn" href="{prefix}app.html">⚡ المنصة التفاعلية</a>
+  <a class="about-link" href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف</a>
   <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
   <button class="theme-btn" id="themeBtn" title="وضع ليلي/نهاري">🌙</button>
 </header>
@@ -227,48 +264,38 @@ def render_page(title, body_html, rel_prefix, cur_path, breadcrumb, tabs, toc, s
     {toc_html}
     <article class="doc doc-app">{body_html}</article>
     <footer class="doc-footer">
-      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="{rel_prefix}pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
-      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="{rel_prefix}pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="{link('10-QUALITY-AND-UPDATES/Knowledge-Gaps', prefix)}">الفجوات الموسومة</a></div>
     </footer>
   </main>
 </div>
-<script src="{rel_prefix}assets/search-index.js"></script>
-<script src="{rel_prefix}assets/app.js"></script>
+<script src="{prefix}assets/search-index.js"></script>
+<script src="{prefix}assets/app.js"></script>
 </body></html>"""
 
-def build_nav(cur_path):
+def build_nav(rel_page, prefix):
     items = []
     for folder, label in GROUPS:
         gdir = os.path.join(SOURCE, folder)
         entries = []
         if os.path.isdir(gdir):
-            subs = sorted(d for d in os.listdir(gdir) if os.path.isdir(os.path.join(gdir, d)))
             for f in sorted(f for f in os.listdir(gdir) if f.endswith('.md')):
                 if f == 'About-Author.md':
                     continue
                 entries.append((FILE_LABELS.get(f, f[:-3]), posixpath.join(folder, f[:-3] + '.html')))
-            for s in subs:
+            for s in sorted(d for d in os.listdir(gdir) if os.path.isdir(os.path.join(gdir, d))):
                 stitle = SERVICE_TITLES.get(s, s.replace('-', ' '))
+                entries.append(('📁 ' + stitle, posixpath.join(folder, s, 'README.html')))
                 sdir = os.path.join(gdir, s)
-                sfiles = sorted(f for f in os.listdir(sdir) if f.endswith('.md')) if os.path.isdir(sdir) else []
-                if folder == '03-SERVICES':
-                    entries.append(('📁 ' + stitle, posixpath.join(folder, s, 'README.html')))
-                    for f in sfiles:
-                        if f != 'README.md':
-                            entries.append(('&nbsp;&nbsp;↳ ' + FILE_LABELS.get(f, f[:-3]),
-                                            posixpath.join(folder, s, f[:-3] + '.html')))
-                else:
-                    entries.append(('📁 ' + stitle, posixpath.join(folder, s, 'README.html')))
-                    for f in sfiles:
-                        if f != 'README.md':
-                            entries.append(('&nbsp;&nbsp;↳ ' + FILE_LABELS.get(f, f[:-3]),
-                                            posixpath.join(folder, s, f[:-3] + '.html')))
-        is_open = cur_path.startswith(folder)
+                for f in sorted(f for f in os.listdir(sdir) if f.endswith('.md')) if os.path.isdir(sdir) else []:
+                    if f != 'README.md':
+                        entries.append(('&nbsp;&nbsp;↳ ' + FILE_LABELS.get(f, f[:-3]),
+                                        posixpath.join(folder, s, f[:-3] + '.html')))
+        is_open = rel_page.startswith(folder)
         entries_html = ''.join(
-            f'<a class="nav-link{" current" if p == cur_path else ""}" href="../{p}">{t}</a>'
+            f'<a class="nav-link{" current" if p == rel_page else ""}" href="{link(p, prefix)}">{t}</a>'
             for t, p in entries)
-        items.append(f'<details class="nav-group{" open" if is_open else ""}"'
-                     f'{" open" if is_open else ""}><summary>{label}</summary>{entries_html}</details>')
+        items.append(f'<details class="nav-group{" open" if is_open else ""}"><summary>{label}</summary>{entries_html}</details>')
     return '\n'.join(items)
 
 def strip_md(text):
@@ -289,44 +316,52 @@ def main():
     shutil.copytree(SOURCE, os.path.join(REPO, 'source'),
                     ignore=shutil.ignore_patterns('.git', '*.pyc', '__pycache__'))
 
-    search_docs, count = [], 0
+    # 1) المسجل المسبق لكل الصفحات (أساس حل الروابط)
+    md_files = []
     for root, _dirs, files in os.walk(SOURCE):
         for fname in sorted(f for f in files if f.endswith('.md')):
-            src = os.path.join(root, fname)
-            rel_src = os.path.relpath(src, SOURCE)
-            rel_page = rel_src[:-3] + '.html'
-            text = open(src, encoding='utf-8').read()
-            title, blocks = split_md_sections(text)
-            if not title:
-                title = fname[:-3]
-            toc, body = build_body(blocks, rel_page)
-            page_dir = posixpath.dirname(rel_page)
-            body = rel_href_fix(body, page_dir)
-            for pat, label, cls in TAG_PATTERNS:
-                body = re.sub(pat, f'<span class="tag {cls}">{label}</span>', body)
-            steps_total = len(re.findall(r'^###\s+الخطوة\s+\d+', text, re.M))
-            grp = next((l for f2, l in GROUPS if rel_src.startswith(f2 + '/')), 'ENG540')
-            parts = rel_page.split('/')
-            bc = [(grp, posixpath.join(parts[0], 'README.html'))]
-            if len(parts) > 2:
-                mid = '/'.join(parts[:-1])
-                bc.append((SERVICE_TITLES.get(parts[1], parts[1]), posixpath.join(mid, 'README.html')))
-            bc.append((title, None))
-            cur_nav_path = posixpath.join(*parts[:-1], fname[:-3])
-            html = render_page(title, body, '../', cur_nav_path, bc,
-                               service_tabs(rel_page), toc, steps_total)
-            out = os.path.join(PAGES, rel_page)
-            os.makedirs(os.path.dirname(out), exist_ok=True)
-            open(out, 'w', encoding='utf-8').write(html)
-            search_docs.append({'t': title, 'g': grp, 'p': 'pages/' + rel_page,
-                                'x': strip_md(text)[:1200]})
-            count += 1
+            md_files.append(os.path.relpath(os.path.join(root, fname), SOURCE))
+    ALL_PAGES.clear()
+    for rel_src in md_files:
+        ALL_PAGES.add(rel_src[:-3] + '.html')
+
+    # 2) توليد الصفحات
+    search_docs, count = [], 0
+    for rel_src in md_files:
+        src = os.path.join(SOURCE, rel_src)
+        rel_page = rel_src[:-3] + '.html'
+        prefix = page_prefix(rel_page)
+        text = open(src, encoding='utf-8').read()
+        title, blocks = split_md_sections(text)
+        if not title:
+            title = os.path.basename(rel_src)[:-3]
+        toc, body = build_body(blocks)
+        page_dir = posixpath.dirname(rel_page)
+        body = rel_href_fix(body, page_dir, prefix)
+        for pat, label, cls in TAG_PATTERNS:
+            body = re.sub(pat, f'<span class="tag {cls}">{label}</span>', body)
+        steps_total = len(re.findall(r'^###\s+الخطوة\s+\d+', text, re.M))
+        grp = next((l for f2, l in GROUPS if rel_src.startswith(f2 + '/')), 'ENG540')
+        parts = rel_page.split('/')
+        bc = [(grp, link(parts[0], prefix))]
+        if len(parts) > 2:
+            bc.append((SERVICE_TITLES.get(parts[1], parts[1]), link('/'.join(parts[:-1]), prefix)))
+        bc.append((title, None))
+        html = render_page(title, body, prefix, rel_page, bc,
+                           service_tabs(prefix, rel_page), toc, steps_total)
+        out = os.path.join(PAGES, rel_page)
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        open(out, 'w', encoding='utf-8').write(html)
+        search_docs.append({'t': title, 'g': grp, 'p': 'pages/' + rel_page,
+                            'x': strip_md(text)[:1200]})
+        count += 1
 
     with open(os.path.join(ASSETS, 'search-index.js'), 'w', encoding='utf-8') as f:
         f.write('window.SEARCH_DOCS = ')
         json.dump(search_docs, f, ensure_ascii=False, separators=(',', ':'))
         f.write(';')
 
+    # 3) الرئيسية
     stats_files = len(search_docs)
     total_lines = 0
     for r, _d, fs in os.walk(SOURCE):
@@ -349,8 +384,7 @@ def main():
                          f'<div class="grid grid-14">{cards}</div></section>')
         elif os.path.isdir(gdir):
             n = sum(1 for _r, _d, fs in os.walk(gdir) for f in fs if f.endswith('.md'))
-            first = sorted(f for f in os.listdir(gdir) if f.endswith('.md') and f != 'About-Author.md')
-            href = 'pages/' + folder + '/' + (first[0][:-3] + '.html' if first else 'README.html')
+            href = link(folder, '')  # يحل تلقائياً لأول صفحة موجودة
             sub_items = ''
             if folder == '06-PRACTICAL-CASES':
                 cases = sorted(f for f in os.listdir(gdir) if f.startswith('Case-'))
@@ -365,6 +399,11 @@ def main():
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ENG540 — منظومة الخدمات الهندسية السعودية</title>
 <meta name="description" content="موسوعة تشغيلية تفاعلية للخدمات الهندسية والمساحية والبلدية السعودية: 14 خدمة بخوارزمية 25 خطوة متتبعة، أكاديمية تدريب، حالات عملية، ونماذج — بمصادر رسمية موثقة.">
+<link rel="canonical" href="https://eng540.github.io/eng540-services/">
+<meta property="og:title" content="ENG540 — منظومة الخدمات الهندسية السعودية">
+<meta property="og:description" content="من المبتدئ إلى منفّذ الخدمات كاملة — 14 خدمة، خوارزميات 25 خطوة، أكاديمية تدريب، وأدوات تفاعلية.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eng540.github.io/eng540-services/">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -432,13 +471,36 @@ def main():
 </main>
 <footer class="site-footer">
   <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
-  <div>ENG540 · إصدار 2.0 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
+  <div>ENG540 · إصدار 3.0 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
 </footer>
 <script src="assets/search-index.js"></script>
 <script src="assets/app.js"></script>
 </body></html>"""
     open(os.path.join(REPO, 'index.html'), 'w', encoding='utf-8').write(home)
-    print(f'✅ بناء v2: {count} صفحة + الرئيسية | {total_lines:,} سطر | فهرس بحث {len(search_docs)} مستنداً')
+
+    # 4) SEO: sitemap + robots + 404
+    BASE = 'https://eng540.github.io/eng540-services/'
+    urls = [BASE] + [BASE + 'app.html'] + [BASE + d['p'] for d in search_docs]
+    with open(os.path.join(REPO, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+        for u in urls:
+            f.write(f'  <url><loc>{u}</loc><lastmod>{date.today().isoformat()}</lastmod></url>\n')
+        f.write('</urlset>\n')
+    open(os.path.join(REPO, 'robots.txt'), 'w', encoding='utf-8').write(
+        'User-agent: *\nAllow: /\nSitemap: ' + BASE + 'sitemap.xml\n')
+    open(os.path.join(REPO, '404.html'), 'w', encoding='utf-8').write(
+        '''<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصفحة غير موجودة — ENG540</title><link rel="stylesheet" href="/eng540-services/assets/style.css"></head>
+<body style="font-family:Tajawal,sans-serif;text-align:center;padding:5rem 1rem">
+<h1 style="color:#0f766e">404 — الصفحة غير موجودة</h1>
+<p>استخدم البحث أو عد إلى النقاط التالية:</p>
+<p><a class="chip" href="/eng540-services/">الرئيسية</a>
+<a class="chip" href="/eng540-services/app.html">⚡ المنصة التفاعلية</a>
+<a class="chip" href="/eng540-services/pages/03-SERVICES/01-Building-Permit/README.html">الخدمة 1</a>
+<a class="chip" href="/eng540-services/sitemap.xml">فهرس كل الصفحات (sitemap)</a></p>
+</body></html>''')
+    print(f'✅ بناء v3: {count} صفحة + الرئيسية | {total_lines:,} سطر | sitemap: {len(urls)} رابطاً | robots+404 ✓')
 
 if __name__ == '__main__':
     main()

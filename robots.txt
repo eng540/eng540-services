@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eng540.github.io/eng540-services/sitemap.xml
