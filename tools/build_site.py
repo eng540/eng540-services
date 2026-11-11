@@ -264,7 +264,7 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
     {toc_html}
     <article class="doc doc-app">{body_html}</article>
     <footer class="doc-footer">
-      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف والتواصل</a></div>
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني يمني</b> · جميع الحقوق محفوظة · <a href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف والتواصل</a></div>
       <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="{link('10-QUALITY-AND-UPDATES/Knowledge-Gaps', prefix)}">الفجوات الموسومة</a></div>
     </footer>
   </main>
@@ -417,7 +417,7 @@ def main():
   <button class="theme-btn" id="themeBtn" title="وضع ليلي/نهاري">🌙</button>
 </header>
 <section class="hero">
-  <div class="founder">تقديم: <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · «صناعة الأثر لا مجرد الإنجاز»</div>
+  <div class="founder">تقديم: <b>م. عبدالمجيد الفقيه — مهندس مدني يمني</b> · «صناعة الأثر لا مجرد الإنجاز»</div>
   <h1>من المبتدئ إلى منفّذ الخدمات كاملة</h1>
   <p>منصة تفاعلية للخدمات الهندسية والمساحية والبلدية السعودية — خوارزميات 25 خطوة متتبعة، تبويبات لكل خدمة، حالات عملية، واختبارات إتقان — بمصادر رسمية موثقة ووسوم تحقق صارمة.</p>
   <div class="stats">
@@ -450,7 +450,7 @@ def main():
 <section class="section" id="author"><h2>عن المؤلف</h2>
 <div class="author-card">
   <div class="author-name">م. عبدالمجيد الفقيه</div>
-  <div class="author-role">مهندس مدني · مؤسس منظومة ENG540 · «صناعة الأثر لا مجرد الإنجاز»</div>
+  <div class="author-role">مهندس مدني يمني · مؤسس منظومة ENG540 · «صناعة الأثر لا مجرد الإنجاز»</div>
   <div class="author-contact">
     <a class="chip" href="https://wa.me/966532777678">💬 واتساب · 0532777678</a>
     <a class="chip" href="tel:0532777678">📞 جوال: 0532777678</a>
@@ -470,7 +470,7 @@ def main():
 </section>
 </main>
 <footer class="site-footer">
-  <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
+  <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني يمني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
   <div>ENG540 · إصدار 3.0 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
 </footer>
 <script src="assets/search-index.js"></script>
