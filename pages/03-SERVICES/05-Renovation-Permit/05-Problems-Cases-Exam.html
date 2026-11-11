@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 — المشكلات والحالات العملية والاختبار: إصدار رخصة الترميم (10481) — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/05-Renovation-Permit/README.html">إصدار رخصة ترميم</a> <span class="crumb-sep">‹</span> <span>05 — المشكلات والحالات العملية والاختبار: إصدار رخصة الترميم (10481)</span></nav>
+    <article class="doc"><h1>05 — المشكلات والحالات العملية والاختبار: إصدار رخصة الترميم (10481)</h1>
+<blockquote>
+<p>إصدار 0.1 · تاريخ التحقق: 2026-11-10
+الأعمدة الإلزامية التسعة: وصف · سبب · الكشف · الأثر · المسؤول · الإجراء · المستندات · متى التصعيد · متى الإيقاف.</p>
+</blockquote>
+<hr />
+<h2>1. جدول المشكلات (12 مشكلة)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>الوصف</th>
+<th>السبب الجذري</th>
+<th>الكشف المبكر</th>
+<th>الأثر</th>
+<th>المسؤول</th>
+<th>الإجراء</th>
+<th>المستندات</th>
+<th>متى التصعيد</th>
+<th>متى الإيقاف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>الطلب هو فعلياً إضافة وليس ترميماً</strong> (غرفة/دور/ملحق داخل وصف الأعمال)</td>
+<td>رغبة العميل تتجاوز التعريف الرسمي للترميم ✅ (لا مكون جديد)</td>
+<td>سؤال الفحص الخطوة 2 + صياغة «بيانات الترميم»</td>
+<td>رفض الطلب/تحويله بعد التقديم؛ هدر رسوم ووقت</td>
+<td>المنسق (التشخيص)</td>
+<td>إيقاف قبل التقديم وتوجيهه لخدمة «إضافة وتعديل مكونات بناء» (10484) ✅</td>
+<td>وصف الأعمال، معاينة، جدول الحدود (README §1.11)</td>
+<td>عند إصرار العميل على الصياغة المضللة</td>
+<td>إذا رفض العميل المسار الصحيح</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>بناء متضرر جداً — القرار الصحيح هدم لا ترميم</strong></td>
+<td>تدهور إنشائي جوهري خارج نطاق «استعادة»</td>
+<td>شروخ منتظمة/هبوط، أو تقرير سلامة يوصي بالهدم 📚</td>
+<td>ترميم غير آمن ومسؤولية مهنية؛ رفض البلدية</td>
+<td>المكتب الهندسي/الفاحص</td>
+<td>تقرير سلامة (13) ثم توجيه لرخصة الهدم (10473) وفق س7</td>
+<td>تقرير السلامة، صور، مخططات قائمة</td>
+<td>فور ظهور مؤشر خطر</td>
+<td>قبل أي تنفيذ ترميم</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>ترميم بلا رخصة (مخالفة جارية)</strong></td>
+<td>جهل أو استعجال أو مقاول «يمشي بالعمل»</td>
+<td>زيارة موقع/شكوى/بلاغ</td>
+<td>غرامات وفق لائحة الجزاءات البلدية ✅ وإيقاف عمل وإزالة محتملة</td>
+<td>المالك (قرار التنفيذ)</td>
+<td>توثيق الوضع، تسوية عبر بلدي (رخصة/تصحيح وضع عند الحاجة)، تفادي توصيف خاطئ لما نُفذ</td>
+<td>لائحة الجزاءات ✅، صور، سجل أعمال</td>
+<td>عند وصول إشعار رقابي</td>
+<td>عند فتح مخالفة رسمية حتى التسوية</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>جدل حول «عنصر إنشائي»</strong> (هل معالجة الجدار حامل؟ هل فتح النافذة تعديل؟)</td>
+<td>غموض تصنيف فني + تحفظ مراجع</td>
+<td>مراجعة مهندس ثانٍ + مخططات المبنى الأصلية</td>
+<td>رفض أو طلب مخططات أو تحويل الخدمة</td>
+<td>المكتب الهندسي (رأيه الفني)</td>
+<td>تحليل عنصر بعنصر مقابل التعريف الرسمي ✅؛ شجرة القرار §2</td>
+<td>مخططات قائمة، تقرير فني، مراسلات</td>
+<td>عند تعارض رأيي مكتبين</td>
+<td>عند اعتماد البلدية لرفض تصنيفي</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>رخصة البناء المرجعية منتهية/موقوفة</strong></td>
+<td>مرور مدة الرخصة أو عوائق سابقة</td>
+<td>استعلام «إدارة الرخص» قبل البدء ✅</td>
+<td>اختفاء المرجع من قائمة الاختيار أو رفض الطلب</td>
+<td>المنسق</td>
+<td>تجديد/استكمال رخصة البناء أولاً ثم الترميم</td>
+<td>إدارة الرخص ✅، مراسلات</td>
+<td>فور تعذر اختيار الرخصة</td>
+<td>حتى استيفاء المرجع</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>لا توجد رخصة بناء أصلاً</strong> (مبنى قديم غير مرخص)</td>
+<td>بناء تاريخي غير منظم</td>
+<td>فحص الملكية والرخص ✅</td>
+<td>لا يمكن تقديم ترميم بنمطه المعتاد</td>
+<td>المنسق</td>
+<td>قرار مساحي + خدمة «تصحيح وضع مبنى قائم» (11) — مسار رسمي موثق ✅ (إجابة صفحة 10484)</td>
+<td>صك، قرار مساحي</td>
+<td>فور التأكد من غياب الرخصة</td>
+<td>حتى تنظيم الوضع القائم</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>مكتب هندسي مختار لا يستجيب</strong> (غير مستجيب/غير مصنف فعلياً)</td>
+<td>اختيار بالاسم دون تنسيق مسبق</td>
+<td>مرور مدة دون حركة في الطلب 📚</td>
+<td>تجمد الطلب في مسار الترميم الإنشائي</td>
+<td>المالك/المنسق</td>
+<td>تواصل مع المكتب؛ عند العجز: الاتفاق على استبداله عبر قنوات الطلب/الدعم 199040 ✅</td>
+<td>أرقام الطلب، مراسلات</td>
+<td>بعد مهلة تشغيلية (مثلاً 3–5 أيام عمل 📚)</td>
+<td>عند شلل الطلب دون حل</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>ملاحظات مراجعة تعود متكررة</strong></td>
+<td>مخططات/وصف لا يطابق المعاينة أو الاشتراطات</td>
+<td>إشعارات في الطلب (نمط بلدي ✅)</td>
+<td>تأخير يتجاوز مدة الخدمة المعلنة 10 أيام ✅</td>
+<td>المكتب الهندسي</td>
+<td>معالجة الملاحظات كاملة مرة واحدة (وليس جزئياً) وإعادة الإرسال (نموذج 06-TEMPLATES)</td>
+<td>الملاحظات، المخططات المعدلة</td>
+<td>بعد جولتين بلا استقرار</td>
+<td>عند اعتراض جوهري غير قابل للحل بالتعديل</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>وصف أعمال سطحي مضلل/مبالغ فيه</strong> (كلمات إنشائية لأعمال سطحية والعكس)</td>
+<td>صياغة غير فنية من مقدِم غير متخصص</td>
+<td>مراجعة المنسق للصياغة قبل الإرسال</td>
+<td>سوء تصنيف → ملاحظات/رفض/مخالفة نطاق لاحقاً</td>
+<td>مقدم الطلب/المنسق</td>
+<td>إعادة صياغة دقيقة («معالجة شقوق» لا «إنشاء») ومطابقة الإجراءات للواقع</td>
+<td>بيانات الترميم ✅، معاينة</td>
+<td>قبل الإرسال (وقاية)</td>
+<td>عند نزاع نطاق بعد الإصدار</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>مساحة «جزء الترميم» غير متطابقة مع الواقع</strong></td>
+<td>إدخال يدوي غير موثق (حقل يدوي في «جزء من المبنى» ✅)</td>
+<td>قياس ليزر قبل الإدخال 📚</td>
+<td>ملاحظات/تعديل؛ تأثير على الرسوم المحسوبة</td>
+<td>مقدم الطلب/المكتب</td>
+<td>قياس موثق ثم إدخال مطابق؛ تعديل عبر الطلب عند الحاجة</td>
+<td>قياسات، صور</td>
+<td>قبل السداد (الرسوم)</td>
+<td>عند فجوة جوهرية تعترضها البلدية</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>ترميم محل تجاري مستأجر دون تنسيق المالك</strong></td>
+<td>المستأجر يتحرك وحده</td>
+<td>طلب صفة العميل وتوثيق إذن المالك</td>
+<td>نزاع ملكية + رفض/إشكال عند الاعتماد</td>
+<td>المستأجر/المنسق</td>
+<td>عقد + إذن مالك كتابي؛ التقديم بموجب رخصة البناء للمستأجر منه ✅ (حالة موثقة)</td>
+<td>عقد الإيجار، الإذن، هويات</td>
+<td>عند تحفظ المالك</td>
+<td>قبل التقديم دون إذن</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>عقار في نطاق تراثي واشتراطات لم تُفحص</strong></td>
+<td>افتراض أن الترميم «عادي»</td>
+<td>تحقق مبدئي من النطاق في الخطوة 4 ⚠️📚</td>
+<td>رفض التصميم بعد إعداده؛ تكاليف إعادة</td>
+<td>المنسق/المكتب</td>
+<td>استعلام بلدي/الجهة التراثية قبل التصميم وإلحاق المتطلبات ⚠️</td>
+<td>استعلامات، اشتراطات النطاق</td>
+<td>فور ظهور أي قيد تراثي</td>
+<td>حتى إجابة الجهة</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>الرخصة صدرت بنطاق أضيق مما يريد العميل</strong> (أعمال أُسكتت في الوصف)</td>
+<td>تحفظ فني أو صياغة مقتصدة</td>
+<td>مطابقة عرض التنفيذ مع بيانات الرخصة قبل بدء الأعمال</td>
+<td>أعمال خارج النطاق = مخالفة حتى لو صدرت الرخصة</td>
+<td>المنسق/المكتب</td>
+<td>تقييم إضافة الإجراءات الناقصة كتعديل/طلب تكميلي عبر القنوات النظامية قبل تنفيذها</td>
+<td>بيانات الترميم، الرخصة، العرض</td>
+<td>قبل أي حفر/كسر</td>
+<td>عند بدء تنفيذ خارج النطاق</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>تعارض اسم مالك بين الصك والحساب</strong> (وراثة/تحديث لم يكتمل)</td>
+<td>صك لم يُحدَّث بعد تغيير ملكية</td>
+<td>مطابقة الاسم الثلاثي في الخطوة 4</td>
+<td>تعذر إثبات الصفة/سحب البيانات</td>
+<td>المنسق</td>
+<td>تصحيح الملكية (تحديث الصك — خدمة 2) قبل التقديم</td>
+<td>صك، وثائق وراثة/نقل</td>
+<td>فور اكتشاف عدم التطابق</td>
+<td>حتى توحيد الاسم</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>ممول/بنك يشترط مستندات إضافية</strong> (مثلاً تقرير فني) لصرف تمويل الترميم</td>
+<td>متطلبات القطاع المالي خارج متطلبات الخدمة</td>
+<td>سؤال العميل عن مصدر التمويل مبكراً</td>
+<td>تعطل الجدول الزمني للعميل</td>
+<td>المنسق</td>
+<td>فصل متطلب الممول عن متطلبات الخدمة؛ توفير التقرير من الجهة المناسبة (13 عند إنشائيته 📚)</td>
+<td>عرض التمويل، التقرير</td>
+<td>عند أول طلب من الممول</td>
+<td>عند شرط يتعارض مع نطاق الرخصة</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>مصادر الوقاية المشتركة: لائحة الغرامات والجزاءات البلدية ✅ + لائحة تصنيف مخالفات كود البناء ✅ (روابط في <code>02</code> §1) — كلتاهما مرجعان رسميان لما يقع تحت طائلة المخالفة.</p>
+</blockquote>
+<h2>1.5 علامات إنذار مبكرة (Red Flags) — قبل أي التزام</h2>
+<table>
+<thead>
+<tr>
+<th>العبارة التي يقولها العميل</th>
+<th>ماذا تخفي غالباً</th>
+<th>تحركك الفوري</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«أرمم وأزيد»</td>
+<td>مشروع إضافة مقنّع</td>
+<td>فصل المشروعين (الحالة ب)</td>
+</tr>
+<tr>
+<td>«المقاول يقول يبدأ بكرة والرخصة بعدين»</td>
+<td>بذرة مخالفة (مشكلة 3)</td>
+<td>لا تنفيذ قبل الرخصة — نص للعميل</td>
+</tr>
+<tr>
+<td>«المبنى يهتز/يشق من الأساس»</td>
+<td>مؤشر سلامة حرج (مشكلة 2)</td>
+<td>تقرير 13 قبل أي شيء</td>
+</tr>
+<tr>
+<td>«المبنى قديم ما له أوراق»</td>
+<td>غياب الرخصة الأصلية (مشكلة 6)</td>
+<td>مسار 11 بعد قرار مساحي</td>
+</tr>
+<tr>
+<td>«المكتب اللي اختاره صاحبي يشتغل معنا»</td>
+<td>مكتب غير مصنف/غير متاح (مشكلة 7)</td>
+<td>التحقق من التصنيف والقبول قبل الإسناد</td>
+</tr>
+<tr>
+<td>«سوّ اللي تبي بس خلّ المبلغ ينزل»</td>
+<td>ضغط تسعيري يولّد توصيفاً مضللاً (مشكلة 9)</td>
+<td>لا توصيف غير الصحيح فنياً مهما كان الضغط</td>
+</tr>
+</tbody>
+</table>
+<h2>2. شجرة القرار (نصية — تتفرع حسب السبب)</h2>
+<pre><code>تصل شكوى/توقف معاملة ترميم
+│
+├─ هل الطلب أُرسل أصلاً في بلدي؟
+│   ├─ لا (ما زال داخلياً)
+│   │   ├─ النطاق فيه مكون جديد/تغيير إنشائي؟ ──► أوقف الترميم ──► حوّل لـ 10484 (أو 10472) [مشكلة 1]
+│   │   ├─ لا مرجع رخصة/الرخصة منتهية؟ ──► استوفِ المرجع أولاً [مشكلتا 5، 6]
+│   │   │    └─ لا رخصة أصلاً؟ ──► قرار مساحي + خدمة 11 ✅ [مشكلة 6]
+│   │   ├─ تضرر إنشائي جوهري؟ ──► تقرير سلامة 13 ──► ترميم كلي / هدم 10473 [مشكلة 2]
+│   │   └─ نطاق تراثي؟ ──► استعلام اشتراطات قبل التصميم [مشكلة 12]
+│   └─ نعم (مُرسل)
+│       ├─ متجمد عند المكتب الهندسي؟ ──► تواصل/استبدال عبر قنوات الطلب [مشكلة 7]
+│       ├─ ملاحظات مراجعة؟ ──► معالجة كاملة وإعادة إرسال [مشكلة 8]
+│       ├─ اعتراض تصنيف (إنشائي/سطحي/إضافة)؟ ──► تحليل عنصر بعنصر + رأي فني موثق [مشكلتا 4، 9]
+│       └─ فجوة مساحات؟ ──► قياس موثق وتعديل قبل السداد [مشكلة 10]
+│
+└─ هل الموضوع مخالفة قائمة (عمل بلا رخصة)؟ ──► توثيق + تسوية عبر بلدي؛ لا «تغطية» بأثر رجعي مضلل [مشكلة 3]
+</code></pre>
+<h2>2.5 شجرة التوجيه المستقلة: «هل هذا ترميم أصلاً؟» (تستخدم عند الخطوة 2–7)</h2>
+<pre><code>يصف العميل نطاقه
+│
+├─ هل يوجد عيب واقعي يُعالَج؟ ─ لا ─► «تحسين/تحديث بلا عيب» → ناقش ضرورة الرخصة حسب طبيعة الأعمال مع البلدية ⚠️📚
+│
+├─ هل العلاج يتضمن أي مما يلي؟
+│   ├─ مكون جديد (غرفة/دور/ملحق/مواقف) ──► ليس ترميماً ──► 10484 ✅
+│   ├─ فتح/إزالة/تعديل عنصر حامل ──► ليس ترميماً ──► 10484 أو مراجعة الرخصة الأصلية ✅
+│   ├─ إزالة المبنى كله ──► 10473 (هدم) ثم 10472 إن عاد البناء ✅
+│   └─ المبنى بلا رخصة أصلاً ──► قرار مساحي + 11 (تصحيح وضع) ✅
+│
+├─ (عيب واقعي وعلاجه دون ما سبق) ──► ترميم صحيح
+│   ├─ هل العيوب تمس سلامة العناصر الحاملة؟ ─ نعم ─► تقرير 13 أولاً 📚 ثم قرار النوع
+│   └─ لا ─► «ترميم سطحي» (إدخال مالك + حاسبة) ✅
+│
+└─ (ترميم صحيح بعيوب إنشائية) ──► «ترميم إنشائي»: مكتب مصنف + مخططات ✅ + زيارة 72 ساعة ✅
+</code></pre>
+<blockquote>
+<p>الفرق بين هذه الشجرة وشجرة المشكلات (§2): هذه تشخّص «الطلب قبل دخوله النظام»، وأخرى تعالج «المعاملة بعد توقفها».</p>
+</blockquote>
+<h2>3. الحالة العملية (أ): فيلا سكنية تحتاج ترميماً ميكانيكياً 🧪</h2>
+<blockquote>
+<p>بيانات افتراضية للتدريب (توسيم موحد 🧪؛ الرسوم النهائية دائماً من حاسبة بلدي ⚠️).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>العنصر</th>
+<th>التفصيل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>العميل</td>
+<td>مالك فيلا سكنية (دورين + سطح)، عمر البناء 22 سنة، صك محدث ✅</td>
+</tr>
+<tr>
+<td>الشكوى</td>
+<td>«المبنى متعب: تشققات سطحية بغرف الدور الأول، رطوبة بحوائط الملحق، عزل السطح فاشل، الدهانات متساقطة»</td>
+</tr>
+<tr>
+<td>المعاينة (خطوة 6)</td>
+<td>شقوق سطحية بلا نمط إنشائي، رطوبة مصدرها عزل فاشل (لا قصور إنشائي)، تشطيبات متداعية. لا مؤشرات هبوط</td>
+</tr>
+<tr>
+<td>التصنيف (خطوة 3)</td>
+<td>ترميم بسيط/ميكانيكي → <strong>«ترميم سطحي»</strong> في النظام ✅؛ المساحة: أجزاء — يُقاس بالليزر: 260 م²</td>
+</tr>
+<tr>
+<td>المرجع (خطوة 5)</td>
+<td>رخصة بناء سارية برقم افتراضي؛ بياناتها مطابقة للصك ✅</td>
+</tr>
+<tr>
+<td>القرار (خطوة 7)</td>
+<td>لا إضافات ولا تغيير إنشائي → متابعة الترميم</td>
+</tr>
+<tr>
+<td>العرض (خطوة 8) 🧪</td>
+<td>رسوم ⚠️ من الحاسبة + إدارية 800 ريال 💼 + تنفيذ 260 م² × 85 ريال ≈ 22,100 ريال 💼</td>
+</tr>
+<tr>
+<td>التقديم (خطوات 12–19)</td>
+<td>نفاذ → تقديم جديد → تحقق جوال ✅ → اختيار الرخصة → «ترميم سطحي» → (لا تفويض مكتب) → بيانات الترميم: غرض/نطاق «جزء من المبنى»/مساحة 260/وصف دقيق غير إنشائي + 3 إجراءات بجدول ✅ → مقاول: يُختار → تعهدات ✅ → حاسبة «احسب» ✅ → إرسال لموظفي البلدية ✅</td>
+</tr>
+<tr>
+<td>ما بعد</td>
+<td>SMS فاتورة → سداد ✅ → SMS إصدار برقم رخصة + «زيارة الموقع خلال 72 ساعة» ✅ → تهيئة الموقع والمقاول → زيارة منجزة → تنفيذ وفق النطاق حصراً → توثيق وإغلاق (خطوة 25)</td>
+</tr>
+<tr>
+<td>الدروس</td>
+<td>نجاح الحالة رُبح في الخطوات 2–7 (تشخيص وصياغة)، لا في سرعة التقديم؛ الوصف الدقيق = صفر ملاحظات</td>
+</tr>
+</tbody>
+</table>
+<h2>4. الحالة العملية (ب) — استثنائية: «ترميم» يضم إضافة طابق 🧪</h2>
+<blockquote>
+<p>بيانات افتراضية للتدريب 🧪. هذه الحالة تمثل المشكلتين 1 و4 معاً.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>العنصر</th>
+<th>التفصيل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>العميل</td>
+<td>مالك مبنى تجاري دور واحد، «أبي أرمم المبنى كامل وأزيد طابق ثاني فوقه — سواها في معاملة وحدة»</td>
+</tr>
+<tr>
+<td>الفحص المبدئي (خطوة 2)</td>
+<td>النية فعلية: ترميم واجهات وأنظمة (مشروع ترميم) <strong>+ إضافة طابق كامل (مشروع إضافة)</strong> — خلط مشروعين</td>
+</tr>
+<tr>
+<td>لماذا لا تصلح الخدمة 5 وحدها؟</td>
+<td>التعريف الرسمي للترميم يستبعد صراحة «إضافة مكون جديد» ✅؛ الطابق الجديد مكون جديد يُعدل به ملف الرخصة (مواقف، أحمال، مساحات)</td>
+</tr>
+<tr>
+<td>التشخيص الموثق (خطوة 7)</td>
+<td>فصل المشروعين: (أ) ترميم عبر الخدمة 5 بنوعه المناسب؛ (ب) الإضافة عبر <strong>«إضافة وتعديل مكونات بناء» (10484)</strong> ✅ — بالتتابع لا بالتوازي المضلل</td>
+</tr>
+<tr>
+<td>تسلسل التنفيذ المقترح 📚</td>
+<td>1) تقييم إنشائي: هل يتحمل الدور القائم طابقاً إضافياً؟ إن كان جواب التقييم مشكوكاً → تقرير سلامة (13) 📚. 2) طلب 10484 للطابق (مخططات المكتب، موافقات حسب الحالة). 3) بعد اعتماد الإضافة: طلب الترميم 5 بنطاقه المرخص — أو دمج أعمال التنفيذ ميدانياً بعد صدور كلتا الرخصتين، بحيث كل عمل تحت رخصته الصحيحة</td>
+</tr>
+<tr>
+<td>نقطة جدل إنشائية (مشكلة 4)</td>
+<td>صاحب المبنى يقترح «نكتفي بتقوية الكبيرات ونسميها ترميماً» — الرد المهني: تقوية استعداداً لحمولة طابق جديد = تغيير تكوين وظيفي خارج نطاق الترميم؛ تُوثق ضمن طلب الإضافة بمخططاتها، لا تحت رخصة ترميم</td>
+</tr>
+<tr>
+<td>الأخطاء التي تجُنُبت</td>
+<td>تقديم 5 بوصف يحوي «إضافة طابق» (رفض شبه مؤكد)؛ تنفيذ الطابق تحت رخصة الترميم (مخالفة)؛ طلب 10484 دون تقييم تحمل (خطر سلامة)</td>
+</tr>
+<tr>
+<td>النتيجة</td>
+<td>معاملة 10484 أولى (4 أسابيع افتراضياً 🧪) ثم رخصة الترميم بالنطاق المتبقي — العميل فهم الفصل عبر جدول الحدود وعرض سعر لكل مسار 🧪</td>
+</tr>
+<tr>
+<td>الدروس</td>
+<td>«الخلط بين مشروعين» أشيع أسباب رفض الترميم؛ التشخيص قبل التقديم يوفر رسوم ووقتاً وسمعة مهنية</td>
+</tr>
+</tbody>
+</table>
+<h3>الحالة أ (تكملة): الجدول الزمني التنفيذي 🧪</h3>
+<table>
+<thead>
+<tr>
+<th>اليوم (افتراضي)</th>
+<th>الحدث</th>
+<th>المرجع</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>يوم 1</td>
+<td>استقبال + معاينة + تصنيف «سطحي»</td>
+<td>خطوات 1–6</td>
+</tr>
+<tr>
+<td>يوم 2</td>
+<td>عرض سعر واعتماد العميل</td>
+<td>خطوة 8 🧪</td>
+</tr>
+<tr>
+<td>يوم 3</td>
+<td>تحقق من الرخصة المرجعية + تجهيز الحزمة</td>
+<td>خطوات 5، 10 ✅</td>
+</tr>
+<tr>
+<td>يوم 4</td>
+<td>تقديم الطلب في بلدي وإدخال «بيانات الترميم» وحساب الرسوم ✅</td>
+<td>خطوات 12–19</td>
+</tr>
+<tr>
+<td>أيام 4–10</td>
+<td>معالجة موظفي البلدية (مدة الخدمة المعلنة 10 أيام ✅)</td>
+<td>صفحة الخدمة</td>
+</tr>
+<tr>
+<td>يوم 6 (مثال)</td>
+<td>SMS الفاتورة → سداد فوري ✅</td>
+<td>خطوة 21</td>
+</tr>
+<tr>
+<td>يوم 8</td>
+<td>SMS الإصدار + إطار 72 ساعة للزيارة ✅</td>
+<td>خطوات 22–23</td>
+</tr>
+<tr>
+<td>يوم 9</td>
+<td>زيارة الموقع منجزة بلا ملاحظات</td>
+<td>خطوة 23</td>
+</tr>
+<tr>
+<td>أيام 10–30</td>
+<td>تنفيذ المقاول وفق النطاق + توثيق صوري</td>
+<td>خطوة 24</td>
+</tr>
+<tr>
+<td>يوم 31</td>
+<td>تسليم وتقييم وفتح فرصة صيانة سنوية</td>
+<td>خطوة 25</td>
+</tr>
+</tbody>
+</table>
+<h3>الحالة ب (تكملة): نموذج الرد على العميل (نص جاهز للمنسق) 🧪</h3>
+<blockquote>
+<p>«مصير إضافة طابق مختلف عن الترميم في الأنظمة: الترميم يعالج عيوب المبنى القائم <strong>دون إضافة مكون جديد</strong> وفق تعريفه الرسمي ✅، بينما الطابق الجديد يُعدَّل به ملف الرخصة عبر خدمة «إضافة وتعديل مكونات بناء» بمخططات مكتب وتقييم تحمل. سنبدأ بتقييم تحمل الدور القائم (وتقرير سلامة عند الحاجة)، ثم نقدّم طلب الإضافة، وبعد اعتماده نقدّم رخصة الترميم لنطاق أعمال الترميم الصحيح — بهذا يُنفَّذ مشروعك كاملاً ودون أي جزء بلا رخصة صحيحة.»</p>
+</blockquote>
+<h3>الحالة أ — فرع بديل: «وماذا لو ظهرت ملاحظة؟» 🧪</h3>
+<blockquote>
+<p>نفس الفيلا، لكن افترض أن البلدية أعادت الطلب بملاحظة: «وصف أعمال معالجة الحوائط الداخلية غير واضح — حدد المواد وآلية العملية».</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>المحطة</th>
+<th>التصرف الصحيح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. استلام الملاحظة</td>
+<td>تسجل فوراً في نموذج معالجة الملاحظات (07-TEMPLATES/06) برابط الطلب وتاريخها</td>
+</tr>
+<tr>
+<td>2. التحليل</td>
+<td>الملاحظة على «وصف الأعمال» (حقل نصي) — ليست طلب مخططات؛ جوابها صياغة فنية أدق</td>
+</tr>
+<tr>
+<td>3. الصياغة الجديدة</td>
+<td>«معالجة شقوق حوائط داخلية بطول ≈60م: تعرية، مادة رابطة، معجون، دهان — دون أعمال إنشائية»</td>
+</tr>
+<tr>
+<td>4. التعديل في الطلب</td>
+<td>تعديل الحقل وإعادة الإرسال عبر مسار الطلب نفسه (وليس طلباً جديداً)</td>
+</tr>
+<tr>
+<td>5. الدرس المسجل</td>
+<td>الوصف الفني الجاهز منذ البداية = جولة ملاحظات صفر؛ سجلت الحالة في «الأخطاء الشائعة» بالمكتب</td>
+</tr>
+</tbody>
+</table>
+<h3>الحالة ب — فرع بديل: «وماذا لو رفض التقييم الإضافي؟» 🧪</h3>
+<blockquote>
+<p>افترض أن التقييم الإنشائي وجد الدور القائم غير قادر على استقبال طابق.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>المحطة</th>
+<th>التصرف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. إبلاغ العميل بالنتيجة موثقة</td>
+<td>تقرير/مذكرة تقييم بخلاصة «غير ممكن دون معالجات جوهرية»</td>
+</tr>
+<tr>
+<td>2. عرض البدائل</td>
+<td>(أ) ترميم شامل للموجود فقط (الخدمة 5 بمسارها الصحيح) (ب) هدم وإعادة بناء (10473 ثم 10472) إن رغب بالمساحة</td>
+</tr>
+<tr>
+<td>3. حماية الموقف المهني</td>
+<td>لا «حل وسط» بمعالجة تقوية ثم إضافة غير مرخصة — يخرج عن نظامي الترميم ✅</td>
+</tr>
+<tr>
+<td>4. الإغلاق</td>
+<td>عرض سعر للبديل المختار + أرشفة تقرير التقييم في ملف العقار</td>
+</tr>
+</tbody>
+</table>
+<h3>قرارات مصغرة سريعة (تدريب سريع — سطر لكل حالة) 🧪</h3>
+<table>
+<thead>
+<tr>
+<th>الحالة القادمة</th>
+<th>قرارك في سطر</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«أرمم الليفت وأبدل محركه»</td>
+<td>أعمال على مكون قائم بلا إضافة → ترميم؛ حدد النطاق دقيقاً ودقق اشتراطات البلدية للنشاط ⚠️📚</td>
+</tr>
+<tr>
+<td>«أكسر الجدار الفاصل وأدمج شقتين»</td>
+<td>تغيير عنصر حامل/مكونات → 10484 (وليس ترميماً) ✅</td>
+</tr>
+<tr>
+<td>«أبي أعزل السطح وأصبغ الواجهة»</td>
+<td>ترميم سطحي نموذجي ✅</td>
+</tr>
+<tr>
+<td>«المبنى له ذروة شقوق من الأساس للسقف»</td>
+<td>تقرير 13 قبل أي خطوة 📚</td>
+</tr>
+<tr>
+<td>«محلي مستأجر، صاحبه وافي شفهياً»</td>
+<td>لا يكفي الشفهي عملياً: عقد + إذن كتابي ثم التقديم بموجب رخصة البناء ✅</td>
+</tr>
+</tbody>
+</table>
+<h2>4.5 جدول التتبع: المشكلة → نقطة الالتقاط في الخوارزمية → الجهة المعالجة</h2>
+<table>
+<thead>
+<tr>
+<th>المشكلة</th>
+<th>تُلتقط في الخطوة</th>
+<th>تُحل عبر</th>
+<th>تُتصعد إلى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 إضافة مقنعة</td>
+<td>2، 7</td>
+<td>تحويل الخدمة + وثيقة توجيه العميل</td>
+<td>مدير المكتب عند إصرار العميل</td>
+</tr>
+<tr>
+<td>2 تضرر جوهري</td>
+<td>6</td>
+<td>تقرير 13 + توجيه هدم</td>
+<td>مالك المكتب (قرار هدم)</td>
+</tr>
+<tr>
+<td>3 ترميم بلا رخصة</td>
+<td>23–24 (أو قبلها)</td>
+<td>تسوية + لائحة الجزاءات ✅</td>
+<td>الإدارة القانونية</td>
+</tr>
+<tr>
+<td>4 جدل إنشائي</td>
+<td>3، 20</td>
+<td>رأي فني ثانٍ + مخططات</td>
+<td>البلدية (قنوات الطلب)</td>
+</tr>
+<tr>
+<td>5 مرجع منتهٍ</td>
+<td>5</td>
+<td>تجديد/استكمال الرخصة</td>
+<td>المالك</td>
+</tr>
+<tr>
+<td>6 لا رخصة أصلاً</td>
+<td>5</td>
+<td>قرار مساحي + خدمة 11</td>
+<td>البلدية</td>
+</tr>
+<tr>
+<td>7 مكتب غير مستجيب</td>
+<td>17</td>
+<td>استبدال/دعم 199040 ✅</td>
+<td>الدعم الفني بلدي</td>
+</tr>
+<tr>
+<td>8 ملاحظات متكررة</td>
+<td>20</td>
+<td>معالجة كاملة مرة واحدة</td>
+<td>البلدية عند اعتراض جوهري</td>
+</tr>
+<tr>
+<td>9 وصف مضلل</td>
+<td>16</td>
+<td>إعادة صياغة قبل الإرسال</td>
+<td>— (وقاية داخلية)</td>
+</tr>
+<tr>
+<td>10 مساحة غير دقيقة</td>
+<td>16، 19</td>
+<td>قياس موثق قبل السداد</td>
+<td>البلدية عند فجوة</td>
+</tr>
+<tr>
+<td>11 مستأجر بلا توثيق</td>
+<td>9، 10</td>
+<td>عقد + إذن مالك</td>
+<td>المالك</td>
+</tr>
+<tr>
+<td>12 تراثي بلا فحص</td>
+<td>4، 20</td>
+<td>استعلام الجهة قبل التصميم</td>
+<td>الجهة التراثية</td>
+</tr>
+<tr>
+<td>13 نطاق أضيق من المطلوب</td>
+<td>24</td>
+<td>طلب تكميلي قبل التنفيذ</td>
+<td>البلدية</td>
+</tr>
+<tr>
+<td>14 تعارض أسماء المالك</td>
+<td>4</td>
+<td>تحديث الصك (خدمة 2)</td>
+<td>ناجز/بلدي</td>
+</tr>
+<tr>
+<td>15 متطلبات ممول</td>
+<td>8، 25</td>
+<td>فصل متطلب الممول عن الخدمة</td>
+<td>البنك/الممول</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>استخدام الجدول: في اجتماع المراجعة الأسبوعي يمر المنسق على المعاملات المفتوحة ويربط كل توقف برقم مشكلة وخطته — لا يُدار التوقف «بالذاكرة».</p>
+</blockquote>
+<h2>5. اختبار إتقان الخدمة (10 أسئلة)</h2>
+<blockquote>
+<p>6 أسئلة معرفة + 4 قرارات. معيار النجاح: <strong>8/10 (80%)</strong>.</p>
+</blockquote>
+<p><strong>الأسئلة المعرفية:</strong></p>
+<ol>
+<li>ما التعريف الرسمي لرخصة الترميم كما في صفحة بلدي، وما العبارة التي تحدد حدها الأقصى؟</li>
+<li>اذكر المتطلبات الرسمية الثلاثة للخدمة، ووضّح التناقض الموثق حول «القرار المساحي».</li>
+<li>ما الفرق الجوهري بين مسارَي «ترميم إنشائي» و«ترميم سطحي» داخل النظام (من يعالج الطلب، من يدخل بيانات الترميم، وأين تُحسب الرسوم)؟</li>
+<li>متى تقوم الرخصة على «رخصة بناء» ومتى يظهر «القرار المساحي» بديلاً؟ وما الخطوة الرسمية التي تذكرهما معاً؟</li>
+<li>ما الحالة الخاصة الموثقة لترميم محل تجاري مستأجر؟ وما المستندات التي يحسن تأمينها عملياً؟</li>
+<li>ماذا ينص SMS الإصدار الرسمي عن زيارة الموقع؟ وما الالتزامات الميدانية التي تترتب على المقاول/المالك؟</li>
+</ol>
+<p><strong>أسئلة القرار:</strong></p>
+<ol start="7">
+<li>عميل يطلب «ترميم صيانة» يشمل فتح نافذة جديدة في جدار حامل. ما قرارك ومسارك خطوة بخطوة؟</li>
+<li>وردكم مبنى متقادم بشقوق منتظمة في أعمدة وهبوط ملحوظ في أحد الأركان، والمالك يريد «ترميماً شاملاً سريعاً». ما أول ثلاث تحركات؟</li>
+<li>بدأ عميل ترميماً فعلياً دون رخصة ووصلته ورقة رقابية. ما التصرف الصحيح للمنسق؟</li>
+<li>في «ترميم سطحي» اختار العميل «جزء من المبنى» وأدخل مساحة 400 م² بينما المعاينة تقول 220 م². ماذا تفعل قبل الإرسال ولماذا؟</li>
+</ol>
+<hr />
+<h3>مفتاح الإجابات</h3>
+<table>
+<thead>
+<tr>
+<th>السؤال</th>
+<th>الإجابة النموذجية</th>
+<th>الوسم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>«عملية استعادة البناء إلى حالته الجيدة السابقة من خلال الإصلاح الفني لمعالجة عيب أو أكثر بهدف استدامته، <strong>دون إضافة مكون جديد أو تغيير في عناصر المبنى الإنشائية</strong>» — هذه العبارة هي الخط الفاصل مع 10484</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>وجود رخصة بناء · التعاقد مع مكتب هندسي · سداد الرسوم؛ التناقض: شريط المتطلبات يذكر «رخصة بناء» بينما خطوة التقديم الرسمية وسؤال شائع يذكران «رخصة البناء أو القرار المساحي» — يتحقق عملياً من واجهة النظام</td>
+<td>✅⚠️</td>
+</tr>
+<tr>
+<td>3</td>
+<td>الإنشائي: المالك يختار المكتب الهندسي المصمم (إلزامي) الذي يكمل البيانات ويعد المخططات، والطلب يُرسل للمكتب؛ السطحي: المالك يدخل «بيانات الترميم» (أغراض/نطاق/مساحة/وصف/إجراءات) ويختار مقاولاً اختيارياً وتُحسب الرسوم بحاسبة داخل الطلب، والطلب يُرسل لموظفي البلدية؛ وتفويض المكتب في السطحي اختياري ويلغي مرحلتين</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4</td>
+<td>المرجع الافتراضي رخصة البناء القائمة (شريط المتطلبات)؛ خطوة 4 الرسمية تقبل «رخصة البناء أو القرار المساحي المراد استخراج رخصة ترميم له»؛ والواقع العملي يتحقق عند التقديم</td>
+<td>✅⚠️</td>
+</tr>
+<tr>
+<td>5</td>
+<td>نعم يلزم تصريح، ويُقدَّم بموجب رخصة البناء للمستأجر منه ✅؛ عملياً: عقد إيجار + إذن مالك كتابي + تحديد نطاق الأعمال المسموح</td>
+<td>✅📚</td>
+</tr>
+<tr>
+<td>6</td>
+<td>«سوف يتم زيارة الموقع خلال 72 ساعة» (نص SMS الرسمي) ✅؛ المطلوب: تهيئة الموقع، جاهزية الرخصة وبياناتها، الالتزام بالتعهدات (أنقاض ✅)، عدم بدء أعمال خارج النطاق</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>7</td>
+<td>فتح نافذة في جدار حامل = تغيير عنصر إنشائي → <strong>ليست ترميماً</strong> ✅: أوقف طلب الترميم، ووجّه لخدمة 10484 (تعديل مكونات) بمخططات مكتب وتقييم تحمل؛ ثم يُقدَّم الترميم لما تبقى من نطاقه الصحيح</td>
+<td>قرار</td>
+</tr>
+<tr>
+<td>8</td>
+<td>(1) إيقاف أي التزام تنفيذي فوراً؛ (2) تقرير سلامة المبنى (13) كأولوية 📚؛ (3) حسب التقرير: إما ترميم إنشائي كلي بمخططات معتمدة، أو توجيه لرخصة الهدم (10473) — ولا يُقبل «ترميم سريع» بلا تقييم</td>
+<td>قرار</td>
+</tr>
+<tr>
+<td>9</td>
+<td>توثيق الحالة (صور/سجل) بلا تمييل، ثم تسوية عبر بلدي (رخصة للنطاق المتبقي/تصحيح وضع عند الحاجة) والتعامل مع المخالفة وفق لائحة الجزاءات ✅ — ولا صياغة مضللة لأثر رجعي؛ التصعيد للإدارة القانونية للمكتب عند ورقة رسمية</td>
+<td>قرار</td>
+</tr>
+<tr>
+<td>10</td>
+<td>يُوقف الإرسال: المساحة تدخل في حساب الرسوم والمسؤولية؛ يُعاد القياس الموثق (ليزر 📚) ويُصحح الحقل قبل «احسب» ثم «إرسال الطلب» — والفجوة الجوهرية توثق بمذكرة معاينة</td>
+<td>قرار</td>
+</tr>
+</tbody>
+</table>
+<h3>معيار التصحيح والنجاح</h3>
+<ul>
+<li>كل سؤال معرفة (1–6): درجتان — الأجزاء الفرعية تُحتسب جزئياً (تعريف ناقص = درجة واحدة).</li>
+<li>كل سؤال قرار (7–10): درجتان — الدرجة كاملة فقط عند تحديد «الخدمة/المسار الصحيح + السبب المرتبط بالتعريف الرسمي ✅».</li>
+<li>النجاح: ≥ 8 من 10. من دون 8: يعيد مراجعة <code>README</code> §1.10–1.11 + شجرة القرار §2 ثم يعيد الاختبار بعد 48 ساعة 📚.</li>
+<li>الاستخدام: اختبار توظيف منسقي الرخص الإنشائية + تدريب المكاتب الهندسية على بوابة بلدي.</li>
+</ul>
+<h3>5.5 أسئلة بديلة (بنك إضافي للتمديد أو الجولات التدريبية)</h3>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>السؤال</th>
+<th>خلاصة الإجابة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>معرفة</td>
+<td>ما تاريخ إصدار الخدمة وقنواتها الرسمية؟</td>
+<td>إصدار 2022-11-17 ✅؛ إلكتروني فقط (لوحة التحكم + تطبيق الجوال) ✅</td>
+</tr>
+<tr>
+<td>معرفة</td>
+<td>ما الفرق بين «كامل المبنى» و«جزء من المبنى» في إدخال المساحة؟</td>
+<td>الكامل: تُسترجع المساحة تلقائياً دون تعديل؛ الجزء: إدخال يدوي ✅</td>
+</tr>
+<tr>
+<td>معرفة</td>
+<td>من تُرسل إليه طلبات الترميم السطحي بعد الإرسال؟</td>
+<td>موظفي البلدية ✅ (بخلاف الإنشائي: المكتب الهندسي)</td>
+</tr>
+<tr>
+<td>قرار</td>
+<td>مبنى تجاري واجهته متداعية فقط بلا أي عيوب إنشائية — ما نوع الطلب؟</td>
+<td>ترميم سطحي (واجهات) — يقاس بلا ملاحظات إن كانت صياغة الأعمال نقية من «الإنشاء» 📚</td>
+</tr>
+<tr>
+<td>قرار</td>
+<td>هل يجوز دمج أعمال الترميم والتنفيذ قبل صدور الرخصة؟</td>
+<td>لا — تنفيذ بلا رخصة مخالفة ✅؛ يُتفق على الجداول فقط وتُنفذ بعد الإصدار وزيارة الـ72 ساعة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. فجوات تحتاج تسجيلاً في Knowledge-Gaps (مختصرات)</h2>
+<ol>
+<li>اشتراطات النطاقات التراثية لكل بلدية/هيئة (⚠️ — لا نص موحد).</li>
+<li>قيم قائمتي «أغراض الترميم» و«نطاق الترميم» الرسمية داخل الواجهة (تتحقق عند التنفيذ ✅⚠️).</li>
+<li>بنية رسوم الترميم الرسمية (من حاسبة الرسوم وقت التنفيذ فقط ⚠️).</li>
+<li>تفاصيل المراجعة الداخلية للبلدية ومهلة الاستجابة العملية للطلبات (⚠️📚).</li>
+</ol>
+<h2>7. المصادر</h2>
+<ul>
+<li>صفحة الخدمة 10481 + أسئلتها الشائعة — https://balady.gov.sa/ar/services/إصدار-رخصة-ترميم-بناء — تحقق 2026-11-10 ✅</li>
+<li>دليل المستخدم الرسمي (PDF) — تحقق 2026-11-10 ✅</li>
+<li>إجابة رسمية من صفحة خدمة 10484 بشأن المباني بلا رخصة — تحقق 2026-11-10 ✅</li>
+<li>لائحة الغرامات والجزاءات البلدية + لائحة تصنيف مخالفات كود البناء (روابط رسمية) — تحقق 2026-11-10 ✅</li>
+<li>خريطة علاقات الخدمات (س4، س7): ../../00-STRATEGY/Services-Relations-Map.md — 2026-11-10 ✅</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

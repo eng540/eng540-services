@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخدمة 11 — الخوارزمية التنفيذية: 25 خطوة كاملة — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/11-Building-Status-Correction/README.html">تصحيح وضع مبنى</a> <span class="crumb-sep">‹</span> <span>الخدمة 11 — الخوارزمية التنفيذية: 25 خطوة كاملة</span></nav>
+    <article class="doc"><h1>الخدمة 11 — الخوارزمية التنفيذية: 25 خطوة كاملة</h1>
+<blockquote>
+<p>إصدار 1.0 · 2026-11-10 · القالب لكل خطوة: الغرض · المنفذ · الأدوات · المخرج · القرارات · المخاطر. الخطوة غير المنطبقة تُشرح أسبابها، لا تُحذف.</p>
+</blockquote>
+<h2>المرحلة 1 — الاستقبال والتشخيص (خطوات 1–5)</h2>
+<h3>الخطوة 1 — استقبال العميل وتحديد الهدف الحقيقي</h3>
+<ul>
+<li><strong>الغرض:</strong> تمييز «معالجة مخالفة» عن أهداف مقنعة (بناء جديد، بيع، إشغال).</li>
+<li><strong>المنفذ:</strong> منسق العلاقات (نموذج استقبال <code>../../07-TEMPLATES/01-Client-Intake-Form.md</code>).</li>
+<li><strong>الأدوات:</strong> نموذج الاستقبال · سؤال «ما الذي حدث بالضبط؟».</li>
+<li><strong>المخرج:</strong> هدف موثق + إسناد.</li>
+<li><strong>القرارات:</strong> هل الملف أهلي؟ (لا → إحالة: بناء جديد/نزاع قانوني).</li>
+<li><strong>المخاطر:</strong> قبول ملف نزاع دون إسناد قانوني.</li>
+</ul>
+<h3>الخطوة 2 — حصر الأوراق (إشعار، صك، رخصة، هوية/توكيل)</h3>
+<ul>
+<li><strong>الغرض:</strong> أساس الوثائق قبل أي رأي فني.</li>
+<li><strong>المنفذ:</strong> منسق + عميل.</li>
+<li><strong>الأدوات:</strong> checklist <code>02-Requirements-Documents.md</code>.</li>
+<li><strong>المخرج:</strong> حقيبة وثائق مسماة برقم ملف.</li>
+<li><strong>القرارات:</strong> تباين أسماء؟ (→ تصحيح قبل المتابعة).</li>
+<li><strong>المخاطر:</strong> التقدم بملف ناقص.</li>
+</ul>
+<h3>الخطوة 3 — مطابقة نص المخالفة بلائحة التصنيف</h3>
+<ul>
+<li><strong>الغرض:</strong> تحديد البند والفئة رسمياً.</li>
+<li><strong>المنفذ:</strong> قائد المشروع الفني.</li>
+<li><strong>الأدوات:</strong> لائحة التصنيف PDF ✅.</li>
+<li><strong>المخرج:</strong> بطاقة تصنيف (بند/فئة/أثر متوقع).</li>
+<li><strong>القرارات:</strong> هل الفئة قابلة للمعالجة إطلاقاً؟ (لا → مسار هدم/استئناف).</li>
+<li><strong>المخاطر:</strong> تشخيص ملفق يربك العميل لاحقاً.</li>
+</ul>
+<h3>الخطوة 4 — فحص الرخصة الأصلية ومقارنتها بالواقع</h3>
+<ul>
+<li><strong>الغرض:</strong> تمييز «عكس رخصة» (يُعالج بـ10484) عن «بلا رخصة».</li>
+<li><strong>المنفذ:</strong> مهندس التصاميم.</li>
+<li><strong>الأدوات:</strong> الرخصة + مخططاتها المعتمدة.</li>
+<li><strong>المخرج:</strong> جدول انحراف (مكون أضافي/منقول/ارتفاع…).</li>
+<li><strong>القرارات:</strong> هل الانحراف داخل التسامح الاشتراطي؟ ⚠️.</li>
+<li><strong>المخاطر:</strong> اعتبار كل شيء «قابلاً للاعتماد».</li>
+</ul>
+<h3>الخطوة 5 — زيارة ميدانية أولى وتوثيق شامل</h3>
+<ul>
+<li><strong>الغرض:</strong> صور قبل + قياسات أولية + مؤشرات خطر.</li>
+<li><strong>المنفذ:</strong> مساح/مهندس موقع 💼.</li>
+<li><strong>الأدوات:</strong> كاميرا مؤرخة · مقياس ليزر · جدول توثيق.</li>
+<li><strong>المخرج:</strong> أرشيف صور + ملاحظات ميدانية.</li>
+<li><strong>القرارات:</strong> مؤشرات خطر إنشائي؟ (→ خدمة 13 فوراً).</li>
+<li><strong>المخاطر:</strong> عمل على بناء خطر دون إبلاغ.</li>
+</ul>
+<h2>المرحلة 2 — البناء الفني للملف (خطوات 6–10)</h2>
+<h3>الخطوة 6 — الرفع المساحي الواقعي</h3>
+<ul>
+<li><strong>الغرض:</strong> أرقام رسمية تُبنى عليها التصاميم.</li>
+<li><strong>المنفذ:</strong> مساح مرخص 💼 (أدوات GNSS/Total Station — ليس دور المنسق).</li>
+<li><strong>المخرج:</strong> تقرير رفع + حدود.</li>
+<li><strong>القرارات:</strong> تباين حدود؟ (→ فرع خدمة 4).</li>
+<li><strong>المخاطر:</strong> رفع مختصر يُرفض فاحصاً.</li>
+</ul>
+<h3>الخطوة 7 — مخططات «كما هو»</h3>
+<ul>
+<li><strong>الغرض:</strong> توثيق الواقع الحالي بدقة.</li>
+<li><strong>المنفذ:</strong> مكتب التصاميم.</li>
+<li><strong>المخرج:</strong> مخطط موقع/أدوار كما هو.</li>
+<li><strong>القرارات:</strong> تطابق الرفع؟.</li>
+<li><strong>المخاطر:</strong> تلميع الواقع (مخالفة مهنية).</li>
+</ul>
+<h3>الخطوة 8 — تصميم مخطط المعالجة (اعتماد/إزالة)</h3>
+<ul>
+<li><strong>الغرض:</strong> تقسيم القرار: ما يعتمد، ما يُزال، وما يُهدم كلياً.</li>
+<li><strong>المنفذ:</strong> مكتب التصاميم مع قائد المشروع.</li>
+<li><strong>المخرج:</strong> مخطط معالجة + مصفوفة مكونات.</li>
+<li><strong>القرارات:</strong> جزء يُزال؟ → خطوة 17 (10473).</li>
+<li><strong>المخاطر:</strong> تصميم يفترض سماحية غير موجودة ⚠️.</li>
+</ul>
+<h3>الخطوة 9 — الإقرارات والوثائق القانونية</h3>
+<ul>
+<li><strong>الغرض:</strong> إخلاء/ملكية/توكيلات جاهزة قبل الطلب.</li>
+<li><strong>المنفذ:</strong> منسق + عميل (+ محامٍ عند الحاجة ⚠️).</li>
+<li><strong>المخرج:</strong> حزمة إقرارات موقعة.</li>
+<li><strong>المخاطر:</strong> توقيع ناقص يعلق الملف أسابيع.</li>
+</ul>
+<h3>الخطوة 10 — صياغة رد فني معياري</h3>
+<ul>
+<li><strong>الغرض:</strong> جواب واحد محكم يقدّم للبلدية (لا مفاوضات صوتية).</li>
+<li><strong>المنفذ:</strong> قائد المشروع.</li>
+<li><strong>الأدوات:</strong> قالب الرد الداخلي.</li>
+<li><strong>المخرج:</strong> نص الرد + مرفقاته.</li>
+<li><strong>المخاطر:</strong> أسلوب دفاعي يفتح نزاعاً.</li>
+</ul>
+<h2>المرحلة 3 — التقديم عبر بلدي (خطوات 11–15)</h2>
+<h3>الخطوة 11 — تقديم المعالجة عبر القناة الرسمية</h3>
+<ul>
+<li><strong>الغرض:</strong> دخول رسمي موثق.</li>
+<li><strong>المنفذ:</strong> منسق متابعة (حساب العميل أو التفويض ⚠️).</li>
+<li><strong>الأدوات:</strong> بلدي (بلاغ/طلب — واجهة البلدية).</li>
+<li><strong>المخرج:</strong> رقم مرجعي.</li>
+<li><strong>المخاطر:</strong> وصف السبب بصيغة ملتهبة.</li>
+</ul>
+<h3>الخطوة 12 — متابعة دورية موثقة</h3>
+<ul>
+<li><strong>الغرض:</strong> التقط أي طلب استيضاح فور صدوره.</li>
+<li><strong>المنفذ:</strong> منسق (كل 3-5 أيام عمل 💼).</li>
+<li><strong>الأدوات:</strong> سجل متابعة بلون.</li>
+<li><strong>المخرج:</strong> تواريخ وردود مؤرخة.</li>
+</ul>
+<h3>الخطوة 13 — معالجة الاستيضاح/الملاحظات</h3>
+<ul>
+<li><strong>الغرض:</strong> إغلاق الجولة الأولى.</li>
+<li><strong>المنفذ:</strong> المكتب الفني.</li>
+<li><strong>القرارات:</strong> ملاحظة تعارض مع اللائحة؟ (→ اعتراض موثق).</li>
+<li><strong>المخاطر:</strong> جولات بلا نهاية → قاعدة الجولات الثلاث ثم جلسة مطابقة.</li>
+</ul>
+<h3>الخطوة 14 — قرار المراجعة: قبول/رفض/اعتراض</h3>
+<ul>
+<li><strong>الغرض:</strong> تحديد الطريق النهائي.</li>
+<li><strong>المنفذ:</strong> قائد المشروع + العميل.</li>
+<li><strong>المخرج:</strong> محضر قرار داخلي.</li>
+<li><strong>القرارات:</strong> رفض → منصة الاعتراضات الموحدة ✅/⚠️ أو تصحيح.</li>
+</ul>
+<h3>الخطوة 15 — إشعار العميل بالمصاريف المترتبة</h3>
+<ul>
+<li><strong>الغرض:</strong> الغرامة + تنفيذ + رسوم رسمية قبل أي التزام.</li>
+<li><strong>المنفذ:</strong> الإدارة المالية.</li>
+<li><strong>المخرج:</strong> ملخص مالي موثق (الغرامة تُسدد للجهة مباشرة ✅).</li>
+</ul>
+<h2>المرحلة 4 — التنفيذ (خطوات 16–22)</h2>
+<h3>الخطوة 16 — سداد الغرامة الرسمية</h3>
+<ul>
+<li><strong>الغرض:</strong> شرط استمرار المعالجة.</li>
+<li><strong>المنفذ:</strong> العميل ✅.</li>
+<li><strong>المخرج:</strong> إيصال برقم مرجعي.</li>
+<li><strong>المخاطر:</strong> أي تمرير مالي عبر المكتب (ممنوع 💼).</li>
+</ul>
+<h3>الخطوة 17 — رخصة الهدم الجزئي (إن حُددت إزالة)</h3>
+<ul>
+<li><strong>الغرض:</strong> شرعنة الإزالة.</li>
+<li><strong>المنفذ:</strong> منسق بلدي — خدمة 10473 ✅ (+ قرار مساحي لغرض الهدم ✅).</li>
+<li><strong>المخرج:</strong> رخصة هدم.</li>
+</ul>
+<h3>الخطوة 18 — قطع المرافق قبل أي هدم</h3>
+<ul>
+<li><strong>الغرض:</strong> الأمان الحرج 🔴.</li>
+<li><strong>المنفذ:</strong> مقاول معتمد + شركات الخدمات 📚.</li>
+<li><strong>المخرج:</strong> تأكيدات قطع مكتوبة.</li>
+</ul>
+<h3>الخطوة 19 — تنفيذ الإزالة/التعديل بأمان</h3>
+<ul>
+<li><strong>الغرض:</strong> إنجاز ما قررته البلدية حرفياً.</li>
+<li><strong>المنفذ:</strong> مقاول مصنف 💼.</li>
+<li><strong>المخرج:</strong> إنجاز موثق بصور.</li>
+<li><strong>المخاطر:</strong> تجاوز نطاق الإزالة → مخالفة جديدة.</li>
+</ul>
+<h3>الخطوة 20 — شرعنة المكونات المعتمدة (10484)</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل «الواقع» إلى رخصة مطابقة.</li>
+<li><strong>المنفذ:</strong> المكتب المصمم + منسق بلدي ✅.</li>
+<li><strong>المخرج:</strong> رخصة إضافة وتعديل.</li>
+</ul>
+<h3>الخطوة 21 — التوثيق البعدي</h3>
+<ul>
+<li><strong>الغرض:</strong> صور بعد + محضر تنفيذ داخلي.</li>
+<li><strong>المنفذ:</strong> مساح/مهندس موقع.</li>
+<li><strong>المخرج:</strong> ملف توثيق مطابق للصور «قبل».</li>
+</ul>
+<h3>الخطوة 22 — طلب الإغلاق الإجرائي</h3>
+<ul>
+<li><strong>الغرض:</strong> إقفال المخالفة في النظام البلدي ⚠️.</li>
+<li><strong>المنفذ:</strong> منسق متابعة.</li>
+<li><strong>المخرج:</strong> وثيقة/رقم إغلاق.</li>
+<li><strong>المخاطر:</strong> افتراض الإغلاق دون إثبات.</li>
+</ul>
+<h2>المرحلة 5 — الإغلاق والحوكمة (خطوات 23–25)</h2>
+<h3>الخطوة 23 — تسليم العميل (نموذج تسليم)</h3>
+<ul>
+<li><strong>الغرض:</strong> ما استُلم، ما تبقى، توصيات البقاء.</li>
+<li><strong>المنفذ:</strong> منسق العلاقات.</li>
+<li><strong>المخرج:</strong> إيصال تسليم موقع.</li>
+</ul>
+<h3>الخطوة 24 — الأرشفة الكاملة</h3>
+<ul>
+<li><strong>الغرض:</strong> ملف رقمي دائم برقم الملف (لكل خدمة قاعدة).</li>
+<li><strong>المنفذ:</strong> إدارة المكتب.</li>
+<li><strong>المخرج:</strong> مجلد مؤرشف + فهرس.</li>
+</ul>
+<h3>الخطوة 25 — مراجعة الجودة والتحسين</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل دروس الملف لقواعد المكتب.</li>
+<li><strong>المنفذ:</strong> مدير الجودة.</li>
+<li><strong>المخرج:</strong> تحديث قائمة الأخطاء <code>../../07-TEMPLATES/10-Common-Errors-List.md</code>.</li>
+</ul>
+<h2>مخطط التدفق النصي</h2>
+<pre><code class="language-text">عميل → أوراق → تصنيف اللائحة → فحص رخصة → زيارة توثيق
+→ رفع → كما هو → معالجة → إقرارات → رد فني
+→ تقديم بلدي → متابعة → استيضاحات → قرار
+→ [سداد غرامة] → [هدم جزئي 10473؟] → [شرعنة 10484؟]
+→ توثيق بعدي → إغلاق → تسليم → أرشفة → تحسين
+</code></pre>
+<h2>RACI مختصر</h2>
+<table>
+<thead>
+<tr>
+<th>النشاط</th>
+<th>مسؤول</th>
+<th>محاسَب</th>
+<th>مستشار</th>
+<th>مُطلَع</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>التشخيص والتصنيف</td>
+<td>قائد المشروع</td>
+<td>مدير فني</td>
+<td>—</td>
+<td>عميل</td>
+</tr>
+<tr>
+<td>التصاميم والرفع</td>
+<td>مهندس تصاميم/مساح</td>
+<td>مدير فني</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>التقديم والمتابعة</td>
+<td>منسق متابعة</td>
+<td>مدير مكتب</td>
+<td>—</td>
+<td>عميل</td>
+</tr>
+<tr>
+<td>التنفيذ</td>
+<td>مقاول</td>
+<td>مدير مشروع</td>
+<td>بلدية/دفاع مدني</td>
+<td>—</td>
+</tr>
+<tr>
+<td>الإغلاق</td>
+<td>منسق متابعة</td>
+<td>مدير مكتب</td>
+<td>محامٍ (نزاع)</td>
+<td>عميل</td>
+</tr>
+</tbody>
+</table></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

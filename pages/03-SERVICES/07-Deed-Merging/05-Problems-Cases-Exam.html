@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المشكلات والحالات واختبار الإتقان — دمج الصكوك (خدمة 7) — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/07-Deed-Merging/README.html">دمج الصكوك</a> <span class="crumb-sep">‹</span> <span>المشكلات والحالات واختبار الإتقان — دمج الصكوك (خدمة 7)</span></nav>
+    <article class="doc"><h1>المشكلات والحالات واختبار الإتقان — دمج الصكوك (خدمة 7)</h1>
+<blockquote>
+<p>إصدار 0.1 · تاريخ التحقق: 2026-11-10
+القاعدة الحاكمة لكل شجرة قرار أدناه: <strong>أحدث الصكوك أولاً (خدمة 2)، ثم حدد طبقة المشكلة (ملكية/مساحية/سجلية/إدارية)، ثم اختر المسار — لا حل موحّد.</strong></p>
+</blockquote>
+<hr />
+<h2>1. جدول المشكلات (14 مشكلة × الأعمدة الإلزامية التسعة)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>وصف المشكلة</th>
+<th>السبب الجذري</th>
+<th>كيف تُكشف</th>
+<th>الأثر</th>
+<th>المسؤول عن المعالجة</th>
+<th>الإجراء (الحل)</th>
+<th>المستندات المطلوبة</th>
+<th>متى التصعيد</th>
+<th>متى الإيقاف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>تفاوت مساحة الحدود المشتركة</strong>: طول حد التماس مختلف في الصكين</td>
+<td>دقة قديمة أو قياسات ميدانية متباعدة وقت الإصدار</td>
+<td>كشف المطابقة المكتبي (<a href="03-SERVICES/07-Deed-Merging/04-Technical-Field-Costs.html">04 §6.2</a>) ثم رفع مساحي</td>
+<td>توقف الدمج أو دمج بمساحة خاطئة</td>
+<td>مساح مرخص (قياس) + منسق (تعقيب)</td>
+<td>رفع توثيقي للحد المشترك → معالجة عبر تحديث الصك (خدمة 2) أو ضبط ضمن مسار الدمج حسب الأمانة ⚠️</td>
+<td>تقرير المساح، الصكوك، قرار الدمج</td>
+<td>حين يرفض مسار التحديث/الدمج البيانات</td>
+<td>إذا ظهر نزاع جار على الحد → إيقاف + إحالة قانونية</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>الصكوك لورثة/أطراف مختلفين</strong> وليس لمالك واحد</td>
+<td>تركة لم تُقسم أو شراءات متفرقة لم توحد ملكيتها</td>
+<td>عمود «المالك» في جدول مطابقة الصكوك</td>
+<td>رفض الدمج إلى صك واحد</td>
+<td>الورثة/الأطراف (تسوية) + محامٍ عند الحاجة</td>
+<td>مسار تسوية أولاً (حصر إرث/إقرار ورثة/قسمة أو بيع الموحّد للطرف الآخر) ثم الدمج</td>
+<td>حصر إرث، إقرار ورثة، وثائق قسمة/بيع</td>
+<td>عند تعذر اتفاق الورثة → محامٍ مرخص</td>
+<td>نزاع قضائي قائم → إيقاف حتى حكم</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>صك قديم غير محدث</strong> قبل القيد الحالي</td>
+<td>صك ورقي أو بيانات متغيرة</td>
+<td>فحص «خدمات التحقق»/مقارنة القيد</td>
+<td>رفض مباشر — متطلب رسمي: صك «محدث من وزارة العدل» ✅</td>
+<td>مالك + منسق (خدمة 2)</td>
+<td>تحديث الصك أولاً ثم إعادة فحص الدمج</td>
+<td>الصك القديم + رفع مساحي عند طلب العدل ⚠️</td>
+<td>تعثر التحديث في العدل → قنوات 1950</td>
+<td>— (مسار معالج دائماً)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>ملكية مشتركة داخل الصكين</strong> (حصص متعددة)</td>
+<td>ميراث أو شراكة قائمة</td>
+<td>عمود المالك والحصص</td>
+<td>تعقيد التقديم (وكيل عن الملاك) ونتيجة دمج بصك متعدد الملاك</td>
+<td>الوكيل عن الملاك + منسق</td>
+<td>التقديم بصفة وكيل عن الملاك — النظام يسترجع الوكالات من العدل ✅؛ وتحديد شكل الصك الناتج قبل الطلب ⚠️</td>
+<td>وكالات شرعية موثقة لكل الملاك</td>
+<td>اختلاف آراء الملاك → إجماع أو تسوية</td>
+<td>أحد الملاك يرفض → لا دمج (إيقاف)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>استخدام مختلف</strong> (قطعة سكنية وأخرى تجارية مثلاً)</td>
+<td>تغير تمييز بين القطعتين</td>
+<td>المخطط المعتمد/الخرائط الحضرية ✅</td>
+<td>خروج عن نطاق الخدمة «الأراضي السكنية داخل مخطط معتمد» ✅</td>
+<td>مالك + بلدية/أمانة</td>
+<td>التحقق من التمييزين ومعالجة الاستخدام أولاً (اشتراطات بلدية/تعديل) 📚 ⚠️</td>
+<td>المخطط، اشتراطات التمييز</td>
+<td>طلب الأمانة تحديث استخدام → مسارها الخاص</td>
+<td>استخدام غير نظامي قائم → إيقاف حتى تصحيحه</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>قرار مساحي بغرض خاطئ</strong> (تجزئة بدل دمج)</td>
+<td>التباس منتج «الدمج والتجزئة» الواحد</td>
+<td>قراءة غرض القرار</td>
+<td>رفض ربط الطلب</td>
+<td>مالك/مكتب مفوض</td>
+<td>خدمة «تعديل قرار مساحي» قبل رخصة ✅ أو إصدار قرار جديد بغرض الدمج</td>
+<td>القرار القائم، بيانات القطع</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>قرار مساحي منتهٍ</strong> (&gt; 3 سنوات)</td>
+<td>مرور الصلاحية الرسمية ✅</td>
+<td>تاريخ الإصدار</td>
+<td>رفض الطلب</td>
+<td>مالك/مكتب</td>
+<td>إصدار قرار جديد «لنفس الغرض» ✅</td>
+<td>القرار المنتهي</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>قطعة وسيطة/شارع بين «المتجاورتين»</strong></td>
+<td>افتراض تجاور غير صحيح</td>
+<td>المخطط/الخرائط الحضرية ✅</td>
+<td>لا دمج بهذه الصيغة أصلاً</td>
+<td>منسق (تشخيص)</td>
+<td>إعادة تشخيص: قد يحتاج الأمر شراء القطعة الوسيطة أو مسار مخطط (خدمة 9)</td>
+<td>المخطط المعتمد</td>
+<td>—</td>
+<td>لا دمج → إعادة توجيه العميل</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>مالك موقوف في إحدى الأمانات</strong></td>
+<td>مخالفات/توقيفات بلدية</td>
+<td>فحص حالة المالك قبل الطلب</td>
+<td>«يتم منعه من استكمال تقديم الطلب» ✅</td>
+<td>المالك</td>
+<td>رفع سبب التوقيف لدى الأمانة ثم إعادة التقديم</td>
+<td>تفاصيل التوقيف، مستندات المعالجة</td>
+<td>رفض الأمانة الرفع → قنوات 199040</td>
+<td>توقيف غير قابل للمعالجة قصيرة المدى → إيقاف</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>حجز أو نزاع على أحد الصكوك</strong></td>
+<td>قضية/توقيف سجلي</td>
+<td>فحص ناجز ⚠️ + استبيان العميل</td>
+<td>إيقاف شامل</td>
+<td>محامٍ مرخص</td>
+<td>معالجة قضائية أولًا؛ لا يُرفع أي طلب</td>
+<td>المستندات القضائية ⚠️</td>
+<td>فوراً عند الكشف</td>
+<td>طوال عمر الحجز/النزاع</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>رفض أو ملاحظة بلدية على الطلب</strong></td>
+<td>مرفق ناقص/بيانات متعارضة/اشتراط أمانة</td>
+<td>حالة الطلب في «طلباتي» ✅</td>
+<td>تعليق الطلب</td>
+<td>منسق + مكتب مفوض</td>
+<td>قراءة سبب الملاحظة → ردّها بمستند صحيح (خطوة 18 من <a href="03-SERVICES/07-Deed-Merging/03-Executive-Workflow.html">03</a>)</td>
+<td>الملاحظة + المستند المجيب</td>
+<td>ملاحظة متكررة غير محسومة → شكوى 199040 (استجابة 24 ساعة ✅)</td>
+<td>رفض قطعي مسبب → دراسة مسار بديل</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>جوال غير مرتبط بأبشر / بيانات دخول غير صحيحة</strong></td>
+<td>جوال قديم أو غير مسجل</td>
+<td>محاولة B1 ✅</td>
+<td>توقف عند أول خطوة</td>
+<td>العميل</td>
+<td>تحديث الجوال في أبشر ثم إعادة الدخول</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>وكالة لا تغطي التصرف المطلوب</strong></td>
+<td>وكالة ضيقة (بيع فقط مثلاً)</td>
+<td>تدقيق نص الوكالة</td>
+<td>رفض التمثيل أو اعتراض لاحق</td>
+<td>المالك (إصدار وكالة أدق)</td>
+<td>إصدار وكالة موثقة تشمل التقديم على الجهات/إتمام الدمج ⚠️</td>
+<td>الوكالة الجديدة</td>
+<td>—</td>
+<td>انتهاء وكالة منتصف المعاملة → توقف حتى تجديدها</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>عقار داخل نطاق السجل العقاري</strong></td>
+<td>توسع مرحلي للتسجيل العيني</td>
+<td>سؤال النطاق/الاستعلامات 📚 ⚠️</td>
+<td>مسار الصك التقليدي لا يكفي</td>
+<td>منسق + الهيئة العامة للعقار</td>
+<td>اعتماد مسار القيد السجلي: الدمج/التوحيد يتبع بيانات القيد 📚 ⚠️</td>
+<td>بيانات القيد</td>
+<td>تعارض القيد مع الصكوك → قنوات الهيئة</td>
+<td>خلاف قيدي قائم → إيقاف لحسمه</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. شجرة القرار النصية (تتفرع حسب السبب — لا حل موحد)</h2>
+<pre><code>ابدأ: طلب دمج صكوك
+│
+├─ هل الصكوك إلكترونية سارية محدثة من العدل؟
+│   ├─ لا ──→ [خدمة 2: تحديث الصكوك] ──→ عُد لبداية الشجرة
+│   └─ نعم ↓
+│
+├─ هل على أي صك حجز/نزاع/توقيف سجلي؟
+│   ├─ نعم ──→ إيقاف ──→ محامٍ مرخص ──→ عُد بعد الحسم
+│   └─ لا ↓
+│
+├─ هل المالك موقوف في إحدى الأمانات؟
+│   ├─ نعم ✅ ──→ معالجة التوقيف لدى الأمانة ──→ عُد
+│   └─ لا ↓
+│
+├─ من المالكون في الصكوك؟
+│   ├─ مالك واحد (أو نفس المالك في كل الصكوك) ──→ تابع ↓
+│   ├─ ورثة/أطراف مختلفون ──→ مسار التسوية (حصر إرث/قسمة/بيع موحّد)
+│   │        └─ عُد بعد اكتمال التسوية
+│   └─ ملكية مشتركة مقصودة ──→ وكيل عن الملاك (استرجاع من العدل ✅) ──→ تابع ↓
+│
+├─ هل القطع متجاورة فعلاً (لا شارع/قطعة وسيطة)؟
+│   ├─ لا ──→ لا دمج ──→ إعادة تشخيص (شراء الوسيطة؟ خدمة 9؟) 
+│   └─ نعم ↓
+│
+├─ هل القطع سكنية داخل مخطط معتمد بنفس التمييز؟
+│   ├─ لا/مختلف ──→ تحقق الاستخدام مع الأمانة 📚⚠️ ──→ عالج ثم تابع
+│   └─ نعم ↓
+│
+├─ هل حدود التماس متسقة بين الصكين؟
+│   ├─ شك/تفاوت ──→ رفع مساحي (مساح مرخص) ──→
+│   │        ├─ فرق طفيف مقبول ──→ تابع ↓
+│   │        └─ فرق جوهري ──→ خدمة 2 (تحديث) ──→ عُد
+│   └─ متسقة ──→ تابع ↓
+│
+├─ هل القرار المساحي بغرض «دمج الأراضي» وسارٍ (≤3 سنوات)؟
+│   ├─ بغرض آخر ──→ تعديل قرار ✅ أو قرار جديد
+│   ├─ منتهٍ ──→ قرار جديد بنفس الغرض ✅
+│   └─ نعم ↓
+│
+├─ الطلب في بلدي (LMS) — الملاحظات؟
+│   ├─ ملاحظة ──→ عالج بمستند الصحيح ──→ أعد الإرسال
+│   └─ اعتماد/مخرج بلدي ↓
+│
+├─ هل الغرض يتطلب صكاً موحداً؟
+│   ├─ نعم ──→ ناجز: دمج توثيقي ⚠️ ──→ صك موحد ──→ تحقق ✅
+│   │        └─ داخل نطاق السجل العقاري؟ ── نعم ──→ مسار قيدي 📚⚠️
+│   └─ لا (تنظيم مخطط فقط) ──→ أرشف المخرج البلدي
+│
+└─ خطوة تالية: قرار مساحي جديد على الوحدة الموحدة ✅ ──→ رخصة بناء (خدمة 1) أو غيرها
+</code></pre>
+<hr />
+<p><strong>قاعدة التصعيد العامة لكل المشكلات:</strong> مشكلة مستندية/إدارية → المنسق يملكها؛ مشكلة مساحية → المساح المرخص؛ مشكلة ملكية/قانونية → محامٍ مرخص؛ مشكلة اعتماد → الجهة الحكومية بقنواتها الرسمية (1950 للعدل، 199040 لبلدي ✅). المكتب لا يتصرف بصفة أي من هؤلاء.</p>
+<h2>3. أسئلة الاستقبال التشخيصية (تُطرح على كل عميل دمج قبل أي التزام)</h2>
+<blockquote>
+<p>عشرة أسئلة تفصل 80% من المشكلات قبل حدوثها 📚 — أجوبتها تملأ جدول المطابقة وتحدد فرع شجرة القرار مبكراً.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>السؤال</th>
+<th>ماذا يكشف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>كم صكاً لديك ولمن المسجَّل في كل واحد منها؟</td>
+<td>مشكلة 2 و4 (ورثة/مشتركون)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>هل الصكوك إلكترونية محدثة من العدل؟</td>
+<td>مشكلة 3 (تحديث أولاً)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>هل بين القطعتين شارع أو قطعة وسيطة؟</td>
+<td>مشكلة 8 (لا دمج)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ما تمييز كل قطعة في المخطط (سكني/غيره)؟</td>
+<td>مشكلة 5 (استخدام مختلف)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>هل لديك أي قضية أو حجز أو مخالفة أمانة قائمة باسمك؟</td>
+<td>مشكلة 9 و10 (توقيف/حجز)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>هل خُطت حدود القطعتين وتوجد سياج/أثر بناء على الفرق؟</td>
+<td>حاجة الرفع المساحي</td>
+</tr>
+<tr>
+<td>7</td>
+<td>هل لديك قرار مساحي حالي وبأي غرض؟</td>
+<td>مشكلة 6 و7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>من سيقدّم الطلب: أنت أم وكيل؟ (رقم الوكالة؟)</td>
+<td>صفة التقديم والتوكيلات</td>
+</tr>
+<tr>
+<td>9</td>
+<td>هل الموقع مسيج أو مشغول؟ (لتنسيق أي زيارة)</td>
+<td>بروتوكول الزيارة <a href="03-SERVICES/07-Deed-Merging/04-Technical-Field-Costs.html">04 §7</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>ما الهدف النهائي بعد الدمج: بناء/بيع/تمويل؟</td>
+<td>المسار اللاحق (رخصة/بيع/سجل) والفرص</td>
+</tr>
+</tbody>
+</table>
+<h2>4. بطاقات فحص سريع للمشكلات الأكثر تكراراً</h2>
+<p><strong>بطاقة «تفاوت الحدود المشتركة» (مشكلة 1):</strong></p>
+<pre><code>افحص: طول حد التماس في الصك (1) مقابل الصك (2)
+  ├─ متسق ──→ تابع الدمج بلا ميداني
+  ├─ فرق ≤ هامش مقبول للأمانة (يتحقق من الأمانة ⚠️) ──→ وثّق وتابع
+  └─ فرق جوهري ──→ رفع مساحي (مساح مرخص) ──→
+        ├─ بيانات واقع مطابقة للقيد ──→ حدّث الصك (خدمة 2) ثم ادمج
+        └─ تضارب يفتح خلاف جار ──→ إيقاف + محامٍ
+</code></pre>
+<p><strong>بطاقة «الصكوك لورثة مختلفين» (مشكلة 2):</strong></p>
+<pre><code>افحص: أسماء الملاك في كل صك
+  ├─ نفس المالك ──→ مسار قياسي
+  ├─ ورثة غير مسقين ──→ تسوية (حصر/قسمة/إقرار) ──→ صك محدث باسم موحّد ──→ دمج
+  └─ أطراف غير أقارب ──→ بيع موحّد موثق (ناجز) ──→ دمج
+قاعدة: لا دمج قبل «نفس المالك» — لا استثناءات إجرائية 📚
+</code></pre>
+<p><strong>بطاقة «الطلب معلق في بلدي» (مشكلة 11):</strong></p>
+<pre><code>افحص: حالة الطلب في «طلباتي» ✅
+  ├─ دفع معلق ──→ سداد فوري (قناة سداد ✅)
+  ├─ جاري العمل عليها (أكثر من 10 أيام ✅ المدة المعلنة) ──→ استعلام دعم 199040
+  └─ ملاحظة ظاهرة ──→ عالجها (بطاقة المطابقة أعلاه) ──→ أعد الإرسال
+</code></pre>
+<h2>5. الحالتان العمليتان 🧪</h2>
+<blockquote>
+<p>البيانات افتراضية بالكامل للتدريب (أسماء وأرقام ومساحات 🧪). كل خطوة إجرائية تعكس ما هو موثق ✅ أو موسوم ⚠️/📚.</p>
+</blockquote>
+<h3>الحالة الأولى (سلسة): صكّان متلاصقان لمالك واحد — بناء موحد</h3>
+<p><strong>البيانات:</strong> أبو عبدالله يملك قطعتين متجاورتين في مخطط سكني معتمد: قطعة (44) 625 م² وقطعة (45) 625 م²، صكّان إلكترونيان محدثان باسمه، لا نزاع، المالك غير موقوف، يريد بناء فيلا موحدة على 1250 م².</p>
+<ol>
+<li><strong>استقبال وتشخيص:</strong> الغرض «بناء موحّد» — دمج صحيح (توحيد وليس تجزئة). جُمعت الصكوك ونسخت إحداثياتهما؛ حد التماس (الشرقي/الغربي بين 44 و45) متطابق في الصكين (25 م في كليهما). [خطوات 1–5]</li>
+<li><strong>قرار ميداني:</strong> لا رفع مساحي — التلاصق مؤكد بالبيانات والمخطط والقرار المساحي صادر بغرض «دمج الأراضي» يشمل القطعتين (صادر قبل شهر — ساري ضمن 3 سنوات ✅). وُثق القرار في الملف. [خطوة 6 بلا انطباق للخطوة 7]</li>
+<li><strong>الصفة والتجهيز:</strong> تقديم المالك عن نفسه؛ جواله مرتبط بأبشر؛ تعهد الملكية جاهز؛ مرفقات الأمانة المسجلة في القرار مكتملة ✅؛ اختار مكتباً هندسياً مصنفاً وعرض بلدي بيانات تواصله ✅. [خطوات 11–15]</li>
+<li><strong>الرفع في بلدي:</strong> طريقة التقديم الرسمية B1→B5 ✅ — صدر <strong>رقم طلب يبدأ بـ LMS</strong> ✅. [خطوة 16]</li>
+<li><strong>المتابعة:</strong> بعد 4 أيام 🧪 حالة «طلب بانتظار إصدار الصك/الصكوك» (من حالات «طلباتي» الرسمية ✅)؛ ثم طلب سداد — سُدد عبر قناة سداد ✅. [خطوات 17–19]</li>
+<li><strong>النتيجة البلدية:</strong> الطلب «مكتمل-تم الحل» — استُخرج مخرج الدمج: القطعتان موحدة (1250 م² 🧪) في المخطط. [خطوة 20]</li>
+<li><strong>التوثيق:</strong> عبر ناجز استُكمل الدمج التوثيقي ⚠️ (المسار الحي) وصدر <strong>صك إلكتروني موحد</strong> لمساحة مجمعة باسمه؛ تحقق المنسق منه عبر «خدمات التحقق» ✅ (بنية) — المساحة والإحداثيات مطابقة للمخرج البلدي. [خطوات 21–23]</li>
+<li><strong>البوابة التالية:</strong> طلب قرار مساحي جديد بغرض البناء على الوحدة الموحدة ✅ (القاعدة الرسمية: دمج أولاً ثم قرار جديد)، ثم يفتح ملف رخصة بناء (خدمة 1) بارتفاع اشتراطات محسوبة مرة واحدة على 1250 م². [خطوة 24]</li>
+<li><strong>الإقفال:</strong> تسليم الحزمة (الصك الموحد، المخرج البلدي، إثبات السداد، رقم LMS) + أرشفة الصكين القديمين. [خطوة 25]</li>
+</ol>
+<p><strong>دروس الحالة:</strong> الدمج السلس = صكوك محدثة + قرار بغرض صحيح + تلاصق نظيف + متابعة «طلباتي» يومية.</p>
+<p><strong>خط زمني توضيحي للحالة الأولى 🧪 (للتدريب فقط — ليس مدداً رسمية):</strong></p>
+<table>
+<thead>
+<tr>
+<th>اليوم 🧪</th>
+<th>الحدث</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>استقبال + جمع الصكوك + فحص ناجز + جدول المطابقة</td>
+</tr>
+<tr>
+<td>3</td>
+<td>قرار «لا رفع مساحي» + تجهيز الصفة والمرفقات + اختيار المكتب</td>
+</tr>
+<tr>
+<td>4</td>
+<td>رفع الطلب — رقم LMS</td>
+</tr>
+<tr>
+<td>5–9</td>
+<td>متابعة؛ طلب سداد يوم 7 وسُدد</td>
+</tr>
+<tr>
+<td>10–12</td>
+<td>حالة «مكتمل-تم الحل» + مخرج بلدي</td>
+</tr>
+<tr>
+<td>13–18 🧪</td>
+<td>مسار ناجز للصك الموحد ⚠️ (مدة غير معلنة رسمياً)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>تحقق من الصك + تسليم + توصية قرار مساحي جديد</td>
+</tr>
+</tbody>
+</table>
+<h3>الحالة الثانية (استثنائية): صكوك متلاصقة لورثة مختلفين — التسوية قبل الدمج</h3>
+<p><strong>البيانات 🧪:</strong> تركة الأستاذ سالم: قطعة (70) صك باسمه (ورثه 3 أبناء) وقطعة (71) صك أصدر بعد وفاة باسم ابنه الأكبر مباشرة (وصلت تركة منفصلة). القطعتان متجاورتان 500 م² لكل منهما. يريد الورثة «وحدة واحدة ثم بيعها».</p>
+<ol>
+<li><strong>اكتشاف المشكلة مبكراً:</strong> في جدول المطابقة — المالك في صك (70) «وارثو سالم (3 أبناء)» وفي صك (71) «الابن الأكبر». <strong>ليست ملكية واحدة</strong> — مشكلة رقم 2 من الجدول. [خطوتا 2–4]</li>
+<li><strong>قرار التصنيف:</strong> لا يُرفع أي طلب دمج الآن. المخرج المطلوب «صك واحد» لا يتأتى إلا بتوحيد الملكية أولاً. [خطوة 4 — بوابة شجرة القرار]</li>
+<li><strong>مسار التسوية (إحالة قانونية):</strong> للورثة ثلاثة مسارات استشارية 📚: (أ) قسمة تركة القطعة 70 بين الورثة ثم شراء/تنازل لصالح تركيب ملكية واحدة؛ (ب) بيع ملكية الورثة في القطعتين لطرف واحد ثم دمجه؛ (ج) اتفاق على بيع العقارين موحدين عبر إجراءات التركة. المنسق يوثق الخيارات ويحيل إلى محامٍ/موثق لحسم الأنسب — <strong>لا يتولى بنفسه حسم التركات</strong> (حدود الأدوار).</li>
+<li><strong>ما يُنفذ بالتوازي دون التسوية:</strong> فحص صحة الصكين ⚠️، تأكيد التلاصق بالمخطط، التأكد من عدم وجود حجز على التركة، تحضير كل ما لا يعتمد على شكل الملكية النهائي. [خطوات 3، 5، 10]</li>
+<li><strong>بعد اكتمال التسوية 🧪 (فرضية):</strong> اختار الورثة المسار (أ): صدر لصك (70) تحديث بعد القسمة أصبح فيه الابن الأكبر مالكاً 100%، وباع الورثة الآخرون حصصهم موثقة في ناجز — الآن «نفس المالك» في الصكين. [خطوة 9 منطقها نفسه: توحيد قبل الدمج]</li>
+<li><strong>استئناف المسار القياسي:</strong> فحص الحدود المشتركة (وجد تفاوت 0.4 م 🧪 بين قيدين قديمين) → رفع مساحي توثيقي من مساح مرخص → فرق طفيف مقبول للمعالجة ضمن مسار الدمج حسب الأمانة ⚠️. [خطوات 5–9]</li>
+<li><strong>الدمج:</strong> قرار مساحي بغرض «دمج الأراضي» على القطعتين ✅ → طلب بلدي LMS ✅ → ملاحظة أمانة وحيدة طُلبت فيها صورة وثيقة القسمة (من مرفقات الأمانة المتغيرة ✅/⚠️) → رُفعت واعتُمد → مخرج بلدي → صك موحد في ناجز ⚠️ → تحقق ✅. [خطوات 15–23]</li>
+<li><strong>الإقفال:</strong> بيع الوحدة الموحدة أو البناء — يفتح الملف الخدمة التالية. [خطوات 24–25]</li>
+</ol>
+<p><strong>دروس الحالة:</strong> «دمج الصكوك» شرطه الملكية لا الجوار فقط؛ ورثة مختلفون = مشروع تسوية قبل أن يكون مشروع دمج؛ والمرفقات تتبع الأمانة المسجلة في القرار — جهّز وثائق التسوية مع الطلب ✅.</p>
+<p><strong>خط زمني توضيحي للحالة الثانية 🧪:</strong></p>
+<table>
+<thead>
+<tr>
+<th>اليوم 🧪</th>
+<th>الحدث</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>استقبال + جدول المطابقة يكشف اختلاف الملاك (ورثة)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>توقف مسار الدمج + عرض خيارات التسوية الثلاثة + إحالة قانونية</td>
+</tr>
+<tr>
+<td>4–25 🧪</td>
+<td>مسار التسوية (خارج سيطرة المكتب — مدد غير رسمية ⚠️)؛ بالتوازي: فحص التلاصق والتأكد من خلو التركة من حجز</td>
+</tr>
+<tr>
+<td>26</td>
+<td>اكتمال التسوية 🧪: صك (70) محدث باسم المالك الموحد</td>
+</tr>
+<tr>
+<td>27</td>
+<td>اكتشاف تفاوت 0.4 م 🧪 → رفع مساحي توثيقي</td>
+</tr>
+<tr>
+<td>28</td>
+<td>قرار مساحي بغرض «دمج الأراضي» ✅</td>
+</tr>
+<tr>
+<td>29</td>
+<td>رفع LMS ✅</td>
+</tr>
+<tr>
+<td>30</td>
+<td>ملاحظة أمانة (صورة وثيقة القسمة) → رُفعت</td>
+</tr>
+<tr>
+<td>31–35</td>
+<td>اعتماد + مخرج بلدي</td>
+</tr>
+<tr>
+<td>36–41 🧪</td>
+<td>ناجز: صك موحد ⚠️ + تحقق ✅</td>
+</tr>
+<tr>
+<td>42</td>
+<td>تسليم + فتح فرصة (بيع/بناء)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>مقارنة الحالتين (خلاصة تعليمية):</strong></p>
+<table>
+<thead>
+<tr>
+<th>المحور</th>
+<th>الحالة 1 (سلسة)</th>
+<th>الحالة 2 (استثنائية)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الملكية</td>
+<td>مالك واحد من البداية</td>
+<td>ورثة مختلفون → تسوية أولاً</td>
+</tr>
+<tr>
+<td>الميداني</td>
+<td>صفر زيارة</td>
+<td>رفع مساحي لتفاوت الحدود</td>
+</tr>
+<tr>
+<td>المرفقات الإضافية</td>
+<td>الأساسية فقط</td>
+<td>+ وثائق التسوية (طلب الأمانة ✅)</td>
+</tr>
+<tr>
+<td>المدة 🧪</td>
+<td>~18 يوم عمل حتى مخرج بلدي</td>
+<td>~35 يوم 🧪 (مع مسار خارجي للتسوية)</td>
+</tr>
+<tr>
+<td>الدرس الحاكم</td>
+<td>اكتمال الحزمة قبل الرفع</td>
+<td>«نفس المالك» شرط لا يُتجاوز</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. اختبار الإتقان (10 أسئلة: 6 معرفة + 4 قرار)</h2>
+<p><strong>التعليمات:</strong> أجب دون الرجوع للملفات ثم قارن بالمفتاح. النجاح: 8/10 (80%).</p>
+<ol>
+<li><strong>(معرفة)</strong> ما الفرق الجوهري في «اتجاه العمل» بين خدمة دمج الصكوك (7) وخدمة فرز الوحدات (3)؟</li>
+<li><strong>(معرفة)</strong> اذكر المخرج الرسمي المتوقع في كل مستوى من مستويي الدمج: البلدي والتوثيقي، والجهة المالكة لكل منهما.</li>
+<li><strong>(معرفة)</strong> ما هو متطلب «القرار المساحي» في خدمة الدمج، وما مدة صلاحيته الرسمية، وماذا لو كان الغرض «تجزئة» بالخطأ؟</li>
+<li><strong>(معرفة)</strong> وفق النص الرسمي في بلدي: هل يوجد حد أدنى للمساحة في الدمج؟ وما المقابل في التجزئة؟</li>
+<li><strong>(معرفة)</strong> بأي حرف يبدأ رقم طلب الدمج في بلدي؟ واذكر ثلاث حالات من حالات المتابعة الرسمية في «طلباتي».</li>
+<li><strong>(معرفة)</strong> في أي حالة رسمية يُمنع المالك من استكمال تقديم طلب الدمج؟</li>
+<li><strong>(قرار)</strong> عميل لديه قطعتان متجاورتان: صك واحدة باسمه وصك الأخرى باسم والده المتوفى (لم تُقسم تركة). ما أول إجراء؟ ولماذا لا نرفع طلب الدمج الآن؟</li>
+<li><strong>(قرار)</strong> مالك يريد دمج قطعتيه وقد صدر له قرار مساحي بغرض «تجزئة الأراضي» منذ شهر. قدم الحل الإجرائي الكامل دون فقدان استحقاقه.</li>
+<li><strong>(قرار)</strong> طلب دمج في بلدي عاد بملاحظة «مرفق مساحي غير مطابق للحدود المشتركة». صف خطوات المعالجة بالترتيب والمنفذين.</li>
+<li><strong>(قرار)</strong> عميل يقول: «أتعبوني بدمجي ولم يصدر صك موحد حتى الآن بعد اكتمال الطلب في بلدي». شخّص السبب الأرجح وصحح توقعه بالمسار الصحيح.</li>
+</ol>
+<hr />
+<h2>7. مفتاح الإجابات</h2>
+<ol>
+<li>الاتجاه معاكس تماماً: الدمج يوحّد صكوكاً/قطعاً قائمة في وحدة واحدة؛ الفرز يقسّم صكاً واحداً إلى صكوك مستقلة للوحدات. (جدول المقارنة في README §10).</li>
+<li>البلدي: قطعة موحدة على مستوى المخطط/المخرج البلدي — الجهة: الأمانة/البلدية عبر بلدي (منتج «خدمات الدمج والتجزئة» ✅). التوثيقي: صك إلكتروني موحد — الجهة: وزارة العدل/ناجز (المسار الداخلي ⚠️).</li>
+<li>متطلب رسمي ✅: قرار مساحي «الغرض منه (دمج الأراضي)»؛ صلاحيته <strong>3 سنوات</strong> ✅؛ إن كان بغرض تجزئة: تُستخدم خدمة «تعديل قرار مساحي» ✅ قبل الربط أو يصدر قرار جديد بالغرض الصحيح.</li>
+<li>الدمج: «لا توجد مساحة محددة لدمج قطع الأراضي المتجاورة» ✅. التجزئة: لا تقل مساحة القطعة عن 400 م² قبل التجزئة ✅.</li>
+<li>يبدأ بـ <strong>LMS</strong> ✅ (والتجزئة LSA). أي ثلاث من: جاري العمل عليها / طلبات الدفع المعلقة / بانتظار إصدار الصك/الصكوك / مكتملة-تم الحل / تم التراجع ✅.</li>
+<li>موقوف المالك في إحدى الأمانات → «يتم منعه من استكمال تقديم الطلب» ✅.</li>
+<li>أول إجراء: مسار التسوية قبل الدمج (ملكية مختلفة = مشكلة 2): حصر إرث/قسمة/تسوية لإخراج ملكية واحدة (إحالة قانونية عند الحاجة). لا يُرفع طلب الدمج لأن شرط «الملكية نفسها» غير مستوفى، والدمج يوقف ويعترض عليه القيد ⚠️.</li>
+<li>الغرض خاطئ والقرار سارٍ: الحل هو خدمة «تعديل قرار مساحي» ✅ (مسموح قبل إصدار رخصة على القرار) لتغيير الغرض إلى «دمج الأراضي»، أو إصدار قرار جديد بغرض الدمج؛ ثم ربطه في طلب بلدي. لا يُرفع الطلب على قرار بغرض تجزئة.</li>
+<li>(1) قراءة سبب الملاحظة من داخل الطلب؛ (2) تحديد المنفذ الفني: مساح مرخص يعيد/يوثق الحدود المشتركة (رفع)؛ (3) مطابقة النتيجة مع بيانات الصكوك — إن كان فرق جوهرياً: خدمة 2 تحديث الصكوك أولاً (القاعدة: أحدث الصكوك أولاً)؛ (4) رد الملاحظة بالمستند الصحيح من صاحب الصلاحية (المنسق يعقّب، المساح يوقع، لا اعتماداً لغير الجهة)؛ (5) متابعة حتى الاعتماد — وإن تكررت الرفض: قناة 199040 (استجابة 24 ساعة ✅).</li>
+<li>السبب الأرجح: اكتمل الدمج <strong>البلدي</strong> فقط (وحدة المخطط) — والمخرج البلدي <strong>ليس صكاً</strong>؛ الصك الموحد يصدر من وزارة العدل عبر ناجز (والجواب الرسمي يؤكد التوجه للعدل لإصدار الصك ✅). التصحيح: استكمال الدمج التوثيقي/إصدار الصك في ناجز ⚠️ ثم التحقق ✅.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> 8/10 فأكثر. دون 8: راجع <a href="03-SERVICES/07-Deed-Merging/README.html">README §4 و§10</a> ثم <a href="03-SERVICES/07-Deed-Merging/03-Executive-Workflow.html">03-Executive-Workflow</a> الخطوات 9 و15–22 ثم أعد الاختبار.</p>
+<hr />
+<h2>المصادر</h2>
+<ul>
+<li>بلدي — الأسئلة الشائعة الرسمية لخدمة «إنشاء طلب دمج وتجزئة الأراضي» (صفحتان): المساحات، LMS/LSA، تعهد الملكية، منع المالك الموقوف، الوكالات، تقديم بصفة وكيل عن الملاك — تحقق 2026-11-10 ✅.</li>
+<li>بلدي — خدمة «إصدار تقرير مساحي»: صلاحية 3 سنوات، «دمج القطع أولاً ثم قرار جديد»، تعديل قرار مساحي — تحقق 2026-11-10 ✅.</li>
+<li>ناجز — بنية القيد والتحقق وحماية المسارات بالدخول — تحقق 2026-11-10 ✅/⚠️.</li>
+<li>معايير المشروع: Knowledge-Standards.md (أعمدة المشكلات وحالات الاختبار) — إصدار 2026-11-10.</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

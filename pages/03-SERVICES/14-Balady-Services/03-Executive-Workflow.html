@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03 — سير العمل التنفيذي: خوارزمية الـ25 خطوة لمعاملة بلدية نموذجية — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/14-Balady-Services/README.html">خدمات منصة بلدي</a> <span class="crumb-sep">‹</span> <span>03 — سير العمل التنفيذي: خوارزمية الـ25 خطوة لمعاملة بلدية نموذجية</span></nav>
+    <article class="doc"><h1>03 — سير العمل التنفيذي: خوارزمية الـ25 خطوة لمعاملة بلدية نموذجية</h1>
+<blockquote>
+<p>إصدار 1.0 · تاريخ التحقق: 2026-11-10
+<strong>طبيعة هذه الخوارزمية:</strong> إطار عام يُكيَّف لكل منتج بلدي (رخصة تجارية، شهادة صحية، تسوير، حجز موعد…). الخطوات غير المنطبقة لمنتج معين تُذكر بصيغة «لا تنطبق هنا لأن…». المسارات الرسمية الموثقة لكل منتج في <code>01-Platform-Steps.md</code>؛ قالب معالجة الملاحظات: ../../07-TEMPLATES/06-Notes-Handling-Form.md، ونموذج التتبع: ../../07-TEMPLATES/05-Transaction-Tracking-Form.md.
+<strong>تعريف الأدوار في هذا الملف:</strong> منسّق = مقدم الخدمات/المكتب الخدمي · مكتب هندسي = المصنف · العميل = مالك/منشأة/عامل.</p>
+</blockquote>
+<hr />
+<h2>المرحلة الأولى: التأسيس (الخطوات 1–5)</h2>
+<h3>الخطوة 1: استقبال العميل وتشخيص حاجته البلدية</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل طلب العميل العام («أفتح محل»، «أسوّر أرضي»، «أشغّل عاملاً») إلى منتج رسمي محدد بأسمائه الرسمية في بلدي.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> خريطة المنتجات (README §3) · الدليل الذكي (منتج رسمي) ✅ · نموذج الاستقبال ../../07-TEMPLATES/01-Client-Intake-Form.md.</li>
+<li><strong>المخرج:</strong> عبارة خدمة رسمية واحدة + رمز بدئها من README §3.1 (مثال: «تجديد رخصة تجارية — 10485»).</li>
+<li><strong>نقاط القرار:</strong> هل الطلب بلدي صافٍ أم يحتاج سلفاً عدلياً (صك/فرز)؟ هل المنتج داخل نطاقنا أم يُحوَّل (إكرام موتى/سكن جماعي)؟</li>
+<li><strong>المخاطر:</strong> تشخيص خاطئ يبدأ الخدمة من منتج غير ملائم ويهدر رسوماً ووقتاً.</li>
+</ul>
+<h3>الخطوة 2: فحص الحساب وتجهيزه (نفاذ/بلدي/بلدي أعمال)</h3>
+<ul>
+<li><strong>الغرض:</strong> ضمان دخول صالح قبل أي خطوة تقديمية.</li>
+<li><strong>المنفذ:</strong> المنسق مع العميل.</li>
+<li><strong>الأدوات:</strong> حساب أبشر سابق للمالك ✅ (النفاذ الموحد هو البوابة الرسمية) · منصة بلدي/التطبيق.</li>
+<li><strong>المخرج:</strong> دخول ناجح إلى لوحة بلدي باسم الصفة الصحيحة.</li>
+<li><strong>نقاط القرار:</strong> المالك يملك حساباً؟ → لا: تجهيزه عبر نفاذ أولاً (لا يوجد تسجيل بلدي مستقل عملياً عن النفاذ 📚). المكتب بدخول «بلدي أعمال»؟</li>
+<li><strong>المخاطر:</strong> تقديم بصفة «نفسي» من غير المالك دون تفويض = عيب جوهري في الطلب.</li>
+</ul>
+<h3>الخطوة 3: تحديد الخدمة الرسمية ونوعيتها</h3>
+<ul>
+<li><strong>الغرض:</strong> فتح كرت الخدمة الصحيح ومعرفة نوعيتها (فورية/غير فورية — بحسب كل منتج).</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> صفحة الخدمة الرسمية (الوصف/طريقة التقديم/المتطلبات/الأسئلة الرسمية) ✅ · الاستعلامات العامة.</li>
+<li><strong>المخرج:</strong> قراءة موثقة لنوع الطلب: مثلاً «نشاط تجاري غير فوري» ✅ (التمييز الرسمي بين فوري وغير فوري)، أو «إلغاء غير فوري» ✅.</li>
+<li><strong>نقاط القرار:</strong> فوري → سداد مباشر؛ غير فوري → مسار بلدية وملاحظات ✅.</li>
+<li><strong>المخاطر:</strong> افتراض فورية نشاط غير فوري فيسبب فشل الدفع أو رفضاً.</li>
+</ul>
+<h3>الخطوة 4: تحديد نوعية المالك ومقدم الطلب</h3>
+<ul>
+<li><strong>الغرض:</strong> ضبط الصفة القانونية للتقديم — خطوة رسمية صريحة في الرخص الإنشائية والتسوير ✅ وصفة (مالك/مدير منشأة) في التجارية ✅.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> هوية المالك، بيانات المنشأة، بيان الملكية/الإيجار.</li>
+<li><strong>المخرج:</strong> صفة محددة ومتسقة مع المستندات (مستندات §2.1 في 02-Requirements).</li>
+<li><strong>نقاط القرار:</strong> من سيظهر في الطلب؟ هل المستند الملكي باسم المفوض أم المالك؟</li>
+<li><strong>المخاطر:</strong> تعارض اسم المستند مع صفة مقدم الطلب → ملاحظة ورفض.</li>
+</ul>
+<h3>الخطوة 5: إعداد/تحديث التفويض البلدي الإلكتروني</h3>
+<ul>
+<li><strong>الغرض:</strong> تمكين التقديم بالنيابة عن المالك بغلاف نظامي.</li>
+<li><strong>المنفذ:</strong> المالك (يُصدر) + المكتب (يقبل) في بلدي أعمال ✅ (نمط رسمي).</li>
+<li><strong>الأدوات:</strong> منتج «التفويض البلدي الإلكتروني» (منتج رسمي 10717 ✅) · وكالة ناجز عند الحاجة (الخيار الأوسع 📚).</li>
+<li><strong>المخرج:</strong> تفويض قالب وقبل بالطرف الآخر يظهر في الطلبات.</li>
+<li><strong>نقاط القرار:</strong> نطاق التفويض: تقديم فقط أم سداد أيضاً؟ (يُحدد صراحة 📚).</li>
+<li><strong>المخاطر:</strong> تفويض بلا صلاحية سداد يعطّل الخطوة 17، وتقادم التفويض بين الطلبات ⚠️.</li>
+</ul>
+<hr />
+<h2>المرحلة الثانية: التجهيز (الخطوات 6–9)</h2>
+<h3>الخطوة 6: جمع المستندات وتدقيقها مسبقاً</h3>
+<ul>
+<li><strong>الغرض:</strong> تمرير حزمة مرفقات مطابقة لقائمة المتطلبات الرسمية للمنتج قبل فتح الطلب.</li>
+<li><strong>المنفذ:</strong> المنسق (جمع وتدقيق) — العميل (توفير) — مكتب هندسي/مساح (مستنداتهم المهنية).</li>
+<li><strong>الأدوات:</strong> جدول المستندات في <code>02-Requirements-Documents.md</code> §1 · checklist §4 · ../../07-TEMPLATES/03-Document-Review-Checklist.md.</li>
+<li><strong>المخرج:</strong> حزمة مرفقات جاهزة: مثال التسوير: تقرير مساحي + تعاقد مكتب + سداد ✅ (المتطلبات الرسمية الثلاثة).</li>
+<li><strong>نقاط القرار:</strong> أي بند «مشروط بالحالة» ينطبق؟ (عقد نظافة/سلامة دفاع مدني/عقد حاويات…).</li>
+<li><strong>المخاطر:</strong> مرفقات مرفوضة بسبب جودة الضوء/القطع/الصيغة — قائمة أخطاء ../../07-TEMPLATES/10-Common-Errors-List.md.</li>
+</ul>
+<h3>الخطوة 7: استعلام الاشتراطات والتقدير المالي الأولي</h3>
+<ul>
+<li><strong>الغرض:</strong> معرفة اشتراطات النشاط/الموقع والرسوم المتوقعة قبل التزام العميل.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> خدمة الاستعلام عن اشتراطات الأنشطة البلدية ✅ (LicenseStandard) · حاسبة الرسوم الرسمية ✅ · حاسبة الرسوم المعلوماتية (node/11112) ✅ · الدليل التنظيمي للوحات التجارية (node/11707) ✅.</li>
+<li><strong>المخرج:</strong> قائمة اشتراطات + نطاق رسوم تقديري (بدون التزام بأرقام من مصادر غير رسمية — القاعدة §7 من Knowledge-Standards).</li>
+<li><strong>نقاط القرار:</strong> هل الاشتراطات تجعل النشاط غير مجدٍ في هذا الموقع؟ (استشارة انتقاء النشاط — الفئة 6).</li>
+<li><strong>المخاطر:</strong> توقيع إيجار على موقع لا يحقق اشتراطات النشاط = خسارة تشغيلية للعميل.</li>
+</ul>
+<h3>الخطوة 8: عرض السعر وإقرار العميل</h3>
+<ul>
+<li><strong>الغرض:</strong> توثيق التكلفة والمسؤوليات قبل التنفيذ.</li>
+<li><strong>المنفذ:</strong> المنسق/إدارة المكتب.</li>
+<li><strong>الأدوات:</strong> نموذج العرض ../../07-TEMPLATES/04-Quotation-Template.md والمنهجية في <code>04-Technical-Field-Costs.md</code> §8.</li>
+<li><strong>المخرج:</strong> عرض موقّع يفصل رسوم حكومية تقديرية (بمرجعها الرسمي) عن الأتعاب.</li>
+<li><strong>نقاط القرار:</strong> دفعة أولى قبل البدء (قاعدة القالب) · ما المشمول من جولات ملاحظات.</li>
+<li><strong>المخاطر:</strong> غموض «متى تبدأ رسوم حكومية مستحقة» يولّد نزاعاً عند السداد.</li>
+</ul>
+<h3>الخطوة 9: بدء الخدمة في المنصة</h3>
+<ul>
+<li><strong>الغرض:</strong> فتح الطلب فعلياً برقمه.</li>
+<li><strong>المنفذ:</strong> المنسق (بصفته) أو المكتب (طلباته) أو العميل (نفسي).</li>
+<li><strong>الأدوات:</strong> زر «بدء الخدمة» الرسمي على كرت الخدمة ✅ · الروابط المباشرة README §3.1.</li>
+<li><strong>المخرج:</strong> مسودة طلب برقم مرجعي تُسجَّل في نموذج التتبع.</li>
+<li><strong>نقاط القرار:</strong> البدء من المنصة أم التطبيق (كلاهما قناة رسمية ✅)؟</li>
+<li><strong>المخاطر:</strong> ترك الطلب في «مسودة» دون إتمام — الطلبات المسودة قد لا تظهر في بعض مراحل الفواتير ✅ (إشارة رسمية: «كان الطلب ما زال مسودة» في أسئلة دفاع مدني).</li>
+</ul>
+<hr />
+<h2>المرحلة الثالثة: الإدخال (الخطوات 10–14)</h2>
+<h3>الخطوة 10: إدخال البيانات الأساسية</h3>
+<ul>
+<li><strong>الغرض:</strong> ملء الحقول الإلزامية بدقة مطابقة للمستندات.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> حقول كل منتج (موثقة في 01-Platform §3–6): سجل المنشأة/النشاط/المساحة ✅؛ بيانات العامل في الشهادة الصحية ✅؛ نوعية المالك والقرار المساحي في التسوير ✅.</li>
+<li><strong>المخرج:</strong> شاشة بيانات مكتملة بلا فراغات إلزامية.</li>
+<li><strong>نقاط القرار:</strong> أي حقول قابلة للتعديل لاحقاً؟ (في الشهادات الصحية: قائمة رسمية محددة بالرقم الحدود ✅؛ في حجز الموعد: لا تعديل بعد الإرسال ✅).</li>
+<li><strong>المخاطر:</strong> خطأ إملائي في اسم العامل/النشاط يستدعي جولة تصحيح كاملة.</li>
+</ul>
+<h3>الخطوة 11: تحديد الموقع على الخريطة</h3>
+<ul>
+<li><strong>الغرض:</strong> تثبيت إحداثيات المحل/الأرض كما يشترط المنتج.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> خريطة بلدي بالبحث بالمدينة والحي ✅ (نص رسمي في الشهادات الصحية) · الخرائط الحضرية (منتج رسمي) ✅ · الإحداثيات من القرار المساحي عند التسوير.</li>
+<li><strong>المخرج:</strong> موقع متطابق مع الصك/العقد.</li>
+<li><strong>نقاط القرار:</strong> تعارض الموقع مع التمييز؟ → توقف واستشارة (خدمة 4/الخرائط الحضرية).</li>
+<li><strong>المخاطر:</strong> نقطة خاطئة تُرسل الطلب لبلدية/حي غير مختص أو تنشئ تعارضاً.</li>
+</ul>
+<h3>الخطوة 12: رفع المرفقات</h3>
+<ul>
+<li><strong>الغرض:</strong> إرفاق الحزمة المُدققة من الخطوة 6 بصيغ مقبولة.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> PDF/صور واضحة — القوائم الرسمية لكل منتج (01-Platform §3–6).</li>
+<li><strong>المخرج:</strong> المرفقات ظاهرة في الطلب بأسماء مقروءة.</li>
+<li><strong>نقاط القرار:</strong> المرفق المشروط متوفر فعلاً؟ إن لا → لا تُرسل الطلب بعد.</li>
+<li><strong>المخاطر:</strong> رفع ملفات كبيرة/مظلمة = جولة رفض أول؛ «مرفقات مرفوضة» مشكلة عابرة للخدمات (05 §P3).</li>
+</ul>
+<h3>الخطوة 13: الإقرارات والتحقق الإلكتروني</h3>
+<ul>
+<li><strong>الغرض:</strong> إتمام متطلبات النزاهة داخل الطلب.</li>
+<li><strong>المنفذ:</strong> مقدم الطلب (مالك/مفوض/مدير منشأة).</li>
+<li><strong>الأدوات:</strong> الإقرار بصحة المعلومات (خطوة رسمية في التسوير ✅) · التحقق من رقم الجوال OTP (خطوة رسمية ✅).</li>
+<li><strong>المخرج:</strong> الطلب مؤهل للإرسال.</li>
+<li><strong>نقاط القرار:</strong> هل يقف التحقق؟ → حصة تحقق (05 §شجرة قرار، فرع OTP).</li>
+<li><strong>المخاطر:</strong> توقيع إقرار ببيانات لم تُدقق مسبقاً يُحمّل مقدم الطلب المسؤولية النظامية.</li>
+</ul>
+<h3>الخطوة 14: إرسال الطلب واختيار المسار</h3>
+<ul>
+<li><strong>الغرض:</strong> دفع الطلب إلى السير الرسمي المناسب.</li>
+<li><strong>المنفذ:</strong> مقدم الطلب.</li>
+<li><strong>الأدوات:</strong> زر الإرسال؛ ومنتجات المكاتب: إرسال الطلب للمكتب الهندسي ✅ (خطوات التسوير 11–12).</li>
+<li><strong>المخرج:</strong> الطلب «مرسل» وبدأت الرسائل النصية بتحديث الحالة ✅ (نص رسمي في حجز الموعد والرخص التجارية SMS متوفر ✅).</li>
+<li><strong>نقاط القرار:</strong> فوري → خطوة 17 مباشرة (سداد)؛ غير فوري → خطوة 15 (متابعة بلدية).</li>
+<li><strong>المخاطر:</strong> إرسال بمرفق ناقص بعد خطوة 12 غير المدققة = أول ملاحظة لا تكون إلا في هذا الموضع.</li>
+</ul>
+<hr />
+<h2>المرحلة الرابعة: المعالجة والسداد (الخطوات 15–19)</h2>
+<h3>الخطوة 15: متابعة الاستلام والمرحلة الأولى</h3>
+<ul>
+<li><strong>الغرض:</strong> التأكد من قبول الطلب تقنياً لدى الإدارة المختصة.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> «إدارة الطلبات» ✅ · SMS استباقية ✅ · شاشة «خدمة المواعيد» لحالات المواعيد ✅.</li>
+<li><strong>المخرج:</strong> حالة موثقة (مستلم/تحت المعالجة/بانتظار ملاحظات).</li>
+<li><strong>نقاط القرار:</strong> لا حركة 48 ساعة عمل؟ → استمرار المتابعة المنتظمة؛ الأسبوع كامل؟ → بروتوكول التصعيد (05 §الحالة ب).</li>
+<li><strong>المخاطر:</strong> انتظار سلبي بلا سجل متابعة يفقد المكتب موقفه أمام العميل والجهة.</li>
+</ul>
+<h3>الخطوة 16: معالجة الملاحظات (الجولات)</h3>
+<ul>
+<li><strong>الغرض:</strong> رد ملاحظات البلدية/الجهات داخل الطلب وإعادة إرساله.</li>
+<li><strong>المنفذ:</strong> المنسق للتنسيق + مكتب هندسي/مساح لملاحظات تخص عملهما.</li>
+<li><strong>الأدوات:</strong> قالب الملاحظات ../../07-TEMPLATES/06-Notes-Handling-Form.md؛ النمط الرسمي: الملاحظات تعود داخل الطلب للمعالجة وإعادة الإرسال ✅ (Balady.md §8).</li>
+<li><strong>المخرج:</strong> رد كامل (كل ملاحظة مستوفاة أو مبرر رد غيره) + إعادة إرسال.</li>
+<li><strong>نقاط القرار:</strong> الملاحظة نظامية (تغيير تصميم/نشاط) أم إجرائية (مستند)؟ توزيعها على المنفذ الصحيح فوراً.</li>
+<li><strong>المخاطر:</strong> رد جزئي = جولة إضافية؛ جولات متتالية تعني غالباً مشكلة جذرية (شجرة قرار 05).</li>
+</ul>
+<h3>الخطوة 17: السداد في حينه (فواتير متعددة)</h3>
+<ul>
+<li><strong>الغرض:</strong> سداد ما استحق بالترتيب الرسمي حتى يكمل الطلب.</li>
+<li><strong>المنفذ:</strong> مقدم الطلب (أو مفوض بولاية سداد) — بوسائل السداد الرسمية ✅ (سداد/فيزا/ماستركارد/مدى/أبل باي).</li>
+<li><strong>الأدوات:</strong> تفاصيل الطلب → قسم الرسوم ✅؛ فاتورة دفاع المدني: زر «احتساب رسوم الدفاع المدني» ثم «سداد» عبر بوابة الشركة الوطنية للإسكان ✅ (نص رسمي)؛ الشهادات الصحية: المفوتر 177 أو رابط الجوال ✅؛ الفاتورة البلدية بعد استحقاقها.</li>
+<li><strong>المخرج:</strong> إيصالات سداد مؤرشفة برقم الطلب.</li>
+<li><strong>نقاط القرار:</strong> الترتيب إلزامي: فاتورة الدفاع المدني المستحقة تُسدد أولاً وإلا لن تُصدر الفاتورة البلدية ✅ (نص رسمي).</li>
+<li><strong>المخاطر:</strong> سداد دون تأكد من «مستحقة/غير مستحقة»؛ أو حجز موعد ظنّه رسوماً (الموعد مجاني ✅).</li>
+</ul>
+<h3>الخطوة 18: المراجعة والاعتماد</h3>
+<ul>
+<li><strong>الغرض:</strong> اكتمال التدقيق الرسمي وإقرار المعاملة.</li>
+<li><strong>المنفذ:</strong> الأمانة/البلدية (والجهات المضمنة: دفاع مدني، منصة صحة…) — لا اعتماد لأي طرف آخر.</li>
+<li><strong>الأدوات:</strong> مسار المنصة ذاته؛ للأراضي: استكمال التصاميم من المكتب قبل الاعتماد ✅.</li>
+<li><strong>المخرج:</strong> اعتماد الطلب/النشاط.</li>
+<li><strong>نقاط القرار:</strong> اعتماد مشروط بمستند إضافي؟ → عودة مؤقتة للخطوة 12/16.</li>
+<li><strong>المخاطر:</strong> ضغط «تسريع» غير نظامي ممنوع — كل تسريع عبر القنوات الرسمية فقط (199040/الأمانة الافتراضية ✅).</li>
+</ul>
+<h3>الخطوة 19: إصدار المخرج</h3>
+<ul>
+<li><strong>الغرض:</strong> توليد المخرج النهائي الرسمي.</li>
+<li><strong>المنفذ:</strong> المنصة آلياً بعد اكتمال الشروط.</li>
+<li><strong>الأدوات:</strong> — (آلي).</li>
+<li><strong>المخرج:</strong> رخصة/شهادة/قرار/مشهد إلغاء/موعد مؤكد (جدول المخرجات README §7) · أمثلة رسمية: «بعد سداد الرسوم يتم إصدار الرخصة ويمكن طباعتها» ✅ (تسوير)؛ إصدار استباقي للشهادة الصحية عند عدم تفعيل التثقيف بالمدينة ✅.</li>
+<li><strong>نقاط القرار:</strong> كامل المخرجات النظامية مكتملة؟ (مثال: إلغاء الرخصة يلغي التصاريح استباقياً ✅ — يحتاج إشعاراً للعميل بذلك).</li>
+<li><strong>المخاطر:</strong> رخصة صادرة بلا سداد تام (سارية ≠ صادرة) — القاعدة الرسمية لسريان الرخص ✅ (Balady.md §7).</li>
+</ul>
+<hr />
+<h2>المرحلة الخامسة: الإقفال (الخطوات 20–25)</h2>
+<h3>الخطوة 20: استخراج المخرج وتدقيقه</h3>
+<ul>
+<li><strong>الغرض:</strong> نزّل PDF وتدقيق بياناته حقل بحقل مقابل الطلب.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> «إدارة الرخص» ✅ · صفحة الطلب · «طلباتي ورخصي &gt; رخصي الملغاة &gt; طباعة» للإلغاءات ✅.</li>
+<li><strong>المخرج:</strong> ملف PDF سليم البيانات (الاسم/الرقم/النشاط/الصلاحية).</li>
+<li><strong>نقاط القرار:</strong> خطأ بيانات في المخرج الصادر؟ → تصحيح عبر الطلب/الدعم (05 §P2).</li>
+<li><strong>المخاطر:</strong> تسليم عميل مخرجاً بخطأ بيانات يستخدمه عند الجهات.</li>
+</ul>
+<h3>الخطوة 21: التحقق من صحة المخرج</h3>
+<ul>
+<li><strong>الغرض:</strong> إثبات صحة المخرج لأطراف ثالثة.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> رمز QR على الشهادة الصحية (تحقق بمسحه ✅ رسمياً) · الاستعلام التجاري/الاستعلامات العامة ✅ · الختم الرقمي الرسمي على المخرجات (نص رسمي: «مختومة بختم رقمي معتمد ولا تتطلب أي ختم يدوي» ✅).</li>
+<li><strong>المخرج:</strong> تأكيد صحة قابل للشرح للعميل.</li>
+<li><strong>نقاط القرار:</strong> فشل التحقق؟ → أرشفة الإثبات والعودة للدعم فوراً.</li>
+<li><strong>المخاطر:</strong> طباعة قديمة نسخة بعد تعديل/إلغاء لاحق.</li>
+</ul>
+<h3>الخطوة 22: التسليم للعميل والأرشفة</h3>
+<ul>
+<li><strong>الغرض:</strong> تسليم موثق وأرشفة داخلية.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> ../../07-TEMPLATES/07-Delivery-Form.md · ترميز الأرشيف (README §7).</li>
+<li><strong>المخرج:</strong> تسليم موقّع + أرشيف رقمي (الطلب، الإيصالات، المخرجات، الملاحظات).</li>
+<li><strong>نقاط القرار:</strong> أصلي كامل أم نسخ + من يبقي ماذا.</li>
+<li><strong>المخاطر:</strong> غياب الأرشفة يعطل أي اعتراض أو تجديد لاحق.</li>
+</ul>
+<h3>الخطوة 23: التنبيهات اللاحقة والتزامات ما بعد الإصدار</h3>
+<ul>
+<li><strong>الغرض:</strong> حماية العميل من الغرامات والتوقف بعد الصادر.</li>
+<li><strong>المنفذ:</strong> المنسق (تقويم التزامات).</li>
+<li><strong>الأدوات:</strong> تقويم المكتب؛ قواعد رسمية معلنة: التجديد قبل انتهاء الرخصة لتجنب الغرامة ✅؛ نافذة 60 يوماً/15 يوماً للشهادات الصحية ✅؛ التزام نموذج السور الموحد وصيانته على المالك ✅؛ عقد الحاويات إن اشترط ✅.</li>
+<li><strong>المخرج:</strong> جدول استحقاقات لكل عميل (تجديد رخصة، تجديد شهادات عماله، إنهاء عقود).</li>
+<li><strong>نقاط القرار:</strong> من يُنبه: العميل مباشرة أم عبر المنصة (الإشعارات الرسمية) — كلاهما.</li>
+<li><strong>المخاطر:</strong> انقطاع متابعة المكتب بعد التسليم يترك العميل عرضة للمخالفات ويطفئ فرص العمل الدوري.</li>
+</ul>
+<h3>الخطوة 24: التعامل مع التعليق والاعتراض</h3>
+<ul>
+<li><strong>الغرض:</strong> معالجة الطلب المتجمد أو القرار المعترض عليه عبر القنوات الرسمية فقط.</li>
+<li><strong>المنفذ:</strong> المنسق + إدارة المكتب للتصعيد.</li>
+<li><strong>الأدوات:</strong> بروتوكول التصعيد في <code>05-Problems-Cases-Exam.md</code> §الحالة ب: إدارة الطلبات → 199040 → الأمانة الافتراضية (11719) ✅ → طلب موعد للأمانة ✅ → منصة الاعتراضات الموحدة (منتج رسمي ✅) للقرارات/الغرامات.</li>
+<li><strong>المخرج:</strong> سجل تصعيد موثق بالتواريخ والأرقام المرجعية.</li>
+<li><strong>نقاط القرار:</strong> هل الأمر تعليق تقني (الدعم) أم قرار جوهري (اعتراض نظامي)؟</li>
+<li><strong>المخاطر:</strong> إعادة تقديم موازية للطلب نفسه قبل حسم التعليق تنشئ طلبات مكررة وأرتباكاً.</li>
+</ul>
+<h3>الخطوة 25: متابعة العميل وفتح فرص</h3>
+<ul>
+<li><strong>الغرض:</strong> إقفال علاقة رابحة واستباق الاحتياج القادم.</li>
+<li><strong>المنفذ:</strong> المنسق/إدارة المكتب.</li>
+<li><strong>الأدوات:</strong> ../../07-TEMPLATES/08-Satisfaction-Survey.md · قاعدة عملاء دورية (تجديدات، شهادات عمال، رخص أنشطة جديدة).</li>
+<li><strong>المخرج:</strong> تقييم رضا + فرصة موثقة (مثال: رخصة تجارية سارية ⇒ حزمة شهادات صحية للعاملين ✅ — الخدمتان مرتبطتان نظامياً في رخصة المحل).</li>
+<li><strong>نقاط القرار:</strong> عميل «حدث» (منشأة متعددة العمال) ⇒ عقد متابعة سنوي 💼.</li>
+<li><strong>المخاطر:</strong> غياب هذه الخطوة يحول المكتب من مستشار منظومة إلى منفذ طلبات متقطع.</li>
+</ul>
+<hr />
+<h2>مخطط التدفق النصي (فروع رئيسية)</h2>
+<pre><code>عميل → [تشخيص: منتج رسمي؟]
+   ├─ نعم → [صفة صحيحة؟ مالك/مفوض/منشأة]
+   │          ├─ لا → تفويض بلدي إلكتروني → استمر
+   │          └─ نعم → جمع مستندات → استعلام اشتراطات ورسوم → عرض سعر
+   │                    → بدء الخدمة → إدخال + موقع + مرفقات + إقرار
+   │                    → [النشاط فوري؟]
+   │                         ├─ نعم → سداد → إصدار → تدقيق وطباعة → تسليم → تنبيهات
+   │                         └─ لا → إرسال للبلدية → [ملاحظات؟]
+   │                                   ├─ نعم → معالجة داخل الطلب → إعادة إرسال (حلقة)
+   │                                   └─ لا → [فاتورة دفاع مدني مستحقة؟]
+   │                                            ├─ نعم → سدادها أولاً → فاتورة بلدية → سداد
+   │                                            └─ لا → فاتورة بلدية → سداد → إصدار
+   └─ يحتاج سلفاً (صك/فرز/قرار مساحي) → تحويل لخدمة 2/3/9/4 ثم عودة
+تعليق/رفض → شجرة قرار 05 → دعم 199040 / موعد / اعتراضات موحدة
+</code></pre>
+<h2>جدول «من ينفذ ماذا» (RACI مبسط)</h2>
+<table>
+<thead>
+<tr>
+<th>النشاط</th>
+<th>العميل</th>
+<th>منسّق</th>
+<th>مكتب هندسي</th>
+<th>مساح</th>
+<th>البلدية/الجهة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>فتح/تجهيز الحساب والتفويض</td>
+<td>C/I</td>
+<td><strong>R</strong></td>
+<td>C (قبول التفويض)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>تشخيص المنتج والاشتراطات</td>
+<td>C</td>
+<td><strong>R/A</strong></td>
+<td>C</td>
+<td>—</td>
+<td>I</td>
+</tr>
+<tr>
+<td>تقديم الطلب بصفته</td>
+<td><strong>R</strong> (نفسي)</td>
+<td>R (مفوض)</td>
+<td>R (طلباته)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>التصاميم/التقرير الفني</td>
+<td>—</td>
+<td>C</td>
+<td><strong>R</strong></td>
+<td>—</td>
+<td>A (اعتماد)</td>
+</tr>
+<tr>
+<td>التقرير/القرار المساحي</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td><strong>R</strong></td>
+<td>A</td>
+</tr>
+<tr>
+<td>الرد على الملاحظات</td>
+<td>C</td>
+<td><strong>R</strong> (تنسيق)</td>
+<td>R (ملاحظاته)</td>
+<td>R (ملاحظاته)</td>
+<td>A</td>
+</tr>
+<tr>
+<td>السداد</td>
+<td><strong>R</strong></td>
+<td>R (تفويضاً)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>الاعتماد والإصدار</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td><strong>R/A</strong></td>
+</tr>
+<tr>
+<td>الملاحظة الميدانية للمخالفات</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>R/A</strong> (الراصد المعتمد)</td>
+</tr>
+<tr>
+<td>التصعيد/الاعتراض</td>
+<td>C</td>
+<td><strong>R</strong></td>
+<td>C</td>
+<td>—</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>R ينفذ · C يستشار · A يعتمد · I يُخبر. لا يعتمد أي طرف تجاري أو مهني ما تعتمده الجهة الحكومية.</p>
+</blockquote>
+<h2>المصادر</h2>
+<ul>
+<li>النصوص الرسمية المجلوبة 2026-11-10 (صفحات الخدمات — الروابط في README §9): خطوات الإصدار/التجديد/الإلغاء/التسوير/الشهادات/الموعد، وقواعد الفواتير المستقلة، والإلغاء الاستباقي.</li>
+<li>../../02-PLATFORMS/Balady.md (المسار العام الموحد §5، الإشعارات والملاحظات §8، السداد §7).</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

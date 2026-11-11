@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 — المشكلات والحالات والاختبار: منظومة بلدي — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/14-Balady-Services/README.html">خدمات منصة بلدي</a> <span class="crumb-sep">‹</span> <span>05 — المشكلات والحالات والاختبار: منظومة بلدي</span></nav>
+    <article class="doc"><h1>05 — المشكلات والحالات والاختبار: منظومة بلدي</h1>
+<blockquote>
+<p>إصدار 1.0 · تاريخ التحقق: 2026-11-10
+هذه المشكلات <strong>عابرة للخدمات</strong>: تصيب أي منتج بلدي (تجارية/صحية/إنشائية/مواعيد). شجرة القرار أدناه تنطلق من سبب المشكلة لا من الخدمة. قنوات الدعم الرسمية المؤكدة: <strong>199040</strong> ✅ · infocs@momah.gov.sa ✅ · الأمانة الافتراضية (11719) ✅ · دليل الفروع (/ar/help-and-support/all) ✅ · منصة الاعتراضات الموحدة ✅ (منتج رسمي).</p>
+</blockquote>
+<hr />
+<h2>1. جدول المشكلات (12 مشكلة — الأعمدة التسعة الإلزامية)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>الوصف</th>
+<th>السبب الجذري</th>
+<th>الكشف</th>
+<th>الأثر</th>
+<th>المسؤول عن الحل</th>
+<th>الإجراء</th>
+<th>المستندات</th>
+<th>متى التصعيد</th>
+<th>متى الإيقاف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>الطلب «معلق» دون حركة (أيام بلا حالة جديدة)</td>
+<td>طوابير مراجعة الأمانة أو نقص خفي في الاستيفاء</td>
+<td>مراقبة «إدارة الطلبات» + سجل متابعة يومي</td>
+<td>تمدد المدة وتأخر مشروع العميل</td>
+<td>منسق ← البلدية</td>
+<td>متابعة موثقة (خطوة 15) → 199040 → موعد للأمانة</td>
+<td>رقم الطلب، لقطات الحالة بتواريخها، سجل الاتصال</td>
+<td>بعد أسبوع بلا حركة (بروتوكول الحالة ب)</td>
+<td>رفض العميل متابعة المسار الرسمي أو وجود نزاع قضائي مواز</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>المخرج الصادر ببيانات خاطئة (اسم/نشاط/رقم)</td>
+<td>خطأ إدخال في الخطوة 10 أو خطأ معالجة</td>
+<td>تدقيق المخرج مقابل الطلب (خطوة 20)</td>
+<td>مستند لا يصح تقديمه للجهات</td>
+<td>منسق ← الدعم</td>
+<td>فتح تصحيح عبر الطلب/الدعم وإعادة إصدار</td>
+<td>PDF المخرج، لقطة بيانات الطلب</td>
+<td>عدم قبول تصحيح في 3 أيام عمل</td>
+<td>لا يوقف العمل إلا إذا كان المخرج قيد الاستخدام الحرج لدى العميل</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>مرفقات مرفوضة في جولة الملاحظات</td>
+<td>ضعف جودة/صيغة/مطابقة المستند للمتطلب الرسمي</td>
+<td>ملاحظات داخل الطلب ✅ (النمط الرسمي)</td>
+<td>جولة إضافية وتأخير</td>
+<td>منسق (ومن أعد المستند)</td>
+<td>معالجة كل ملاحظة بقالب الملاحظات وإعادة إرسال كاملة</td>
+<td>قائمة الملاحظات، المستندات المصححة</td>
+<td>جولة ثالثة بنفس الملاحظات</td>
+<td>الملاحظة نظامية تصطدم بذاتها (تعارض اشتراطات مع الموقع نفسه)</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>تعارض بيانات نفاذ/صك (اسم أو رقم هوية لا يطابق الصك)</td>
+<td>صك قديم، اسم بعد تحديث هوية، ورثة غير محدّثين</td>
+<td>فحص التطابق قبل التقديم (خطوة 4/6)</td>
+<td>تعذر إثبات الصفة المالكة</td>
+<td>المالك عبر خدمة 2 (تحديث صكوك)</td>
+<td>توقف التقديم → تصحيح مصدر البيانات ثم عودة</td>
+<td>صك، هوية، أي مستند اسم رسمي</td>
+<td>تعذر التصحيح لدى العدل</td>
+<td>صدور طلب بمستندات متعارضة (مخاطرة نظامية على مقدم الطلب)</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>فشل سداد أو خصم دون انعكاس</td>
+<td>انقطاع بوابة الدفع أو انتهاء مهلة</td>
+<td>إيصال غير ظاهر في الطلب</td>
+<td>فاتورة غير مقفلة</td>
+<td>منسق + الدعم</td>
+<td>توثيق العملية → انتظار التسوية المعلنة ثم 199040</td>
+<td>إيصال البنك، رقم الطلب، وقت العملية</td>
+<td>بقاء الرصيد مجمداً 3 أيام عمل</td>
+<td>لا يوقف — إلا شكاوى متكررة نفس البوابة (تغيير وسيلة الدفع)</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>الطلب «بانتظار سداد رسوم الدفاع المدني» ولا يكمل</td>
+<td>فاتورة دفاع مدني مستقلة مستحقة ✅ (نظام جديد موثق)</td>
+<td>حالة الطلب نصاً (حالة رسمية معلنة ✅)</td>
+<td>لا تُصدر الفاتورة البلدية قبلها ✅</td>
+<td>مقدم الطلب</td>
+<td>قسم رسوم الدفاع المدني → «احتساب» → «سداد» عبر البوابة الموجهة ✅</td>
+<td>الطلب نفسه</td>
+<td>فشل احتساب الرسوم في الطلب</td>
+<td>لا إيقاف — إجراء إلزامي قصير</td>
+</tr>
+<tr>
+<td>P7</td>
+<td>الرخصة التجارية تجاوزت انتهاءها (تأخير تجديد)</td>
+<td>ضعف تقويم الاستحقاقات</td>
+<td>تقويم المكتب + إشعار المنصة</td>
+<td>غرامة مشترطة بالتأخير ✅ (تنبيه رسمي) + انقطاع مزاولة</td>
+<td>العميل/منسق</td>
+<td>تجديد فوري + تسوية الغرامة عبر الفاتورة</td>
+<td>الرخصة، الفاتورة</td>
+<td>نزاع على قيمة الغرامة</td>
+<td>استمرار النشاط دون تجديد (مخالفة)</td>
+</tr>
+<tr>
+<td>P8</td>
+<td>شهادة صحية: نتيجة الفحص لا تظهر «لائقاً»</td>
+<td>مركز غير معتمد أو تأخر تحديث منصة صحة</td>
+<td>حالة الطلب في بلدي</td>
+<td>تعطل إصدار الشهادة</td>
+<td>العامل/المنشأة</td>
+<td>التأكد من المركز المعتمد وإعادة الفحص؛ تفعيل الإصدار الاستباقي حيث لا تثقيف ✅</td>
+<td>كشف الفحص، رقم المركز</td>
+<td>تأخر التظاهر لدى المركز</td>
+<td>لا يوقف — ما لم يمنع النشاط من التشغيل</td>
+</tr>
+<tr>
+<td>P9</td>
+<td>رسوب متكرر في التثقيف الصحي</td>
+<td>ضعف تحضير</td>
+<td>نتيجة الاختبار</td>
+<td>تكلفة 150 ريال للثانية ✅ وبرنامج كامل للثالثة ✅</td>
+<td>العامل</td>
+<td>إعادة مجانية الأولى → تحضير للمواد التثقيفية الرسمية ✅</td>
+<td>شهادة الاختبار</td>
+<td>—</td>
+<td>رسوب ثالث = إعادة برنامج (خطة زمنية مع العميل)</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>التسوير: غرامة تكرار رغم بدء الإجراءات</td>
+<td>بدء التسوير متأخر في مدينة مستهدفة</td>
+<td>إشعار الغرامة</td>
+<td>غرامة كل أسبوعين كحد أدنى ✅</td>
+<td>المالك</td>
+<td>استكمال الرخصة والتسوير بأسرع مسار؛ نموذج سور موحد إلزامي ✅</td>
+<td>إشعار الغرامة، الرخصة عند صدورها</td>
+<td>اعتراض على الغرامة عبر القنوات الرسمية</td>
+<td>التخلف عن التسوير بعد صدور الرخصة</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>حجز موعد ثم تعذر تعديل بياناته</td>
+<td>قاعدة رسمية: لا تعديل بعد الإرسال ✅</td>
+<td>حاجة تغيير الوقت/البيانات</td>
+<td>موعد غير مناسب</td>
+<td>المستفيد</td>
+<td>إلغاء (شاشة المواعيد/رابط SMS/الموظف) ثم حجز جديد ✅</td>
+<td>رسالة SMS، شاشة المواعيد</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>عميل متعدد طلبات: طلبات مكررة/متضاربة بنفس الموضوع</td>
+<td>إعادة تقديم أثناء تعليق طلب قائم</td>
+<td>مراجعة «إدارة الطلبات»</td>
+<td>تشويش المراجعة وازدواج</td>
+<td>منسق</td>
+<td>توحيد الطلب الفعّال وإقفال المسودات؛ الالتزام بقاعدة «مسودة» ✅</td>
+<td>قائمة الطلبات</td>
+<td>—</td>
+<td>تكرار النمط = مراجعة داخلية لسير العمل (خطوة 24)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. شجرة القرار النصية (تتفرع حسب السبب)</h2>
+<pre><code>مشكلة بلدية ظهرت في طلب
+│
+├─ السبب بيانات؟
+│   ├─ بيانات إدخال خاطئة → تصحيح داخل الطلب/إعادة إصدار (P2)
+│   ├─ تعارض نفاذ/صك → أوقف، صحّح المصدر (خدمة 2) ثم عُد (P4)
+│   └─ بيانات منشأة/سجل → أضف/اربط السجل التجاري (إلزامي قبل الإلغاء ✅)
+│
+├─ السبب مستندات؟
+│   ├─ جودة/صيغة → أعد الرفع بمعايير القائمة (P3)
+│   ├─ مستند مفقود مشروط → أرفق المتطلب الرسمي (قائمة 02 §3)
+│   └─ مستند من طرف خارجي (مساح/مكتب/مركز صحي) → أعد التوزيع على المنفذ الصحيح
+│
+├─ السبب مالي؟
+│   ├─ فاتورة دفاع مدني معلقة → احتساب ثم سداد فوراً (P6 — إلزامي قبل الفاتورة البلدية ✅)
+│   ├─ فشل دفع/خصم → إيصال + 199040 (P5)
+│   └─ غرامة (تجديد/تسوير) → سدّد لفك العقدة ثم ناقش الاعتراض (P7/P10)
+│
+├─ السبب زمني/حالة؟
+│   ├─ طلب معلق → متابعة موثقة → 199040 → موعد أمانة → اعتراض إذا قرار (P1)
+│   ├─ ملاحظات متكررة → عالج الجذر لا الورقة (P3)
+│   └─ موعد يعطّل → ألغِ واحجز جديداً (P11)
+│
+└─ السبب قرار جهة؟ (رفض/غرامة/قرار ملاحظات لا يتغير)
+    ├─ افهم مضمون القرار وحجته من الطلب
+    ├─ عالج مادياً إن كان قابلاً للمعالجة (تصميم/مستند/نشاط)
+    └─ غير قابل للمعالجة وبالمالك اعتراض → منصة الاعتراضات الموحدة ✅ (منتج رسمي — التفاصيل الإجرائية ⚠️ تتحقق عند التنفيذ)
+قنوات موازية دائماً متاحة: 199040 · infocs@momah.gov.sa · الأمانة الافتراضية 11719 ✅ · دليل فروع الأمانات ✅
+</code></pre>
+<hr />
+<h2>3. الحالة الأولى (سلسة 🧪): مالك جديد يفتح حسابه ويصدر رخصة تسوير</h2>
+<blockquote>
+<p>بيانات افتراضية للتدريب: عبدالله — سعودي، مالك أرض فضاء 400م² في حي مشمول بالمدن المستهدفة للتسوير، لا حساب له سابقاً، لا قرار مساحي جاهز.</p>
+</blockquote>
+<p><strong>اليوم 1 — الحساب:</strong> يفحص المنسق حاجته ويحدد المنتج: «خدمة إصدار رخصة تسوير أراضي فضاء» (10538) ✅. عبدالله لا يملك حساباً → يجهّز دخوله عبر النفاذ الموحد (أبشر) 📚 (البوابة الرسمية المعتمدة نصاً في الخدمة)، ويفعّل جواله لأن التحقق من الجوال خطوة رسمية ✅. المنسق يسجل في نموذج التتبع: الصفة «مالك — نفسي».</p>
+<p><strong>اليوم 2 — التفويض والتعاقد:</strong> عبدالله يقرر أن يتقدم بنفسه (نفسي) — لا حاجة لتفويض. يتعاقد مع مكتب هندسي مصنف (متطلب رسمي ثانٍ ✅)، والمكتب يكلّف مساحاً مرخصاً بإعداد <strong>التقرير المساحي</strong> (المتطلب الرسمي الأول ✅). لا قرار مساحي قائم → المسار الرسمي يسمح للمكتب بإصدار القرار المساحي ثم الرخصة ✅ (خطوة 10 من خطوات الخدمة).</p>
+<p><strong>اليوم 3–7 — المساح وقرار:</strong> زيارة مساحية وفق بروتوكول §7.3 (تنسيق موعد بالجوال، توثيق الحدود) 🧪📚. يصدر القرار المساحي بغرض التسوير، ويظهر في حساب المكتب/المالك.</p>
+<p><strong>اليوم 8 — التقديم:</strong> عبدالله يدخل: «خدمات بلدي» → «رخصة تسوير أرض فضاء» → الاطلاع على التعليمات والإقرار بصحة المعلومات ✅ → التحقق من الجوال ✅ → تحديد نوعية المالك ومقدم الطلب ✅ → اختيار القرار المساحي ✅ → اختيار المكتب الهندسي ✅ → إرسال الطلب للمكتب ✅.</p>
+<p><strong>اليوم 9–12 — التصاميم والفاتورة:</strong> المكتب يقبل الطلب في بلدي أعمال ويرفع التصاميم والمخططات ✅ (خطوة 13 رسمية). تُصدر فاتورة السداد ✅؛ المنسق يقدّر الرسم من حاسبة الرسوم الرسمية ⚠️ ويُبلّغ عبدالله قبل السداد. عبدالله يسدد من وسائل السداد المعتمدة ✅.</p>
+<p><strong>اليوم 13–20 — الإصدار:</strong> بعد السداد تُصدر الرخصة وتُطبع ✅ (خطوتا 14–15 رسميتان) — المدة المعلنة للخدمة 10 أيام ✅. المنسق يتحقق من: نموذج سور موحد واحد للأرض ✅، عقد حاويات (طلبته الأمانة في هذا الحي) يصدره المكتب لشركة مؤهلة ✅، وأن عبدالله يفهم مسؤوليته عن سلامة السور وصيانته ✅ (نص رسمي).</p>
+<p><strong>الإقفال:</strong> أرشفة (الطلب/الفاتورة/الرخصة) + إدراج تنبيه: متابعة بدء التسوير الفعلي خلال أسبوعين لتجنب غرامة التكرار ✅ (قاعدة رسمية) + فرصة لاحقة: عند البناء مستقبلاً ← خدمة 1 (رخصة بناء) والقرار المساحي بغرض البناء.</p>
+<p><strong>دروس الحالة:</strong> الحساب عبر النفاذ ليس حاجزاً؛ الترتيب الصحيح (قرار مساحي ← مكتب ← فاتورة ← سداد) اجتنب أي ملاحظة.</p>
+<hr />
+<h2>4. الحالة الثانية (استثنائية 🧪): طلب معلّق أسبوعاً دون حركة — بروتوكول التصعيد</h2>
+<blockquote>
+<p>بيانات افتراضية: «منشأة النخبة» — مديرها سالم. طلب تجديد رخصة تجارية (10485) لنشاط غير فوري قُدّم يوم 2026-11-02، واليوم 2026-11-09 لا حركة: الحالة «تحت المعالجة» منذ الإرسال، ولا ملاحظات.</p>
+</blockquote>
+<p><strong>الخطوة 0 — تثبيت الحقائق (ال يوم نفسه):</strong> المنسق يوثق في نموذج التتبع: رقم الطلب، تاريخ الإرسال (2026-11-02)، الحالة اليوم، لقطة شاشة مؤرخة، وإشعارات SMS المستلمة ✅ (قناة رسمية). يتحقق أولاً من الفرضيات الداخلية: هل فاتورة دفاع مدني معلقة؟ (حالة رسمية معروفة ✅) — لا. ملاحظات لم تُقرأ؟ — لا. المسودة؟ — لا، الطلب مُرسل.</p>
+<p><strong>اليوم 1 من البروتوكول — متابعة رسمية داخل المنصة:</strong> تحديث «إدارة الطلبات» ✅ وتدقيق تفاصيل الطلب. لا جديد → رسالة استفسار عبر قنوات الدعم الرسمية: <strong>199040</strong> (8ص–10م أسبوعياً ✅) بأرقام الطلب والرخصة، مع طلب رقم مرجعي للبلاغ. يُسجل التاريخ والوقت واسم منسي الدعم.</p>
+<p><strong>اليوم 2 — حزمة التوثيق:</strong> إعداد ملف التصعيد: الطلب، متطلبات الخدمة المستوفاة (عقد إيجار/سلامة)، إثبات عدم وجود ملاحظات، سجل الاتصال بالدعم. هدفه: أن يتعامل أي موظف أمانة مع الحالة دفعة واحدة.</p>
+<p><strong>اليوم 3 — القناة المؤسسية الثانية:</strong> الأمانة الافتراضية (11719) ✅ — دعم عن بعد قد يكشف سبب التعليق دون زيارة. بالتوازي: التحقق من دليل فروع الأمانة ✅ لتحديد الجهة المختصة المحلية.</p>
+<p><strong>اليوم 4 — قناة الحضور الرسمية:</strong> لم يُحسم → <strong>حجز موعد إلكتروني</strong> (10541) ✅ لدى الإدارة المختصة، منقول الملف الكامل (ملف التصعيد)، مع ملاحظة القاعدة الرسمية: الموظف قد يحل المعاملة هاتفياً دون حضور ✅ — وهو ما حدث: اتصال موظف البلدية قبل الموعد كشف أن الطلب «بانتظار استيفاء تقرير سلامة» لم يظهر كملاحظة في الواجهة.</p>
+<p><strong>اليوم 5 — المعالجة الجذرية:</strong> المنشأة تستكمل <strong>تقرير فني من مكتب هندسي معتمد لدى الدفاع المدني</strong> ✅ (المتطلب الرسمي للتجديد في طبيعة نشاطها)، يُرفع، ويعود الطلب للسير. فاتورة الدفاع المدني (مستحقة) تُحتسب وتُسدد أولاً ✅ ثم الفاتورة البلدية، ويصدر المخرج، ويتحقق المنسق من «طلباتي ورخصي» ويطبع الرخصة المحدثة ✅.</p>
+<p><strong>متى كان سيصعد أبعد؟</strong> لو كان التعليق ناتجاً عن <strong>قرار</strong> (رفض/غرامة) لا عن استيفاء: الاعتراض عبر <strong>منصة الاعتراضات الموحدة</strong> ✅ (منتج رسمي) مع ملف التصعيد نفسه. ولو استمر الجمود: شكوى مؤسسية موثقة عبر قنوات الوزارة (اتصل بنا/مكتب معالي الوزير — قنوات معلنة في المنصة ✅).</p>
+<p><strong>دروس الحالة:</strong> التعليق غالباً سبب خفي واحد (فاتورة معلقة/مستند بلا ملاحظة ظاهرة)؛ القوة في <strong>السجل الزمني الموثق</strong> والتسلسل الصحيح: منصة ← 199040 ← أمانة افتراضية ← موعد ← اعتراض، ولا تكرار تقديم موازٍ أبداً (P12).</p>
+<hr />
+<h2>5. اختبار الإتقان (10 أسئلة — 6 معرفة + 4 قرار)</h2>
+<p><strong>معرفة:</strong>
+1. ما رمز بدء الخدمة لكلٍ من: إصدار رخصة تجارية، تجديدها، إلغائها؟
+2. ما الفرق الرسمي بين فاتورة الرسوم البلدية وفاتورة الدفاع المدني في طلبات الرخص التجارية، وما أثر الفاتورة الدفاعية على استكمال الطلب؟
+3. اذكر المتطلبات الرسمية الثلاثة لرخصة تسوير أرض فضاء، وقاعدة «النموذج الموحد»، ومَن المسؤول عن صيانة السور.
+4. ما نافذة تجديد الشهادة الصحية الرسمية قبل الانتهاء وبعده؟ وكيف تُتحقق صحة الشهادة الصادرة؟
+5. ما قيمة رسم إلغاء رخصة تجارية سارية، وما الشرط الذي يجب توفره في الرخصة قبل الإلغاء؟
+6. ما تكلفة حجز الموعد الإلكتروني، وما القاعدة الرسمية لتعديل موعد محجوز؟</p>
+<p><strong>قرار:</strong>
+7. مالك قدم طلباً وظهرت «بانتظار سداد رسوم الدفاع المدني». ماذا تفعل بالترتيب، ولماذا لا تنتظر الفاتورة البلدية؟
+8. طلب تجديد معلّق 10 أيام دون حركة ولا ملاحظات. رتّب خطة تصعيد يومية بالقنوات الرسمية، واذكر ما تتجنبه إطلاقاً.
+9. رخصة نشاط انتهت منذ شهر ولم يجدد صاحبها؛ يريد «مجرد التجديد». ما الرسوم الإضافية المتوقعة رسمياً، وما الذي يجب أن تعرضه عليه؟
+10. تبيّن أن اسم مالك الأرض في النفاذ لا يطابق اسمه في الصك. هل تكمل التسوير؟ ماذا تفعل حرفياً وبأي خدمة تبدأ؟</p>
+<p><strong>مفتاح الإجابات:</strong>
+1. 11010 / 10485 / 10492 ✅ (2026-11-10).
+2. فاتورتان مستقلتان؛ إذا كانت رسوم الدفاع المدني مستحقة يجب سدادها أولاً وإلا لا يكمل الطلب ولا تُصدر الفاتورة البلدية ✅.
+3. تقرير مساحي + التعاقد مع مكتب هندسي + سداد الرسوم؛ سور بنموذج واحد لا يسمح بتعدد النماذج في الأرض الواحدة؛ مالك الأرض مسؤول عن سلامة السور وصيانته ✅.
+4. 60 يوماً قبل انتهاء الصلاحية و15 يوماً بعدها؛ بالختم الرقمي والتحقق بمسح رمز QR ✅.
+5. 20 ريالاً (رسوم كشفية ثابتة لمحل أو عربة)؛ يجب إضافة السجل التجاري والتأكد أن الرخصة مرتبطة برقمه قبل الإلغاء ✅.
+6. مجانية؛ لا تعديل بعد الإرسال — الإلغاء فقط عبر شاشة «خدمة المواعيد» أو رابط SMS أو إبلاغ الموظف، ثم حجز جديد ✅.
+7. احتساب رسوم الدفاع المدني من قسم الرسوم داخل الطلب، ثم سدادها عبر البوابة الموجهة؛ لأن النظام لا يصدر الفاتورة البلدية قبل سدادها ✅.
+8. يوم 1: توثيق الحالة من «إدارة الطلبات»؛ يوم 1–2: بلاغ 199040 برقم مرجعي؛ يوم 3: الأمانة الافتراضية 11719 + تحديد الفرع المختص؛ يوم 4: حجز موعد إلكتروني بالملف الكامل؛ بعد ذلك: اعتراض عبر المنصة الموحدة إن كان الأمر قراراً. يُتجنب: تقديم طلب موازٍ، أو اعتماد وسائل غير رسمية، أو تغيير بيانات الطلب عشوائياً.
+9. غرامة مشترطة بالتأخير في التجديد (تنبيه رسمي على صفحة الخدمة ✅) تُسوّى عبر الفاتورة؛ والعرض الصحيح: تجديد فوري + تفعيل تقويم استحقاقات سنوي للمكتب.
+10. لا يُكمل؛ التعارض عيب صفة ملكية: يوقف التقديم ويبدأ بتحديث/تصحيح بيانات الصك (خدمة 2 — مسار ناجز) ثم يعود للتقديم؛ المتابعة المساحية أو التسوية القانونية إن لزم (خدمة 4/محامٍ).</p>
+<p><strong>معيار النجاح:</strong> 8/10 فأعلى (80%) — والقرارات (7–10) لا تُصح إلا بمسار رسمي كامل؛ أي إجابة تقترح قناة غير رسمية تعتبر خاطئة حتى لو نتيجتها «أسرع».</p>
+<hr />
+<h2>المصادر</h2>
+<ul>
+<li>صفحات الخدمات الرسمية المجلوبة 2026-11-10 (الروابط: README §9) — خصوصاً الحالات الرسمية المعلنة («بانتظار سداد رسوم الدفاع المدني»، قواعد الإلغاء والتجديد، غرامة التسوير).</li>
+<li>قنوات الدعم الرسمية: 199040 · infocs@momah.gov.sa · الأمانة الافتراضية 11719 · /ar/help-and-support/all — من صفحات الخدمات ✅.</li>
+<li>قالب الملاحظات والتتبع: ../../07-TEMPLATES/06-Notes-Handling-Form.md · ../../07-TEMPLATES/05-Transaction-Tracking-Form.md.</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

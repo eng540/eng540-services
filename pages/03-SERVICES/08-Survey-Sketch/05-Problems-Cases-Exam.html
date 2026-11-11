@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخدمة 8: إعداد الكروكي المساحي — المشكلات والحالات والاختبار (05-Problems-Cases-Exam) — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/08-Survey-Sketch/README.html">إعداد كروكي مساحي</a> <span class="crumb-sep">‹</span> <span>الخدمة 8: إعداد الكروكي المساحي — المشكلات والحالات والاختبار (05-Problems-Cases-Exam)</span></nav>
+    <article class="doc"><h1>الخدمة 8: إعداد الكروكي المساحي — المشكلات والحالات والاختبار (05-Problems-Cases-Exam)</h1>
+<blockquote>
+<p>إصدار 0.1 · 2026-11-10</p>
+</blockquote>
+<hr />
+<h2>1. جدول المشكلات (12 مشكلة × الأعمدة الإلزامية التسعة)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>وصف المشكلة</th>
+<th>السبب الجذري</th>
+<th>كيفية الكشف</th>
+<th>الأثر</th>
+<th>المسؤول عن المعالجة</th>
+<th>الإجراء/الحل</th>
+<th>المستندات المطلوبة</th>
+<th>متى التصعيد</th>
+<th>متى الإيقاف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>تعارض الصك مع الواقع:</strong> مساحة/أبعاد الصك تختلف عن القياس الميداني</td>
+<td>صك قديم، تسوية غير موثقة، خطأ تاريخي في الرفع القديم</td>
+<td>الخطوة 18 (جدول مطابقة)؛ فرق يظهر بالحسابات</td>
+<td>مخرج لا يصلح كإثبات؛ رفض لدى المستفيد؛ نزاع محتمل مع الجار</td>
+<td>المساح (تحليل) + المالك (قرار تجاري)</td>
+<td>وثّق الفرق بجدول؛ إن كان جوهرياً: مسار تحديث الصك (خدمة 2) عبر ناجز، أو قرار مساحي رسمي (خدمة 4 عبر بلدي ✅)</td>
+<td>الصك، جدول المطابقة، صور</td>
+<td>فرق جوهري يؤثر على ملكية/حدود</td>
+<td>المالك يرفض أي خيار معالجة → سلّم «كروكي بملاحظات» فقط أو أوقف</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>نقاط حديدية مفقودة:</strong> مسامير/علامات حدود غير موجودة</td>
+<td>إزالة أثناء تشييد، دفن بالتراب، سرقة، عمر طويل</td>
+<td>المعاينة الميدانية (خطوة 12–13)</td>
+<td>لا يمكن ربط القياس بالحد القانوني مباشرة</td>
+<td>المساح</td>
+<td>استنباط موثق من العلامات الباقية والمخطط + اقتراح تثبيت جديد بعلامات دائمة؛ وثّق منهج الاستنباط في الكروكي</td>
+<td>المخطط، صور، وصف الاستنباط</td>
+<td>استحالة الاستنباط بثقة مقبولة</td>
+<td>تعذر الاتفاق على نقاط → قناة رسمية/محامٍ</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>تجاور مكثف:</strong> مبانٍ متلاصقة وحدود مبنية لا يمكن الوصول لمساميرها</td>
+<td>أحياء قديمة بناء متراص</td>
+<td>الميدان (خطوة 12)</td>
+<td>قياس ناقص أو تقديري</td>
+<td>المساح</td>
+<td>Total Station من نقاط بعيدة متاحة 📚 + توثيق الشروط؛ ميز أبعاد «قياسية» عن «مقدرة» في الكروكي</td>
+<td>صور، سجل نقاط</td>
+<td>حاجز أمني كامل يمنع القياس</td>
+<td>لا يمكن إنتاج رفع حدود سليم → حوّل لتعريفي أو أوقف</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>إحداثيات بنظام قديم:</strong> بيانات سابقة بنظام مرجعي مختلف عن المعتمد</td>
+<td>رفع قديم قبل تحديث المراجع 📚</td>
+<td>فحص نظام الإحداثيات في الملفات (خطوة 17)</td>
+<td>إزاحة مكانية منهجية تجعل كل الأرقام مضللة</td>
+<td>المساح</td>
+<td>أعد الربط بالمرجع الحالي؛ لا تخلط الأنظمة أبداً؛ اذكر نظام الإحداثيات صراحة في الكروكي</td>
+<td>ملفات قديمة، بيانات مرجعية (علامات مرجعية GEOSA ✅)</td>
+<td>جهة مستفيدة تشترط مرجعاً معيناً يتعذر تحقيقه</td>
+<td>عدم توافق مرجعي → اسأل الجهة المستفيدة أو أوقف</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>رفع قبل تحديث الصك:</strong> عمل ميداني كامل على صك ورقي متفاوت</td>
+<td>تجاهل فحص أولي</td>
+<td>الخطوة 3</td>
+<td>إعادة العمل بعد التحديث = خسارة 💼</td>
+<td>المنسق (رصد مبكر) + المكتب</td>
+<td>أوقف قبل الحجز عند أي شك؛ حدّث الصك أولاً (خدمة 2) — قاعدة Surveying-Guide §5</td>
+<td>الصك، نتيجة تحقق ناجز ✅</td>
+<td>المالك يصر على الرفع رغم التحذير المكتوب</td>
+<td>الرفع على وثيقة غير صالحة → أوقف وحفّظ العقد</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>امتناع الجار عن السماح</strong> بقياس من جهته أو دخول حدّه</td>
+<td>توتر سابق، غياب، وفاة</td>
+<td>الميدان (خطوة 12–14)</td>
+<td>فجوة في جهة من الحدود</td>
+<td>المنسق (تنسيق) + المالك</td>
+<td>تنسيق مسبق دائماً (04-Technical §7.4)؛ عند الرفض: قياس من جهة المالك + استنباط موثق؛ التصعيد للقناة النظامية</td>
+<td>صور، محاضر زيارة، تفويض</td>
+<td>النزاع يمنع إكمال الغرض</td>
+<td>عنف/خطر → أوقف الزيارة فوراً</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>كروكي مرفوض لدى المستفيد (مرافق/جهة)</strong></td>
+<td>صيغة غير مقبولة، غياب عنصر تشترطه الجهة، أو الجهة تشترط وثيقة رسمية لا مهنية</td>
+<td>متابعة العميل (خطوة 25)</td>
+<td>تأخير طلب العميل أياماً/أسابيع 💼</td>
+<td>المنسق</td>
+<td>اسأل الجهة عن سبب الرفض واشتراطاتها الصريحة ⚠️؛ أعد الصيغة؛ إن كانت تشترط اعتماداً → قناة بلدي «إصدار تقرير مساحي» ✅</td>
+<td>رفض الجهة، اشتراطاتها، الكروكي الحالي</td>
+<td>جهة تمتنع عن توضيح سبب الرفض</td>
+<td>اشتراط يتعذر قانوناً → وجه العميل لبدائل</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>خلط في غرض المسار الرسمي</strong> (طلب بلدي بغرض خاطئ)</td>
+<td>القائمة المنسدلة للغرض تُقرأ سريعاً ✅</td>
+<td>مراجعة الطلب قبل الإرسال</td>
+<td>معاملة تعاد/تُعدّل (بلدي تسمح بتعديل القرار قبل رخصة عليه ✅)</td>
+<td>المستفيد/المكتب</td>
+<td>استخدم خدمة «تعديل قرار مساحي» قبل إصدار رخصة ✅ أو أعد التقديم بالغرض الصحيح</td>
+<td>نوع الغرض، وثيقة الملكية</td>
+<td>بعد إصدار رخصة على القرار</td>
+<td>مسار جديد يتعارض نظامياً → استشر الجهة</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>بناء متجاوز للحد مكتشف أثناء الرفع</strong></td>
+<td>بناء قديم بلا رخصة/بخطأ</td>
+<td>الخطوة 14 (فحص تعارضات)</td>
+<td>كروكي يكشف مخالفة؛ العميل قد يضغط «لا تكتبها»</td>
+<td>المساح (مهني لا يمسّ الحقيقة)</td>
+<td>وثّق التجاوز كما هو؛ توجيه العميل لمسارات التصحيح (خدمة 11) أو الاستشارة القانونية</td>
+<td>صور، قياسات، جداول</td>
+<td>ضغط من العميل لتزيين الواقع</td>
+<td>طلب تزوير صريح → أوقف ورفض مهنياً</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>خلط مسؤولية التوقيع</strong> (مكتب يريد إصدار كروكي بلا مساح مرخص)</td>
+<td>ضغط جدول/تكلفة</td>
+<td>فحص صلاحيات قبل التوقيع</td>
+<td>مسؤولية مهنية وقانونية على المكتب</td>
+<td>إدارة المكتب</td>
+<td>ألزم قاعدة: التوقيع للمساح المرخص فقط 📚؛ التعاقد مع مساح معتمد (بلدي تشترط «مكتب مصنف مساحياً» ✅)</td>
+<td>تراخيص، عقود</td>
+<td>لا يوجد مساح مؤهل بالمشروع</td>
+<td>لا توقيع → لا تسليم</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>فقدان بيانات ميدانية</strong></td>
+<td>لا نسخ احتياطي، عطل تخزين</td>
+<td>خطوة 16</td>
+<td>إعادة رفع كاملة بتكلفة 💼</td>
+<td>المساح + نظام المكتب</td>
+<td>قاعدة النسخ اليومي (Equipment-Guide §4)؛ إن فقدت: إعادة رفع سريعة قبل تغير الموقع</td>
+<td>سجل النسخ</td>
+<td>فقدان مع تغير موقع وشيك (بناء/تسوية)</td>
+<td>ظروف منعت إعادة الحصول على نقاط → إبلاغ وإعادة تسعير</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>بيانات سكني/منح لا تظهر في بلدي</strong></td>
+<td>أراضٍ ممنوحة قادمة من منصة سكني</td>
+<td>محاولة الطلب في بلدي</td>
+<td>تعقّد المسار بلا داع</td>
+<td>المنسق</td>
+<td>نص بلدي الرسمي: الطلب القادم من سكني لا يتطلب إصدار قرار مساحي في بلدي ✅ — تحقق من قناة الطلب أولاً</td>
+<td>عقد السكني، رقم الطلب</td>
+<td>الجهة تطالب بشرط يتعارض مع النص</td>
+<td>تناقض بين جهتين → قنوات دعم بلدي (199040 ✅)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. شجرة القرار (تتفرع حسب السبب — لا حل موحّد)</h2>
+<pre><code>ظهور مشكلة في كروكي/رفع مساحي
+│
+├─ هل المشكلة في «البيانات الملكية» (صك/مخطط)؟
+│   ├─ نعم
+│   │   ├─ صك ورقي قديم/متفاوت؟ ──► تحديث الصك (خدمة 2) أولاً ثم أعد الرفع
+│   │   ├─ فرق مساحة جوهري مع الواقع؟ ──► جدول مطابقة موثق
+│   │   │      └─ تحتاج اعتماداً رسمياً؟ ──► قرار مساحي عبر بلدي (خدمة 4) ✅
+│   │   └─ لا صك/نزاع ملكية؟ ──► مسار عدلي/محامٍ (خارج نطاق الكروكي)
+│   └─ لا
+│
+├─ هل المشكلة في «الميدان»؟
+│   ├─ نعم
+│   │   ├─ علامات مفقودة؟ ──► استنباط موثق + تثبيت جديد ── تعذر؟ ► تثبيت رسمي/تصعيد
+│   │   ├─ تجاور مكثف/حاجز؟ ──► Total Station من بعيد 📚 ── تعذر؟ ► كروكي تعريفي فقط
+│   │   ├─ جار ممتنع؟ ──► تنسيق جديد عبر المنسق ── رفض مستمر؟ ► قناة نظامية (4/محامٍ)
+│   │   └─ ظروف طبيعية؟ ──► إعادة حجز فورية (لا قياس في ظروف تخفض الدقة)
+│   └─ لا
+│
+├─ هل المشكلة في «المرجع/النظام»؟
+│   ├─ نظام إحداثيات قديم/مختلط؟ ──► أعد الربط بالمرجع الحالي؛ وثّق النظام في المخرج
+│   └─ الجهة تشترط مرجعاً محدداً؟ ──► تحقق من متطلبها ⚠️ قبل التسليم
+│
+├─ هل المشكلة في «القبول لدى المستفيد»؟
+│   ├─ رفض لصيغة/عنصر ناقص؟ ──► اسأل الجهة واصنع نسخة مطابقة لاشتراطها ⚠️
+│   ├─ الجهة تشترط وثيقة رسمية؟ ──► قناة بلدي «إصدار تقرير مساحي» ✅
+│   └─ أرض منح/سكني؟ ──► تحقق من قناة الطلب الأصلية (نص بلدي ✅)
+│
+└─ هل المشكلة في «النزاهة المهنية»؟
+    ├─ طلب إخفاء تجاوز/تزيين قياس؟ ──► رفض موثق + استمرار على الحقيقة
+    └─ ضغط توقيع بلا صفة؟ ──► لا توقيع إلا لمساح مرخص 📚
+</code></pre>
+<hr />
+<h2>2.5 مصفوفة التصعيد — لمن يُرفع كل نوع من المشكلات؟</h2>
+<table>
+<thead>
+<tr>
+<th>فئة المشكلة</th>
+<th>جهة التصعيد الأولى</th>
+<th>القناة</th>
+<th>وثيقة التصعيد</th>
+<th>وسم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>بيانات ملكية متفاوتة</td>
+<td>تحديث الصك (خدمة 2)</td>
+<td>ناجز/الصكوك</td>
+<td>جدول المطابقة + الصك الحالي</td>
+<td>✅ مسار عدلي</td>
+</tr>
+<tr>
+<td>حاجة لاعتماد رسمي للحدود</td>
+<td>القرار المساحي (خدمة 4)</td>
+<td>بلدي «إصدار تقرير مساحي» ✅</td>
+<td>الكروكي + ملاحظاته</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>نزاع حدود مع جار</td>
+<td>محامٍ مرخص (بعد محاولة تنسيق)</td>
+<td>قنوات قانونية</td>
+<td>الكروكي الموثق + صور + ملاحظات الجار</td>
+<td>📚</td>
+</tr>
+<tr>
+<td>رفض من شركة مرافق</td>
+<td>قسم الطلبات لدى الشركة</td>
+<td>قناة الشركة 💼</td>
+<td>الرفض المكتوب + الكروكي</td>
+<td>💼/⚠️</td>
+</tr>
+<tr>
+<td>خطأ في معاملة بلدي (غرض/بيانات)</td>
+<td>قنوات دعم بلدي</td>
+<td>الرقم الموحد 199040 ✅ / شاشة الطلب</td>
+<td>رقم الطلب</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>خلاف فني مع المكتب نفسه (جودة/توقيع)</td>
+<td>إدارة المكتب ثم الجهة الناظمة</td>
+<td>داخلي ثم شكوى مهنية</td>
+<td>عقد الأتعاب + سجل المراجعة</td>
+<td>💼/📚</td>
+</tr>
+<tr>
+<td>تنظيم مهنة المساحة/التصوير</td>
+<td>الهيئة العامة للمساحة والمعلومات الجيومكانية</td>
+<td>geosa.gov.sa وبوابة خدماتها ✅</td>
+<td>مستند الحالة</td>
+<td>✅ (تفاصيل الإجراء ⚠️)</td>
+</tr>
+</tbody>
+</table>
+<h2>2.6 مؤشرات جودة أداء مكتب المساحة في هذه الخدمة (لقياس المتابعة) 💼</h2>
+<table>
+<thead>
+<tr>
+<th>المؤشر</th>
+<th>التعريف</th>
+<th>عتبة موصى بها 🧪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>زمن من الحجز إلى الزيارة</td>
+<td>أيام العمل بين تأكيد الموعد وتنفيذه</td>
+<td>≤ 5 أيام عمل</td>
+</tr>
+<tr>
+<td>نسبة الزيارات المكتملة من أول مرة</td>
+<td>زيارات انتهت بلا عودة</td>
+<td>≥ 85%</td>
+</tr>
+<tr>
+<td>زمن التسليم بعد الميدان</td>
+<td>أيام من الرفع إلى تسليم الموقع</td>
+<td>≤ 5 أيام عمل</td>
+</tr>
+<tr>
+<td>نسبة رفض المستفيد</td>
+<td>مخرجات رُفضت لدى الجهات</td>
+<td>≈ 0% (كل رفض يفتح مشكلة 7)</td>
+</tr>
+<tr>
+<td>نسخ احتياطي في يوم الرفع</td>
+<td>مشاريع مؤرشفة في اليوم نفسه</td>
+<td>100% (قاعدة صارمة)</td>
+</tr>
+<tr>
+<td>اكتمال سجل المراجعة المستقلة</td>
+<td>مشاريع بمراجعة عين ثانية موثقة</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. الحالة الأولى (سلسة) 🧪: كروكي لأرض 300م² لمطلب مرافق</h2>
+<blockquote>
+<p>أرقام افتراضية للتدريب موسومة 🧪 / نطاقات سوقية 💼.</p>
+</blockquote>
+<p><strong>البيانات:</strong> مالك أرض سكنية 300م² في مخطط معتمد، حي مفتوح، صك إلكتروني محدث، يريد إرفاقاً لطلب توصيل كهرباء.</p>
+<p><strong>السير من البداية للنهاية:</strong></p>
+<ol>
+<li><strong>استقبال (خطوة 1):</strong> الغرض: «مرفق طلب توصيل كهرباء» — نوع مطلوب: كروكي رفع حدود بإحداثيات.</li>
+<li><strong>بيانات (خطوة 2–3):</strong> صك محدث + رقم مخطط/قطعة مطابقان → لا عائق. (لو كان صكاً ورقياً لتوقف المسار لخدمة 2.)</li>
+<li><strong>مواصفة (خطوة 4) وقرار القناة (خطوة 5):</strong> شركة الكهرباء تقبل مرفقاً مهنياً في هذه الحالة 💼 → مسار مهني مباشر، لا حاجة لقناة بلدي.</li>
+<li><strong>تسعير (خطوة 6) 🧪:</strong> أتعاب 1,200 ريال + VAT 15% = 1,380 ريال (نموذج 8.4)؛ مدة: زيارة واحدة + تسليم 3 أيام عمل 💼.</li>
+<li><strong>حجز (خطوة 8):</strong> موعد صباحي بعد يومين؛ ممكِّن = المالك؛ لا جيران بحدود مبنية؛ لا تصريح.</li>
+<li><strong>ميدان (خطوات 11–15):</strong> RTK جودة ممتازة؛ رفع 4 زوايا + نقطتا كسر؛ صور لكل مسمار؛ لا تعارضات؛ استمارة نهاية: «مكتمل».</li>
+<li><strong>معالجة (خطوات 16–18):</strong> نسخ احتياطي؛ حسابات؛ مطابقة: مساحة محسوبة ≈ المساحة بالصك بفرق هامشي ضمن الدقة المهنية 📚 → مسار «مطابق».</li>
+<li><strong>جودة وتوقيع (خطوات 20–22):</strong> مراجعة مستقلة أعادت حساب عينتين؛ توقيع المساح المرخص؛ PDF + جدول إحداثيات + DWG (طلبها مكتب التصميم المستقبلي).</li>
+<li><strong>تسليم (خطوة 23):</strong> PDF + CSV للمالك خلال 48 ساعة؛ إيصال تسليم.</li>
+<li><strong>متابعة (خطوة 25):</strong> العميل رفع المرفق لدى الشركة وطلب انطلاق؛ فرصة مسجلة: تصميم لاحق (خدمة 1) عبر المكتب.</li>
+</ol>
+<p><strong>الدرس التشغيلي:</strong> المشكلة الوحيدة المحتملة هنا كانت لولا الصك المحديث والغرض المحدد مسبقاً — كل شيء آخر روتين.</p>
+<hr />
+<h2>4. الحالة الثانية (استثنائية) 🧪: أرض حدودها متعارضة مع الجار</h2>
+<blockquote>
+<p>أرقام افتراضية للتدريب موسومة 🧪.</p>
+</blockquote>
+<p><strong>البيانات:</strong> مالك قطعة 400م²؛ صك يذكر 400م² بحدود بمسامير؛ الجار شادّ سور على خط يدخل نحو 15م² من القطعة (بحسب صورته)؛ الجار يدّعي اتفاقاً «قديم» شفهياً؛ العميل يريد البيع والتفاوض مع مشترٍ حذر.</p>
+<p><strong>السير مع نقاط القرار:</strong></p>
+<ol>
+<li><strong>استقبال وتشخيص (خطوة 1):</strong> الغرض مزدوج: توثيق + أساس تفاوض/طعن. العلم المسبق: احتمال نزاع.</li>
+<li><strong>فحص (خطوة 3):</strong> الصك سليم؛ لا قرار مساحي سابق في حساب المالك؛ خدمة «الاستعلام عن تقرير مساحي» ✅ تتحقق من وجود تقارير قديمة.</li>
+<li><strong>مواصفة وقرار قناة (خطوتا 4–5):</strong> كروكي رفع حدود + توثيق تعارض. قرار مبدئي: مسار مهني، مع تنبيه العميل أن حسم الحدود القانوني قد يحتاج لاحقاً قناة رسمية (خدمة 4) أو محامياً.</li>
+<li><strong>تعاقد وحجز (خطوتا 7–8):</strong> عقد يذكر صراحة: «توثيق الواقع كما هو، بلا حسم حقوقي» 💼؛ حجز بموافقة المالك على محاولة تنسيق الجار؛ المالك يبلغ الجار بالموعد.</li>
+<li><strong>ميدان (خطوات 11–15):</strong> الموقع مضطرب (سور كثيف) → Total Station 📚. رفع المسامير القائمة + موضع السور. الجار حضر وبقيت زيارة منضبطة؛ لم يوقّع أي إقرار لكن التوثيق الصوري كامل. استمارة الزيارة: «مكتمل بتعارض موثق».</li>
+<li><strong>معالجة ومطابقة (خطوات 16–18):</strong> جدول مطابقة: المساحة المحسوبة أقل من الصك بنحو 15م² 🧪 — فرق جوهري.</li>
+<li><strong>قرار التعارض (خطوة 19):</strong> بند شجرة القرار «تعارض صك-واقع»: الخيارات:
+   - (أ) كروكي مهني بملاحظات + جدول فروق → يصلح للتفاوض مع المشتري.
+   - (ب) تصعيد إجرائي: قرار مساحي رسمي عبر بلدي (خدمة 4) ✅ لاعتماد الحدود.
+   - (ج) تصعيد قانوني: محامٍ لإنهاء ادعاء «الاتفاق الشفهي» (اتفاق غير موثق لا يثبت 📚).</li>
+<li><strong>ما نُفّذ 🧪:</strong> أُنتج الكروكي بملاحظة صريحة «تعارض سياق جار على الحد الشمالي، التفصيل بالجدول المرفق» + سجل صور مؤرخ. العميل اختار (أ) الآن، وأجّل (ب) حتى مصير البيع — قرار تجاري له.</li>
+<li><strong>تسليم (خطوة 23):</strong> PDF + جدول الفروق + صور؛ لا DWG (المشتري لا يحتاجه). إيصال تسليم يذكر «كروكي توثيقي بملاحظات، غير معتمد حكومياً».</li>
+<li><strong>متابعة (خطوة 25):</strong> مشتري تم تفاوضه على أساس كروكي صريح؛ إن سقط البيع → الفرصة: خدمة 4 ثم خدمة 1.</li>
+</ol>
+<p><strong>الممنوعات التي رُصدت مسبقاً:</strong> لا يوقف المساح عمله لنقاش الجار (§7.4)؛ لا يخفي التعارض (بند 9 من جدول المشكلات)؛ لا يوقّع «حسماً» بلا صفة اعتماد (بند 8/10).</p>
+<p><strong>الدرس التشغيلي:</strong> في التعارض، قيمة الخدمة في <strong>الصدق الموثق + خيارات التصعيد المحددة</strong>، لا في رسم «نظيف» يجامل الوضع.</p>
+<hr />
+<h2>4.5 خلاصة زمن/تكلفة للحالتين 🧪</h2>
+<table>
+<thead>
+<tr>
+<th>المحور</th>
+<th>الحالة 1 (سلسة)</th>
+<th>الحالة 2 (تعارض)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>عدد الزيارات</td>
+<td>1</td>
+<td>1–2 (حسب تنسيق الجار)</td>
+</tr>
+<tr>
+<td>الأداة</td>
+<td>GNSS/RTK</td>
+<td>Total Station</td>
+</tr>
+<tr>
+<td>المدة الكلية 🧪</td>
+<td>~5 أيام عمل (زيارة + 3 معالجة/مراجعة)</td>
+<td>~10 أيام عمل (مع توثيق وتحليل فروق)</td>
+</tr>
+<tr>
+<td>التكلفة النسبية 🧪</td>
+<td>الأساس (1x)</td>
+<td>~2–3x من الأساس 💼</td>
+</tr>
+<tr>
+<td>المخرج</td>
+<td>كروكي نظيف + إحداثيات</td>
+<td>كروكي بملاحظات + جدول فروق + صور</td>
+</tr>
+<tr>
+<td>التصعيد</td>
+<td>لا شيء</td>
+<td>خدمة 4 أو محامٍ عند الحاجة</td>
+</tr>
+<tr>
+<td>أخطر نقطة</td>
+<td>إهمال التحقق من اشتراط الشركة</td>
+<td>إخفاء التعارض أو الدخول في جدال ميداني</td>
+</tr>
+</tbody>
+</table>
+<h2>4.6 أسئلة يطرحها العميل — أجوبة جاهزة للمنسق (عقود تعقيب) 💼</h2>
+<table>
+<thead>
+<tr>
+<th>سؤال العميل</th>
+<th>الجواب المنسق المختصر</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«كم يستغرق؟»</td>
+<td>زيارة واحدة عادة + 3–5 أيام عمل للتسليم 💼؛ يزيد بحسب الموقع والتعارضات</td>
+</tr>
+<tr>
+<td>«لماذا سعركم أعلى من فلان؟»</td>
+<td>السعر بديل عن: دقة الأداة، مراجعة مستقلة، وموثوقية يقبلكما المستفيد — اسأل ما يشمله عرضه بالضبط 💼</td>
+</tr>
+<tr>
+<td>«هل الكروكي هذا رسمي؟»</td>
+<td>كروكي مهني موقّع من مساح مرخص؛ إن احتجت وثيقة رسمية معتمدة فالمسار خدمة «إصدار تقرير مساحي» في بلدي برسومها ✅</td>
+</tr>
+<tr>
+<td>«الجار يمتنع — ماذا نفعل؟»</td>
+<td>ننسق عبرك مسبقاً؛ عند الرفض المستمر نقيس من جهتك ونوثّق، وللحسم القانوني محامٍ أو قرار مساحي 📚</td>
+</tr>
+<tr>
+<td>«الصك يقول 400 والسور يقول أقل»</td>
+<td>هذا بالضبط ما يوثقه الكروكي بجدول فروق؛ القرار بعده: تحديث/قرار رسمي/تفاوض — وكلها مسارات معلنة 📚</td>
+</tr>
+<tr>
+<td>«هل أحتاج تثبيت مسامير جديدة؟»</td>
+<td>إذا كانت العلامات مفقودة: نوصي بتثبيت دائم بعقد منفصل 💼 — يحمي أرضك مستقبلاً</td>
+</tr>
+<tr>
+<td>«أرسل لي DWG»</td>
+<td>متاح بموجب العرض (بند الملفات الإضافية) 💼</td>
+</tr>
+<tr>
+<td>«لماذا تحتاجون دخول الجار أصلاً؟»</td>
+<td>ليس شرطاً؛ لكنه يرفع دقة الحد ويمنع نزاعاً لاحقاً — قرارك 💼</td>
+</tr>
+<tr>
+<td>«هل يصلح هذا لطلب الرخصة؟»</td>
+<td>إن اشترطت الجهة وثيقة رسمية فلا — نفتح لك مسار بلدي الرسمي مباشرة ✅</td>
+</tr>
+<tr>
+<td>«رُفض مرفقي لدى الشركة»</td>
+<td>نجمع رفضهم المكتوب، نطابق الاشتراط، نعد الصيغة أو نفتح القناة الرسمية ⚠️/✅</td>
+</tr>
+</tbody>
+</table>
+<h2>4.7 خريطة ربط المشكلات بالمراحل والملفات (فهرس علاجي سريع)</h2>
+<table>
+<thead>
+<tr>
+<th>المشكلة (#)</th>
+<th>تنكشف في مرحلة (03-Workflow)</th>
+<th>علاجها المفصل في</th>
+<th>تُمنع عبر (02-Requirements)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 تعارض الصك/الواقع</td>
+<td>18 مطابقة</td>
+<td>شجرة القرار + بند 1</td>
+<td>§4.5 فحص 3</td>
+</tr>
+<tr>
+<td>2 نقاط مفقودة</td>
+<td>12–13 ميدان</td>
+<td>بند 2</td>
+<td>§3.3 بيانات سابقة</td>
+</tr>
+<tr>
+<td>3 تجاور مكثف</td>
+<td>12 ميدان</td>
+<td>بند 3</td>
+<td>— (حالة مكانية)</td>
+</tr>
+<tr>
+<td>4 نظام إحداثيات قديم</td>
+<td>17 معالجة</td>
+<td>بند 4</td>
+<td>§3.2 الإحداثيات</td>
+</tr>
+<tr>
+<td>5 رفع قبل تحديث الصك</td>
+<td>3 فحص أولي</td>
+<td>بند 5</td>
+<td>§1 البوابة الموجهة</td>
+</tr>
+<tr>
+<td>6 امتناع الجار</td>
+<td>12–14 ميدان</td>
+<td>04-Technical §7.4</td>
+<td>§4 مشروط 11</td>
+</tr>
+<tr>
+<td>7 رفض المستفيد</td>
+<td>25 متابعة</td>
+<td>بند 7</td>
+<td>§4.5 فحص 6</td>
+</tr>
+<tr>
+<td>8 غرض رسمي خاطئ</td>
+<td>23/قناة بلدي</td>
+<td>بند 8</td>
+<td>01-Platform §2.1</td>
+</tr>
+<tr>
+<td>9 تجاوز بناء</td>
+<td>14 ميدان</td>
+<td>بند 9</td>
+<td>— (واقع ميداني)</td>
+</tr>
+<tr>
+<td>10 توقيع بلا صفة</td>
+<td>22 توقيع</td>
+<td>بند 10</td>
+<td>§3.4 قاعدة صارمة</td>
+</tr>
+<tr>
+<td>11 فقدان بيانات</td>
+<td>16 تنزيل</td>
+<td>بند 11</td>
+<td>§5 checklist النسخ</td>
+</tr>
+<tr>
+<td>12 بيانات سكني/منح</td>
+<td>23 قناة</td>
+<td>بند 12</td>
+<td>01-Platform §2.3</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>استخدام الخريطة: عند وقوع أي مشكلة، ابدأ من عمود «علاجها» مباشرة — الشجرة في §2 للقرارات المركبة فقط.
+<strong>تنبيه:</strong> أي مشكلة غير مدرجة هنا تُعالج بمنطق الشجرة (§2) من جذورها: بيانات ملكية / ميدان / مرجع / قبول / نزاهة.</p>
+</blockquote>
+<h2>5. اختبار الإتقان (10 أسئلة — 6 معرفة + 4 قرار)</h2>
+<h3>أسئلة المعرفة</h3>
+<p><strong>س1:</strong> ما الجهة المالكة للعمل في خدمة «إعداد الكروكي المساحي»، وما موقع الجهات الحكومية منها؟</p>
+<p><strong>س2:</strong> عيّن الفرق التشغيلي بين الكروكي المساحي (خدمة 8) والتقرير/القرار المساحي الرسمي في بلدي (خدمة 4) من حيث: المالك، القيمة النظامية، والقناة.</p>
+<p><strong>س3:</strong> متى تُفضَّل Total Station على GNSS/RTK في هذه الخدمة، ولماذا؟</p>
+<p><strong>س4:</strong> اذكر ثلاثة عناصر إلزامية يجب أن يظهرها كروكي رفع حدود مقبول مهنياً.</p>
+<p><strong>س5:</strong> وثّق رسمياً (من بلدي): ما مدة صلاحية القرار المساحي، وماذا يحدث بعدها؟</p>
+<p><strong>س6:</strong> ما البيانات الإلزامية لخدمة «الاستعلام عن تقرير مساحي» في بلدي، وما تكلفتها ومدتها؟</p>
+<h3>أسئلة القرار</h3>
+<p><strong>س7:</strong> عميل يطلب كروكي لأرض صكها ورقي قديم ومساحتها تختلف عن المخطط. ما أول قرار تنفذه قبل أي حجز ميداني؟ ولماذا؟</p>
+<p><strong>س8:</strong> أثناء الرفع اكتشفت سور جار متجاوزاً للحد بنحو 15م²، وطلب العميل «أخفِ الملاحظة حتى يبيع الأرض». ما موقفك المهني وأي بند من جدول المشكلات يحكم؟</p>
+<p><strong>س9:</strong> شركة مرافق رفضت كروكي العميل. ما خطواتك الثلاث بالترتيب قبل أي إعادة عمل؟</p>
+<p><strong>س10:</strong> جهة مستفيدة تشترط وثيقة رسمية معتمدة لا كروكي مهني. صف المسار الكامل داخل بلدي (خدمة «إصدار تقرير مساحي») باختصار: شروطه الثلاثة الرسمية، ومساري المراجعة، والمرفق المطلوب.</p>
+<h3>مفتاح الإجابات</h3>
+<table>
+<thead>
+<tr>
+<th>س</th>
+<th>إجابة متوقعة (جوهرها)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>الجهة المالكة للعمل = المساح المرخص/مكتب المساحة (جهة مهنية خاصة) 📚؛ الجهات الحكومية مستفيدة/معتمدة حسب الاستخدام (بلدية تعتمد في قناتها ✅، المرافق تشترط وتستلم 💼، GEOSA ناظمة المعايير ✅).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>الكروكي: مالكه المساح، قيمته توثيق مهني، قناته عقد خاص. التقرير/القرار الرسمي: تعتمده البلدية عبر بلدي، له قيمة نظامية وصلاحية 3 سنوات ✅، قناته طلب بلدي برسوم ومتطلبات رسمية.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>في المواقع المظللة/بين مبانٍ عالية والحدود الداخلية المضطربة؛ لأن RTK يعتمد على الأقمار تضعف رؤيتها هناك، بينما TS مستقلة عن الأقمار بدقة زاوية/مسافة عالية 📚.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(أي ثلاثة): حدود القطعة وأبعادها؛ إحداثيات الزوايا + نظام الإحداثيات؛ الشمال؛ مقياس الرسم؛ اسم المخطط/القطعة؛ تاريخ الرفع واسم المساح وصفته والأداة 📚.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3 سنوات ✅ (نص بلدي)؛ بعد انتهائها يُقدَّم على إصدار قرار مساحي جديد لنفس الغرض ✅.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>الإلزامي: رقم التقرير المساحي (بلدي أو أمانة) + نوع هوية المالك + رقم الهوية ✅؛ التكلفة: مجانية ✅؛ المدة: فورية ✅ (تقارير جميع الأمانات).</td>
+</tr>
+<tr>
+<td>7</td>
+<td>لا حجز ميدانياً بعد؛ أول قرار: توجيه لتحديث الصك (خدمة 2) قبل الرفع — الرفع على وثيقة متفاوتة يرجّح إعادة العمل كاملة (بند 5 من الجدول؛ قاعدة Surveying-Guide §5).</td>
+</tr>
+<tr>
+<td>8</td>
+<td>الرفض المهني الموثق: يوثق التجاوز كما هو (بند 9)؛ لا تزيين ولا إخفاء — الكروكي عمل توثيقي لا تفاوضي؛ خيارات العميل: كروكي بملاحظات + جدول فروق، ثم خدمة 4 للمسار الرسمي أو محامٍ للنزاع.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>(1) اسأل الجهة عن سبب الرفض واشتراطاتها الصريحة كتابياً ⚠️؛ (2) طابق الرفض مع الكروكي: صيغة؟ عنصر ناقص؟ طبيعة الوثيقة؟؛ (3) إن كانت تشترط وثيقة رسمية → افتح قناة بلدي «إصدار تقرير مساحي» ✅ بدل إعادة العمل المهني (بند 7).</td>
+</tr>
+<tr>
+<td>10</td>
+<td>الشروط الثلاثة الرسمية ✅: مكتب هندسي مصنف مساحياً + صك محدث/عقد إسكان/وثيقة ملكية + سداد الرسوم. المساران ✅: «مراجعة من خلال المساح المعتمد (مسار سريع)» أو «مراجعة من خلال الأمانة/البلدية (مسار عادي)». المرفق: صورة وثيقة الملكية ✅. (وبعد السداد يصدر القرار ويُطبع من الحساب ✅.)</td>
+</tr>
+</tbody>
+</table>
+<h3>معيار النجاح</h3>
+<ul>
+<li><strong>نجاح:</strong> 8/10 على الأقل (80%)، <strong>شرط إضافي:</strong> الإجابة الصحيحة على س8 (النزاهة المهنية) — الخطأ فيها يُعد رسوباً في الاختبار مع أي نتيجة، لأنها خط الخدمة الأخلاقي.</li>
+</ul>
+<h2>5.5 تدريبات سريعة إضافية (مواقف دقيقة — لإعادة التدريب) 🧪</h2>
+<p><strong>ت1:</strong> عميل أرسل صورة صك عبر الواتساب وطلب زيارة «بكرة صباحاً».
+- <em>الإجابة:</em> لا حجز قبل الفحص: التحقق عبر ناجز ✅ + تسلسل فحص المستندات (02-Requirements §4.5)؛ الصورة ليست وثيقة فحص كافية، والعميل يُطلب منه النسخة الأصلية الإلكترونية.</p>
+<p><strong>ت2:</strong> جهة مرافق طلبت «كروكي بمقياس رسم 1:500 وإحداثيات بنظام معين» ⚠️.
+- <em>الإجابة:</em> أدخل الاشتراط في مواصفة الخطوة 4، وحدّد الأداة (RTK غالباً)، ووثّق نظام الإحداثيات صراحة في المخرج — عدم توافر المرجع المطلوب = تواصل مع الجهة قبل التنفيذ (بند 4 من الجدول).</p>
+<p><strong>ت3:</strong> مكتب تصميم طلب منك «كروكي مرسوم على مخططهم مباشرة بتعديلاتهم».
+- <em>الإجابة:</em> انفصل الأدوار: كروكي المساح منتج مستقل بنظام إحداثياته؛ دمج التصميم مسؤولية المكتب المصمم 📚 — تسليم إحداثيات وDWG نظيف يكفي.</p>
+<p><strong>ت4:</strong> اكتُشفت أثناء الميدان خدامة كهرباء (عمود/محول) فوق خط الحد المذكور في الصك.
+- <em>الإجابة:</em> وثّق موقعها وأبعادها في الكروكي كملاحظة (بند 14/9)؛ اشتراطات الشبكات لدى شركة الكهرباء تتحقق منها حسب المنطقة ⚠️ — لا تُصدر «حكماً» على من حق الأرض.</p>
+<p><strong>ت5:</strong> العميل يسأل: «هل الكروكي يصح بعد خمس سنوات؟»
+- <em>الإجابة:</em> لا صلاحية نظامية للكروكي 💼؛ يُحدّث عند تغير الحدود أو طلب المستفيد توثيقاً حديثاً؛ بالمقابل القرار المساحي الرسمي صلاحيته 3 سنوات ✅ — قارن في README §المخرجات.</p>
+<h2>المصادر</h2>
+<ul>
+<li>بلدي — صفحات الخدمتين ودليل المستخدم (مواضع ✅ في الجداول): تحقق 2026-11-10.</li>
+<li><a href="04-ENGINEERING/Surveying/Surveying-Guide.html">Surveying-Guide §5</a> — المخاطر المساحية الشائعة.</li>
+<li>حالتان وأرقامها: 🧪 أمثلة توضيحية؛ النطاقات: 💼.</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخدمة 13 — سير العمل التنفيذي: خوارزمية الـ25 خطوة (تقييم وإصدار تقرير سلامة المبنى) — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/13-Building-Safety-Report/README.html">إعداد تقرير سلامة المبنى</a> <span class="crumb-sep">‹</span> <span>الخدمة 13 — سير العمل التنفيذي: خوارزمية الـ25 خطوة (تقييم وإصدار تقرير سلامة المبنى)</span></nav>
+    <article class="doc"><h1>الخدمة 13 — سير العمل التنفيذي: خوارزمية الـ25 خطوة (تقييم وإصدار تقرير سلامة المبنى)</h1>
+<blockquote>
+<p>إصدار 0.1 · تاريخ التحقق: 2026-11-10
+النطاق: من استقبال العميل حتى متابعته وفتح الفرص. الخطوات الميدانية (9–14) والفحوص المعززة (15–17) مكتوبة <strong>بعمق مزدوج</strong>.
+واقع الخدمة: عمل مهني بلا منصة موحدة ✅ — القنوات الرسمية في <code>01-Platform-Steps.md</code> ⚠️. فصل الأدوار ملزم (<code>../../00-STRATEGY/Knowledge-Standards.md</code> §6): <strong>المنسق لا يفحص ولا يوقّع؛ التوقيع للمهندس صاحب صلاحية التقييم</strong>.
+المرجعية الفنية: SBC 901 (المباني القائمة) · SBC 310 (إصلاح وتأهيل المنشآت الخرسانية للمباني القائمة) · SBC 201/301/303/304/305/306/801 ✅ (قائمة كود 2024، تحقق 2026-11-10).</p>
+</blockquote>
+<hr />
+<h2>المرحلة أ — الاستقبال والتشخيص (خطوات 1–5)</h2>
+<h3>الخطوة 1: استقبال العميل وتشخيص الغرض من التقييم</h3>
+<ul>
+<li><strong>الغرض:</strong> تحديد «لماذا يريد التقرير؟» — الغرض هو الذي يحدد نطاق الفحص وعمقه وجهة الاستلام، لا العكس.</li>
+<li><strong>المنفذ:</strong> المنسق (استقبال وتشخيص) + مهندس (رأي أولي عند الغموض).</li>
+<li><strong>الأدوات:</strong> نموذج الاستقبال <code>../../07-TEMPLATES/01-Client-Intake-Form.md</code>، أسئلة موجهة: «ما الذي دفعك الآن؟ شروخ؟ مياه؟ طلب جهة؟ بيع؟ نزاع؟ كم عمر المبنى وكم دوراً؟ هل هو مشغول؟».</li>
+<li><strong>المخرج:</strong> تصنيف الحالة ضمن الغايات الخمسة: قرار ترميم (5) / قرار هدم (10) / تصحيح وضع (11) / إثبات سلامة لاستخدام أو تأمين أو بيع / ملف نزاع — وفتح ملف برقم.</li>
+<li><strong>نقاط القرار:</strong> غرض غامض («أريد ورقة») → لا تعاقد قبل تحديد الجهة المستقبِلة كتابياً. مبنى يشبه «الخطر» من وصف العميل → قلّم الأولوية إلى زيارة عاجلة وسلامة الفريق (خطوة 9–10).</li>
+<li><strong>المخاطر:</strong> غرض خاطئ = تقرير كامل يُرفض ويُعاد إعداده؛ تأخير الحالة الخطرة = خطر أرواح يتجاوز مصلحة تعاقدية 📚.</li>
+</ul>
+<h3>الخطوة 2: التحقق من الصفة والملكية وسلطة الإسناد</h3>
+<ul>
+<li><strong>الغرض:</strong> التأكد أن من يطلب التقييم مخوّل (مالك/جمهور الملكية/وكيل موثق/جهة).</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> صك + خدمات التحقق في ناجز ✅، تفويض/وكالة (02 §1 مستند 3)، إدارة الرخص في بلدي ✅ عند الحاجة.</li>
+<li><strong>المخرج:</strong> قصاصة صلاحية في الملف: اسم المخوّل، صفته، مرجع التفويض.</li>
+<li><strong>نقاط القرار:</strong> ملكية مشتركة → يكفي إسناد محدث من مشترك؟ 💼 الأحوط: توكيل يغطي جميع الأطراف أو إقرار بالحدود. مستأجر/مدير عقار → لا إسناد بلا تفويض مالك موثق.</li>
+<li><strong>المخاطر:</strong> تقرير موقّع لغير المالك يُستخدم لاحقاً في نزاع ملكية = انجرار المهندس إلى خلاف لا يعنيه 📚.</li>
+</ul>
+<h3>الخطوة 3: تحديد الجهة المستقبِلة وصياغة الغرض بمطابقتها</h3>
+<ul>
+<li><strong>الغرض:</strong> صياغة «الغرض من التقرير» بنفس لغة الطلب الرسمي — «تقرير عام يُرفض غالباً» (<code>../../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.md</code> §3).</li>
+<li><strong>المنفذ:</strong> المنسق + المكتب.</li>
+<li><strong>الأدوات:</strong> خطاب الجهة (إن وجد)، قنوات الجهات في <code>01-Platform-Steps.md</code> §3 ⚠️.</li>
+<li><strong>المخرج:</strong> فقرة «الغرض» مصوغة: «سند لطلب رخصة ترميم أمام بلدية X» / «تقييم سلامة لإشغال نشاط» / «إثبات فني في نزاع …» + قائمة النسخ.</li>
+<li><strong>نقاط القرار:</strong> عدة مستلمين → تُحدد النسخ مسبقاً بسجل نسخ (توزيعات مختلفة بصياغة، نتيجة واحدة لا تناقض 📚). جهة لا قناة معلنة لها → استعلام مسبق قبل الإصدار ⚠️.</li>
+<li><strong>المخاطر:</strong> صياغة غرض أوسع مما تطلبه الجهة تفتح تفسيرات ضدها؛ أضيق منه تفقد التقرير قيمته.</li>
+</ul>
+<h3>الخطوة 4: فحص الملف الوثائقي الأولي (صك/رخصة/مخططات/سجل صيانة)</h3>
+<ul>
+<li><strong>الغرض:</strong> بناء «صورة ما قبل الزيارة»: ما هو المفترض أن يكون عليه المبنى.</li>
+<li><strong>المنفذ:</strong> المنسق (تجميع) + المهندس (قراءة).</li>
+<li><strong>الأدوات:</strong> مستندات 02 §2 (صك، رخصة، مخططات، إشغال، صيانة، تقارير سابقة)، الخرائط الحضرية بلدي ✅.</li>
+<li><strong>المخرج:</strong> ملخص مكتبي: نوع النظام الإنشائي المتوقع، عمر تقريبي، تعديلات معلومة، تناقضات (مخطط ≠ وصف المالك).</li>
+<li><strong>نقاط القرار:</strong> لا مخططات أصلاً → علّم «تقييم انطباعي/مقارن» وسيصرّح به التقرير في حدوده 📚. صك متفاوت + غرض رسمي → أدرج تحديث الصك (2) في خطة العمل.</li>
+<li><strong>المخاطر:</strong> دخول الموقع دون قراءة الملف = أسئلة عمياء ووقت مهدور؛ الاعتماد على مخططات لا تطابق الواقع بدون التحقق = نتائج مبنية على فرضية خاطئة 📚.</li>
+</ul>
+<h3>الخطوة 5: عقد الاتفاق والتسعير وتحديد نطاق الفحص</h3>
+<ul>
+<li><strong>الغرض:</strong> تثبيت العلاقة: ماذا يُفحص، كم زيارة، ما الفحوص المشمولة/الإضافية، من يدفع ماذا، ما حدود التقرير.</li>
+<li><strong>المنفذ:</strong> المنسق (عرض سعر) + المالك (توقيع) + المكتب (قبول واعتماد).</li>
+<li><strong>الأدوات:</strong> نموذج عرض السعر (04 §6 🧪)، مرجع التسعير <code>../../05-OPERATIONS/Pricing/Pricing-Guide.md</code> 💼.</li>
+<li><strong>المخرج:</strong> اتفاق موقع: النطاق، عدد الزيارات المضمونة، سياسة الفحوص المعززة (بأمر عمل لاحق منفصل)، مواعيد التسليم، سجل النسخ.</li>
+<li><strong>نقاط القرار:</strong> اكتب صراحة: «الفحوص المعززة تُسعَّر عند الحاجة بموافقة مسبقة» — فهي المفاجأة الأغلى 💼. اكتب حد التقرير: «تقييم الحالة الظاهرة وقت الزيارة؛ لا يغطي ما خفي بلا فك تشطيبات» 📚.</li>
+<li><strong>المخاطر:</strong> اتفاق شفهي → نزاع عند طلب فحوص إضافية؛ وعد بـ«سلامة» مطلقة → مسؤولية لا يقدر عليها مهندس واعٍ.</li>
+</ul>
+<hr />
+<h2>المرحلة ب — التخطيط للفحص (خطوات 6–9)</h2>
+<h3>الخطوة 6: تجهيز حزمة الفحص المكتبي (ورقة عمل التقييم)</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل الملخص المكتبي إلى ورقة عمل: قائمة عناصر الفحص لكل مكون، ومناطق الشك المسبق.</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص + المنسق (تجهيز).</li>
+<li><strong>الأدوات:</strong> نموذج المعاينة <code>../../07-TEMPLATES/02-Property-Inspection-Form.md</code>، مستندات الملف.</li>
+<li><strong>المخرج:</strong> ورقة عمل: عناصر إلزامية (أساسات ظاهرة، أعمدة، بلاطات، ركائز/كرانيش، جدران، عزل، سلالم) + مواضع مفحوصة تفصيلياً حسب الشكوى.</li>
+<li><strong>نقاط القرار:</strong> شكوى رئيسية واحدة (مياه سطح مثلًا) لا تلغي الفحص العام — التقييم «سلامة» يغطي النظام كله ثم يعمق الموضع المشكوك 📚.</li>
+<li><strong>المخاطر:</strong> ورقة عمل عامة بلا تعميق → تقرير سطحي؛ تعميق فقط عند الشكوى → إغفال خلل آخر يقضي على غرض «سلامة» 📚.</li>
+</ul>
+<h3>الخطوة 7: إعداد خطة التقييم ومصفوفة الفحوص المحتملة</h3>
+<ul>
+<li><strong>الغرض:</strong> قرار مسبق: أي فحوص معززة محتملة (مطرقة شميدت، GPR، قلوب خرسانية، مختبر)، ولماذا، وما تكلفتها التقديرية (تُعرض على المالك الآن لا لاحقاً).</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص.</li>
+<li><strong>الأدوات:</strong> مصفوفة الفحوص (04 §2 📚⚠️)، عوامل التسعير (04 §5 💼).</li>
+<li><strong>المخرج:</strong> خطة صفحة واحدة: مراحل الزيارة، الفحوص الاحتمالية، مواضعها المرجحة، قرار «بأمر عمل».</li>
+<li><strong>نقاط القرار:</strong> مبنى عمره 25+ سنة وشروخ إنشائية ظاهرة → خطة تتضمن احتمال اختبارات خرسانية من البداية 💼📚.</li>
+<li><strong>المخاطر:</strong> عدم إبلاغ المالك المسبق بالتكاليف المحتملة → صدمة سعرية توقف التقييم نصف طريق (04 §5).</li>
+</ul>
+<h3>الخطوة 8: حجز الزيارة الميدانية والتنسيق مع الشاغلين والمالك</h3>
+<ul>
+<li><strong>الغرض:</strong> موعد يضمن وصولاً فعلياً لكل الأجزاء (سطح، دور مكسو، خزان) — «وصول متعذر» أول مشاكل هذه الخدمة (05 §1).</li>
+<li><strong>المنفذ:</strong> المنسق (حجز) + المالك (تمكين).</li>
+<li><strong>الأدوات:</strong> اتصال هاتفي موثق، رسالة تأكيد مكتوبة بالوقت والمدة ومتطلبات التمكين (فتح السطح، إخلاء غرفة، إطفاء؟).</li>
+<li><strong>المخرج:</strong> موعد مؤكد + قائمة تمكين: مفاتيح/حضور مستأجر، تشغيل إنارة السطح، إتاحة منطقة الأساسات الظاهرة.</li>
+<li><strong>نقاط القرار:</strong> مبنى مشغول بالكامل → زيارة متدرجة على جولتين بدل زيارة مزدحمة واحدة 💼📚.</li>
+<li><strong>المخاطر:</strong> زيارة بلا تمكين = فحص جزئي وتقرير ناقص أو زيارة ثانية تُهدر الميزانية؛ بروتوكول التأجيل الكامل في 04 §4.</li>
+</ul>
+<h3>الخطوة 9: تجهيز الفريق وأدوات ومتطلبات السلامة قبل التوجه</h3>
+<ul>
+<li><strong>الغرض:</strong> لا يبدأ فحص سلامة بتهديد سلامة الفاحص — المبنى المشكوك فيه قد يكون خطراً فعلياً.</li>
+<li><strong>المنفذ:</strong> المهندس + مرافق (المنسق يوثق).</li>
+<li><strong>الأدوات:</strong> قائمة الأدوات (04 §3): كاميرا بتاريخ، مقياس ليزر، شريط قياس، فانوس، سلّم آمن، قفازات، خوذة وحذاء أمان عند الهياكل المتدهورة، نموذج المعاينة.</li>
+<li><strong>المخرج:</strong> الفريق مجهزاً + خطة دخول: توثيق الواجهات من الشارع أولاً، ثم الدخول.</li>
+<li><strong>نقاط القرار:</strong> مؤشرات خطر ظاهرة قبل الدخول (عمود متفحم مكشوف، جدار منفصل بصلب بارز، ميل ظاهر) → <strong>لا دخول منطقة الخطر</strong>؛ يكفي توثيق خارجي معلن، والتصنيف «خطر» يُبنى عليه مع فحص محدود 📚.</li>
+<li><strong>المخاطر:</strong> دخول بناء منهار جزئياً «لأخذ نظرة» = أخطر خطأ ممكن في هذه الخدمة 📚.</li>
+</ul>
+<hr />
+<h2>المرحلة ج — الفحص الميداني المفصل (خطوات 10–14) — عمق مزدوج</h2>
+<h3>الخطوة 10: الزيارة الإلزامية — المعاينة الأولية (الشكل العام والسلامة)</h3>
+<ul>
+<li><strong>الغرض:</strong> قراءة المبنى كمنظومة قبل تفصيل العناصر: ميل؟ هبوط؟ انفصال مكونات؟ استخدمات غير موثقة (أدوار مضافة)؟</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص (الأساس) + المرافق (التوثيق).</li>
+<li><strong>الأدوات:</strong> كاميرا، ليزر مسافة، نظرة منظورية من نقاط مرجعية ثابتة، نموذج المعاينة.</li>
+<li><strong>المخرج:</strong> تقييم أولي مكتوب على النموذج: الشكل العام، الواجهات، السطح، أعداد الأدوار الفعلية مقابل الرخصة، ظواهر الهبوط (شقوق مائلة بالفتحات، انفصال عن الجار، تدرج الشروخ بالأدوار).</li>
+<li><strong>نقاط القرار:</strong> <strong>الزيارة الميدانية إلزامية دائماً</strong> 📚 — لا يصدر تقرير سلامة من المكتب بلا زيارة (صور العميل للتسعير الأولي فقط). أدوار مضافة بلا رخصة → تُوثق كحقيقة في التقرير وتؤثر على التصنيف.</li>
+<li><strong>المخاطر:</strong> الانشغال بالشكوى الرئيسية يجعل المعاينة العامة سطحية؛ نصف مفاجآت التقييم تُكتشف في «النظرة الشاملة» 📚.</li>
+<li><strong>عمق إضافي — بروتوكول المعاينة الأولية:</strong> (1) صور 4 واجهات من الشارع أولاً؛ (2) سجّل وقت البدء والانتهاء؛ (3) اطلب من المالك سرد «تاريخ الشكوى» ثم تحقق منه بعينك لا بكلامه؛ (4) ملاحظة الجوار: حفر مجاورة؟ هدم مجاور حديث؟ (غالب سبب خارجي للشروخ) 📚.</li>
+</ul>
+<h3>الخطوة 11: الفحص البصري المفصل — الأساسات والظواهر الأرضية</h3>
+<ul>
+<li><strong>الغرض:</strong> اكتشاف أخطر جنس من العيوب: هبوط الأساسات أو مشكلات التربة.</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص.</li>
+<li><strong>الأدوات:</strong> قياس عرض الشروخ (مقر/بطاقة معايرة 📚)، ليزر للاستواء الظاهري، صور مرجعية، منارات الجار/الحدود كمرجع بصري.</li>
+<li><strong>المخرج:</strong> جدول ظواهر: شروخ قاعدية خارجية (سفلية باتجاه الحواف)، شقوق أرضيات مداخلة بالأرضية الحقيقية (لا البلاط)، انفصال ملحقات مضافة عن الأساس الأصلي، مناسيب مداخل مقارنة بالشارع.</li>
+<li><strong>نقاط القرار:</strong> ظواهر هبوط نشطة (شروخ حديثة حوافها حادة، زجاج متشقق بطرف متدرج) → عمّق فوراً: ارجع للتاريخ (متى بدأت؟)، راقب الحاجة إلى قياسات إعادة، وفكّر بالفحوص المعززة (خطوة 15) 📚.</li>
+<li><strong>المخاطر:</strong> رطوبة القاعدة وحدها ليست دليلاً هبوطاً — لكنها عدوٌ للأساس مع الوقت؛ لا تجعل «هناك مياه» تصبح «الأساس فاشل» ولا العكس 📚.</li>
+</ul>
+<h3>الخطوة 12: الفحص البصري المفصل — الأعمدة والبلاطات والركائز (النظام الحامل)</h3>
+<ul>
+<li><strong>الغرض:</strong> فحص عناصر الحمل — جوهر قرار «سليم/ترميم/خطر».</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص.</li>
+<li><strong>الأدوات:</strong> مطرقة خفيفة (فحص طنين/تفحّم 📚)، شق مواضع التشطيب الضعيف فقط بإقرار المالك (15)، كاميرا بمصباح، مقر عرض شروخ.</li>
+<li><strong>المخرج:</strong> جدول لكل موضع: نوع العيب (شرخ عمودي/مائل/قفص شبكي، تقشير غطاء، صدأ حديد ظاهر، هبوط كرة بلاطة، تشوه)، عرض الشرخ (مم)، طوله، الموقع المرجعي (عمود رقم…).</li>
+<li><strong>نقاط القرار:</strong> شروخ عناصر الحمل بعرض واضح أو تقشر بحديد ظاهر أو حديد مقطوع → علامة إنشائية جوهرية: عمّق بالفحوص المعززة وارفع التصنيف المحتمل 📚. شروخ تشطيب (هداير حوائط جبس، ألوان) لا تُحسب إنشائياً دون استبعاد ما تحتها 📚.</li>
+<li><strong>المخاطر:</strong> التسرع بحكم من صورة واحدة (عمود واحد) دون مسح النظام؛ وتجاهل أن «الخطر» لا يُقرر بالمظهر — يُقرر بتحليل (خطوة 17) 📚.</li>
+<li><strong>عمق إضافي — محكات ميدانية عملية 📚:</strong> (1) عمود بدائرة فارغة عند طرقه قد يعني تفككًا داخليًا → مرشح GPR؛ (2) صدأ حديد ظاهر بقطر يشعور يدل على فقد غطاء جوهري → مرشح قلب/اختبار مختبر؛ (3) بلاطة بهبوط ظاهر بالعين → قياس ارتفاع بنقاط مقارنة؛ (4) ركيزة/كرانيش: انفصال أو تدلي صلب التسليح → وثّق فوراً.</li>
+</ul>
+<h3>الخطوة 13: الفحص البصري المفصل — الجدران والعزل والمياه</h3>
+<ul>
+<li><strong>الغرض:</strong> عزل فاشل ومياه تسرب = العامل الأسرع في تدهور العناصر الحاملة؛ ودروها «مخفي» داخل السقف.</li>
+<li><strong>المنفذ:</strong> المهندس + المرافق (توثيق).</li>
+<li><strong>الأدوات:</strong> كاميرا، مقياس رطوبة محمول (اختياري 💼)، فحص السطح (عزل، ميل، فتحات تصريف، مواسير فاقعة).</li>
+<li><strong>المخرج:</strong> جدول: مواضع تسرب/بقع/تملح، حالة عزل السطح (فاشل/سليم/متوسط عمر)، حالة العزل الرأسي/الحمامات، حالة المماسك (جدران طوب: شروخ ماسورية؟ تفكك؟)، حالة السلالم والحمايات.</li>
+<li><strong>نقاط القرار:</strong> عزل سطح فاشل + بقع قاعدة أعمدة متكررة → التوصية الصيانة العاجلة قبل أن تصبح إنشائية (أولوية 1 في 19) 📚.</li>
+<li><strong>المخاطر:</strong> تقليل شأن «المياه» لأنها ليست «إنشائية» — المياه هي المحوّل الأشهر من «يحتاج ترميم» إلى «خطر» عبر سنوات قليلة 📚.</li>
+</ul>
+<h3>الخطوة 14: القياسات والتوثيق — خرائط الشروخ والمستويات والصور المرقمة</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل الملاحظة إلى أرقام قابلة للمقارنة والتحكيم لاحقاً.</li>
+<li><strong>المنفذ:</strong> المهندس + المنسق (مساعد توثيق).</li>
+<li><strong>الأدوات:</strong> ليزر مسافة، متر، بطاقات ترقيم للصور، مخطط تخطيطي يدوي (كروكي بالموقع).</li>
+<li><strong>المخرج:</strong> (1) كروكي موقع يحدد مواضع العيوب بأرقام مرجعية؛ (2) جدول شروخ (موضع/نوع/عرض مم/طول/اتجاه)؛ (3) صور مرقمة مرتبطة بالجدول؛ (4) قياسات استواء ظاهرية عند الحاجة (ليست مساحة معتمدة — لليافطة المساحية إذا لزم بالمساح، خدمة 8).</li>
+<li><strong>نقاط القرار:</strong> شروخ تحتاج مراقبة تطور → ثبّت «علامات مراقبة» (شمع/صمغ وشرط تاريخ) وحدد موعد إعادة زيارة 📚.</li>
+<li><strong>المخاطر:</strong> صور بلا أرقام مرجعية تُرفض من الجهات وتفقد الحجية (<code>Technical-Reports-Guide.md</code> §3: «صور موثقة وواضحة + أرقام مرجعية») 💼/📚.</li>
+</ul>
+<hr />
+<h2>المرحلة د — الفحوص المعززة والتحليل (خطوات 15–17) — عمق مزدوج</h2>
+<h3>الخطوة 15: قرار الحاجة إلى الفحوص المعززة</h3>
+<ul>
+<li><strong>الغرض:</strong> ليس كل تقييم يحتاج اختبارات؛ القرار يُبنى على: هل بصري/قياسي يكفي للتصنيف الآمن؟ هل النتيجة ستتغير بالفحوص؟</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص (قرار) + المالك (موافقة مالية).</li>
+<li><strong>الأدوات:</strong> مصفوفة الفحوص (04 §2)، نتائج الخطوات 11–14.</li>
+<li><strong>المخرج:</strong> قرار موثق: (أ) لا حاجة — التقييم البصري كافٍ (غالب المباني سليمة/شبه سليمة 📚)؛ (ب) حاجة محدودة (اختبار خرسانة موضعي)؛ (ج) حاجة موسعة (GPR + قلوب + مختبر).</li>
+<li><strong>نقاط القرار:</strong> حالة إنشائية جوهرية + قرار هدم/ترميم مكلف معلّق على التقرير → الجواب غالباً (ب)/(ج) لأن قوة الدليل تتطلب 📚. حالة «سليم» واضحة بلا شكوك → (أ)؛ لا تبيع فحوصاً لضمان «امتلاء الفاتورة» 💼.</li>
+<li><strong>المخاطر:</strong> فحوص بلا مواضع مبررة = تكاليف بلا قيمة قرار؛ وأيضاً الامتناع عن فحص ضروري خوفاً على السعر = تقرير ضعيف الحجية 📚.</li>
+</ul>
+<h3>الخطوة 16: تنفيذ الفحوص المعززة (📚⚠️)</h3>
+<ul>
+<li><strong>الغرض:</strong> إثبات قياسي لخصائص المواد/العناصر حيث البصري غير كافٍ.</li>
+<li><strong>المنفذ:</strong> فريق متخصص/مختبر معتمد 💼⚠️ بإسناد من المكتب المفحوص — المنسق ينسق ولا ينفذ.</li>
+<li><strong>الأدوات والفحوص الشائعة 📚:</strong> مطرقة شميدت (مؤشر مقاومة سطحية)، عينات قلوب خرسانية (Core) للمختبر، رادار اختراق الأرضي GPR (تسليح/فراغات)، اختبارات كربنة/كلوريدات (تدهور حديد)، قياسات استواء موسعة (مساح مرخص — خدمة 8)، اختبار حمل/رصد هبوط (حالات خاصة).</li>
+<li><strong>المخرج:</strong> نتائج رسمية من مصدرها مع المواضع المرسومة على الكروكي (مستند 12 في 02).</li>
+<li><strong>نقاط القرار:</strong> مواضع القلوب تُختار هندسياً (عناصر حاملة مشكوك) — لا في أماكن تُجرّح المبنى بلا داعٍ؛ أذونات الكسر/التخريم تُؤخذ من المالك كتابياً (مستند 15) 📚.</li>
+<li><strong>المخاطر:</strong> ⚠️ اعتماد المختبرات وشهادات الفنيين وطرق الاختبار المعتمدة تفاصيل غير متحققة — التحقق قبل الإسناد (فجوة مسجلة). جروح التخريم بلا إعادة صب/معالجة مقبولة = فحص يُخلّ بما يفحصه 📚.</li>
+</ul>
+<h3>الخطوة 17: التحليل الفني والمطابقة بالكود</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل النتائج إلى حكم: هل العنصر/النظام يحقق متطلبات الكود/الاستخدام؟</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص (+ مراجع داخلي عند الحالات المعقدة).</li>
+<li><strong>الأدوات:</strong> SBC 901 (المباني القائمة) · SBC 310 (إصلاح وتأهيل المنشآت الخرسانية للمباني القائمة) · SBC 301 (الأحمال) · SBC 303 (التربة والأساسات) · SBC 304/305/306 (خرسانة/طوب/فولاذ) · SBC 801 (الحماية من الحرائق) عند العناصر ذات الصلة ✅ — نصوص كود البناء الموثقة لا تُقتبس من الذاكرة: الرجوع لنص الجزء المتاح عند الاقتباس المباشر ⚠️ (النسخ الكاملة تجارياً عبر منصة المركز).</li>
+<li><strong>المخرج:</strong> تحليل مرقم: لكل عيب — سببه المرجح، أثره على الحمل/الاستخدام، فئته.</li>
+<li><strong>نقاط القرار:</strong> خياران فنيان متقاربان (تقوية مقابل استبدال) → التقرير يعرض الخيارين بآثار كل منهما ويترك قرار المالك/المصمم اللاحق 📚.</li>
+<li><strong>المخاطر:</strong> تحليل خارج كود بلا مرجع = رأي شخصي قابل للطعن؛ اقتباس نص كود لا ينطبق على الحالة = انهيار المصداقية أمام جهة مراجعة 📚.</li>
+</ul>
+<hr />
+<h2>المرحلة هـ — التصنيف والتقرير (خطوات 18–21)</h2>
+<h3>الخطوة 18: تصنيف الحالة النهائي (سليم / يحتاج ترميم / خطر)</h3>
+<ul>
+<li><strong>الغرض:</strong> نتيجة واحدة صريحة يمكن بناء قرار إداري عليها.</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص.</li>
+<li><strong>الأدوات:</strong> محكات التصنيف (04 §1-ج) + نتائج التحليل.</li>
+<li><strong>المخرج:</strong> تصنيف لكل عنصر + تصنيف إجمالي، مع تعريفات مكتوبة داخل التقرير: «سليم: لا عيوب مؤثرة؛ صيانة دورية» · «يحتاج ترميم: عيوب معالجة محددة ضمن جدول أولويات» · «خطر: خطر حقيقي على الأرواح/الملكية يوجب إجراءً فورياً» 📚.</li>
+<li><strong>نقاط القرار:</strong> التصنيف «خطر» يفتح فوراً إجراءات الحالة «ب» (إبلاغ رسمي ⚠️ — 05 §4) بلا انتظار تسليم طويل.</li>
+<li><strong>المخاطر:</strong> «تصنيف مطيّع» للعميل (خطر → يحتاج صيانة) = أخطر جريمة مهنية في هذه الخدمة — السيناريو الأخلاقي معالجته في 05 §2-د 📚.</li>
+</ul>
+<h3>الخطوة 19: صياغة التوصيات مرتبة بالأولوية</h3>
+<ul>
+<li><strong>الغرض:</strong> توصيات تنفيذية: ماذا، بأي ترتيب، بمن يسندها.</li>
+<li><strong>المنفذ:</strong> المهندس المفحوص.</li>
+<li><strong>الأدوات:</strong> خيارات المعالجة (ترميم سطحي/إنشائي وفق SBC 310 ✅ كمرجع تصنيفي، صيانة وقائية، مراقبة زمنية).</li>
+<li><strong>المخرج:</strong> جدول توصيات: الأولوية 1 (فوري/سلامة) · 2 (قريب/يمنع تدهوراً) · 3 (مخطط/صيانة دورية) + لكل توصية: الجهة المنفذة المتوقعة (مقاول معالجة/مكتب مصمم لاحق) + ما يفتحه من خدمات (5/10/11).</li>
+<li><strong>نقاط القرار:</strong> توصية إنشائية معقدة (تقوية أعمدة) → التقرير يوصي «بتصميم تفصيلي لمكتب هندسي» — لا يصمم هو التقييم بغير إسناد (فصل أدوار) 📚.</li>
+<li><strong>المخاطر:</strong> توصيات فضفاضة («تحسين الحالة») لا يمكن للجهة أن تعتمد عليها (<code>Technical-Reports-Guide.md</code> §4-4) 💼/📚.</li>
+</ul>
+<h3>الخطوة 20: كتابة التقرير بالقالب الموسع</h3>
+<ul>
+<li><strong>الغرض:</strong> تقرير يصمد أمام مراجعة الجهة/الخبير المقابل.</li>
+<li><strong>المنفذ:</strong> المهندس + المنسق (التجميع والتشكيل).</li>
+<li><strong>الأدوات:</strong> القالب الموسع (04 §6) المبني على القالب العام (<code>Technical-Reports-Guide.md</code> §2).</li>
+<li><strong>المخرج:</strong> مسودة التقرير كاملة: ترويسة ومرجع → بيانات العقار → مقدم الطلب والتفويض → الغرض → المنهجية والفحوص → النتائج (جداول + صور مرقمة + كروكي) → التحليل والمرجعية → التصنيف → التوصيات بالأولوية → الإقرارات والتوقيعات وسجل النسخ → <strong>حدود التقرير</strong>.</li>
+<li><strong>نقاط القرار:</strong> غرض رسمي → مطابقة مصطلحات الطلب الحرفية. عدة نسخ → كل نسخة تذكر مستلمها في الترويسة (لا نسخة «عامة») 📚.</li>
+<li><strong>المخاطر:</strong> إغفال «حدود التقرير» = مصيدة مسؤولية (حماية مهنية — القالب العام §10) 📚.</li>
+</ul>
+<h3>الخطوة 21: المراجعة الداخلية والتوقيع والإقرار بالحدود</h3>
+<ul>
+<li><strong>الغرض:</strong> ضبط جودة مهني قبل الخروج — توقيع واحد على مسودة غير مراجعة مخاطرة.</li>
+<li><strong>المنفذ:</strong> مهندس مراجع/مدير فني (مراجعة) → المهندس المفحوص (توقيع) → اعتماد داخلي بالمكتب.</li>
+<li><strong>الأدوات:</strong> قائمة تدقيق التقرير (02 §4)، قالب الملاحظات الداخلية.</li>
+<li><strong>المخرج:</strong> تقرير موقّع/مختوم + إقرار توقيع (الاسم، الصفة المهنية، التاريخ) + أرشيف رقمي.</li>
+<li><strong>نقاط القرار:</strong> اختلاف جوهري بين الفاحص والمراجع → يُحسم قبل الطباعة بقرار أرفع صلاحية، ولا يخرج تقريران مختلفان 📚.</li>
+<li><strong>المخاطر:</strong> توقيع منسق أو إصدار «صورة للتقرير» غير موقعة تخرج للجهات = فقدان القيمة كلياً (<code>Technical-Reports-Guide.md</code> §4-5) 💼.</li>
+</ul>
+<hr />
+<h2>المرحلة و — التسليم والمتابعة (خطوات 22–25)</h2>
+<h3>الخطوة 22: تسليم العميل وشرح النتائج</h3>
+<ul>
+<li><strong>الغرض:</strong> أن يفهم المالك تصنيفه وتوصياته ولوائحه — لا مجرد استلام PDF.</li>
+<li><strong>المنفذ:</strong> المهندس (الشرح الفني) + المنسق (التسليم الإجرائي).</li>
+<li><strong>الأدوات:</strong> نموذج التسليم <code>../../07-TEMPLATES/07-Delivery-Form.md</code>، سجل النسخ.</li>
+<li><strong>المخرج:</strong> استلام موقّع + شرح: معنى التصنيف، أولوية كل توصية، ما يفتحه منها.</li>
+<li><strong>نقاط القرار:</strong> تصنيف «خطر» → الشرح يتضمن واجب الإجراء الفوري ومسار الإبلاغ (خطوة 23) بلا مساومة 📚. رفض المالك النتيجة → معالجة التضارب في خطوة 24.</li>
+<li><strong>المخاطر:</strong> تسليم بلا شرح → تنفيذ خاطئ للتوصيات؛ تسليم نسخة رقمية متحررة من القيود → تحرير وتزوير لاحق 📚.</li>
+</ul>
+<h3>الخطوة 23: تقديم التقرير للجهة المستقبِلة ومتابعتها ⚠️</h3>
+<ul>
+<li><strong>الغرض:</strong> إدخال التقرير في القناة الرسمية المحددة (ترميم/هدم/تصحيح وضع/دفاع مدني/تأمين/قضاء).</li>
+<li><strong>المنفذ:</strong> المنسق (تقديم ومتابعة) + المالك (يوقع بالنيابة عنه إن لزم).</li>
+<li><strong>الأدوات:</strong> بلدي للمعاملات اللاحقة ✅ (<code>01-Platform-Steps.md</code> §2.2)، قنوات الجهات ⚠️، نموذج تتبع <code>../../07-TEMPLATES/05-Transaction-Tracking-Form.md</code>.</li>
+<li><strong>المخرج:</strong> رقم معاملة/مرجع للجهة + حالة التتبع.</li>
+<li><strong>نقاط القرار:</strong> الحالة «ب» (مبنى خطر ومالك رفض الإخلاء) → الإبلاغ الرسمي مسار إلزامي مستقل: قنوات البلدية/الدفاع المدني ⚠️ مع توثيق التقرير ووسيلة الإبلاغ — التفصيل في 05 §4.</li>
+<li><strong>المخاطر:</strong> متابعة سلبية = تقرير يرقد بلا قرار؛ تقديم غير مطابق لاشتراطات القناة = ملاحظات وإعادة ⚠️.</li>
+</ul>
+<h3>الخطوة 24: معالجة الملاحظات والتضارب والطعون (والسيناريو الأخلاقي)</h3>
+<ul>
+<li><strong>الغرض:</strong> إدارة الرد على: ملاحظات الجهة، تقييم مهني مضاد، اعتراض المالك.</li>
+<li><strong>المنفذ:</strong> المهندس (فنياً) + المنسق (إجرائياً).</li>
+<li><strong>الأدوات:</strong> شجرة قرار التضارب (05 §2-ج)، نموذج معالجة الملاحظات <code>../../07-TEMPLATES/06-Notes-Handling-Form.md</code>.</li>
+<li><strong>المخرج:</strong> رد موثق: توضيح/تصحيح/تقييم تكميلي، أو رفض موثق للتطالب غير المبرر.</li>
+<li><strong>نقاط القرار (السيناريو الأخلاقي — الحاسم):</strong> طلب العميل «طباعة تقرير سليم» مغايراً للنتيجة → <strong>رفض موثق فوري</strong>: يُثبت بالكتابة، ويُسلَّم العميل تقريره الحقيقي، ويُحفظ سجل الطلب المرفوض — واجب مهني لا خيار (<code>../../00-STRATEGY/Knowledge-Standards.md</code>؛ والمعالجة الكاملة في 05 §2-د) 📚.</li>
+<li><strong>المخاطر:</strong> تحيّز تقييم مضاد دون فحص مستقل؛ تفاوت نسخ من التقرير تخرج بلا سجل نسخ.</li>
+</ul>
+<h3>الخطوة 25: الأرشفة ومتابعة العميل وفتح الفرص</h3>
+<ul>
+<li><strong>الغرض:</strong> إغلاق الملف وتحويل التقرير إلى بذور خدمات لاحقة.</li>
+<li><strong>المنفذ:</strong> المنسق.</li>
+<li><strong>الأدوات:</strong> ملف الأرشيف (تقرير + صور + فحوص + مراسلات برقم المعاملة)، قائمة متابعات.</li>
+<li><strong>المخرج:</strong> أرشيف مكتملاً + خطة متابعة: إن وصّت التوصية 1/2 → عرض إسناد مسار الترميم (5) أو الهدم (10) أو التصحيح (11) 💼، وإن كانت صيانة → متابعة بعد فترة معقولة (إعادة تقييم/علامات المراقبة) 📚.</li>
+<li><strong>نقاط القرار:</strong> العميل رفض التنفيذ بعد تصنيف «يحتاج ترميم» → أرشيف يوثق الإبلاغ بالتوصية (حماية مهنية مستقبلية) 📚.</li>
+<li><strong>المخاطر:</strong> أرشيف ناقص = لا دفاع عند نزاع لاحق؛ لا متابعة = عميل يفقد القيمة التي أنفذها 💼.</li>
+</ul>
+<hr />
+<h2>مخطط التدفق النصي (فروع رئيسية)</h2>
+<pre><code>استقبال وتشخيص الغرض (1) ← صلاحية الإسناد (2) ← صياغة الغرض ومستلمي النسخ (3)
+        │
+        ▼
+فحص مكتبي (4) → اتفاق ونطاق وتسعير (5) → ورقة عمل (6) → خطة تقييم وفحوص محتملة (7)
+        │
+        ▼
+حجز زيارة مؤكدة (8) → تجهيز أدوات وسلامة الفريق (9)
+        │
+        ▼
+زيارة إلزامية: معاينة أولية (10) → أساسات (11) → عناصر الحمل (12) → جدران وعزل (13) → قياسات وتوثيق (14)
+        │
+        ▼
+قرار فحوص معززة؟ (15) ── لا ──→ تحليل بالكود (17)
+        │ نعم
+        ▼
+تنفيذ الفحوص (16) ─────────→ تحليل بالكود (17)
+        │
+        ▼
+تصنيف نهائي (18) ── سليم ────→ تقرير + توصيات صيانة (19–21)
+        │ يحتاج ترميم           │ خطر
+        ▼                       ▼
+توصيات ترميم بالأولوية    إجراء فوري + مسار الإبلاغ الرسمي ⚠️ (23)
+        ▼
+كتابة التقرير (20) → مراجعة وتوقيع (21) → تسليم وشرح (22)
+        │
+        ▼
+تقديم للجهة ومتابعة (23) → ملاحظات/تضارب/رفض أخلاقي (24) → أرشفة وفرص (25)
+</code></pre>
+<h2>جدول «من ينفذ ماذا» (RACI مبسط)</h2>
+<table>
+<thead>
+<tr>
+<th>الخطوات</th>
+<th>المالك</th>
+<th>المنسق</th>
+<th>المهندس المفحوص</th>
+<th>مراجع داخلي</th>
+<th>مختبر/فريق خارجي</th>
+<th>الجهة المستقبِلة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–3</td>
+<td>يوضح الغرض</td>
+<td>R</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>يوفر المستندات</td>
+<td>R</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>يوقع</td>
+<td>R</td>
+<td>C (نطاق)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6–7</td>
+<td>—</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>يمكّن الوصول</td>
+<td>R (حجز)</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10–14</td>
+<td>حسب الحاجة</td>
+<td>C (توثيق مساعد)</td>
+<td><strong>R/A</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>15</td>
+<td>يعتمد مالياً</td>
+<td>C</td>
+<td><strong>R/A</strong></td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16</td>
+<td>يعتمد الموضع</td>
+<td>C</td>
+<td>R</td>
+<td>—</td>
+<td><strong>R (تنفيذ)</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>17–19</td>
+<td>—</td>
+<td>—</td>
+<td><strong>R/A</strong></td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>20–21</td>
+<td>—</td>
+<td>C (تجميع)</td>
+<td>R</td>
+<td><strong>C (مراجعة)</strong></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>22</td>
+<td>يستلم</td>
+<td>R</td>
+<td>A (شرح)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>23</td>
+<td>يفوض الرسمي</td>
+<td>R</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td><strong>المعتمِد ⚠️</strong></td>
+</tr>
+<tr>
+<td>24</td>
+<td>يعبّر</td>
+<td>R</td>
+<td>A (قرار فني)</td>
+<td>C</td>
+<td>—</td>
+<td>يرد</td>
+</tr>
+<tr>
+<td>25</td>
+<td>—</td>
+<td>R</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>R ينفذ · A مسؤول نهائي · C يُستشار. المنسق لا يحمل A فنياً في أي خطوة؛ المهندس لا يُسند له R إجرائياً بلا داعٍ (تقسيم نظيف للأدوار).</p>
+</blockquote>
+<h2>المصادر</h2>
+<ul>
+<li>المركز السعودي لكود البناء — كود 2024 وقائمة الأجزاء: https://www.sbc.gov.sa/ar/BC/Pages/BuildingCode/BC.aspx?year=2024 (تحقق 2026-11-10) ✅.</li>
+<li>كتالوج بلدي (غياب خدمة رسمية موحدة): https://balady.gov.sa/ar/all-services (تحقق 2026-11-10) ✅.</li>
+<li>دليل التقارير الفنية (القالب العام ومعايير القبول): <code>../../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.md</code> ✅ (مستودع).</li>
+<li>نموذج فحص العقار ونماذج التشغيل: <code>../../07-TEMPLATES/README.md</code> ✅ (مستودع).</li>
+<li>فصل الأدوار: <code>../../00-STRATEGY/Knowledge-Standards.md</code> §6 ✅ (مستودع).</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

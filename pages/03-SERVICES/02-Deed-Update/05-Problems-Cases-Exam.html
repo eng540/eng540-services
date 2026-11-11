@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحديث الصكوك — المشكلات والحالات والاختبار (05) — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/02-Deed-Update/README.html">تحديث الصكوك</a> <span class="crumb-sep">‹</span> <span>تحديث الصكوك — المشكلات والحالات والاختبار (05)</span></nav>
+    <article class="doc"><h1>تحديث الصكوك — المشكلات والحالات والاختبار (05)</h1>
+<blockquote>
+<p>إصدار 0.1 · تاريخ التحقق الإلكتروني: 2026-11-10
+الوسوم: ✅ متحقق · 📚 معرفة مهنية · 💼 ممارسة تجارية · ⚠️ يحتاج تحقق · 🧪 مثال توضيحي (بيانات افتراضية للتدريب).</p>
+</blockquote>
+<hr />
+<h2>1. جدول المشكلات (12 مشكلة — الأعمدة التسعة إلزامية)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>وصف المشكلة</th>
+<th>السبب الجذري</th>
+<th>كيف تُكشف</th>
+<th>الأثر</th>
+<th>المسؤول عن المعالجة</th>
+<th>الإجراء</th>
+<th>المستندات المطلوبة</th>
+<th>متى التصعيد</th>
+<th>متى الإيقاف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>تعارض مساحة بين الصك والقيد/المخطط</td>
+<td>صك قديم صدر قبل اعتماد مخطط حديث أو قياسات أدق</td>
+<td>مطابقة ثلاثية (خطوة 5) + استعلام القيد</td>
+<td>رفض التحديث أو اعتماد مساحة خاطئة تمس البيع والبناء</td>
+<td>منسق + مساح مرخص</td>
+<td>جدول «متى يلزم الرفع» — تقرير مساحي أو مستند معتمد قائم</td>
+<td>تقرير مساح مرخص، قرار مساحي إن وجد</td>
+<td>عند خلاف القياس مع جهة الاعتماد</td>
+<td>إذا تبين نزاع حدود قائم → تحويل لخدمة 4/محامٍ</td>
+</tr>
+<tr>
+<td>2</td>
+<td>بيانات هوية قديمة/اسم غير مطابق للسجل المدني</td>
+<td>صك صدر ببطاقة قديمة أو اسم مختصر</td>
+<td>مقارنة الصك بالهوية السارية</td>
+<td>فشل السحب الإلكتروني في بلدي والبنوك</td>
+<td>منسق</td>
+<td>تحديث بيانات المالك عبر ناجز بالهوية السارية</td>
+<td>هوية سارية، صك</td>
+<td>عند فشل الجلب برقم الهوية → دعم 1950 ✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>صك مورّث (باسم متوفى)</td>
+<td>وفاة المالك دون توزيع</td>
+<td>فحص اسم المالك مقابل الحالة الاجتماعية</td>
+<td>تعذر أي تحديث باسم المورّث</td>
+<td>ورثة + محامٍ عند الحاجة</td>
+<td>مسار الإرث: حصر ورثة ← توزيع/تنازل ✅ (خدمات SLA) ثم التعامل مع الصك</td>
+<td>وثيقة حصر ورثة، إقرارات التنازل</td>
+<td>عند خلاف بين الورثة → محامٍ مرخص فوراً</td>
+<td>عند دعوى قضائية قائمة — يتوقف التعقيب التقني</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ملكية مشتركة وشريك غير متعاون</td>
+<td>غياب إجماع أو توكيل</td>
+<td>فحص الصك (تعدد أسماء)</td>
+<td>توقف الطلب في الحقول التي تشترط موافقة ⚠️</td>
+<td>منسق (تنسيق)</td>
+<td>جمع موافقات/وكالات الجميع أو مسار نظامي عبر الوكالة المتعددة الأطراف ✅ (SLA)</td>
+<td>وكالات موثقة، إقرارات</td>
+<td>رفض شريك صريح → إشعار كتابي + خيار قانوني</td>
+<td>خلاف ملكية معلن → إيقاف حتى تسوية</td>
+</tr>
+<tr>
+<td>5</td>
+<td>رفض الطلب لأسباب توثيقية (مستند ناقص/غير واضح)</td>
+<td>قائمة مرفقات غير مستوفاة بدقة</td>
+<td>ملاحظة المدقق في ناجز</td>
+<td>توقف زمن SLA (لا يشمل النواقص ✅)</td>
+<td>منسق</td>
+<td>قراءة الملاحظة نصاً ← استكمال نفس النقاط فقط ← رد موثق</td>
+<td>المستند المطلوب نصاً</td>
+<td>ملاحظتان متتاليتان متشابهتان → تواصل 1950 ✅ برقم الطلب</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6</td>
+<td>رفض ملاحظة مساحية (خلاف قياس)</td>
+<td>تقرير المساح غير مطابق لمعايير الجهة أو لا يطابق القيد</td>
+<td>ملاحظة تدققية</td>
+<td>تأخير وإعادة عمل ميدانية محتملة</td>
+<td>مساح مرخص</td>
+<td>مراجعة التقرير مع المساح، تصويب الطريقة/الإسناد، إعادة التقديم</td>
+<td>تقرير معدل، بيانات ترخيص</td>
+<td>اختلاف جوهري متكرر → استشار جهة مساحية أعلى ⚠️</td>
+<td>إذا كان الخلاف نزاعاً مع جار → إيقاف وتحويل لخدمة 4</td>
+</tr>
+<tr>
+<td>7</td>
+<td>رهن على العقار غير مكتشف مسبقاً</td>
+<td>عدم تشغيل استعلام الرهون قبل التقديم</td>
+<td>استعلام «الرهون» ✅ (SLA)</td>
+<td>تعطل التعديل أو اشتراط موافقة الدائن ⚠️</td>
+<td>منسق</td>
+<td>إقفال الحالة: موافقة الراهن/تنسيق بنكي قبل المتابعة</td>
+<td>استعلام رهن، موافقة الدائن</td>
+<td>تعنت الدائن → تصعيد للعميل بقرار تجاري</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>انقسام رأي بين الجهات (بلدي تقبل الصك، العدل يطلبه محدثاً والعكس)</td>
+<td>اختلاف تعريفات «المحدث» وتوقيت تحديث روابط البيانات</td>
+<td>تعارض مكتوب بين ردّين رسميين</td>
+<td>عميل محتار وملف عالق</td>
+<td>منسق</td>
+<td>توثيق الردّين نصاً بالتاريخ ← سؤال صريح للعدل عبر 1950 عن متطلب حالتك ← قرار موجه للعميل</td>
+<td>لقطات الردود، أرقام التذاكر</td>
+<td>بعد جولتين دون حسم → رفع مكتوب عبر قنوات الشكاوى الرسمية ✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>9</td>
+<td>إدخال رقم صك لا يُجلب في ناجز</td>
+<td>صيغة رقم الورقي ≠ صيغة القيد الحديث أو أخطاء إدخال</td>
+<td>فشل الجلب في الخطوة 7 من المسار</td>
+<td>إحباط مبكر للعميل</td>
+<td>منسق</td>
+<td>تجربة الصيغ الموثقة (رقم الورقي/الإلكتروني/بيانات العقار) ← 1950 عند الفشل المستمر</td>
+<td>صورة الصك، هوية</td>
+<td>فشل بعد جولتين → استعلام رسمي ببيانات العقار</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10</td>
+<td>وكالة غير كافية النطاق لمعالجة الملاحظات</td>
+<td>توكيل أُبرم بضيق قبل ظهور الملاحظات</td>
+<td>رفض النظام لصلاحية المفوض</td>
+<td>توقف الطلب حتى وكالة جديدة</td>
+<td>مالك + منسق</td>
+<td>إصدار وكالة موسعة عبر ناجز ✅ + التحقق منها ✅</td>
+<td>وكالة جديدة، تحقق</td>
+<td>المالك غير متاح (سفر) → وكالة خارجية بمسارها ⚠️ زمن أطول</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11</td>
+<td>خطأ مطبعي في الصك المحدث الصادر</td>
+<td>خطأ إدخال أو اعتماد جزئي</td>
+<td>المطابقة النهائية (خطوة 23)</td>
+<td>صك جديد لا يصلح للغرض</td>
+<td>منسق</td>
+<td>إعادة الدورة فوراً بطلب تصويب عبر ناجز</td>
+<td>الصك الخاطئ، تقرير المطابقة</td>
+<td>تكرار الخطأ من الجهة → شكوى رسمية 1950 ✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>12</td>
+<td>عميل يطالب بمساحة أكبر بلا سند (زيادة فعلية على أرض غير صكه)</td>
+<td>اعتقاد شائع أن الرفع «يمنح» مساحة</td>
+<td>سؤال تشخيصي مبكر + تقرير المساح</td>
+<td>مطالبة تُرفض وقد تتحول نزاعاً</td>
+<td>منسق (تصحيح توقع) + محامٍ عند التعنيت</td>
+<td>توضيح كتابي: التحديث يطابق القيد ولا يمنح أرضاً؛ الزيادة قد تحتاج مساراً نظامياً منفصلاً ⚠️</td>
+<td>تقرير مساحي، شرح مكتوب</td>
+<td>إصرار العميل على مطالبة غير مُثبتة → تنبيه قانوني موثق</td>
+<td>مطالبة بجيرة ملكية أخرى → إيقاف الخدمة فوراً</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. شجرة القرار النصية (تتفرع بالسبب — لا حل موحّد)</h2>
+<h3>شجرة أ: تعارض بيانات (مساحة/حدود)</h3>
+<pre><code>تفاوت مساحة الصك عن القيد/الواقع؟
+├─ البيانات الشخصية فقط؟ → نعم → تحديث مباشر (لا رفع)
+├─ يوجد قرار مساحي/مخطط معتمد يطابق المطلوب؟ → نعم → أرفقه وتابع
+├─ لا مستند معتمد
+│   ├─ الواقع مطابق للقيد والصك خاطئ → رفع مساحي موثق → تقديم
+│   ├─ الواقع أكبر من الصك والقيد → رفع + تقديم على أساس الأدلة ⚠️ النتيجة قرار جهة
+│   └─ خلاف مع جار على الحدود؟ → نعم → أوقف التحديث → قرار مساحي (خدمة 4) → محامٍ عند التعنيت
+└─ العقار داخل نطاق السجل العقاري؟ → راجع المسار البديل قبل أي شيء ⚠️
+</code></pre>
+<h3>شجرة ب: ملكية مشتركة وغير متعاون</h3>
+<pre><code>عدد الملاك &gt; 1؟
+├─ الجميع متعاون؟ → نعم → وكالات/إقرارات لكل شريك ✅ → تقديم
+├─ شريك غائب/غير متفاعل؟
+│   ├─ قابِل للتواصل → تذكير مهذب موثق + مهلة 💼 → وكالة متعددة الأطراف ✅
+│   └─ غير قابل → إشعار موثق للجميع + خيارات نظامية (وكالة قضائية/مسار قانوني) → محامٍ مرخص
+└─ خلاف ملكي معلن؟ → نعم → إيقاف التعقيب التقني → قناة قانونية فقط
+</code></pre>
+<h3>شجرة ج: صك مورّث</h3>
+<pre><code>الصك باسم متوفى؟
+├─ وثيقة حصر ورثة صادرة؟ → لا → استخراجها أولاً ✅ (SLA فوري للاستعلام/الإصدار مساره ⚠️)
+├─ صادرة
+│   ├─ اتفاق الورثة على التوزيع؟ → نعم → توثيق التوزيع/التنازلات ✅ (SLA) → صكوك باسم الورثة → ثم أي تحديث لاحق
+│   └─ خلاف؟ → محامٍ مرخص (تفصيل قانوني خارج نطاق المكتب)
+└─ هدف العميل «تحديث» فقط دون توزيع؟ → اشرح: لا تحديث باسم المورّث — المسار عبر الإرث ⚠️
+</code></pre>
+<h3>شجرة د: رفض لأسباب توثيقية</h3>
+<pre><code>وصلت ملاحظة/رفض؟
+├─ توثيقية (مستند) → استكمل حرفياً → رد موثق بكل نقطة → متابعة
+├─ مساحية (خلاف قياس) → مراجعة المساح → تصويب/إعادة رفع
+├─ صلاحيات (وكالة) → وكالة موسعة ✅ → متابعة
+├─ جوهرية (نوع التعديل غير مقبول بهذه السبيل) →
+│   ├─ يوجد بديل نظامي (قرار مساحي/مسار إرث) → حوّل المسار
+│   └─ لا بديل واضح → استيضاح 1950 ✅ + شكوى رسمية عند التقصير
+└─ غامضة → لا تخمّن: استيضاح مكتوب عبر القنوات الرسمية ✅
+</code></pre>
+<h3>شجرة هـ: انقسام رأي بين الجهات</h3>
+<pre><code>ردّان متعارضان (بلدي ↔ عدل)؟
+├─ وثّق الاثنين نصاً وتاريخاً (لقطات)
+├─ حدد المتطلب الحاكم لهدف العميل النهائي (بناء؟ بيع؟) — العدل مالك الصك، بلدي مستفيد ✅
+├─ اسأل العدل صراحة عن حالة ملفك (1950 برقم الطلب) ✅
+├─ انتهِ بالمسار الأقوى نظاماً: صك محدث من العدل يرضي بلدي عملياً 💼 (لأن بلدي يسحب من العدل)
+└─ استمر التعارض؟ → شكوى رسمية موثقة + تحديث العميل بالخيارات والزمن ⚠️
+</code></pre>
+<hr />
+<h2>3. الحالة العملية الأولى 🧪: صك 1395هـ ومساحة مطابقة (المسار السلس)</h2>
+<blockquote>
+<p>بيانات افتراضية للتدريب.</p>
+</blockquote>
+<p><strong>الملف:</strong> عبدالله، صك ورقي 1395هـ، أرض 400 م² في حي عريق، المساحة مطابقة للقيد والمخطط، لكن الاسم مكتوب بصيغة قديمة ورقم هوية مفقود من الصك. الهدف: رخصة بناء عبر بلدي التي طلبت «صكاً إلكترونياً محدثاً».</p>
+<ol>
+<li><strong>استقبال وتشخيص (خطوات 1–5):</strong> بطاقة تفاوت: بيانات مالك فقط — لا مساحة. لا يلزم رفع مساحي (جدول README §3).</li>
+<li><strong>التحقق (خطوة 4):</strong> استعلام الصك نشط، لا رهن، لا عمليات معلقة ✅.</li>
+<li><strong>اتفاق (8–9):</strong> عرض سعر: أتعاب تعقيب فقط 🧪 (لا بند مساحي)؛ وكالة إلكترونية بنطاق التقديم والمتابعة، تحققها ✅.</li>
+<li><strong>تجهيز (12–13):</strong> هوية سارية بالاسم الرباعي، صورة الصك، بيانات القطعة/المخطط، إقرارات.</li>
+<li><strong>تقديم (14–18):</strong> دخول ناجز، اختيار الخدمة («تحديث أو تعديل صك عقاري» ✅ اسم SLA)، تعبئة، مرفقات، إقرار، إرسال، رقم طلب ولقطات.</li>
+<li><strong>رسوم (19):</strong> طلب النظام سداداً — المبلغ كما ظهر في الواجهة ⚠️ (لم يتحقق سلفاً — لا رقم من عندنا).</li>
+<li><strong>متابعة (20–21):</strong> بعد 6 أيام عمل ملاحظة واحدة: «مطابقة الاسم مع السجل المدني» — رد بإرفاق إفادة المطابقة/إقرار موثق 🧪.</li>
+<li><strong>الإغلاق (22–25):</strong> اعتماد في اليوم 12 من التقديم (١٠ أيام SLA + استكمال النواخص ✅ متسق)، صك إلكتروني محدث، تحقق عبر «خدمات التحقق» ✅، تسليم، واقتراح الخطوة التالية: قرار مساحي بغرض البناء (خدمة 4) ثم رخصة البناء (1).
+<strong>الدرس:</strong> المطابقة الثلاثية المبكرة وفّرت كل التكلفة المساحية، والتوثيق جعل الملاحظة الوحيدة حداً سريعاً.</li>
+</ol>
+<h2>4. الحالة العملية الثانية 🧪: صك بمساحة أقل من الواقع (مسار الرفع + الملاحظات)</h2>
+<blockquote>
+<p>بيانات افتراضية للتدريب.</p>
+</blockquote>
+<p><strong>الملف:</strong> سارة، صك 250 م²، المخطط المعتمد يقول 300 م²، القياس الفعلي 298 م². الهدف: بيع وتمويل — البنك توقف عند تفاوت الصك. لا خلاف جيران.</p>
+<ol>
+<li><strong>تشخيص (1–7):</strong> تفاوت مساحة حقيقي + لا مستند معتمد لدى العميل → <strong>رفع مساحي مطلوب</strong>. عقار خارج نطاق السجل العقاري (فحص خطوة 6) ⚠️.</li>
+<li><strong>اتفاق (8–9):</strong> عرض سعر ببندين: تعقيب + مساحي 🧪، مع بند جولة ملاحظات إضافية. وكالة نطاقها يغطي رفع المرفقات والرد.</li>
+<li><strong>ميداني (10):</strong> زيارة مساح مجدولة وتأكيد قبل 48 ساعة 💼، قياس GNSS/RTK، تثبيت زوايا، تصوير. لا اعتراض جار.</li>
+<li><strong>تقرير (11):</strong> مساحة فعلية 298 م² + جدول مقارنة (صك 250 / قيد-مخطط 300 / فعلي 298) + إحداثيات + كروكي + بيانات الترخيص. مراجعة المكتب: مكتمل.</li>
+<li><strong>تقديم (12–18):</strong> الحزمة: هوية، صك، تقرير، كروكي، إقرار. إرسال ورقم طلب.</li>
+<li><strong>ملاحظات (20–21):</strong> جولة أولى: «توضيح مصدر مساحة 300 في المخطط» → رد: صورة اعتماد المخطط من جهته + مقارنة الرقمين. جولة ثانية: «إعادة إرسال التقرير بجودة أعلى» → مسح ضوئي أفضل. (الزمن المعلن ١٠ أيام توقف عدّه أثناء النواقص ✅ — أُبلغ العميل مسبقاً).</li>
+<li><strong>الإغلاق (22–25):</strong> اعتماد بمساحة مطابقة لمعطيات الجهة، صك محدث، تحقق ✅، تسليم، توجيه للبنك: السحب الإلكتروني للصك الجديد 🧪.
+<strong>الدرس:</strong> الفرق بين 300 و298 ليس خطأ — التقرير يوثق الواقع، والجهة تعتمد وفق قواعدها؛ وإدارة توقعات العميل حول زمن النواقص أنقذت الثقة.</li>
+</ol>
+<hr />
+<h2>5. دورة حياة الملاحظة (من ورودها حتى إغلاقها)</h2>
+<table>
+<thead>
+<tr>
+<th>المرحلة</th>
+<th>الفعل</th>
+<th>المسؤول</th>
+<th>زمن داخلي 💼</th>
+<th>التوثيق</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الالتقاط</td>
+<td>قراءة نص الملاحظة كاملاً + لقطة + إدخال في سجل الملاحظات</td>
+<td>منسق</td>
+<td>فور الورود</td>
+<td>لقطة + سطر سجل</td>
+</tr>
+<tr>
+<td>التصنيف</td>
+<td>توثيقية / مساحية / صلاحيات / جوهرية / غامضة</td>
+<td>منسق</td>
+<td>يوم</td>
+<td>عمود تصنيف</td>
+</tr>
+<tr>
+<td>التوزيع</td>
+<td>إسناد للمنفذ المناسب (منسق/مساح/محامٍ)</td>
+<td>منسق</td>
+<td>يوم</td>
+<td>اسم المنفذ</td>
+</tr>
+<tr>
+<td>التنفيذ</td>
+<td>إعداد الرد/المستند حرفياً على نقاط الملاحظة</td>
+<td>المنفذ</td>
+<td>1–3 أيام</td>
+<td>ملف الرد</td>
+</tr>
+<tr>
+<td>المراجعة</td>
+<td>مطابقة الرد مع كل نقطة نصاً (أربع عيون)</td>
+<td>مراجع</td>
+<td>قبل الرفع</td>
+<td>توقيع مراجعة</td>
+</tr>
+<tr>
+<td>الرفع</td>
+<td>رد عبر ناجز + لقطات</td>
+<td>منسق</td>
+<td>فور الاعتماد</td>
+<td>رقم الرفع</td>
+</tr>
+<tr>
+<td>الإغلاق/التصعيد</td>
+<td>إغلاق عند القبول؛ تصعيد حسب شجرة (د) عند التكرار</td>
+<td>منسق</td>
+<td>حسب الرد</td>
+<td>حالة نهائية</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>قاعدة: <strong>لا ملاحظة تُرد جزئياً</strong> — رد جزئي يعيد الملف من جديد ويحرق مدة أخرى.</p>
+</blockquote>
+<h2>6. قوالب رسائل جاهزة للعميل (تحرير مهني 💼 — تُكيَّف حسب الحالة)</h2>
+<p><strong>أ. عند ورود ملاحظة:</strong></p>
+<pre><code>السلام عليكم — تحديث حالة طلب صككم رقم ____: وردت ملاحظة من وزارة العدل نصها: «____».
+التصنيف: توثيقية/مساحية. الإجراء المطلوب: ____. الوقت المتوقع: ____ أيام عمل.
+ملاحظة: المدة الرسمية المعلنة (١٠ أيام) لا تشمل زمن استكمال النواقص — لذلك الجدول تحدَّث وفقاً لذلك.
+</code></pre>
+<p><strong>ب. عند تجاوز المدة المعلنة دون حركة:</strong></p>
+<pre><code>تجاوز طلبكم المدة المعلنة (١٠ أيام) من تاريخ ____. فتحنا استعلاماً رسمياً برقم الطلب عبر
+التواصل العدلي 1950 بتاريخ ____ (رقم التذكرة: ____). سنوافيكم بكل رد فور وروده.
+</code></pre>
+<p><strong>ج. عند تعارض ردود الجهات:</strong></p>
+<pre><code>بين أيدينا ردّان رسميان متعارضان (بلدي بتاريخ ____، والعدل بتاريخ ____). المعلومة الحاكمة
+لهدفكم النهائي هي مخرَج وزارة العدل لأن بلدي يسحب الصك منها. سنسير على تحديث الصك ثم
+نعيد التحقق لدى البنك/بلدي. سجلنا الردّين نصاً للدفاع عن مساركم.
+</code></pre>
+<p><strong>د. عند حالة مورّث (إرث):</strong></p>
+<pre><code>الصك باسم المورّث، ولذلك لا تُقدَّم «خدمة تحديث» بهذه الصيغة. المسار الصحيح: وثيقة حصر
+ورثة ثم توثيق التوزيع/التنازلات عبر ناجز. عند أي خلاف بين الورثة نحيلكم لمحامٍ مرخص —
+هذا خارج صلاحيات المكتب ولا نتدخل فيه.
+</code></pre>
+<p><strong>هـ. عند إيقاف الخدمة (نزاع/مطالبة غير مُثبتة):</strong></p>
+<pre><code>أوقفنا العمل على الطلب لسبب موثق: ____. ما يمكن استئنافه فوراً: ____. المسار البديل
+المقترح: ____. كنتم أبلغتم بالقرار كتابياً في هذا التاريخ، والملف محفوظ كاملاً لدينا.
+</code></pre>
+<h2>7. سلم التصعيد الداخلي (متى ينتقل الملف لمستوى أعلى)</h2>
+<table>
+<thead>
+<tr>
+<th>المستوى</th>
+<th>الحالة</th>
+<th>من يقرر</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ملاحظة اعتيادية ضمن الدورة</td>
+<td>منسق</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ملاحظة مساحية أو تكرار ملاحظة</td>
+<td>مراجع + مساح مرخص</td>
+</tr>
+<tr>
+<td>3</td>
+<td>تجاوز مدة معلنة أو تعارض جهات</td>
+<td>مدير المكتب (قرار تواصل رسمي)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>نزاع ملكية/حدود أو خلاف ورثة</td>
+<td>محامٍ مرخص — ينتهي دور المكتب التقني</td>
+</tr>
+<tr>
+<td>5</td>
+<td>شكوى رسمية على الجهة</td>
+<td>مدير المكتب عبر قنوات الشكاوى ✅</td>
+</tr>
+</tbody>
+</table>
+<h2>8. أسئلة يعترض بها العملاء عادة (وإجابة الجاهز)</h2>
+<ul>
+<li>«لماذا يطلبون تحديثاً والصك عندي منذ أربعين سنة؟» → لأن بلدي والبنوك يسحبون الصك إلكترونياً من قاعدة العدل الحديثة، وأي تفاوت يوقف السحب — التحديث يربط صكك بالقيد الحديث.</li>
+<li>«هل أفقد ملكيتي أو دفعة؟» → لا؛ التحديث لا ينقل الملكية ولا ينشئ ملكية جديدة — هو توحيد بيانات.</li>
+<li>«جاري يقول إن جزءاً من الأرض له» → هذا نزاع حدود لا يحله تحديث الصك؛ المسار: قرار مساحي (خدمة 4) وقد يلزم محامٍ — والقياس مستقل حتى تُحسم.</li>
+<li>«كم الرسوم بالضبط؟» → تظهر في ناجز لحظة الطلب ⚠️ — لا نعطي رقماً من خارج المنصة، وسنعرض لك ما يظهر نصاً.</li>
+<li>«أسرّعوا الطلب مقابل مبلغ إضافي؟» → لا توجد «تسريعة رسمية» نعرفها ⚠️؛ ما نضمنه هو ملف مكتمل من أول مرة ورد فوري على الملاحظات — وهذا هو التسريع الحقيقي.</li>
+</ul>
+<hr />
+<h2>9. اختبار الإتقان — 10 أسئلة (6 معرفة + 4 قرار)</h2>
+<p><strong>معرفة:</strong></p>
+<ol>
+<li>ما الاسم الرسمي الموثق لخدمة تحديث الصكوك في اتفاقية مستوى الخدمة لوزارة العدل، وكم مدة تنفيذها المعلنة؟</li>
+<li>لماذا تُعتبر هذه الخدمة «بوابة شبه إلزامية» لمعظم الخدمات اللاحقة؟ اذكر المتطلب الرسمي المرتبط.</li>
+<li>اذكر ثلاثة فروق جوهرية بين تحديث الصك وفرز الوحدات.</li>
+<li>في أي الحالات يلزم رفع مساحي قبل التحديث، وفي أيها لا يلزم؟ (حالتان لكل طرف).</li>
+<li>من الجهة التي تعتمد التحديث، ومن الجهة المستفيدة منه التي لا تعتمده؟</li>
+<li>ما أثر ملاحظات «استكمال النواقص» على المدة المعلنة ١٠ أيام؟</li>
+</ol>
+<p><strong>قرار:</strong></p>
+<ol start="7">
+<li>عميل يطلب تحديث صك باسم والده المتوفى. ما تصرفك فوراً؟</li>
+<li>صك بمساحة 300 م² والقياس الفعلي 285 م² دون خلاف جيران ولا مستند معتمد. ما المسار الكامل بترتيبه؟</li>
+<li>ملاحظة في ناجز غير مفهومة نصاً، والعميل يضغط «أرسل أي شيء». ما تصرفك؟</li>
+<li>بلدي يقبل صك العميل والبنك يرفضه لتفاوت المساحة، والعميل محتار. كيف تحسم؟</li>
+</ol>
+<p><strong>مفتاح الإجابات:</strong></p>
+<ol>
+<li>«تقديم طلب تحديث أو تعديل صك عقاري» — ١٠ أيام، توافر 24/7 ✅ (SLA وزارة العدل).</li>
+<li>لأن بلدي تشترط رسمياً «صك إلكتروني محدث من وزارة العدل» لخدماتها الإنشائية؛ فبدون تحديث تُعطل رخصة البناء وما يليها (فرز/بيع/تمويل).</li>
+<li>التحديث لا يغيّر عدد الصكوك ولا المالك وينشئ بديلاً لنفس الصك؛ الفرز ينشئ صكوكاً مستقلة متعددة من صك واحد؛ الفرز قد يشترط اشتراطات بلدية/دفاع مدني/مرافق بينما التحديث لا يشترطها.</li>
+<li>يلزم: مطالبة بمساحة فعلية مختلفة، أو خلاف حدود، أو غياب مستند مساحي معتمد للمساحة الصحيحة. لا يلزم: تفاوت بيانات مالك فقط، أو وجود قرار مساحي/مخطط معتمد يثبت المساحة المطلوبة، أو مطابقة تامة.</li>
+<li>الاعتماد: وزارة العدل (كاتب العدل/القسم العقاري) عبر ناجز. المستفيدة غير المعتمدة: البلدية عبر بلدي (تشترط المخرج ولا تشارك في اعتماده).</li>
+<li>المدة المعلنة لا تشمل زمن استكمال النواقص ولا زمن الجهات الأخرى — فكل ملاحظة توقف العدّ، ولهذا نجدول تقديراً أطول للعميل 💼.</li>
+<li>أوقف فوراً فكرة «تحديث» باسم المورّث: لا تحديث لصك مورّث — المسار عبر الإرث (حصر ورثة ← توزيع/تنازل عبر ناجز) ✅، مع إحالة قانونية لمحامٍ مرخص عند أي خلاف بين الورثة.</li>
+<li>فحص نطاق السجل العقاري ← رفع مساحي من مساح مرخص (قياس + تقرير بمقارنة رقمية + كروكي + بيانات ترخيص) ← حزمة مستندات ← تقديم عبر ناجز بوكالة موثقة ← سداد الرسوم كما تظهر ⚠️ ← متابعة ومعالجة الملاحظات ← اعتماد وتحقق وتسليم. لا قرار مساحي لغياب نزاع حدود.</li>
+<li>لا تُرسل تخميناً: استيضاح نص الملاحظة عبر 1950 ✅، ووثق السؤال والجواب؛ الرد السطحي يثير ملاحظات جديدة ويطيل العدل الزمن.</li>
+<li>حدد المصدر الحاكم: الصك يصدر عن العدل وبلدي يسحب منه — فالمسار الأقوى تحديث الصك لدى العدل حتى يرضي البنك وبلدي معاً؛ وثّق ردّي الجهتين، وقدم للعميل مساراً واحداً مكتوباً بدل التردد بينهما.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> 8/10 (80%) على الأقل. ما دون ذلك: إعادة قراءة <code>README.md</code> §القسم الثالث و<code>03-Executive-Workflow.md</code> قبل التعقيب الفعلي.</p>
+<hr />
+<h2>10. أخطاء القرار الخمسة الكارثية (تُعرض في تدريب المنسقين)</h2>
+<table>
+<thead>
+<tr>
+<th>الخطأ</th>
+<th>مظهره</th>
+<th>ثمنه</th>
+<th>البديل الصحيح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>«تحديث» صك مورّث كأنه صك عادي</td>
+<td>رفض + تضييع أسابيع + لبس قانوني للورثة</td>
+<td>قناة الإرث أولاً (شجرة ج)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>قبول رقم مساحة من العميل/جيرانه دون قياس</td>
+<td>ملاحظة أو اعتماد بيانات خاطئة تدخل وثيقة رسمية</td>
+<td>رفع معتمد أو مستند قائم (شجرة أ)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>متابعة قياس على أرض فيها خلاف حدود جارية</td>
+<td>تقرير يرد عليه المدقق + تصعيد النزاع</td>
+<td>توقف + خدمة 4 + قانوني عند الحاجة</td>
+</tr>
+<tr>
+<td>4</td>
+<td>رد جزئي على ملاحظات متعددة</td>
+<td>دورة جديدة كاملة لكل نقطة مهدرة</td>
+<td>رد نصي يغطي كل نقطة</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ذكر رقم رسمي للرسوم من ذاكرة/مصدر غير رسمي</td>
+<td>خرق القائمة الحمراء + خلاف مالي مع العميل</td>
+<td>«حسب ناجز وقت السداد ⚠️» فقط</td>
+</tr>
+</tbody>
+</table>
+<h2>11. بطاقة جيب للمنسق (قرار سريع في 30 ثانية)</h2>
+<pre><code>الصك سليم؟ → لا خدمة. الصك باسم مورّث؟ → قناة الإرث + محامٍ عند الخلاف.
+تفاوت بيانات مالك فقط؟ → ناجز مباشرة بلا مساحي.
+تفاوت مساحة؟ → مستند معتمد قائم؟ لا → مساح مرخص. خلاف حدود؟ → توقف + خدمة 4.
+رهن؟ → استعلام ✅ + موافقة دائن ⚠️. ملاك متعددون؟ → موافقات الجميع أولاً.
+ملاحظة؟ → تصنيف → رد نصي كامل لا جزئي. غامضة؟ → 1950 ✅ لا تخمين.
+تعارض جهات؟ → العدل حاكم لمخرَج الصك؛ بلدي مستفيد. وثّق ثم قرر.
+رسوم؟ → من الشاشة فقط ⚠️. وعد زمني؟ → تقديري 💼: ١٠ أيام ✅ + نواقص + جهات.
+دائماً: لقطة لكل شاشة، رقم لكل طلب، مستند لكل حقل.
+مخرَج ناقص المعاينة؟ → لا تسليم؛ دورة تصويب فورية (خطوة 23).
+</code></pre>
+<h2>المصادر</h2>
+<ul>
+<li>وزارة العدل — SLA: https://www.moj.gov.sa/ar/Ministry/Pages/sla.aspx — تحقق 2026-11-10 ✅.</li>
+<li>ناجز — البنية العامة وخدمات التحقق: https://www.najiz.sa — تحقق 2026-11-10 ✅/⚠️.</li>
+<li><code>../../00-STRATEGY/Services-Relations-Map.md</code> (السيناريوهات وقواعد التوجيه) · <code>../../02-PLATFORMS/Najiz.md</code> (أخطاء شائعة §7).</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

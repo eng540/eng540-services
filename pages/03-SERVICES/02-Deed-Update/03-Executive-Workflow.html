@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحديث الصكوك — سير العمل التنفيذي (03): الخوارزمية الكاملة 25 خطوة — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/02-Deed-Update/README.html">تحديث الصكوك</a> <span class="crumb-sep">‹</span> <span>تحديث الصكوك — سير العمل التنفيذي (03): الخوارزمية الكاملة 25 خطوة</span></nav>
+    <article class="doc"><h1>تحديث الصكوك — سير العمل التنفيذي (03): الخوارزمية الكاملة 25 خطوة</h1>
+<blockquote>
+<p>إصدار 0.1 · تاريخ التحقق الإلكتروني: 2026-11-10
+قالب كل خطوة: الغرض / المنفذ / الأدوات / المخرج / نقاط القرار / المخاطر.
+الوسوم: ✅ متحقق · 📚 معرفة مهنية · 💼 ممارسة تجارية · ⚠️ يحتاج تحقق · 🧪 مثال.
+<strong>قاعدة عدم الاقتطاع</strong>: الخطوات الـ25 كاملة أدناه؛ ما لا ينطبق على هذه الخدمة مذكور داخل خطوته بصيغة «لا ينطبق هنا لأن…» — ولا يُحذف.</p>
+</blockquote>
+<h2>تنبيهات نطاق عامة (تُقرأ قبل الخوارزمية)</h2>
+<ul>
+<li>الخدمة <strong>إلكترونية خالصة</strong> في جوهرها: لا يوجد حجز موعد حكومي (بلدية/جهة ميدانية)، ولا زيارة معتمدة إلزامية. الاستثناء الوحيد الميداني: <strong>زيارة المساح</strong> عند الحاجة لرفع مساحي (خطوة 10).</li>
+<li><strong>لا مخططات هندسية</strong> تُعد في هذه الخدمة إطلاقاً (تلك مهام خدمة 1).</li>
+<li>زمن الخدمة الرسمي المعلن ١٠ أيام ✅ (SLA) <strong>لا يشمل</strong> استكمال النواقص ولا زمن الجهات الأخرى ✅ — خطط جدول العميل على 2–4 أسابيع كإدارة توقعات 💼.</li>
+</ul>
+<hr />
+<h2>المرحلة الأولى: الاستقبال والتشخيص (خطوات 1–7)</h2>
+<h3>الخطوة 1: استقبال العميل وتحديد الحاجة الأصلية</h3>
+<ul>
+<li><strong>الغرض:</strong> فهم «لماذا يريد العميل التحديث الآن» — لأن الدافع (بناء/بيع/تمويل/ملاحظة بلدية) يحدد درجة الاستعجال والمخرج المطلوب.</li>
+<li><strong>المنفذ:</strong> منسق الخدمات (مقدم الخدمات) — لا يحتاج ترخيصاً مهنياً.</li>
+<li><strong>الأدوات:</strong> استمارة استقبال موحدة، سؤالان إلزاميان: «ما الخدمة التالية التي تريدها؟» و«من أين جاءتك ملاحظة عدم المطابقة؟».</li>
+<li><strong>المخرج:</strong> سطر حاجة مسجل في ملف العميل + توقع للخدمات اللاحقة.</li>
+<li><strong>نقاط القرار:</strong> هل الحاجة أصلاً خدمة أخرى (فرز/دمج/تصحيح وضع مبنى) والتحديث مجرد وسيط؟ → وجّه فوراً وفق <code>../../00-STRATEGY/Services-Relations-Map.md</code> §4.</li>
+<li><strong>المخاطر:</strong> قبول الطلب على عجل دون معرفة الخدمة الهدف → تسليم مخرج لا يخدم الغرض.</li>
+</ul>
+<h3>الخطوة 2: جمع البيانات الأولية (صك، هوية، مخطط)</h3>
+<ul>
+<li><strong>الغرض:</strong> بناء ملف الحالة من اليوم الأول.</li>
+<li><strong>المنفذ:</strong> منسق الخدمات.</li>
+<li><strong>الأدوات:</strong> قائمة المستندات (<code>02-Requirements-Documents.md</code> §4)، جوال العميل، صور الصك الورقي إن وجد.</li>
+<li><strong>المخرج:</strong> ملف رقمي موحد: هوية + صك + أي مستند مساحي لدى العميل.</li>
+<li><strong>نقاط القرار:</strong> هل الهوية سارية؟ هل الصك ورقي أم إلكتروني؟ هل لدى العميل قرار مساحي سابق؟</li>
+<li><strong>المخاطر:</strong> البدء بهوية منتهية أو صك مفقود → دوامة استكمال لاحقاً.</li>
+</ul>
+<h3>الخطوة 3: فحص أولي للصك وتصنيفه</h3>
+<ul>
+<li><strong>الغرض:</strong> تصنيف الصك: ورقي قديم / إلكتروني قديم البيانات / إلكتروني بتفاوت مساحة / سليم أصلاً.</li>
+<li><strong>المنفذ:</strong> منسق الخدمات (فحص أولي) + مراجعة فنية عند الشك.</li>
+<li><strong>الأدوات:</strong> قراءة الصك: رقمه، تاريخه، اسم المالك، المساحة، الحدود، الوصف، القطعة والمخطط.</li>
+<li><strong>المخرج:</strong> تصنيف أولي موثق + ملاحظات مطبعية.</li>
+<li><strong>نقاط القرار:</strong> إن كان الصك سليماً ومطابقاً → <strong>أوقف الخدمة</strong> وأخبر العميل أن التحديث غير لازم (صدق مهني يوفر ماله) ✅ مبادئ المشروع.</li>
+<li><strong>المخاطر:</strong> بيع خدمة غير لازمة — خرق لمعيار «الصدق عن غير المؤكد».</li>
+</ul>
+<h3>الخطوة 4: التحقق الإلكتروني من الصك والوكالة عبر ناجز</h3>
+<ul>
+<li><strong>الغرض:</strong> التأكد من وضع الصك الرسمي وعدم وجود تصرفات (رهن/صفقة) تعطل الطلب.</li>
+<li><strong>المنفذ:</strong> منسق الخدمات (باسم المالك عبر حسابه أو وكالة لاحقاً).</li>
+<li><strong>الأدوات:</strong> استعلامات ناجز الفورية ✅ (SLA): «استعلام عن وثيقة تملك عقار»، «استعلام عن العقارات المملوكة»، «سجل العمليات العقارية»، «الرهون»، و«التحقق من وكالة» إن وجد توكيل.</li>
+<li><strong>المخرج:</strong> تقرير حالة إلكتروني: الصك نشط؟ رهن؟ عمليات معلقة؟</li>
+<li><strong>نقاط القرار:</strong> وجود رهن → فعّل مسار موافقة الدائن (خطوة 12) قبل التقديم.</li>
+<li><strong>المخاطر:</strong> الصك موجود لدى العميل لكنه غير نشط في القيد (حالة نادرة تتصل بمصدرها) → تصعيد مبكر ⚠️.</li>
+</ul>
+<h3>الخطوة 5: تشخيص نوع التفاوت (نقطة القرار الأولى)</h3>
+<ul>
+<li><strong>الغرض:</strong> تحديد أبعاد التحديث بدقة: بيانات مالك؟ مساحة؟ حدود؟ وصف؟ أكثر من بُعد؟</li>
+<li><strong>المنفذ:</strong> منسق + مراجعة (إن توفر مساح مرخص في الشبكة فاستشره مبكراً 💼).</li>
+<li><strong>الأدوات:</strong> جدول مقارنة ثلاثي (صك / قيد / وصف العميل للواقع) — نموذج داخلي.</li>
+<li><strong>المخرج:</strong> «بطاقة تفاوت» واحدة بكل البنود المطلوب تحديثها.</li>
+<li><strong>نقاط القرار:</strong> تفاوت بيانات فقط → مسار مباشر (خطوة 8). تفاوت مساحة/حدود → اذهب للخطوة 7.</li>
+<li><strong>المخاطر:</strong> خلط تفاوت المساحة مع نزاع الحدود — الثاني يحتاج قراراً مساحياً (خدمة 4) لا مجرد تحديث.</li>
+</ul>
+<h3>الخطوة 6: فحص نطاق السجل العقاري (نقطة قرار مسار)</h3>
+<ul>
+<li><strong>الغرض:</strong> إن كان العقار داخل نطاق التسجيل العقاري الحديث، قد يختلف المسار والمرجع (القيد السجلي بدل الصك).</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> استعلام العقار عبر قنوات الهيئة العامة للعقار ⚠️ (قنوات الاستعلام في https://rega.gov.sa — الأقسام الرسمية ✅، القنوات التفصيلية ⚠️) + دليل <code>../../02-PLATFORMS/Real-Estate-Registry.md</code>.</li>
+<li><strong>المخرج:</strong> إجابة موثقة: داخل النطاق / خارجه / غير محسوم.</li>
+<li><strong>نقاط القرار:</strong> داخل النطاق → اعرض المسارين على العميل بمقارنة زمن/تكلفة ⚠️؛ غير محسوم → استعلام رسمي قبل التقديم.</li>
+<li><strong>المخاطر:</strong> تقديم طلب تحديث صك لعقار صار قيده السجلي هو الأساس → رفض أو التباس.</li>
+</ul>
+<h3>الخطوة 7: تحديد الحاجة للرفع المساحي (نقطة القرار الكبرى)</h3>
+<ul>
+<li><strong>الغرض:</strong> تطبيق جدول «متى يلزم الرفع» (README §القسم الثالث) على حالة العميل.</li>
+<li><strong>المنفذ:</strong> منسق + مساح مرخص (استشارياً) عند الشك.</li>
+<li><strong>الأدوات:</strong> بطاقة التفاوت (خطوة 5) + المستندات المساحية الموجودة مسبقاً.</li>
+<li><strong>المخرج:</strong> قرار مكتوب: «رفع مطلوب / يكفي مستند معتمد قائم / لا يلزم رفع».</li>
+<li><strong>نقاط القرار:</strong> ثلاثة فروع: (أ) لا رفع — تفاوت بيانات شخصية فقط؛ (ب) رفع غير مطلوب لوجود قرار مساحي معتمد؛ (ج) رفع مطلوب — انتقل لخطوة 8 بترسيمة تكلفة المساح.</li>
+<li><strong>المخاطر:</strong> تقدير خاطئ بأهمية الرفع — زيادة تكلفة بلا داع أو رفض لغياب إثبات.</li>
+</ul>
+<hr />
+<h2>المرحلة الثانية: الاتفاق والتفويض (خطوات 8–9)</h2>
+<h3>الخطوة 8: التسعير وعرض السعر</h3>
+<ul>
+<li><strong>الغرض:</strong> اتفاق مالي واضح قبل أي عمل (رسوم حكومية ⚠️ منفصلة عن أتعاب المكتب 💼).</li>
+<li><strong>المنفذ:</strong> منسق/إدارة المكتب.</li>
+<li><strong>الأدوات:</strong> نموذج عرض السعر (<code>04-Technical-Field-Costs.md</code> §الثامن) + مثال حسابي 🧪.</li>
+<li><strong>المخرج:</strong> عرض سعر موقع أو موافقة مكتوبة (بريد/رسالة) — يُأرشف.</li>
+<li><strong>نقاط القرار:</strong> هل يشمل العرض الرفع المساحي؟ هل أتعاب المعقيب تختلف لو وصلنا لملاحظات؟ (ضع نطاقاً 💼).</li>
+<li><strong>المخاطر:</strong> عدم فصل الرسوم الحكومية عن الأتعاب → نزاع لاحق؛ إعطاء رقم رسمي للرسوم دون تحقق ⚠️ ممنوع.</li>
+</ul>
+<h3>الخطوة 9: عقد النطاق والتوكيل الإلكتروني</h3>
+<ul>
+<li><strong>الغرض:</strong> تمكين المكتب من التعقيب قانونياً في ناجز.</li>
+<li><strong>المنفذ:</strong> المالك (ينشئ الوكالة عبر ناجز) + منسق يرشد.</li>
+<li><strong>الأدوات:</strong> خدمة «إصدار وكالة» عبر ناجز 📚 + التحقق الفوري «التحقق من وكالة» ✅ (SLA).</li>
+<li><strong>المخرج:</strong> وكالة موثقة إلكترونياً بنطاق صريح (تقديم/تعديل/متابعة طلبات الصكوك) + عقد نطاق موقع.</li>
+<li><strong>نقاط القرار:</strong> نطاق الوكالة ضيق جداً → ملاحظات لاحقة لن تستطيع معالجتها؛ واسع جداً → تحفظ العميل. وازن 💼.</li>
+<li><strong>المخاطر:</strong> وكالة ورقية أو غير موثقة → رفض تمثيل (خطأ شائع موثق <code>../../02-PLATFORMS/Najiz.md</code> §7).</li>
+</ul>
+<hr />
+<h2>المرحلة الثالثة: العمل المساحي المشروط (خطوات 10–11)</h2>
+<h3>الخطوة 10: تنفيذ الرفع المساحي إن لزم — بما يشمل تنسيق الزيارة</h3>
+<ul>
+<li><strong>الغرض:</strong> إثبات المساحة/الحدود الفعلية بأداة مهنية معتمدة.</li>
+<li><strong>المنفذ:</strong> <strong>مساح مرخص فقط</strong> — للمكتب الخدمي والمكتب الهندسي غير المرخص ادعاء هذه الصفة ممنوع (Vision.md §4).</li>
+<li><strong>الأدوات المساحية:</strong> GNSS/RTK أو Total Station حسب الدقة المطلوبة — التفصيل: <code>../../04-ENGINEERING/Surveying/Surveying-Guide.md</code> و<code>../../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.md</code>.</li>
+<li><strong>الحجز والتنسيق الميداني:</strong> الموعد الوحيد الميداني في هذه الخدمة كله. المنسق يحجز مع العميل والمساح: يثبت الموعد قبل 24–48 ساعة 💼، يتأكد من وجود العميل أو من يمثله، من إتاحة العقار وعدم وجود عوائق، ومن سلامة الوصول. ما قبل الزيارة: نسخة من الصك والكروكي الأولي بيد المساح. أثناء الزيارة: قياس الحدود الأربعة، تثبيت الزوايا، تصوير الوضع الراهن. التوثيق: كروكي ميداني باليد + صور. التأجيل: سوء طقس/عوائق ملكية → إعادة حجز فوري وتحديث الملف.</li>
+<li><strong>«لا ينطبق هنا»:</strong> الحجز الحكومي لموعد في بلدي/جهة ميدانية <strong>لا ينطبق</strong> — الخدمة لا تملك حجز مواعيد حكومي؛ والمخططات الهندسية <strong>لا تنطبق</strong> إطلاقاً.</li>
+<li><strong>المخرج:</strong> قياسات خام + كروكي ميداني + صور موثقة التاريخ.</li>
+<li><strong>نقاط القرار:</strong> وجود تعارض حدود مع جار أثناء القياس → أوقف وأحِل لقرار مساحي (خدمة 4) — لا تُكمل تقريراً سيتردد عليه.</li>
+<li><strong>المخاطر:</strong> قياس بناءً على وصف العميل بدل الأدلة — التقرير يجب أن يستند للقياس الفعلي والمستندات.</li>
+</ul>
+<h3>الخطوة 11: إصدار التقرير المساحي ومراجعته</h3>
+<ul>
+<li><strong>الغرض:</strong> توثيق مهني بمعايير الجهة المساحية يقبل في ناجز كداعم للتحديث.</li>
+<li><strong>المنفذ:</strong> المساح (إصدار) + منسق/مراجع (مراجعة اكتمال).</li>
+<li><strong>الأدوات:</strong> برامج الحسابات المساحية، قالب التقرير، بيانات ترخيص المساح.</li>
+<li><strong>المخرج:</strong> تقرير PDF يتضمن: المساحة الفعلية، المقارنة الرقمية (صك/قيد/فعلي)، الإحداثيات، الكروكي، توقيع وبيانات المساح وترخيصه 📚 ⚠️ (القالب المعتمد يتحقق من الجهة).</li>
+<li><strong>نقاط القرار:</strong> هل الفارق يبرر التحديث بمسار الرفع، أم يحتاج قراراً مساحياً؟ (فرق جوهري في المصير).</li>
+<li><strong>المخاطر:</strong> تقرير بلا بيانات ترخيص = مستند ميت أمام الجهة.</li>
+</ul>
+<hr />
+<h2>المرحلة الرابعة: تجهيز وإرسال الطلب (خطوات 12–18)</h2>
+<h3>الخطوة 12: تجهيز حزمة المستندات النهائية (بما فيها مستندات الحالات الخاصة)</h3>
+<ul>
+<li><strong>الغرض:</strong> حزمة مغلقة تجعل الطلب مكتمل النواقص من أول مرة (النواقص توقف زمن SLA ✅).</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> قائمة التحقق (<code>02-Requirements-Documents.md</code> §5).</li>
+<li><strong>المخرج:</strong> مجلد مستندات مرتب: هوية، صك، تفاوت، مساحي (إن وجد)، وكالة، حالات خاصة.</li>
+<li><strong>نقاط القرار:</strong> حالات خاصة تُغلق هنا: <strong>رهن</strong> → إقرار/موافقة الدائن ⚠️؛ <strong>ميراث</strong> → حصر ورثة + خطة توزيع (إحالة قانونية عند الحاجة لمحامٍ مرخص)؛ <strong>ملكية مشتركة</strong> → موافقات/وكالات الجميع ⚠️.</li>
+<li><strong>المخاطر:</strong> نقص مستند واحد يعيد الطلب للبداية زمنياً.</li>
+</ul>
+<h3>الخطوة 13: مراجعة الجودة الداخلية قبل الإرسال</h3>
+<ul>
+<li><strong>الغرض:</strong> مطابقة كل حقل سيُدخل مع مستنده، وكل مستند مع قائمة التحقق.</li>
+<li><strong>المنفذ:</strong> منسق ثانٍ أو مراجع داخلي (قاعدة أربع عيون 💼).</li>
+<li><strong>الأدوات:</strong> checklist §5 + بطاقة التفاوت.</li>
+<li><strong>المخرج:</strong> توقيع مراجعة داخلية على الملف.</li>
+<li><strong>نقاط القرار:</strong> أي بند ☐ غير مؤكد → لا إرسال.</li>
+<li><strong>المخاطر:</strong> إرسال ببيانات مخالفة للهوية (اسم مختصر مثلاً) → ملاحظة شبه حتمية.</li>
+</ul>
+<h3>الخطوة 14: الدخول إلى ناجز والوصول إلى الخدمة</h3>
+<ul>
+<li><strong>الغرض:</strong> الوصول لخدمة «تحديث أو تعديل صك عقاري» ✅ (اسم SLA) بالمسار الحالي للواجهة.</li>
+<li><strong>المنفذ:</strong> منسق معتمد التمثيل (بوكالة موثقة) أو المالك نفسه بإشراف المنسق.</li>
+<li><strong>الأدوات:</strong> حساب نفاذ ساري، متصفح/تطبيق ناجز.</li>
+<li><strong>المخرج:</strong> شاشة الطلب مفتوحة.</li>
+<li><strong>نقاط القرار:</strong> أسماء القوائم الدقيقة <strong>تتحقق من الواجهة الحالية عند التنفيذ</strong> ⚠️ — لا تُعتمد أسماء من أي ملف قديم.</li>
+<li><strong>المخاطر:</strong> دخول بحساب شخصي للمنسق بدل وكالة المالك — خطأ جسيم يفسد التمثيل.</li>
+</ul>
+<h3>الخطوة 15: تعبئة بيانات الطلب</h3>
+<ul>
+<li><strong>الغرض:</strong> إدخال بيانات المالك والعقار كما في المستندات المثبتة.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> بطاقة التفاوت + المستندات.</li>
+<li><strong>المخرج:</strong> طلب معبأ لم يُرسل بعد.</li>
+<li><strong>نقاط القرار:</strong> عند حقل غير مفهوم → لا تخمّن؛ استعن بدعم ناجز (1950 ✅) أو اترك الحقل ووثق السؤال.</li>
+<li><strong>المخاطر:</strong> كتابة رقم هوية قديم بنية «لأن الصك هكذا» — الهدف عكس ذلك بالضبط.</li>
+</ul>
+<h3>الخطوة 16: رفع المرفقات</h3>
+<ul>
+<li><strong>الغرض:</strong> إسناد كل تعديل بمستنده.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> حزمة الخطوة 12؛ صيغ وأحجام الملفات تتحقق من الواجهة ⚠️.</li>
+<li><strong>المخرج:</strong> مرفقات مثبتة على الطلب.</li>
+<li><strong>نقاط القرار:</strong> إن رفض النظام صيغة/حجم ملف → اضغط/حوّل دون فقدان الوضوح (المسح الضوئي بجودة مناسبة 💼).</li>
+<li><strong>المخاطر:</strong> رفع تقرير مساحي صورة غير مقروءة.</li>
+</ul>
+<h3>الخطوة 17: الإقرار والاعتماد المبدئي للطلب</h3>
+<ul>
+<li><strong>الغرض:</strong> استيفاء إقرارات النظام (صحة البيانات، صلاحية التمثيل) ⚠️ نصوصها تتحقق من الواجهة.</li>
+<li><strong>المنفذ:</strong> المالك عبر حسابه/وكالته الإلكترونية.</li>
+<li><strong>الأدوات:</strong> حقول الإقرار داخل الطلب.</li>
+<li><strong>المخرج:</strong> طلب جاهز للإرسال النهائي.</li>
+<li><strong>نقاط القرار:</strong> إن تطلب النظام إقراراً لا يستطيع المالك التوقيع عليه بنطاق الوكالة → أوقف وأعد ضبط التوكيل.</li>
+<li><strong>المخاطر:</strong> إقرارات موقعة آلياً دون قراءة → مسؤولية لاحقة على المكتب.</li>
+</ul>
+<h3>الخطوة 18: إرسال الطلب وحفظ الرقم واللقطات</h3>
+<ul>
+<li><strong>الغرض:</strong> بدء العد الزمني الرسمي وتوثيق المرسل.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> زر الإرسال في الواجهة ⚠️ + أداة لقطات الشاشة.</li>
+<li><strong>المخرج:</strong> رقم الطلب + لقطات كاملة + تحديث سجل المعاملات الداخلي.</li>
+<li><strong>نقاط القرار:</strong> فشل إرسال/خطأ نظام → لا تعد الإرسال عشوائياً؛ وثق الخطأ وافتح تذكرة عبر 1950 ✅.</li>
+<li><strong>المخاطر:</strong> فقدان رقم الطلب = فقدان المتابعة كلياً.</li>
+</ul>
+<hr />
+<h2>المرحلة الخامسة: السداد والمتابعة والرد (خطوات 19–21)</h2>
+<h3>الخطوة 19: سداد الرسوم إن طُلب السداد</h3>
+<ul>
+<li><strong>الغرض:</strong> إتمام استيفاء الطلب مالياً.</li>
+<li><strong>المنفذ:</strong> المالك (أو من تفوضه) عبر قنوات السداد داخل ناجز ⚠️.</li>
+<li><strong>الأدوات:</strong> قناة السداد/بطاقات 📚 ⚠️.</li>
+<li><strong>المخرج:</strong> إيصال سداد مؤرشف برقم الطلب.</li>
+<li><strong>نقاط القرار:</strong> <strong>مبلغ الرسوم الرسمية لم يتحقق</strong> ⚠️ — يُطلب من الواجهة وقتها فقط؛ يُدرج في عرض السعر كـ«حسب الجهة ⚠️».</li>
+<li><strong>المخاطر:</strong> تحصيل من العميل مبلغاً غير موثق كمصاريف حكومية — ممنوع منهجياً (قائمة حمراء: الرسوم).</li>
+</ul>
+<h3>الخطوة 20: المتابعة الدورية للطلب</h3>
+<ul>
+<li><strong>الغرض:</strong> كشف أي حركة/ملاحظة مبكراً والحفاظ على زمن SLA.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> لوحة الطلبات في ناجز + إشعارات المنصة 📚 ⚠️ + سجل متابعة داخلي (دورة كل 3 أيام عمل 💼 حتى أول رد، ثم أسبوعياً).</li>
+<li><strong>المخرج:</strong> سطر متابعة مؤرخ في الملف عند كل فحص.</li>
+<li><strong>نقاط القرار:</strong> تجاوز الزمن المعلن (١٠ أيام ✅ + هامش نواقص) دون حركة → استعلام عبر 1950 ✅ برقم الطلب.</li>
+<li><strong>المخاطر:</strong> اكتشاف ملاحظة بعد أسابيع → هدر أسبوعين من الجدول.</li>
+</ul>
+<h3>الخطوة 21: معالجة الملاحظات (دورة كاملة)</h3>
+<ul>
+<li><strong>الغرض:</strong> الرد على ملاحظات المدقق بإكمال/تصحيح يرضيه.</li>
+<li><strong>المنفذ:</strong> منسق (تحليل + تنفيذ) + مساح (إن كانت الملاحظة مساحية).</li>
+<li><strong>الأدوات:</strong> نص الملاحظة، المستندات، التقرير المساحي، دعم 1950 ✅ عند الغموض.</li>
+<li><strong>المخرج:</strong> رد مرفوع على الطلب + لقطات + تحديث الملف.</li>
+<li><strong>نقاط القرار:</strong> أنواع الملاحظات: توثيقية (مستند) → استكمل؛ مساحية (خلاف قياس) → راجع مع المساح؛ جوهرية (رفض نوع التعديل) → شجرة قرار <code>05-Problems-Cases-Exam.md</code>.</li>
+<li><strong>المخاطر:</strong> رد سطحي يثير ملاحظات جديدة — الرد يجب أن يغطي كل نقطة نصاً.</li>
+</ul>
+<hr />
+<h2>المرحلة السادسة: الإغلاق والقيمة المضافة (خطوات 22–25)</h2>
+<h3>الخطوة 22: الاعتماد وإصدار الصك الإلكتروني المحدث</h3>
+<ul>
+<li><strong>الغرض:</strong> الحصول على المخرج النهائي.</li>
+<li><strong>المنفذ:</strong> كاتب العدل/القسم العقاري بوزارة العدل (اعتماد حكومي حصري).</li>
+<li><strong>الأدوات:</strong> ناجز — حالة الطلب.</li>
+<li><strong>المخرج:</strong> صك إلكتروني محدث متاح للتنزيل 📚 ⚠️ (شكل الواجهة).</li>
+<li><strong>نقاط القرار:</strong> إن اعتمد تحديثاً جزئياً فقط (أسقط بنداً) → قيّم هل يعود للخطوة 21 بمستند أقوى أم يقبل النتيجة.</li>
+<li><strong>المخاطر:</strong> اعتقاد العميل أن اعتماداً جزئياً «فشل» — التواصل المسبق عن احتمالات الجزئية يحمي العلاقة 💼.</li>
+</ul>
+<h3>الخطوة 23: التحقق من الصك الجديد والمطابقة النهائية</h3>
+<ul>
+<li><strong>الغرض:</strong> التأكد أن المخرج فعلًا يحمل البيانات المحدثة وأنه يظهر في الاستعلامات.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> «خدمات التحقق» في ناجز ✅ (بنية القسم) + استعلام «وثيقة تملك عقار» ✅ (SLA).</li>
+<li><strong>المخرج:</strong> تقرير مطابقة نهائي (قبل/بعد) — أساس تسليم محترم.</li>
+<li><strong>نقاط القرار:</strong> خطأ مطبعي في الصك الجديد نفسه → أعد الدورة من الخطوة 14 فوراً (لا تسلّم مخرجاً معيباً).</li>
+<li><strong>المخاطر:</strong> تسليم دون تحقق → اكتشاف العميل الخطأ قبلنا.</li>
+</ul>
+<h3>الخطوة 24: التسليم والأرشفة وإغلاق الملف</h3>
+<ul>
+<li><strong>الغرض:</strong> تسليم موثق وإغلاق مالي وإداري.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> نموذج تسليم، فاتورة الأتعاب 💼، أرشيف المكتب.</li>
+<li><strong>المخرج:</strong> إيضاح تسليم موقع + ملف مغلق كامل الأدلة (طلب، لقطات، ملاحظات، ردود، صك نهائي).</li>
+<li><strong>نقاط القرار:</strong> تسوية الرسوم الحكومية المدفوعة نيابة عن العميل في الفاتورة — شفافية تامة.</li>
+<li><strong>المخاطر:</strong> أرشفة ناقصة → تعذر الدفاع عند أي نزاع لاحق.</li>
+</ul>
+<h3>الخطوة 25: متابعة العميل وفتح الفرص</h3>
+<ul>
+<li><strong>الغرض:</strong> تحويل مخرج الخدمة إلى الخدمة الهدف التي جاء العميل من أجلها.</li>
+<li><strong>المنفذ:</strong> منسق.</li>
+<li><strong>الأدوات:</strong> السلسلة الأم (<code>../../00-STRATEGY/Services-Relations-Map.md</code> §1) + Customer Journey <code>../../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.md</code>.</li>
+<li><strong>المخرج:</strong> اقتراح مكتوب للعميل: «صكك محدث — الخطوة التالية لهدفك (بناء/فرز/بيع) هي…».</li>
+<li><strong>نقاط القرار:</strong> عميل جاء للبناء → قدّم القرار المساحي (4) ورخصة البناء (1)؛ جاء للفرز → اشتراطات (3)؛ كان تفاوتاً حدودياً → راجع سيناريو حسم النزاع.</li>
+<li><strong>المخاطر:</strong> ترك العميل بلا خطة لاحقة → يذهب لمنافس في الخدمة الكبرى.</li>
+</ul>
+<hr />
+<h2>مخطط التدفق النصي (فروع رئيسية)</h2>
+<pre><code>عميل
+ │
+ ├─ الصك سليم ومطابق؟ ─ نعم ─► لا حاجة للخدمة (توثيق واستشارة)
+ │        │ لا
+ ▼
+تشخيص نوع التفاوت
+ │
+ ├─ بيانات مالك فقط ────────────► مسار مباشر (ناجز: تعبئة→مرفقات→إرسال)
+ │
+ ├─ مساحة/حدود ──► يوجد مستند مساحي معتمد؟ ─ نعم ─► أرفقه وتابع مباشر
+ │                       │ لا
+ │                       ▼
+ │                 رفع مساحي (مساح مرخص) ──► تعارض حدود؟ ─ نعم ─► قرار مساحي (خدمة 4)
+ │                       │ لا
+ ▼                       ▼
+حالات خاصة: ميراث/رهن/ملكية مشتركة ─► مستنداتها أولاً (محامٍ عند الإرث/النزاع)
+ │
+ ▼
+ناجز: تعبئة → مرفقات → إقرار → إرسال → رسوم (إن طُلبت ⚠️)
+ │
+ ▼
+ملاحظات؟ ─ نعم ─► معالجة (توثيقية/مساحية/جوهرية) ─► إعادة للمدقق
+ │ لا
+ ▼
+اعتماد → صك إلكتروني محدث → تحقق وتطابق → تسليم → فتح الخدمة التالية
+</code></pre>
+<h2>جدول «من ينفذ ماذا» — RACI مبسط</h2>
+<table>
+<thead>
+<tr>
+<th>النشاط</th>
+<th>مقدم الخدمات/المنسق</th>
+<th>مالك/مفوض</th>
+<th>مساح مرخص</th>
+<th>مكتب هندسي مصنف</th>
+<th>وزارة العدل/ناجز</th>
+<th>محامٍ (مشروط)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الاستقبال والتشخيص (1–7)</td>
+<td><strong>R</strong></td>
+<td>C</td>
+<td>C (استشاري)</td>
+<td>I</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>التسعير والعقد (8)</td>
+<td><strong>R</strong></td>
+<td>A</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>التوكيل الإلكتروني (9)</td>
+<td>C (يرشد)</td>
+<td><strong>R/A</strong></td>
+<td>—</td>
+<td>—</td>
+<td>توثيق (ناجز)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>الرفع المساحي (10–11)</td>
+<td>C (ينسق)</td>
+<td>C</td>
+<td><strong>R</strong></td>
+<td>I</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>تجهيز المستندات (12–13)</td>
+<td><strong>R</strong></td>
+<td>C</td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>تعبئة وإرسال الطلب (14–18)</td>
+<td><strong>R</strong></td>
+<td>A (إقراراته)</td>
+<td>—</td>
+<td>—</td>
+<td>استقبال</td>
+<td>—</td>
+</tr>
+<tr>
+<td>سداد الرسوم (19)</td>
+<td>C</td>
+<td><strong>R/A</strong></td>
+<td>—</td>
+<td>—</td>
+<td>تحصيل ⚠️</td>
+<td>—</td>
+</tr>
+<tr>
+<td>المتابعة والملاحظات (20–21)</td>
+<td><strong>R</strong></td>
+<td>I</td>
+<td>C عند ملاحظة مساحية</td>
+<td>—</td>
+<td>تدقيق</td>
+<td>C عند جوهرية</td>
+</tr>
+<tr>
+<td>الاعتماد والإصدار (22)</td>
+<td>I</td>
+<td>I</td>
+<td>—</td>
+<td>—</td>
+<td><strong>R/A</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>التحقق والتسليم (23–24)</td>
+<td><strong>R</strong></td>
+<td>C</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>فتح الفرص (25)</td>
+<td><strong>R</strong></td>
+<td>A</td>
+<td>I</td>
+<td>I</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>(R ينفذ، A مسؤول نهائي، C يُستشار، I يُطلع) — الاعتماد حصري للجهة الحكومية دائماً.</p>
+<h2>قواعد تشغيلية لازمة أثناء الخوارزمية (خلاصة صارمة)</h2>
+<ol>
+<li><strong>لا حقل يُملأ من الذاكرة</strong>: كل بيان من مستند، وكل مستند من مصدره — والذاكرة للتحقق لا للإدخال.</li>
+<li><strong>لا اسم زر من ملف قديم</strong>: الواجهة تُقرأ لحظة التنفيذ، والفرق يوثق ويحدّث الملف (Knowledge-Standards §8).</li>
+<li><strong>لا وعد زمني للعميل إلا بصيغة تقديرية 💼</strong> مبني على: ١٠ أيام معلنة ✅ + هامش نواقص + هامش جهات.</li>
+<li><strong>لا رقم رسمي للرسوم إلا من الشاشة</strong> ⚠️ — والفصل التام بينه وبين الأتعاب في كل وثيقة مالية.</li>
+<li><strong>كل تعارض حدود = توقف</strong>: لا يكمل مساح تقريراً على أرض متنازع عليها؛ المسار يتحول لخدمة 4/قانوني.</li>
+<li><strong>حالة المورّث = قناة الإرث</strong> دائماً؛ لا حيلة تحويلية «تحدّث» صكاً باسم متوفى.</li>
+</ol>
+<h2>المصادر</h2>
+<ul>
+<li>وزارة العدل — اتفاقية مستوى الخدمة (الخدمة #57 ومدتها وخدمات الاستعلام الفورية): https://www.moj.gov.sa/ar/Ministry/Pages/sla.aspx — تحقق 2026-11-10 ✅.</li>
+<li>ناجز — البنية العامة وخدمات التحقق: https://www.najiz.sa — تحقق 2026-11-10 ✅/⚠️.</li>
+<li>دليل المنصة: <code>../../02-PLATFORMS/Najiz.md</code> · دليل المساحة: <code>../../04-ENGINEERING/Surveying/Surveying-Guide.md</code>.</li>
+<li>خريطة العلاقات والقاعدة الذهبية للأدوار: <code>../../00-STRATEGY/Services-Relations-Map.md</code> · <code>../../00-STRATEGY/Vision.md</code> §4.</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 — المشكلات والحالات العملية واختبار الإتقان: إصدار رخصة البناء — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/01-Building-Permit/README.html">إصدار رخصة بناء</a> <span class="crumb-sep">‹</span> <span>05 — المشكلات والحالات العملية واختبار الإتقان: إصدار رخصة البناء</span></nav>
+    <article class="doc"><h1>05 — المشكلات والحالات العملية واختبار الإتقان: إصدار رخصة البناء</h1>
+<blockquote>
+<p>إصدار 1.0 · تاريخ التحقق: 2026-11-10
+الحالات العملية 🧪 بياناتها افتراضية للتدريب. التوسع في سيناريوهات أوسع: ../../00-STRATEGY/Services-Relations-Map.md (السيناريوهات التسعة).</p>
+</blockquote>
+<hr />
+<h2>1. جدول المشكلات (13 مشكلة × الأعمدة التسعة)</h2>
+<blockquote>
+<p>الاختصارات: ن=منسق · ص=مكتب مصمم · س=مساح · ق=مقاول · ش=مشرف · ف=فاحص فني · ب=أمانة · م=مالك.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>وصف المشكلة</th>
+<th>السبب الجذري</th>
+<th>كيفية الكشف</th>
+<th>الأثر</th>
+<th>المسؤول</th>
+<th>الإجراء/الحل</th>
+<th>المستندات المطلوبة</th>
+<th>متى التصعيد</th>
+<th>متى الإيقاف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>صك غير محدث أو بياناته متفاوتة (مساحة/حدود/ملاك)</td>
+<td>صك قديم أو وراثة غير مكتملة</td>
+<td>جلب حي للصك داخل بلدي ومطابقته للقطعة ✅</td>
+<td>لا يمكن استيفاء المتطلب 1؛ توقف قبل البدء</td>
+<td>ن (كشف) + م (علاج)</td>
+<td>تحويل لخدمة 2 (تحديث الصكوك) — وقد تشمل رفعاً مساحياً (خدمة 8)</td>
+<td>صك حالي، هوية، بيانات ورثة إن وجدت</td>
+<td>فور اكتشاف تفاوت البيانات</td>
+<td>حتى يصدر صك محدث متطابق</td>
+</tr>
+<tr>
+<td>2</td>
+<td>لا قرار مساحي بغرض البناء</td>
+<td>عدم استخراجه سلفاً أو قرار قائم بغرض آخر</td>
+<td>الاستعلام في بلدي/قائمة أرقام القرارات الظاهرة للمستفيد ✅</td>
+<td>المتطلب 2 غير مستوفى؛ شاشة الطلب تمنح مسار أ بديلاً</td>
+<td>ن + س</td>
+<td>خدمة 4 أولاً، أو المسار أ (إصدار القرار من خلال المكتب الهندسي) ✅</td>
+<td>بيانات القطعة، صك محدث</td>
+<td>إذا احتاج قرار رفعاً مساحياً جديداً</td>
+<td>حتى صدور قرار بغرض البناء</td>
+</tr>
+<tr>
+<td>3</td>
+<td>مكتب مصمم غير معتمد/حسابه غير جاهز في بلدي أعمال</td>
+<td>اختيار عشوائي أو مكتب بلا تصنيف سارٍ</td>
+<td>قوائم المكاتب المعتمدة في بلدي ✅</td>
+<td>لا يمكن قبول التفويض؛ توقف المسار منذ خطوته الأولى</td>
+<td>م (اختيار)</td>
+<td>استبدال المكتب بمعتمد لدى الوزارة ✅</td>
+<td>تصنيف المكتب من الهيئة السعودية للمهندسين ⚠️</td>
+<td>عند فشل قبول التفويض أكثر من مرة</td>
+<td>حتى يقبل مكتب معتمد</td>
+</tr>
+<tr>
+<td>4</td>
+<td>مخالفة بلدية قائمة على العقار</td>
+<td>بناء سابق دون رخصة/تجاوز اشتراطات</td>
+<td>استعلام بلدي/التشخيص الميداني</td>
+<td>قد تعلّق الطلبات وتفرض غرامات وفق لائحة الغرامات ✅</td>
+<td>م (ملكية المسؤولية)</td>
+<td>تقييم: تصحيح وضع مبنى (خدمة 11) أو تقرير سلامة (13) قبل متابعة الرخصة</td>
+<td>صور الموقع، إشعار المخالفة إن وجد</td>
+<td>عند وجود إشعار رسمي بالغرامة</td>
+<td>حتى تُعالج المخالفة أو تُصعَّد لمسار معالجة</td>
+</tr>
+<tr>
+<td>5</td>
+<td>تصميم مخالف لاشتراطات القطعة (ارتداد/نسبة/ارتفاع/مواقف)</td>
+<td>التصميم قبل تثبيت الاشتراطات أو على قيم مسموعة 📚</td>
+<td>جدول مطابقة داخلي قبل الرفع</td>
+<td>ملاحظات من ف/ب؛ إعادة تصميم وتأخير</td>
+<td>ص (تصميم)</td>
+<td>تعديل التصميم على الاشتراطات المثبتة؛ ⚠️ القيم حسب البلدية والتمييز فقط</td>
+<td>اشتراطات القطعة المثبتة، المخططات</td>
+<td>عند تعارض الاشتراط نفسه بين مصدرين رسميين</td>
+<td>حتى يطابق التصميم اشتراطاً مثبتاً كتابياً</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ملاحظات الفاحص الفني المتكررة (إنشائية)</td>
+<td>تفاصيل غير مطابقة لكود البناء السعودي ✅؛ تصميم دون تربة سليمة</td>
+<td>رسائل الملاحظات داخل الطلب</td>
+<td>دورات إعادة؛ تأخير أسابيع؛ تآكل ثقة العميل</td>
+<td>ص</td>
+<td>خطة معالجة: كل ملاحظة بربطها ببند كود + مخطط معدل؛ إن لزم مراجعة تربة</td>
+<td>سجل الملاحظات، المخططات المعدلة، تقرير التربة</td>
+<td>بعد دورتين بلا تقارب (حالة ب أدناه)</td>
+<td>عند اعتماد الفاحص</td>
+</tr>
+<tr>
+<td>7</td>
+<td>تأخر اعتماد الأمانة بلا ملاحظات ظاهرة</td>
+<td>ضغط عمل البلدية/نقص مراجعين</td>
+<td>متابعة «إدارة الطلبات» ومراقبة الحالة ✅</td>
+<td>تأخير الاعتماد وشهادة التصاميم</td>
+<td>ب (جهة) — ن (تعقب)</td>
+<td>متابعة منتظمة عبر المنصة + استفسار رسمي عبر قنوات الدعم الموثقة ⚠️</td>
+<td>رقم الطلب، لقطات حالة</td>
+<td>بعد تجاوز المدة المعلنة في اتفاقية مستوى الخدمة ⚠️</td>
+<td>عند صدور الاعتماد</td>
+</tr>
+<tr>
+<td>8</td>
+<td>موافقة جهة خارجية معلقة (مرورية/دفاع مدني/طاقة)</td>
+<td>نشاط يستلزمها (اشتراط رسمي 3 ✅)</td>
+<td>مراجعة شروط النشاط قبل التقديم</td>
+<td>توقف الاعتماد على جهة خارج المنصة</td>
+<td>خ (جهة) — ن (تعقب)</td>
+<td>إدراجها مبكراً في الجدول؛ تجهيز مخططات الجهة؛ متابعة قنواتها الرسمية ⚠️</td>
+<td>مخططات الجهة، طلب الموافقة</td>
+<td>عند تجاوز المهلة المتفق عليها مع العميل 💼</td>
+<td>حتى صدور الموافقة أو تعديل النشاط</td>
+</tr>
+<tr>
+<td>9</td>
+<td>مقاول غير مصنف أو يرفض الإسناد</td>
+<td>مفضل مالك غير مسجل/مقاول متردد</td>
+<td>قوائم المقاولين المصنفين في بلدي ✅ (شرط رسمي)</td>
+<td>توقف مرحلة التعاقدات ✅</td>
+<td>م + ق</td>
+<td>اختيار مقاول مصنف ✅ أو تفعيل تسجيل المفضل لدى الوزارة ⚠️</td>
+<td>تصنيف المقاول</td>
+<td>عند رفض الإسناد النهائي</td>
+<td>حتى يوافق مقاول مصنف</td>
+</tr>
+<tr>
+<td>10</td>
+<td>مشرف لا يقبل الإسناد</td>
+<td>عدم توافقه/تعارض مصالح</td>
+<td>إشعار القبول داخل المنصة ✅</td>
+<td>توقف التعاقدات (المشرف سلف المقاول في المسار ✅)</td>
+<td>ش</td>
+<td>اختيار مشرف بديل</td>
+<td>موافقة المشرف</td>
+<td>عند رفض واضح</td>
+<td>حتى يقبل مشرف</td>
+</tr>
+<tr>
+<td>11</td>
+<td>سُددت رسوم الرخصة دون وثيقة التأمين</td>
+<td>سوء تفسير «الإصدار بعد السداد»</td>
+<td>حالة الرخصة «غير سارية» وعدم امكانية الطباعة ✅ (نص رسمي)</td>
+<td>رخصة صادرة غير سارية — لا تصلح للتعامل</td>
+<td>ن (تعقب) + م (سداد)</td>
+<td>سداد قسط الوثيقة عبر رابطها الآلي فوراً ثم التحقق من السريان</td>
+<td>إيصال الرسوم، وثيقة التأمين</td>
+<td>فور اكتشاف الحالة غير السارية</td>
+<td>عند تحول الحالة إلى سارية ✅</td>
+</tr>
+<tr>
+<td>12</td>
+<td>انتهاء صلاحية فاتورة الرسوم أو تأخر السداد</td>
+<td>مهلة الفاتورة ⚠️/تأخر العميل</td>
+<td>مراقبة الفاتورة في الطلب</td>
+<td>إعادة إصدار فاتورة وتأخير</td>
+<td>م</td>
+<td>إعادة إصدار وسداد في مهلتها ⚠️</td>
+<td>الفاتورة</td>
+<td>قرب انتهاء المهلة 💼</td>
+<td>عند السداد</td>
+</tr>
+<tr>
+<td>13</td>
+<td>بيانات المخطط/القطعة في الطلب لا تطابق الصك (رقم قطعة/مخطط/مساحة)</td>
+<td>خطأ إدخال أو صك متقدم على اعتماد المخطط</td>
+<td>مطابقة آلية عند اختيار القرار المساحي ✅ + مراجعة بشرية للن</td>
+<td>رفض أو تعليق؛ قد يكشف مشكلة صك أعمق</td>
+<td>ن (إدخال)</td>
+<td>تصحيح الإدخال؛ إن كان الجذر في الصك → خدمة 2</td>
+<td>صك، قرار مساحي، بيانات المخطط</td>
+<td>عند فشل التصحيح الإداري</td>
+<td>عند اكتمال المطابقة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. شجرة قرار التعثر/الرفض (تتفرع حسب السبب — لا حل موحد)</h2>
+<pre><code>المعاملة متعثرة أو مرفوضة؟
+│
+├─ 1. في أي مرحلة وقف؟
+│   ├─ قبل بدء الطلب → نواقص سلف (تابع فرع 2)
+│   ├─ بعد الإرسال عند الفحص الفني → تابع فرع 3
+│   ├─ عند الأمانة → تابع فرع 4
+│   ├─ عند الجهات الخارجية → تابع فرع 5
+│   ├─ في التعاقدات → تابع فرع 6
+│   └─ عند التأمين/الرسوم/الإصدار → تابع فرع 7
+│
+├─ 2. نواقص سلف:
+│   ├─ صك → خدمة 2 (تحديث الصكوك) ثم عُد
+│   ├─ قرار مساحي → خدمة 4 أو المسار أ داخل الخدمة ✅
+│   ├─ دراسة تربة → مختبر جيوتقني (قبل التصميم الإنشائي دائماً)
+│   ├─ تفويض → تحديث التفويض البلدي/الوكالة
+│   └─ مخالفات قائمة → تصعيد: خدمات 11/13 (تصحيح وضع/سلامة) قبل المتابعة
+│
+├─ 3. ملاحظة فاحص فني (ف):
+│   ├─ بند كود واضح → معالجة هندسية بالمكتب المصمم + إعادة إرسال
+│   ├─ ملاحظة تعارض مع اشتراط بلدي → استفسار رسمي موحد قبل التعديل
+│   └─ دورة متكررة (&gt;2) → اجتماع فني مصلَّح + مراجعة كاملة للحزمة (حالة ب)
+│
+├─ 4. ملاحظة أمانة (ب):
+│   ├─ اشتراط قطعة → تعديل التصميم على الاشتراط المثبت ⚠️ (حسب البلدية/التمييز)
+│   ├─ ملاحظة إدارية → استكمال مستند/تصحيح بيانات
+│   └─ ملاحظة نظامية خلافية → اعتراض عبر منصة الاعتراضات الموحدة ✅ (منتج رسمي) أو استفسار رسمي
+│
+├─ 5. جهة خارجية (خ):
+│   ├─ مطلوب مستند إضافي → استيفاؤه من المالك/المكتب
+│   ├─ موافقة مرفوضة → مراجعة سبب الرفض: تعديل التصميم أو مسار بديل رسمي
+│   └─ تأخير → تصعيد زمني للعميل بجدول واقعي 💼
+│
+├─ 6. تعاقدات:
+│   ├─ مقاول غير مصنف → استبدال بمصنف ✅ (شرط رسمي)
+│   ├─ رفض مشرف/مقاول → بديل
+│   └─ تأخر رد → تنبيه نصي عبر المنصة + متابعة
+│
+└─ 7. تأمين/رسوم/إصدار:
+    ├─ رخصة غير سارية → سداد قسط الوثيقة (الربط الآلي ✅) ثم التحقق
+    ├─ فاتورة منتهية → إعادة إصدار وسداد ⚠️
+    └─ بيانات رخصة خاطئة → تصحيح قبل الطباعة عبر الطلب ⚠️
+</code></pre>
+<p><strong>قواعد القرار الثلاث:</strong>
+1. حدد <strong>الطبقة</strong> أولاً (مستندات/مساحية/فني/بلدي/خارجي/مالي) ثم عالج في طبقتها — لا تعالج ملاحظة أمانة بتعديل إنشائي ولا العكس.
+2. الاعتراض الرسمي مسار مشروع عبر منصة الاعتراضات الموحدة ✅ — وليس إعادة تقديم لنفس الطلب نفسه.
+3. أي توقف بلا مرسل إليه &gt; مهلة متفق مع العميل 💼 → تصعيد موثق (تقرير حالة للمالك).</p>
+<hr />
+<h2>3. الحالة العملية ① — مسار سلس 🧪</h2>
+<blockquote>
+<p>🧪 بيانات افتراضية للتدريب (2026-11-10). الشخصيات: م.عبدالله مالك، مكتب «X» مصمم، مختبر «ج» جيوتقني، مقاول «ق1» مصنف.</p>
+</blockquote>
+<p><strong>المعطيات:</strong> أرض سكنية 400م²، قطعة 42/مخطط 5، صك إلكتروني محدث مطابق، قرار مساحي بغرض البناء صادر (ظهر ضمن أرقامه في بلدي ✅)، دراسة تربة حديثة تقبل بصات، يريد عمارة 3 أدوار (دور علوي واحد/أسفل ورديسة).</p>
+<p><strong>المسار:</strong>
+1. <strong>يوم 1–2:</strong> المنسق يفحص الصك (مطابق ✅) والقرار (بغرض البناء ✅) — لا مخالفات ظاهرة في الاستعلام. عرض سعر: أتعاب تصميم 15,000 + إنشائي 10,000 + تعقيب 4,000 + تربة 0 (جاهزة) 🧪 + رسوم حكومية «من الحاسبة» ⚠️ + VAT 📚. يوقّع الاتفاقية.
+2. <strong>يوم 3:</strong> م.عبدالله يصدر التفويض البلدي الإلكتروني لمكتب X ✅؛ يبدأ الطلب من حسابه (تقديم جديد ← طلب إصدار ← الرخص الإنشائية ← إصدار رخصة بناء ✅)، يختار المسار ب (قراره المساحي من القائمة ✅)، المسار الاعتيادي، يكتب ملاحظاته الموجهة للمكتب، يرفع مرفقاته، «تم إرسال الطلب إلى المكتب الهندسي» ✅.
+3. <strong>يوم 4–18:</strong> مكتب X يقبل التفويض، يحدد القرار المساحي، يعمل التصميم المعماري (جدول مطابقة: ارتدادات/نسبة/ارتفاع كلها مطابقة ✅) والإنشائي على تقرير «ج» (بصات عادية)، جدول مساحات، رفع الحزمة + الموافقة على التعهدات البلدية ✅.
+4. <strong>يوم 19:</strong> إسناد آلي لشركة الفحص الفني ✅ — ملاحظتان (تفصيلة فتحة تهوية + رمز مادة في ورقة إنشائية)؛ يعالجهما المكتب في يومين ويعيد الإرسال.
+5. <strong>يوم 24:</strong> اجتياز الفحص → الأمانة تراجع — <strong>بلا ملاحظات</strong> → اعتماد + <strong>شهادة اعتماد التصاميم</strong> ✅ (يطبعها المكتب).
+6. <strong>يوم 25:</strong> إشعار مرحلة التعاقدات ✅ — المكتب المصمم يحدد المشرف «ش1» (يوافق) ثم المقاول «ق1» المصنف (يوافق + يكمل بياناته ومرفقاته لإرسالها لشركة التأمين ✅).
+7. <strong>يوم 26–28:</strong> نظام بلدي يرسل طلب الوثيقة آلياً ✅ → رابط سداد القسط → م.عبدالله يسدد → وثيقة صادرة. المكتب يوافق على رسوم الرخصة ويصدر الفاتورة ✅ (المبلغ من الحاسبة/الفاتورة ⚠️) → سداد بنفس الفترة.
+8. <strong>يوم 29:</strong> إصدار الرخصة — <strong>الحالة سارية</strong> ✅، طباعتها، إشعار الجهات آلياً (كهرباء/مياه/طاقة/دفاع مدني/تأمين/سجل عيني ✅).
+9. <strong>يوم 30:</strong> تسليم موثق: PDF الرخصة + الوثيقة + شهادة اعتماد التصاميم، ملف مؤرشف برقم الطلب، وفتح فرص: عقد إشراف «ش1» + جدول إشعارات البناء + موعد شهادة إشغال بعد الإنجاز (خدمة 6) + فرز الوحدات لاحقاً (خدمة 3).</p>
+<p><strong>دروس الحالة:</strong> اكتمال السلف قبل الطلب جعل الدورة الكاملة ~شهراً 🧪 بملاحظة واحدة فقط من كل طبقة؛ والتسلسل الصحيح (تربة ← إنشائي) منع أي إعادة.</p>
+<hr />
+<h2>4. الحالة العملية ② — حالة استثنائية مركبة 🧪</h2>
+<blockquote>
+<p>🧪 بيانات افتراضية للتدريب. م.سعاد وريثة مع شقيقها، صك ورثة قديم، تصميم متعثر بملاحظات متكررة.</p>
+</blockquote>
+<p><strong>المعطيات:</strong> قطعة سكنية 300م²، صك ملكية صدر قبل سنوات بأسماء الورثة الثلاثة (الأب توفّي) بلا توثيق حصص حديث، بيانات مساحة الصك لا تطابق القرار المساحي القائم بغرض البناء، وتريد مبنى تجاري/سكني مختلط. بعد التقديم: الفاحص الفني أعاد الطلب <strong>ثلاث مرات</strong> بملاحظات إنشائية متصاعدة، والمالك مستعجل لأنه وقّع عقد إيجار مسبق.</p>
+<p><strong>التشخيص (الطبقتان):</strong>
+- <strong>طبقة الملكية:</strong> صك ورثة غير محدث + تفاوت مساحة → <strong>يوقف كل شيء</strong>: المتطلب 1 غير مستوفى بشكلها الحالي.
+- <strong>طبقة الفنية:</strong> دورة ملاحظات متكررة → مؤشر أن التصميم أُعد قبل تثبيت اشتراطات القطعة أو أن دراسة التربة غير كافية للنشاط المختلط.</p>
+<p><strong>الخطة (شجرة القرار):</strong>
+1. <strong>تجميد التصميم</strong> — أي تكلفة تصميم إضافية الآن تضيع (قاعدة: لا تصميم قبل صك نظيف).
+2. <strong>مسار الملكية:</strong> خدمة 2 (تحديث الصكوك): توثيق الحصص عبر ناجز (سهم الشرطي ⚠️ نطاقه يتحقق هناك)، رفع مساحي جديد لحسم التفاوت (خدمة 8 — مساح مرخص)، صك محدث مطابق للقرار.
+3. <strong>مسار الفنية المتوازي (بلا رفع):</strong> اجتماع تصحيح مع المكتب المصمم: جدول بند-كود لكل ملاحظة؛ التحقق من أن تقرير التربة صالح لاستخدام مختلط وحمل أكبر (إن لا → تكليف مختبر بحفر إضافية 💼).
+4. <strong>إدارة التوقعات:</strong> تقرير حالة للمالك: الجدول الزمني الحقيقي (تحديث الصك ⚠️ حسب وزارة العدل + دورة تصميم جديدة + مراجعتان) وتعديل عقد الإيجار بمرونة إن أمكن — الصدق هنا أرخص من وعد غير قابل للتنفيذ 💼.
+5. <strong>بعد الصك المحدث:</strong> إعادة تقديم حزمة نظيفة → ملاحظة واحدة من الفاحص → اعتماد الأمانة (استخدام مختلط استوجب مراجعة اشتراطات التمييزين ودراسة مرورية للنشاط التجاري — استُوفت قبل الإرسال ✅).
+6. <strong>الإغلاق:</strong> تعاقدات (مشرف + مقاول مصنف ✅) → وثيقة آلياً + سداد قسطها → فاتورة وسداد → رخصة <strong>سارية</strong> → إشعار الجهات → تسليم وفرص إشراف.</p>
+<p><strong>دروس الحالة:</strong> (أ) تعثر الطبقتين معاً يُعالج بالتجميد والترتيب: ملكية ثم فنية؛ (ب) التفاوت بين الصك والقرار يُحسم بالرفع المساحي لا بالتقدير؛ (ج) الملاحظات المتكررة غالباً أعراض خلل في مدخلات التصميم (اشتراطات/تربة) لا في الأوراق نفسها.</p>
+<hr />
+<h2>5. اختبار الإتقان — 10 أسئلة (6 معرفة + 4 قرار)</h2>
+<p><strong>درجة النجاح: 8/10 (80%)</strong> — راجع المفتاح بعد الحل الكامل فقط.</p>
+<h3>أسئلة المعرفة (1–6)</h3>
+<p><strong>س1 (اختيار):</strong> ما الذي يجعل رخصة البناء «سارية» يمكن التعامل معها؟
+أ) صدورها من الأمانة فقط · ب) سداد رسوم الرخصة فقط · ج) سداد رسوم الرخصة <strong>ووثيقة التأمين ضد العيوب الخفية</strong> · د) طباعتها من المنصة</p>
+<p><strong>س2 (صح/خطأ مع التعليل):</strong> وثيقة التأمين ضد العيوب الخفية تُطلب من المالك برفع مستندات لدى شركة التأمين عبر منصة خارجية.</p>
+<p><strong>س3 (اختيار):</strong> دور الفاحص الفني في هذه الخدمة:
+أ) يعتمد الرخصة نيابة عن الأمانة · ب) يراجع المخططات المعدة من المكتب المصمم للتأكد من مطابقتها لكود البناء السعودي كجزء من إجراءات وثيقة التأمين · ج) ينفذ الرفع المساحي · د) يوقع التصاميم بدل المهندس</p>
+<p><strong>س4 (إكمال):</strong> رتب المتطلبات الرسمية التسعة حسب ظهورها الزمني النمطي، مشيراً إلى أي متطلبين <strong>لا يجوز قلبهما</strong>: (دراسة التربة) — (التصميم الإنشائي) — (صك محدث) — (التعاقدات).</p>
+<p><strong>س5 (اختيار):</strong> من يختار المكتب المشرف والمقاول داخل المنصة؟
+أ) الأمانة · ب) شركة التأمين · ج) المكتب الهندسي المصمم · د) الفاحص الفني</p>
+<p><strong>س6 (اختيار):</strong> شهادة اعتماد التصاميم تصدر/تُطبع:
+أ) بعد سداد الرسوم فقط · ب) من المكتب الهندسي المصمم بعد مراجعة الفاحص الفني والأمانة والجهات الخارجية <strong>وقبل</strong> إصدار الرخصة · ج) بديلاً عن الرخصة · د) من المالك مباشرة</p>
+<h3>أسئلة القرار (7–10)</h3>
+<p><strong>س7 (حالة):</strong> وصل طلب للفحص الفني ثم عاد بملاحظة: «المسافة بين العمود والحد المجاور تقلق اشتراط التمييز التجاري». من يعالج؟ وبأي مستند؟ وماذا تفعل إن تعارض اشتراط كود البناء مع اشتراط البلدية؟</p>
+<p><strong>س8 (حالة):</strong> سُددت رسوم الرخصة، وظهرت الرخصة بالحالة «غير سارية» ولا تُطبع. ما الخطوة الفورية؟ ومن المسؤول؟ وما المستندات؟</p>
+<p><strong>س9 (حالة):</strong> مالك لديه صك قديم بلا تحديث + بناء قائم بلا رخصة على جزء من الأرض. يطلب «رخصة بناء للأرض كلها الآن». ما ترتيب خطة التعامل؟ (اذكر الخدمات المتقاطعة).</p>
+<p><strong>س10 (حالة):</strong> في مرحلة التعاقدات، المقاول المفضل للمالك غير مصنف في بلدي، والمشرف المختار رفض الإسناد بعد الإشعار. ما القرارين المتوازيين الصحيحين لإنقاذ الجدول دون مخالفة الاشتراطات الرسمية؟</p>
+<hr />
+<h3>مفتاح الإجابات</h3>
+<p><strong>ج1:</strong> ج) — لا تعتبر الرخصة سارية/قابلة للطباعة إلا بعد سداد رسوم الرخصة ورسوم (قسط) وثيقة التأمين ✅ (نص رسمي من الأسئلة الشائعة).
+<strong>ج2:</strong> خطأ — لا يلزم تقديم مستندات ولا طلب من منصة خارجية؛ جميع المستندات تُرسل تلقائياً بالربط الإلكتروني، وشركة التأمين تُشعر برابط السداد ✅ (نص رسمي).
+<strong>ج3:</strong> ب) — نص رسمي ✅: مراجعة المخططات المعدة من المكتب المصمم كجزء من إجراءات وثيقة التأمين.
+<strong>ج4:</strong> الترتيب النمطي: صك محدث → (قرار مساحي) → <strong>دراسة التربة ← ثم التصميم الإنشائي</strong> (لا يُقلب ترتيبهما أبداً) → التعاقدات آخر مرحلة قبل التأمين والرسوم ✅. المفتاح: تربة قبل إنشائي.
+<strong>ج5:</strong> ج) — المكتب الهندسي المصمم يحدد المشرف ثم المقاول ✅ (نص رسمي، خطوتا 6–7).
+<strong>ج6:</strong> ب) — نص رسمي من الأسئلة الشائعة ✅.
+<strong>ج7:</strong> يعالجها <strong>المكتب الهندسي المصمم</strong> (ملاحظات تعود له حصراً ✅) بمستند رد: مخطط معدل يبرهن على مطابقة الاشتراط/بند الكود. عند تعارض الكود مع اشتراط البلدية: <strong>استفسار رسمي موحد</strong> قبل التعديل، وتوثيق الرد في سجل الملاحظات؛ الحل الأعمى (تعديل مزدوج) يكشف ملاحظة جديدة.
+<strong>ج8:</strong> فوري: سداد <strong>قسط وثيقة التأمين</strong> عبر الرابط الآلي ✅ (القسط من شركة التأمين ⚠️)، المسؤول عن التعقب: المنسق؛ المسؤول عن السداد: المالك/المقاول حسب الاتفاق. المستندات: إيصال السداد + الوثيقة، ثم التحقق من تحول الحالة إلى سارية قبل تسليم المالك.
+<strong>ج9:</strong> ترتيب إلزامي: (1) لا رخصة جديدة «للأرض كلها» الآن؛ (2) معالجة بناء قائم بلا رخصة: تقييم → تصحيح وضع مبنى (خدمة 11) وتقرير سلامة (13) عند الحاجة؛ (3) تحديث الصك (خدمة 2) مع مطابقة المساحة؛ (4) قرار مساحي سليم بغرض البناء (خدمة 4) إن لزم؛ (5) عندئذ فقط: مسار إصدار رخصة البناء لهذا الملف. ترتيب آخر = رفض مضمون ومخالفة معلقة.
+<strong>ج10:</strong> قراران متوازيان: (أ) المقاول: لا اختيار لمصنف؟ إما تفعيل تسجيل/تصنيف المفضل لدى الوزارة ⚠️ أو اختيار بديل مصنف من قوائم بلدي ✅ — الشرط الرسمي لا يُخترق؛ (ب) المشرف: اختيار بديل من المكتب المصمم فور رفضه. موازاة الحركتين مقبولة (خطوتان متتاليتان في المسار الرسمي لكنهما مستقلتان)، مع إخطار المالك وتحديث الجدول الزمني 💼.</p>
+<h2>6. بروتوكول المتابعة الدورية والتصعيد للعميل 💼</h2>
+<blockquote>
+<p><span class="tag tag-biz">💼 ممارسة تجارية</span> أنماط تشغيلية راسخة في المكاتب — ليست نظاماً، وتُعدّل حسب اتفاق كل عميل.</p>
+</blockquote>
+<p><strong>دورة المتابعة (Cadence)</strong>
+| الحالة | الدورة | الفعل |
+|---|---|---|
+| طلب بانتظار فاحص/أمانة | كل 2–3 أيام عمل | فحص «إدارة الطلبات» ✅ + تدوين في السجل |
+| طلب بعد رجوع ملاحظات | كل يوم عمل | ضغط إغلاق الملاحظات لدى المكتب المصمم |
+| طلب في التعاقدات/التأمين | يومي | تذكير نصي للمالك/المقاول برابط السداد ✅ |
+| توقف بلا حركة &gt; أسبوع | فوري | استفسار رسمي عبر قنوات الدعم الموثقة ⚠️ |</p>
+<p><strong>تقرير الحالة الدوري للعميل (قالب سطرين)</strong></p>
+<pre><code>الطلب رقم ______ | الحالة اليوم: ________ | ما فُعل هذا الأسبوع: ________
+ما ينقص للإغلاق: ________ | تصرف مطلوب منك (إن وجد): ________ | التاريخ: ______
+</code></pre>
+<p><strong>سلّم التصعيد (داخلي ثم للعميل)</strong>
+1. منسق ← مسؤول ملفات المكتب (عند تعثر طرف داخلي).
+2. اجتماع تصحيح فني مع المكتب المصمم (عند دورة ملاحظات ≥2).
+3. تقرير حالة رسمي للعميل مع خيارين واقعيين (قبل أي خسارة زمنية كبرى).
+4. مسارات نظامية خارجية: منصة الاعتراضات الموحدة ✅ أو قنوات الدعم الرسمية ⚠️ — لا تصعيد غير موثق.</p>
+<hr />
+<h2>7. الأثر الزمني النمطي للمشكلات 💼</h2>
+<blockquote>
+<p>💼 تقديرات ممارسة تشغيلية للمخطط الزمني (ليست مدداً رسمياً ⚠️) — للتدريب على إدارة توقعات العميل.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>المشكلة</th>
+<th>أثرها الزمني النمطي 💼</th>
+<th>وقاية مبكرة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>صك غير محدث (1)</td>
+<td>يوقف البداية كلياً — خدمة 2 بمدتها ⚠️</td>
+<td>فحص الصك في الجلسة الأولى دائماً</td>
+</tr>
+<tr>
+<td>لا قرار مساحي (2)</td>
+<td>+ أيام إلى أسابيع حسب المسار أ/خدمة 4 ⚠️</td>
+<td>فحص قائمة أرقام القرارات قبل العقد</td>
+</tr>
+<tr>
+<td>ملاحظات فاحص متكررة (6)</td>
+<td>+ دورة كاملة لكل عودة</td>
+<td>قائمة الفحص الداخلي (04-Technical §6.5)</td>
+</tr>
+<tr>
+<td>جهة خارجية معلقة (8)</td>
+<td>غير قابل للتحكم — يُدرج بهامش</td>
+<td>كشف اشتراط النشاط قبل التسعير</td>
+</tr>
+<tr>
+<td>سداد دون تأمين (11)</td>
+<td>+ يومان إن اكتُشف فوراً؛ أسابيع إن اكتُشف متأخراً</td>
+<td>تحقق «سارية» في يوم السداد نفسه ✅</td>
+</tr>
+<tr>
+<td>مقاول/مشرف غير متوافق (9/10)</td>
+<td>+ أيام بحث بديل</td>
+<td>موافقات مسبقة قبل مرحلة التعاقدات</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص الحالتين في سطر لكل منهما:</strong> ① سلف مكتملة + تصميم مطابق = دورة قصيرة بملاحظات قليلة (نموذج ~شهر 🧪). ② صك متفاوت + ملاحظات متكررة = تجميد، علاج ملكية أولاً، ثم إعادة تقديم نظيفة.</p>
+<hr />
+<h2>8. قاموس حالات الطلب كما تظهر في بلدي 💼</h2>
+<blockquote>
+<p>💼 صياغات تفسيرية للمكاتب عند المتابعة — الأسماء الرسمية الدقيقة للحالات تتحقق من الواجهة الحالية عند التنفيذ (واجهات بلدي تتطور).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>الحالة الظاهرة</th>
+<th>تفسيرها التشغيلي</th>
+<th>الفعل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«تم إرسال الطلب إلى المكتب الهندسي» ✅</td>
+<td>الطلب وصل للمكتب المصمم ولم يقبل/يعمل بعد</td>
+<td>تنبيه المكتب</td>
+</tr>
+<tr>
+<td>مُسند للفحص الفني</td>
+<td>بانتظار/تحت مراجعة الفاحص</td>
+<td>انتظار بدورة متابعة</td>
+</tr>
+<tr>
+<td>ملاحظات معادة</td>
+<td>في زمن معالجة المكتب المصمم</td>
+<td>إغلاق الملاحظات فوراً</td>
+</tr>
+<tr>
+<td>معتمَد من الأمانة/بانتظار التعاقدات</td>
+<td>شهادة اعتماد التصاميم جاهزة — التعاقدات تنتظر</td>
+<td>اختيار مشرف+مقاول فوراً</td>
+</tr>
+<tr>
+<td>بانتظار وثيقة التأمين/الرسوم</td>
+<td>السدادات غير مكتملة</td>
+<td>سداد القسط والفاتورة ✅</td>
+</tr>
+<tr>
+<td>صادرة — <strong>غير سارية</strong> ⚠️</td>
+<td>فاتورة مسددة والوثيقة لا</td>
+<td>سداد القسط ثم تحقق «سارية» ✅</td>
+</tr>
+<tr>
+<td>صادرة سارية</td>
+<td>المخرج النهائي</td>
+<td>طباعة + أرشفة + تسليم</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>9. تصحيح مفاهيم شائعة (للتدريب والفريق)</h2>
+<ol>
+<li><strong>«الرخصة تصدر بعد السداد»</strong> — نصف صحيح: تصدر بعد سداد الرسوم <strong>والوثيقة</strong>، وتظل غير سارية دون الثانية ✅.</li>
+<li><strong>«شهادة اعتماد التصاميم = رخصة»</strong> — خطأ: هي مخرج وسيط قبل الرخصة ✅.</li>
+<li><strong>«الفاحص الفني يعتمد»</strong> — خطأ: هو طبقة مراجعة مستقلة؛ الاعتماد للأمانة ✅.</li>
+<li><strong>«المكتب المصمم يختار أي مقاول»</strong> — لا: مقاول <strong>مصنف</strong> إلزاماً رسمياً ✅.</li>
+<li><strong>«الرفع المساحي عمل المكتب الهندسي دائماً»</strong> — لا: عمل المساح المرخص وفق معايير الجهة؛ للمكتب الدخول عبر الخدمات المساحية المنظمة ✅.</li>
+<li><strong>«دراسة التربة إجراء شكلي»</strong> — خطأ: أساس التصميم الإنشائي ومتطلب رسمي ✅؛ تأخيرها يعيد الحساب كله.</li>
+<li><strong>«ملاحظة الأمانة تعالج بالحديث معها»</strong> — لا: تعالج بمستند/مخطط معدل داخل الطلب؛ والخلاف النظامي عبر منصة الاعتراضات الموحدة ✅.</li>
+</ol>
+<hr />
+<h2>المصادر</h2>
+<ul>
+<li>نصوص الأسئلة والقواعد الرسمية: صفحة خدمة إصدار رخصة بناء (الأسئلة الشائعة + طريقة التقديم) · بلدي · تحقق 2026-11-10 ✅.</li>
+<li>الاشتراطات ومنصة الاعتراضات ولائحة الغرامات: node/10923 + صفحة الخدمة · تحقق 2026-11-10 ✅.</li>
+<li>خريطة السيناريوهات والخدمات المتقاطعة: ../../00-STRATEGY/Services-Relations-Map.md.</li>
+<li>الدليل المشترك (أخطاء شائعة §9): ../../02-PLATFORMS/Balady.md · تحقق 2026-11-10 ✅.</li>
+<li>معايير الوسوم: ../../00-STRATEGY/Knowledge-Standards.md.</li>
+</ul></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>

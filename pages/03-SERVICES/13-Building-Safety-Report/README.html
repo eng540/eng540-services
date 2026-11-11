@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخدمة 13: إعداد تقرير سلامة المبنى (Building Safety / Condition Assessment Report) — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="about-link" href="../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../00-STRATEGY/About-Author.html" data-p="00-STRATEGY/About-Author.html">About-Author</a><a class="nav-link" href="../00-STRATEGY/Central-Services-Database.html" data-p="00-STRATEGY/Central-Services-Database.html">Central-Services-Database</a><a class="nav-link" href="../00-STRATEGY/Knowledge-Standards.html" data-p="00-STRATEGY/Knowledge-Standards.html">Knowledge-Standards</a><a class="nav-link" href="../00-STRATEGY/Learning-Objectives.html" data-p="00-STRATEGY/Learning-Objectives.html">Learning-Objectives</a><a class="nav-link" href="../00-STRATEGY/SUBAGENT-BRIEF.html" data-p="00-STRATEGY/SUBAGENT-BRIEF.html">SUBAGENT-BRIEF</a><a class="nav-link" href="../00-STRATEGY/Services-Relations-Map.html" data-p="00-STRATEGY/Services-Relations-Map.html">Services-Relations-Map</a><a class="nav-link" href="../00-STRATEGY/Vision.html" data-p="00-STRATEGY/Vision.html">Vision</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../01-REGULATIONS/Laws.html" data-p="01-REGULATIONS/Laws.html">Laws</a><a class="nav-link" href="../01-REGULATIONS/Official-Sources.html" data-p="01-REGULATIONS/Official-Sources.html">Official-Sources</a><a class="nav-link" href="../01-REGULATIONS/Regulations.html" data-p="01-REGULATIONS/Regulations.html">Regulations</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../02-PLATFORMS/Balady.html" data-p="02-PLATFORMS/Balady.html">Balady</a><a class="nav-link" href="../02-PLATFORMS/Najiz.html" data-p="02-PLATFORMS/Najiz.html">Najiz</a><a class="nav-link" href="../02-PLATFORMS/Other-Platforms.html" data-p="02-PLATFORMS/Other-Platforms.html">Other-Platforms</a><a class="nav-link" href="../02-PLATFORMS/Real-Estate-Registry.html" data-p="02-PLATFORMS/Real-Estate-Registry.html">Real-Estate-Registry</a></details>
+<details class="nav-group open" open><summary>الخدمات الـ14</summary><a class="nav-link" href="../03-SERVICES/01-Building-Permit/README.html" data-p="03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../03-SERVICES/02-Deed-Update/README.html" data-p="03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../03-SERVICES/03-Unit-Subdivision/README.html" data-p="03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../03-SERVICES/04-Survey-Decision/README.html" data-p="03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../03-SERVICES/05-Renovation-Permit/README.html" data-p="03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../03-SERVICES/06-Occupancy-Certificate/README.html" data-p="03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../03-SERVICES/07-Deed-Merging/README.html" data-p="03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../03-SERVICES/08-Survey-Sketch/README.html" data-p="03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../03-SERVICES/09-Land-Subdivision-Merging/README.html" data-p="03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../03-SERVICES/10-Demolition-Supervision/README.html" data-p="03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../03-SERVICES/11-Building-Status-Correction/README.html" data-p="03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../03-SERVICES/12-Real-Estate-Registration/README.html" data-p="03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../03-SERVICES/13-Building-Safety-Report/README.html" data-p="03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../03-SERVICES/14-Balady-Services/README.html" data-p="03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../04-ENGINEERING/Drawings/Drawings-Guide.html" data-p="04-ENGINEERING/Drawings/Drawings-Guide.html">— Drawings-Guide</a><a class="nav-link" href="../04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html" data-p="04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">— Equipment-Software-Guide</a><a class="nav-link" href="../04-ENGINEERING/Surveying/Surveying-Guide.html" data-p="04-ENGINEERING/Surveying/Surveying-Guide.html">— Surveying-Guide</a><a class="nav-link" href="../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html" data-p="04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">— Technical-Reports-Guide</a></details>
+<details class="nav-group"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html" data-p="05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">— Customer-Journey-Guide</a><a class="nav-link" href="../05-OPERATIONS/Office-Management/Office-Management-Guide.html" data-p="05-OPERATIONS/Office-Management/Office-Management-Guide.html">— Office-Management-Guide</a><a class="nav-link" href="../05-OPERATIONS/Pricing/Pricing-Guide.html" data-p="05-OPERATIONS/Pricing/Pricing-Guide.html">— Pricing-Guide</a><a class="nav-link" href="../05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html" data-p="05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">— Quality-Performance-Guide</a><a class="nav-link" href="../05-OPERATIONS/Workflow/Transaction-Operations-Guide.html" data-p="05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">— Transaction-Operations-Guide</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html" data-p="06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">Case-01-Raw-Land-To-Building</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html" data-p="06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">Case-02-Building-Without-Permit</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-03-Land-Data-Update.html" data-p="06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">Case-03-Land-Data-Update</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html" data-p="06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">Case-04-Building-Needs-Restoration</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">Case-05-Multi-Unit-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-06-Deeds-Merging.html" data-p="06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">Case-06-Deeds-Merging</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html" data-p="06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">Case-07-Building-Safety-Report</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-08-Land-Subdivision.html" data-p="06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">Case-08-Land-Subdivision</a><a class="nav-link" href="../06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html" data-p="06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">Case-09-Real-Estate-Registration</a><a class="nav-link" href="../06-PRACTICAL-CASES/README.html" data-p="06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../07-TEMPLATES/01-Client-Intake-Form.html" data-p="07-TEMPLATES/01-Client-Intake-Form.html">01-Client-Intake-Form</a><a class="nav-link" href="../07-TEMPLATES/02-Property-Inspection-Form.html" data-p="07-TEMPLATES/02-Property-Inspection-Form.html">02-Property-Inspection-Form</a><a class="nav-link" href="../07-TEMPLATES/03-Document-Review-Checklist.html" data-p="07-TEMPLATES/03-Document-Review-Checklist.html">03-Document-Review-Checklist</a><a class="nav-link" href="../07-TEMPLATES/04-Quotation-Template.html" data-p="07-TEMPLATES/04-Quotation-Template.html">04-Quotation-Template</a><a class="nav-link" href="../07-TEMPLATES/05-Transaction-Tracking-Form.html" data-p="07-TEMPLATES/05-Transaction-Tracking-Form.html">05-Transaction-Tracking-Form</a><a class="nav-link" href="../07-TEMPLATES/06-Notes-Handling-Form.html" data-p="07-TEMPLATES/06-Notes-Handling-Form.html">06-Notes-Handling-Form</a><a class="nav-link" href="../07-TEMPLATES/07-Delivery-Form.html" data-p="07-TEMPLATES/07-Delivery-Form.html">07-Delivery-Form</a><a class="nav-link" href="../07-TEMPLATES/08-Satisfaction-Survey.html" data-p="07-TEMPLATES/08-Satisfaction-Survey.html">08-Satisfaction-Survey</a><a class="nav-link" href="../07-TEMPLATES/09-Pre-Submission-Checklist.html" data-p="07-TEMPLATES/09-Pre-Submission-Checklist.html">09-Pre-Submission-Checklist</a><a class="nav-link" href="../07-TEMPLATES/10-Common-Errors-List.html" data-p="07-TEMPLATES/10-Common-Errors-List.html">10-Common-Errors-List</a><a class="nav-link" href="../07-TEMPLATES/README.html" data-p="07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../08-TRAINING/README.html" data-p="08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../08-TRAINING/Exams/Final-Composite-Exam.html" data-p="08-TRAINING/Exams/Final-Composite-Exam.html">— Final-Composite-Exam</a><a class="nav-link" href="../08-TRAINING/Exercises/Exercises-Pack.html" data-p="08-TRAINING/Exercises/Exercises-Pack.html">— Exercises-Pack</a><a class="nav-link" href="../08-TRAINING/Lessons/Stage-1-Foundation.html" data-p="08-TRAINING/Lessons/Stage-1-Foundation.html">— Stage-1-Foundation</a><a class="nav-link" href="../08-TRAINING/Simulations/Simulation-01-Building-Permit.html" data-p="08-TRAINING/Simulations/Simulation-01-Building-Permit.html">— Simulation-01-Building-Permit</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../09-GLOSSARY/Glossary.html" data-p="09-GLOSSARY/Glossary.html">Glossary</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Change-Log.html" data-p="10-QUALITY-AND-UPDATES/Change-Log.html">Change-Log</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Knowledge-Gaps.html" data-p="10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">Knowledge-Gaps</a><a class="nav-link" href="../10-QUALITY-AND-UPDATES/Verification-Log.html" data-p="10-QUALITY-AND-UPDATES/Verification-Log.html">Verification-Log</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <main class="content">
+    <nav class="breadcrumb"><a href="../03-SERVICES/README.html">الخدمات الـ14</a> <span class="crumb-sep">‹</span> <a href="../03-SERVICES/13-Building-Safety-Report/README.html">إعداد تقرير سلامة المبنى</a> <span class="crumb-sep">‹</span> <span>الخدمة 13: إعداد تقرير سلامة المبنى (Building Safety / Condition Assessment Report)</span></nav>
+    <article class="doc"><h1>الخدمة 13: إعداد تقرير سلامة المبنى (Building Safety / Condition Assessment Report)</h1>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>القيمة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>اسم الخدمة في المستودع</td>
+<td><strong>إعداد تقرير سلامة المبنى</strong></td>
+</tr>
+<tr>
+<td>الاسم المهني</td>
+<td>تقرير تقييم الحالة الفنية والإنشائية لمبنى قائم (Building Condition Assessment / Structural Safety Report) 📚</td>
+</tr>
+<tr>
+<td>التصنيف</td>
+<td><strong>خدمة استشارية فنية (الفئة 6 من Vision.md §4: «تقييم المبنى، تقارير السلامة… — مستشار/مهندس بصلاحية توقيع»)</strong> + عمل مهني هندسي مساند (فئة 1)</td>
+</tr>
+<tr>
+<td>المنصة الأساسية</td>
+<td><strong>لا توجد منصة رسمية موحدة لهذه الخدمة</strong> ✅ [متحقق: كتالوج بلدي العام، 2026-11-10 — انظر §3] — تُقدَّم كعمل مهني مباشر، ويُستقبل تقريرها لدى جهات متعددة حسب الغرض (⚠️ لكل قناة رسمية)</td>
+</tr>
+<tr>
+<td>الجهة المالكة</td>
+<td>لا جهة مالكة حكومية — عمل مهني موقّع من مهندس/مكتب بصلاحية تقييم إنشائي 📚</td>
+</tr>
+<tr>
+<td>إصدار هذه الوثيقة</td>
+<td>0.1 · 2026-11-10</td>
+</tr>
+<tr>
+<td>المجلد</td>
+<td><code>03-SERVICES/13-Building-Safety-Report/</code></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<hr />
+<h2>القسم الأول — فهم الخدمة (الأسئلة الـ12)</h2>
+<h3>1.1 ما هي الخدمة؟</h3>
+<p>عمل استشاري هندسي تُعدّه جهة مهنية (مهندس إنشائي/مكتب هندسي بصلاحية تقييم) يفحص فيه مبنى قائماً <strong>معاينةً وفحصاً وتحليلاً</strong>، ثم يصدر <strong>تقريراً موقّعاً</strong> يوثق: حالته الفنية (أساسات، أعمدة، ركائز، جدران، بلاطات، عزل)، نتائج الفحوص، تصنيفه (سليم / يحتاج ترميم / خطر)، وتوصيات مرتبة بالأولوية (استمرار استخدام · ترميم · هدم) بمرجعية كود البناء السعودي.</p>
+<blockquote>
+<p><strong>نتيجة التحقق الإلكتروني (2026-11-10):</strong> لا توجد في كتالوج منصة بلدي العام خدمة رسمية موحدة باسم «تقرير سلامة المبنى» أو «تقييم حالة مبنى» أو ما يقابلها ✅ [متحقق: https://balady.gov.sa/ar/all-services — فُحص كتالوج الخدمات والمنتجات وواجهة البحث]. الظاهر الوحيد المرتبط بكلمة «سلامة» في الكتالوج هو «<strong>تصريح السلامة الصادر من المديرية العامة للدفاع المدني</strong>» المرتبط بوصف الرخص التجارية ✅ — وهو تصريح نشاط، لا تقييم إنشائي.
+<strong>الاستنتاج المنهجي:</strong> هذه الخدمة ليست «رخصة تُستخرج من منصة» بل <strong>عمل مهني متعاقد عليه</strong>؛ اعتماد تقريرها يختلف <strong>حسب الغرض والجهة المستقبِلة</strong> (بلدية/دفاع مدني/تأمين/قضاء/ممول)، ولا يوثَّق هنا قالب رسمي موحد أو جهة اعتماد موحدة لأن مصدقه غير متحقق — كل قناة رسمية تُوسم ⚠️.</p>
+</blockquote>
+<h3>1.2 التعريف النظامي والهندسي</h3>
+<ul>
+<li><strong>نظامياً:</strong> لا تعريف رسمي موحد متحقق منه لهذا التقرير كوثيقة مستقلة ⚠️ (لأن الخدمة ذاتها غير مُمنحة كخدمة إلكترونية موحدة). وجوده يظهر ضمنياً في المنظومة: خريطة التقارير الفنية بالمستودع تعرفه بأنه «تقرير سلامة المبنى: مهندس/مكتب بصلاحية تقييم — المالك/البلدية — قرار ترميم/هدم/استمرار» (<code>../../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.md</code> §1)، وسؤال شائع رسمي في خدمة الترميم يفصل بين المباني المرخصة وغير المرخصة ✅ (انظر 1.11).</li>
+<li><strong>هندسياً</strong> 📚: عملية تقييم مبنى قائم بمنهجية ثلاثية المراحل: (1) <strong>مراجعة مكتبية</strong> (صك، رخص، مخططات، سجل صيانة)؛ (2) <strong>فحص ميداني</strong> — معاينة أولية ثم فحص بصري مفصل لعناصر النظام الإنشائي (أساسات ظاهرة، أعمدة، ركائز/كرانيش، بلاطات، جدران حاملة وغير حاملة، عزل ومياه) مع توثيق شروخ وقياسات؛ (3) <strong>فحوص معززة عند الحاجة</strong> (اختبارات خرسانة، رادار اختراق أرضي GPR…) 📚⚠️، ثم تحليل وفق كود البناء السعودي وتصنيف الحالة وإصدار التقرير.</li>
+<li><strong>المرجعية الفنية المتحققة</strong> ✅ [متحقق: المركز السعودي لكود البناء — قائمة كود 2024، https://www.sbc.gov.sa/ar/BC/Pages/BuildingCode/BC.aspx?year=2024، تحقق 2026-11-10]:</li>
+<li><strong>SBC 901 — الكود السعودي للمباني القائمة</strong> (الجزء المباشر لتقييم وتصحيح المباني القائمة).</li>
+<li><strong>SBC 310 — الكود السعودي لإصلاح وتأهيل ومعالجة المنشآت الخرسانية للمباني القائمة</strong> (مرجع التوصيات الإنشائية للترميم والتقوية).</li>
+<li><strong>SBC 201 — كود البناء السعودي العام</strong> (نطاق الكود: «ضمان السلامة والصحة العامة» — النص التعريفي الرسمي على موقع المركز).</li>
+<li><strong>SBC 301</strong> (الأحمال والزلازل والرياح — مرجع مقاومة المبنى للأحمال)، <strong>SBC 303</strong> (التربة والأساسات)، <strong>SBC 304</strong> (المنشآت الخرسانية)، <strong>SBC 305</strong> (المنشآت الطوبية)، <strong>SBC 306</strong> (المنشآت الفولاذية)، <strong>SBC 801</strong> (الحماية من الحرائق)، <strong>SBC 902</strong> (المباني التاريخية — للحالات التراثية).</li>
+</ul>
+<h3>1.3 ما الهدف من الخدمة؟</h3>
+<ol>
+<li>إعطاء قرار فني موثق ومسؤول عن: <strong>هل المبنى آمن للاستخدام؟</strong> وهل يُرمم أم يُهدم؟ وما الأولوية والتسلسل؟</li>
+<li>تحويل «شكوك» (شروخ، مياه، هبوط) إلى <strong>تشخيص هندسي مبني على فحص موثق بالصور والقياسات</strong>.</li>
+<li>تزويد الجهة المستقبِلة (حسب الغرض) بأساس لقرارها: بلدية (ترميم/هدم/تصحيح وضع)، دفاع مدني (سلامة إشغال)، تأمين (حادثة/تعاقد)، قضاء/تحكيم (نزاع)، ممول (تمويل/شراء).</li>
+<li>حماية المالك والمهندس معاً: التقرير واضح النطاق والحدود يمنع تفسيره بغير غرضه.</li>
+</ol>
+<h3>1.4 لماذا يحتاجها العميل؟</h3>
+<ul>
+<li>لأن أي من الخدمات اللاحقة (رخصة ترميم 5، رخصة هدم 10، تصحيح وضع 11) <strong>تحتاج أساساً فنياً</strong> يبرر اختيار المسار 📚 (خريطة العلاقات: س3، س4، س7).</li>
+<li>لأن المنازعات (شرار جيران، خلل مقاول، شراء عقار مشكوك فيه) تُحسم بوثيقة مهنية محايدة موقعة.</li>
+<li>لأن «المبنى المتصدع» قد يكون آمناً (شروخ تشطيب) أو خطراً (فشل إنشائي جوهري) — الفرق لا يُدرك إلا بالفحص المتخصص.</li>
+<li>لأن شركات التأمين والممولين يطلبون إثبات الحالة الفنية قبل التعاقد 💼.</li>
+</ul>
+<h3>1.5 من العملاء المستهدفون؟</h3>
+<table>
+<thead>
+<tr>
+<th>العميل</th>
+<th>الغرض الشائع</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مالك فيلا/دور سكني قديم</td>
+<td>قرار ترميم أو إثبات سلامة قبل البيع 💼</td>
+</tr>
+<tr>
+<td>مالك/مستثمر مبنى تجاري</td>
+<td>سلامة الإشغال وتقييم قبل تعاقد إيجار طويل</td>
+</tr>
+<tr>
+<td>مشترٍ محتمل (عبر وكيل)</td>
+<td>due-diligence فني قبل الشراء 💼</td>
+</tr>
+<tr>
+<td>شركة تأمين / مؤمَّن عليه</td>
+<td>توثيق حالة قبل/بعد حادثة (حريق، سيول، انهيار جزئي) 💼</td>
+</tr>
+<tr>
+<td>محامٍ/محكمة (عبر خبير)</td>
+<td>إثبات فني في نزاع 📚</td>
+</tr>
+<tr>
+<td>شركة إدارة عقارات</td>
+<td>تقييم دوري لمحفظة مبانٍ 💼</td>
+</tr>
+<tr>
+<td>جهة حكومية/بلدية</td>
+<td>إسناد تقييم مبانٍ متضررة في نطاقها 📚</td>
+</tr>
+</tbody>
+</table>
+<h3>1.6 متى تكون إلزامية؟</h3>
+<ul>
+<li><strong>لا يوجد تشريع متحقق يوجبها بشروط موحدة</strong> ⚠️ — إلزاميتها <strong>مشتقة من الغرض</strong>:</li>
+<li>عندما تشترطها الجهة المستقبِلة للقرار: بلدية تطلب تقريراً فنياً قبل قبول طلب ترميم/هدم أو لتبرير تصحيح وضع 📚⚠️ (يختلف حسب البلدية والحالة — لا نص موحد).</li>
+<li>عندما يظهر بناء خطر: الإبلاغ النظامي بالبلدية/الدفاع المدني قد يفتح ملفاً يُطلب فيه تقييم فني ⚠️ (مسار الحالة «ب» في 05).</li>
+<li>في النزاعات: القضاء يكلف خبيراً، ويدعو الأطراف لتقديم تقاريرهم 📚.</li>
+</ul>
+<h3>1.7 متى تكون اختيارية أو غير مناسبة؟</h3>
+<ul>
+<li>اختيارية تماماً كعمل مهني: أي مالك يستطيع إسنادها دون طلب جهة 💼.</li>
+<li><strong>ليست البديل عن</strong>: رخصة الترميم (خدمة 5) أو رخصة الهدم (خدمة 10) أو تصحيح الوضع (خدمة 11) — التقرير يسبقها ويبررها ولا يعوضها.</li>
+<li><strong>ليست</strong>: رفعاً مساحياً (خدمة 4/8)، ولا دراسة تربة جديدة، ولا تصميماً للترميم (تصميم المعالجات عمل خدمة 5/مكتب مصمم).</li>
+<li><strong>ليست</strong> شهادة رسمية معتمدة حكومياً بذاتها — إن لم تعتمدها الجهة المستقبِلة فهي دليل فني مهني (مدى اعتمادها متغير ⚠️).</li>
+</ul>
+<h3>1.8 الحالات المستدعية (الشائعة عملياً)</h3>
+<table>
+<thead>
+<tr>
+<th>الحالة</th>
+<th>الغرض الغالب</th>
+<th>النتيجة المتوقعة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>فيلا 25+ سنة بشروخ متعددة</td>
+<td>قرار ترميم</td>
+<td>تصنيف + نطاق ترميم بالأولوية</td>
+</tr>
+<tr>
+<td>مبنى شارف الانهيار بعد سيول/حريق</td>
+<td>إثبات خطر وإخلاء</td>
+<td>تصنيف «خطر» + مسار إبلاغ رسمي ⚠️</td>
+</tr>
+<tr>
+<td>شروخ ظهرت في مبنى الجار بعد حفر/هدم مجاور</td>
+<td>نزاع</td>
+<td>تقرير محايد يربط/ينفي السبب</td>
+</tr>
+<tr>
+<td>طلب تمويل/بيع عقار قديم</td>
+<td>إثبات سلامة 💼</td>
+<td>تقرير «سليم/يحتاج صيانة»</td>
+</tr>
+<tr>
+<td>مبنى بلا رخصة تريد البلدية معالجته</td>
+<td>تصحيح وضع (11)</td>
+<td>تقرير يحدد: تنظيم/ترميم/هدم 📚</td>
+</tr>
+<tr>
+<td>عزل فاشل ومشاكل رطوبة متكررة</td>
+<td>توصيات صيانة</td>
+<td>تقرير نطاق متوسط</td>
+</tr>
+</tbody>
+</table>
+<h3>1.9 المشكلات التي تحلها، وعلاقتها بالخدمات الأخرى</h3>
+<ul>
+<li>يحل: تحيّز تقدير المالك، تناقض آراء متضاربة، غياب مبرر فني لقرار بلدي، خطر استخدام مبنى متدهور دون وعي.</li>
+<li><strong>علاقتها بالمنظومة</strong> (<code>../../00-STRATEGY/Services-Relations-Map.md</code> §2 — سطر 13 والسيناريوهات س3/س4/س7):</li>
+<li><strong>تعتمد على</strong>: صك محدث (خدمة 2) عند الغرض الرسمي، مخططات الرخصة الأصلية إن وُجدت، زيارة ميدانية (لا تنفذ دونها).</li>
+<li><strong>تفتح بعدها</strong>: رخصة ترميم (5) / رخصة هدم وإشرافها (10) / تصحيح وضع (11) / استمرار استخدام موثق / دليل فني لنزاع أو تأمين.</li>
+</ul>
+<h3>1.10 خصوصيات مهمة</h3>
+<ol>
+<li><strong>تعدد أطراف الاستلام هو جوهر الخدمة</strong>: نفس المبنى قد يُفحص مرة واحدة ويُعد تقرير بتوزيعات (نسخة بلدية بصياغة «سند لطلب ترميم»، نسخة تأمين بشيء آخر) — بشرط عدم تناقض المضمون والنتيجة 📚.</li>
+<li><strong>الغرض يحدد كل شيء</strong>: تقرير «عام» يرفضه أغلب المستلمين — صياغة الغرض تطابق ما تطلبه الجهة (<code>Technical-Reports-Guide.md</code> §3: «الغرض مطابق لما تطلبه الجهة — تقرير عام يُرفض غالباً» 💼/📚).</li>
+<li><strong>زيارة ميدانية إلزامية</strong>: لا يصدر تقييم سلامة جاد من مكتب دون زيارة؛ الفحص عن بعد (صور المالك) يصلح فقط لمرحلة التسعير الأولي 📚.</li>
+<li><strong>الفحوص المعززة</strong>: المتاح سوقياً (مطرقة شميدت، GPR، قلوب خرسانية، اختبارات مختبرية) 📚 — متطلبات اعتماد المختبرات وشهادات الفاحصين تفصيلها غير متحقق ⚠️.</li>
+<li><strong>قنوات اعتماد رسمية متعددة وغير موحدة</strong> ⚠️: البلدية (لطلبات الرخص/المخالفات)، الدفاع المدني (سلامة الأنشطة)، التأمين (تعاقدي)، القضاء (خبرة) — <strong>لا جهة اعتماد موحدة معلنة</strong>؛ أي إجراء رسمي يُتحقق منه قناةً قناة.</li>
+<li><strong>الحد المهني</strong>: التصنيف والإصدار صلاحية مهندس/مكتب بصلاحية تقييم إنشائي — يُشترط عملياً تصنيف ساري وممارسة إنشائية 💼 (شرط التصنيف لدى الهيئة السعودية للمهندسين 📚⚠️ — نطاق المنظمة غير محسوم في المستودع: <code>../../02-PLATFORMS/Other-Platforms.md</code> §3). <strong>لا توقيع من منسق خدمات</strong> (Knowledge-Standards §6).</li>
+</ol>
+<h3>1.11 الفرق عن الخدمات المشابهة (الحدود الحاسمة)</h3>
+<table>
+<thead>
+<tr>
+<th>الحالة</th>
+<th>الخدمة الصحيحة</th>
+<th>لماذا</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مطلوب وثيقة فنية تحدد: سليم/ترميم/خطر</td>
+<td><strong>تقرير سلامة (13)</strong></td>
+<td>عمل تقييمي لا رخصة 📚</td>
+</tr>
+<tr>
+<td>مقرر الترميم وأريد رخصته</td>
+<td>رخصة ترميم (5) عبر بلدي 10481</td>
+<td>الرخصة إجراء بلدي ✅؛ التقرير سندها الفني عند الحاجة</td>
+</tr>
+<tr>
+<td>قرار إزالة البناء</td>
+<td>رخصة هدم (10)</td>
+<td>الهدم إجراء بلدي ✅ (10473)</td>
+</tr>
+<tr>
+<td>مبنى بلا رخصة يحتاج تنظيماً</td>
+<td>تصحيح وضع (11) بعد قرار مساحي بنفس الغرض ✅</td>
+<td>نص رسمي من صفحة 10484 (نقله ملف الخدمة 5 §1.11)</td>
+</tr>
+<tr>
+<td>خلاف حدود أو مساحات</td>
+<td>قرار مساحي/كروكي (4/8)</td>
+<td>مسألة مساحية لا إنشائية</td>
+</tr>
+<tr>
+<td>فحص العقار قبل التسعير (جدولي)</td>
+<td>نموذج فحص العقار <code>../../07-TEMPLATES/02-Property-Inspection-Form.md</code></td>
+<td>فرز أولي تشغيلي، ليس تقرير سلامة موقّع</td>
+</tr>
+<tr>
+<td>مخططات ترميم/تقوية بعد القرار</td>
+<td>تصميم بالمكتب الهندسي (خدمة 5)</td>
+<td>عمل تصميمي، ليس تقييماً</td>
+</tr>
+</tbody>
+</table>
+<h3>1.12 نتائج عدم تنفيذها</h3>
+<ul>
+<li><strong>على المالك</strong>: قرار ترميم/هدم مبني على اجتهاد غير فني — إما تكاليف زائدة أو خطر دائم؛ ورفض لاحق لطلباته لدى الجهات لغياب السند الفني 📚.</li>
+<li><strong>على سلامة الأشخاص</strong>: مبنى متدهور يستمر في الاستخدام دون تقييم = خطر غير محسوب (أخطر نتيجة) 📚.</li>
+<li><strong>على النزاع</strong>: بلا تقرير محايد، يتحول الخلاف الفني إلى مزاحمة إفادات.</li>
+<li><strong>على المكتب/المنسق</strong>: أخذ قرار بمسار (ترميم مثلاً) ثم تُكتشف أخطاء أغلى — تُرفع المسؤولية على من أشار دون تقييم موثق 📚.</li>
+</ul>
+<hr />
+<h2>القسم الثاني — الجهات (الأدوار الست)</h2>
+<blockquote>
+<p>⚠️ <strong>هذه الخدمة ليس لها جهة مالكة حكومية واحدة</strong> — الجدول يمثل أدوار الجهات حسب الغرض؛ كل دور «اعتماد رسمي» يُوسم ⚠️ لتفاوت قنواته وعدم وجود نظام موحد متحقق.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>الجهة</th>
+<th>دورها في هذه الخدمة</th>
+<th>الوسم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>مطوّر الخدمة</strong>: مهندس/مكتب هندسي بصلاحية تقييم إنشائي</td>
+<td>ينفذ الفحص، يحلل وفق SBC، يصدر التقرير ويوقّع ويتحمل مسؤوليته المهنية</td>
+<td>📚 (الصلاحية) ⚠️ (شروط التصنيف الرسمية)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>مستقبِل الطلب (العميل)</strong>: المالك/المفوض — أو الجهة إن كانت هي الطالبة (بلدية/تأمين)</td>
+<td>يفوّض ويوقّع الاتفاق ويصحح الوصول للمبنى ويسدد</td>
+<td>💼/📚</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>المراجِع الفني الداخلي</strong>: مهندس إنشائي آخر/مراجع الجودة بالمكتب</td>
+<td>مراجعة منهجية وخلاصة قبل التوقيع (ضبط جودة مهني)</td>
+<td>📚</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>المستقبِل الرسمي للتقرير (حسب الغرض)</strong>: البلدية/الأمانة (سند لطلب ترميم/هدم/تصحيح وضع) · الدفاع المدني (سلامة نشاط/إشغال) · محكمة/لجنة خبراء (نزاع) · شركة تأمين</td>
+<td>يستلم التقرير ويقرر — <strong>كل قناة استلام رسمية غير موحدة ومتحققة هنا ⚠️</strong></td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>المساندة</strong>: مختبر مواد معتمد (اختبارات معززة) · فريق GPR/فحص لا إتلافي · مساح (هبوط/استواء إن لزم) · مكتب مصمم (تصميم المعالجة لاحقاً)</td>
+<td>تنفيذ فحوص وتخصصات ثانوية</td>
+<td>📚/💼 ⚠️ (اعتماد المختبرات)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>مستقبِل الاعتراضات</strong>: الجهة التي بُني عليها القرار (بلدية/محكمة/تأمين) + تقييم مهني ثانٍ بطلب الطرف</td>
+<td>طلب إعادة تقييم أو تقييم مضاد</td>
+<td>📚/⚠️</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>فصل الأدوار ملزم: المنسق يستقبل وينسق ويجهز — <strong>لا يفحص بذاته ولا يوقّع</strong>؛ التوقيع للمهندس صاحب الصلاحية فقط (<code>../../00-STRATEGY/Knowledge-Standards.md</code> §6).</p>
+</blockquote>
+<hr />
+<h2>القسم العاشر — المخرجات النهائية</h2>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>التفصيل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الوثيقة</strong></td>
+<td>«تقرير تقييم سلامة/حالة المبنى» — مستند مهني موقّع (ورقي/رقمي بختم المكتب) يتبع القالب الموسع في <code>04-Technical-Field-Costs.md</code> §6 (مبنية على القالب العام: <code>../../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.md</code> §2)</td>
+</tr>
+<tr>
+<td><strong>المصدر</strong></td>
+<td>المكتب الهندسي/المهندس المفحوص — وليس منصة حكومية ✅ (لا توجد منصة مصدرة له ✅ متحقق 2026-11-10)</td>
+</tr>
+<tr>
+<td><strong>البيانات الجوهرية</strong></td>
+<td>ترويسة ومرجع وتاريخ · بيانات العقار (صك/قطعة/مخطط/إحداثيات) · الغرض والجهة المستقبِلة · المنهجية والفحوص · النتائج بالجداول والصور المرقمة · التحليل بالمرجعية (SBC 901/310/304/301…) ✅ · التصنيف (سليم/يحتاج ترميم/خطر) · التوصيات بالأولوية · التوقيعات والإقرارات · سجل النسخ · <strong>حدود التقرير</strong></td>
+</tr>
+<tr>
+<td><strong>التحقق من صحته</strong></td>
+<td>مطابقة بياناته مع الصك/المنصة، وجود توقيع صالح وختم، اتساق النتائج مع الصور المرفقة (معايير قبول: <code>Technical-Reports-Guide.md</code> §3) 💼/📚</td>
+</tr>
+<tr>
+<td><strong>التسليم</strong></td>
+<td>نسخة للعميل + نسخ لكل مستقبِل معلن في الغرض (سجل نسخ داخل التقرير) — أرشفة PDF مع صور الفحص</td>
+</tr>
+<tr>
+<td><strong>القيمة النظامية</strong></td>
+<td>دليل فني مهني؛ قوتها الإلزامية تتحدد بجهة الاستلام (قد تُعتمد لدعم طلب رسمي أو كخبرة أو تُطلب مصححة) ⚠️</td>
+</tr>
+<tr>
+<td><strong>الخدمات التي تبدأ بعده</strong></td>
+<td>ترميم (5) عند التوصية به · هدم (10) عند التوصية به · تصحيح وضع (11) · توصيات صيانة دورية · دعم ملف تأمين/نزاع 💼</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>علاقة الخدمة بالمنظومة (قبل/بعد)</h2>
+<pre><code>صك محدث (2) عند الحاجة · مخططات الرخصة الأصلية إن وُجدت
+        │
+        ▼
+★ الخدمة 13: إعداد تقرير سلامة المبنى (عمل مهني — بلا منصة موحدة) ★
+        │
+        ├─ التوصية: ترميم ──→ رخصة ترميم (5) عبر بلدي 10481 ✅
+        ├─ التوصية: هدم ────→ رخصة هدم (10) عبر بلدي 10473 ✅ + إشراف
+        ├─ التوصية: تنظيم/معالجة مخالفة → تصحيح وضع (11) 📚
+        ├─ التوصية: آمن للاستخدام → توثيق للمالك/التأمين/الممول 💼
+        └─ الحالة: مبنى خطر ورفض المالك التصرّف → إبلاغ رسمي (بلدية/دفاع مدني) ⚠️
+</code></pre>
+<h2>الخدمات الفرعية / المسارات داخل الخدمة</h2>
+<ul>
+<li><strong>تقييم كامل (إنشائي + معماري + خدمات)</strong>: للقرارات الكبرى (ترميم كلي/هدم/نزاع) 📚.</li>
+<li><strong>تقييم نطاق محدود</strong>: عنصر محدد (سطح، عزل، تصدع عمود واحد) بتقرير مختصر 💼.</li>
+<li><strong>تقييم ما بعد حادثة</strong> (حريق/سيول/تصادم مركبة): أولوية سرعة وتوثيق قبل أي معالجة 📚.</li>
+<li><strong>مراجعة فحص مكتب آخر</strong> (second opinion): نزاع أو تضارب تقييمين 📚 (شجرة قرار في 05 §2).</li>
+</ul>
+<h2>تصنيف الخدمة ضمن الفئات السبع (<code>../../00-STRATEGY/Vision.md</code> §4)</h2>
+<ul>
+<li><strong>أساسها الفئة 6 — الخدمة الاستشارية</strong>: «تقييم المبنى، تقارير السلامة… — مستشار/مهندس بصلاحية توقيع» ✅ (نص الرؤية).</li>
+<li>تمتد للفئة 1 (هندسية) عند إضافة مخططات معالجة، وللفئة 7 (تعقيب) عند تقديم التقرير ضمن معاملة بلدية لاحقة 📚.</li>
+</ul>
+<h2>حدود مسؤولية المكتب الهندسي في هذه الخدمة</h2>
+<ul>
+<li><strong>يفعل</strong>: معاينة وفحص بصري وتوثيق، تحليل ومطابقة مع الكود، تصنيف وتوصيات، توقيع التقرير وإقرار حدوده.</li>
+<li><strong>لا يفعل</strong>: اعتماداً حكومياً (للجهة)، تصميماً تنفيذياً للترميم بغير إسناد (خدمة 5)، استبدال قرار البلدية بقراره، تلبية ضغط عميل «لطباعة سليم» — <strong>الرفض الموثق واجب</strong> (05 §2).</li>
+<li><strong>ما يتطلب جهة أخرى</strong>: اختبارات مختبرية (مختبر معتمد ⚠️)، رادار (فريق متخصص)، هبوط واستواء (مساح)، إخلاء وإبلاغ رسمي (البلدية/الدفاع المدني ⚠️).</li>
+</ul>
+<hr />
+<h2>مصفوفة الاكتمال (18 بنداً)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>البند</th>
+<th>الحالة</th>
+<th>ملاحظة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>تعريف واضح</td>
+<td>✅</td>
+<td>§1.1–1.2 + نتيجة التحقق الإلكتروني</td>
+</tr>
+<tr>
+<td>2</td>
+<td>الأساس النظامي</td>
+<td>🟨</td>
+<td>لا خدمة/نص رسمي موحد ✅ متحقق؛ الأساس الفني = أجزاء SBC المتحققة ✅؛ القنوات الرسمية ⚠️ موسومة</td>
+</tr>
+<tr>
+<td>3</td>
+<td>الجهات ذات العلاقة</td>
+<td>✅</td>
+<td>جدول الجهات الست بوسومها</td>
+</tr>
+<tr>
+<td>4</td>
+<td>المنصات</td>
+<td>✅</td>
+<td>واقع المنصات وقنوات الاستلام في <code>01-Platform-Steps.md</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>المتطلبات</td>
+<td>✅</td>
+<td>شروط الإسناد والغرض في README §1.6/§1.10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>المستندات</td>
+<td>✅</td>
+<td>جدول 16 مستنداً في <code>02-Requirements-Documents.md</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>خطوات التنفيذ</td>
+<td>✅</td>
+<td>25 خطوة كاملة في <code>03-Executive-Workflow.md</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>الإجراءات الفنية</td>
+<td>✅</td>
+<td>منهجية الفحص والفحوص المعززة في <code>04-Technical-Field-Costs.md</code> §1–2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>الأدوات والبرامج</td>
+<td>✅</td>
+<td>جدول أدوات في <code>04</code> §3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>الحجز والتنسيق</td>
+<td>✅</td>
+<td>بروتوكول الزيارة الميدانية في <code>04</code> §4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>الرسوم والتكاليف</td>
+<td>✅</td>
+<td>لا رسوم حكومية غالباً 💼؛ بنية التكلفة في <code>04</code> §5</td>
+</tr>
+<tr>
+<td>12</td>
+<td>التسعير التجاري</td>
+<td>✅</td>
+<td>عوامل + نموذج عرض سعر 🧪 في <code>04</code> §6</td>
+</tr>
+<tr>
+<td>13</td>
+<td>المخرجات</td>
+<td>✅</td>
+<td>القسم العاشر + القالب الموسع <code>04</code> §6</td>
+</tr>
+<tr>
+<td>14</td>
+<td>المشكلات والحلول</td>
+<td>✅</td>
+<td>12 مشكلة + شجرة قرار في <code>05</code> §1–2</td>
+</tr>
+<tr>
+<td>15</td>
+<td>حالات عملية</td>
+<td>✅</td>
+<td>حالتان (فيلا متصدعة + مبنى خطر رفض الإخلاء) في <code>05</code> §3–4</td>
+</tr>
+<tr>
+<td>16</td>
+<td>النماذج التشغيلية</td>
+<td>✅</td>
+<td>روابط <code>07-TEMPLATES</code> + قالب التقرير الموسع <code>04</code> §6</td>
+</tr>
+<tr>
+<td>17</td>
+<td>المصادر الرسمية</td>
+<td>✅</td>
+<td>جدول المصادر أدناه</td>
+</tr>
+<tr>
+<td>18</td>
+<td>اختبار إتقان</td>
+<td>✅</td>
+<td>10 أسئلة بمفتاح في <code>05</code> §5</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>البند 2 جزئي <strong>بسبب مقصود موثق</strong>: عدم وجود منظومة رسمية موحدة لتقارير السلامة هو نتيجة تحقق (لا نقص جهد) — الخدمة كُتبت كعمل استشاري بأطراف استلام متعددة ووسم كل قناة رسمية ⚠️ وفق توجيه المنسق.</p>
+</blockquote>
+<h2>جدول المصادر</h2>
+<table>
+<thead>
+<tr>
+<th>المصدر</th>
+<th>الرابط</th>
+<th>تاريخ التحقق</th>
+<th>الحالة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>منصة بلدي — كتالوج جميع الخدمات (فحص وجود خدمة تقييم/سلامة)</td>
+<td>https://balady.gov.sa/ar/all-services</td>
+<td>2026-11-10</td>
+<td>✅ (النتيجة: لا خدمة موحدة لتقييم سلامة؛ «تصريح السلامة» = دفاع مدني للرخص التجارية)</td>
+</tr>
+<tr>
+<td>المركز السعودي لكود البناء — الصفحة الرئيسية</td>
+<td>https://www.sbc.gov.sa</td>
+<td>2026-11-10</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>المركز السعودي لكود البناء — كود 2024 وقائمة أجزائه (SBC 201/301/302/303/304/305/306/310/401/501/601/602/701/801/901/902/1101-1102/1201/1401)</td>
+<td>https://www.sbc.gov.sa/ar/BC/Pages/BuildingCode/BC.aspx?year=2024</td>
+<td>2026-11-10</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>حاسبة الرسوم البلدية (للخدمات البلدية اللاحقة لا لهذه الخدمة)</td>
+<td>https://apps.balady.gov.sa/Eservices/FeesCalculator</td>
+<td>2026-11-10</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>دليل التقارير الفنية المشترك (القالب العام ومطابقة الغرض)</td>
+<td>../../04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.md</td>
+<td>2026-11-10</td>
+<td>✅ (مستودع)</td>
+</tr>
+<tr>
+<td>دليل بلدي المشترك (رخص 10472/10473/10481/10484/10486 — الخدمات اللاحقة)</td>
+<td>../../02-PLATFORMS/Balady.md</td>
+<td>2026-11-10</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>دليل المنصات الأخرى (كود البناء، المهندسين، الدفاع المدني)</td>
+<td>../../02-PLATFORMS/Other-Platforms.md</td>
+<td>2026-11-10</td>
+<td>🟨 (SBC ✅ / قنوات دفاع مدني ⚠️)</td>
+</tr>
+<tr>
+<td>خريطة علاقات الخدمات</td>
+<td>../../00-STRATEGY/Services-Relations-Map.md</td>
+<td>2026-11-10</td>
+<td>✅ (مستودع)</td>
+</tr>
+</tbody>
+</table>
+<h2>مصطلحات</h2>
+<p>لمصطلحات (تقييم إنشائي، فحص لا إتلافي، SBC، رادار اختراق أرضي…): ../../09-GLOSSARY/Glossary.md · للنماذج الجاهزة: ../../07-TEMPLATES/README.md</p></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+    </footer>
+  </main>
+</div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body></html>
