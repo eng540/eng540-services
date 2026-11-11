@@ -116,3 +116,85 @@ img{max-width:100%}
 .chip-more{background:#fff;border-style:dashed;color:var(--muted)}
 .doc-footer .copyright{margin-bottom:.25rem;color:var(--ink);font-size:.85rem}
 .site-footer .copyright{margin-bottom:.4rem;color:var(--ink)}
+
+/* ===== v2 — تجربة التطبيق ===== */
+:root { --header-h:62px; }
+html[data-theme="dark"]{
+  --bg:#0e1a1e; --card:#15262b; --ink:#dcebe8; --muted:#8aa5a0; --line:#24404a;
+  --primary:#2fa394; --primary-d:#5cc9ba; --accent:#e5c453;
+  --ok:#4ade80; --warn:#fbbf24; --pro:#a78bfa; --biz:#67e8f9; --demo:#f472b6;
+}
+html[data-theme="dark"] .doc pre{background:#0a1418;color:#cfe8e2}
+html[data-theme="dark"] .site-header,html[data-theme="dark"] .sidebar{background:#101f24}
+html[data-theme="dark"] .nav-link.current{background:#173036}
+html[data-theme="dark"] .doc tr:nth-child(even) td{background:#182b31}
+html[data-theme="dark"] .search-results{background:#15262b}
+html[data-theme="dark"] .hero{background:linear-gradient(135deg,#08221f 0%,#0d4a43 60%,#11635a 100%)}
+.read-progress{position:fixed;top:0;inset-inline-start:0;height:3px;background:var(--accent);width:0;z-index:100;transition:width .1s}
+.theme-btn{background:none;border:1px solid var(--line);border-radius:8px;width:38px;height:38px;font-size:1.05rem;cursor:pointer;flex-shrink:0}
+.theme-btn:hover{border-color:var(--primary)}
+
+/* تبويبات الخدمة */
+.svc-hub{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1.1rem}
+.svc-hub-t{font-weight:800;color:var(--primary-d);margin-bottom:.7rem;font-size:1.05rem}
+.svc-tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.svc-tabs .tab{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .95rem;border-radius:999px;border:1px solid var(--line);font-size:.86rem;font-weight:700;color:var(--muted);background:var(--bg)}
+.svc-tabs .tab:hover{border-color:var(--primary);color:var(--primary);text-decoration:none}
+.svc-tabs .tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.tab-ic{font-size:.95rem}
+
+/* فهرس محتويات الصفحة */
+.page-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:.7rem 1rem;margin-bottom:1.1rem;font-size:.9rem}
+.page-toc summary{cursor:pointer;font-weight:700;color:var(--primary-d)}
+.page-toc ol{margin:.5rem 0 0;padding-inline-start:1.4rem;columns:2;column-gap:2rem}
+.page-toc li{margin:.15rem 0;break-inside:avoid}
+
+/* مقاطع قابلة للطي */
+.doc-sec{margin:0 -2.2rem;padding:0 2.2rem;border-bottom:1px dashed var(--line)}
+.doc-sec:last-of-type{border-bottom:0}
+.doc-sec .sec-h{display:flex;align-items:center;gap:.5rem;cursor:pointer;user-select:none;position:relative}
+.sec-anchor{opacity:0;font-weight:400;color:var(--muted);font-size:.85rem}
+.doc-sec:hover .sec-anchor{opacity:.7}
+.sec-toggle{margin-inline-start:auto;background:none;border:0;color:var(--muted);font-size:1rem;cursor:pointer;transition:transform .15s}
+.doc-sec.collapsed .sec-toggle{transform:rotate(-90deg)}
+.doc-sec.collapsed .sec-body{display:none}
+.doc-sec.answer-key{background:#fbf7ec;border-inline-start:4px solid var(--accent);border-radius:8px;margin-top:1rem;padding:0 1.2rem}
+html[data-theme="dark"] .doc-sec.answer-key{background:#221d0d}
+
+/* بطاقات الخطوات */
+.step-card{border:1px solid var(--line);border-radius:12px;margin:.9rem 0;overflow:hidden;background:var(--card)}
+.step-card.done{border-color:var(--ok)}
+.step-head{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;background:#f2f8f7;border-bottom:1px solid var(--line)}
+html[data-theme="dark"] .step-head{background:#182d33}
+.step-card.done .step-head{background:#e8f7ee}
+.step-n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:.95rem;flex-shrink:0}
+.step-card.done .step-n{background:var(--ok)}
+.step-t{margin:0 !important;border:0 !important;padding:0 !important;font-size:1rem !important;flex:1}
+.step-done{display:flex;align-items:center;gap:.35rem;font-size:.8rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+.step-done input{accent-color:var(--primary);width:17px;height:17px;cursor:pointer}
+.step-body{padding:1rem 1.1rem}
+
+/* شريط تقدم الخوارزمية */
+.step-progress{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:.8rem 1.1rem;margin-bottom:1.1rem}
+.sp-head{font-size:.9rem;margin-bottom:.45rem}
+.sp-head b{color:var(--primary-d)}
+.sp-bar{height:10px;background:var(--bg);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.sp-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:999px;transition:width .3s}
+.sp-reset{float:inline-end;background:none;border:1px solid var(--line);border-radius:8px;font-size:.75rem;padding:.15rem .6rem;color:var(--muted);cursor:pointer;margin-top:.4rem}
+.sp-reset:hover{border-color:var(--warn);color:var(--warn)}
+
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:1rem 0}
+.doc-app{padding-top:1.4rem}
+@media(max-width:900px){
+  .doc-sec{margin:0 -1rem;padding:0 1rem}
+  .about-link{display:none}
+}
+
+/* صندوق مفتاح الإجابات */
+.keybox{border:1px dashed var(--accent);border-radius:10px;margin:1rem 0;background:#fffdf4}
+html[data-theme="dark"] .keybox{background:#241f0e}
+.keybox summary{cursor:pointer;padding:.6rem 1rem;font-weight:700;color:#8a6d1a;list-style:none}
+.keybox summary::-webkit-details-marker{display:none}
+.keybox summary::before{content:'🔑 '}
+.keybox[open] summary{border-bottom:1px dashed var(--accent)}
+.key-body{padding:.8rem 1.2rem}
