@@ -593,6 +593,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
             <h3 class="text-xs font-bold text-slate-800 border-b pb-2 mb-2.5">أولاً: الرسوم البلدية الحكومية (تُسدد عبر نظام سداد)</h3>
+              <div class="text-[11px] leading-relaxed text-amber-900 bg-amber-50 border border-amber-200 rounded p-2 mb-2">⚠️ أرقام الرسوم الحكومية هنا <b>إرشادية</b> من مرجع المنظومة ولم تُطابق مع حاسبة بلدي الرسمية — الرقم النهائي والملزم من <a href="https://apps.balady.gov.sa/Eservices/FeesCalculator" target="_blank" rel="noopener" class="underline font-bold">حاسبة رسوم بلدي</a> أو البلدية المختصة (تحقق 2026-11-13)</div>
             <div class="space-y-2 text-xs">
               <div class="flex justify-between"><span>رسم القرار المساحي (<span class="ltr-num">${landArea} m² × ${surveyRate.toFixed(2)}</span>):</span><strong class="ltr-num">${fmt(govSurveyFee)} SAR</strong></div>
               <div class="flex justify-between"><span>رسم رخصة البناء (<span class="ltr-num">${builtArea} m² × ${bldgRate.toFixed(2)}</span>):</span><strong class="ltr-num">${fmt(govBldgFee)} SAR</strong></div>
