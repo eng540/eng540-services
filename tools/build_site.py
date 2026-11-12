@@ -215,7 +215,7 @@ def service_tabs(prefix, rel_page):
         tabs += (f'<a class="tab tab-app" href="{prefix}app.html?view=services&srv=SRV-{svc.split("-")[0]}">'
                  '⚡ هذه الخدمة في المنصة التفاعلية</a>')
         return (f'<div class="svc-hub"><div class="svc-hub-t">الخدمة {svc.split("-")[0]} — '
-                f'{SERVICE_TITLES.get(svc, svc)}</div><nav class="svc-tabs">{tabs}</nav></div>')
+                f'{SERVICE_TITLES.get(svc, svc)}</div><nav class="svc-tabs" aria-label="تبويبات الخدمة">{tabs}</nav></div>')
     return ''
 
 def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps_total):
@@ -251,14 +251,14 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
   <a class="brand" href="{prefix}index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
   <a class="app-btn" href="{prefix}app.html">⚡ المنصة التفاعلية</a>
   <a class="about-link" href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف</a>
-  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
-  <button class="theme-btn" id="themeBtn" title="وضع ليلي/نهاري">🌙</button>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off" aria-label="بحث في الموسوعة"><div id="searchResults" class="search-results" hidden></div></div>
+  <button class="theme-btn" id="themeBtn" title="وضع ليلي/نهاري" aria-label="تبديل الوضع الليلي والنهاري">🌙</button>
 </header>
 <div class="layout">
   <aside class="sidebar" id="sidebar">{nav}</aside>
   <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
   <main class="content">
-    <nav class="breadcrumb">{bc}</nav>
+    <nav class="breadcrumb" aria-label="مسار التنقل">{bc}</nav>
     {tabs}
     {progress}
     {toc_html}
@@ -303,6 +303,29 @@ def strip_md(text):
     t = re.sub(r'[#>*`|\-\[\]()]', ' ', t)
     return re.sub(r'\s+', ' ', t).strip()
 
+def build_synthetic_index(folder, label, prefix):
+    """صفحة فهرس فعلية لقسم بلا README.md (بند P0 في التوجيه):
+    بطاقة لكل ملف جذري + بطاقة لكل مجلد فرعي بعدد ملفاته."""
+    gdir = os.path.join(SOURCE, folder)
+    cards = ''
+    for f in sorted(f for f in os.listdir(gdir) if f.endswith('.md')):
+        if f == 'About-Author.md':
+            continue
+        href = link(posixpath.join(folder, f[:-3] + '.html'), prefix)
+        cards += (f'<a class="card" href="{href}"><span class="card-t">'
+                  f'{htmllib.escape(FILE_LABELS.get(f, f[:-3]))}</span></a>')
+    for s in sorted(d for d in os.listdir(gdir) if os.path.isdir(os.path.join(gdir, d))):
+        stitle = SERVICE_TITLES.get(s, s.replace('-', ' '))
+        sdir = os.path.join(gdir, s)
+        n = sum(1 for _r, _d, fs in os.walk(sdir) for f in fs if f.endswith('.md'))
+        note = '6 ملفات · خوارزمية 25 خطوة' if folder == '03-SERVICES' else f'{n} ملفاً'
+        cards += (f'<a class="card" href="{link(posixpath.join(folder, s, "README.html"), prefix)}">'
+                  f'<span class="card-n">{"خدمة " + s.split("-")[0] if folder == "03-SERVICES" else "📁"}</span>'
+                  f'<span class="card-t">{htmllib.escape(stitle)}</span>'
+                  f'<span class="card-d">{note}</span></a>')
+    title = f'{label} — الفهرس'
+    return title, f'<h1>{htmllib.escape(title)}</h1><p class="section-sub">جميع ملفات ومجلدات هذا القسم في صفحة واحدة — اضغط أي عنصر للدخول إليه مباشرة.</p><div class="grid grid-3">{cards}</div>'
+
 def main():
     for sub in ('pages', 'assets', 'source'):
         p = os.path.join(REPO, sub)
@@ -324,6 +347,13 @@ def main():
     ALL_PAGES.clear()
     for rel_src in md_files:
         ALL_PAGES.add(rel_src[:-3] + '.html')
+
+    # 1.5) فهارس الأقسام الاصطناعية (بند P0): للأقسام بلا README.md — تُسجل قبل حل الروابط
+    synth = [(folder, label) for folder, label in GROUPS
+             if os.path.isdir(os.path.join(SOURCE, folder))
+             and not os.path.isfile(os.path.join(SOURCE, folder, 'README.md'))]
+    for folder, _label in synth:
+        ALL_PAGES.add(folder + '/README.html')
 
     # 2) توليد الصفحات
     search_docs, count = [], 0
@@ -354,6 +384,22 @@ def main():
         open(out, 'w', encoding='utf-8').write(html)
         search_docs.append({'t': title, 'g': grp, 'p': 'pages/' + rel_page,
                             'x': strip_md(text)[:1200]})
+        count += 1
+
+    # 2.5) توليد صفحات فهارس الأقسام الاصطناعية (تدخل البحث وsitemap تلقائياً)
+    for folder, label in synth:
+        rel_page = folder + '/README.html'
+        prefix = page_prefix(rel_page)
+        title, body = build_synthetic_index(folder, label, prefix)
+        grp = next((l for f2, l in GROUPS if folder == f2), 'ENG540')
+        html = render_page(title, body, prefix, rel_page,
+                           [(grp, link(folder, prefix)), (title, None)],
+                           '', [], 0)
+        out = os.path.join(PAGES, rel_page)
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        open(out, 'w', encoding='utf-8').write(html)
+        search_docs.append({'t': title, 'g': grp, 'p': 'pages/' + rel_page,
+                            'x': f'فهرس قسم {label} — جميع ملفات ومجلدات القسم في صفحة واحدة'})
         count += 1
 
     with open(os.path.join(ASSETS, 'search-index.js'), 'w', encoding='utf-8') as f:

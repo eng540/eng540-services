@@ -53,7 +53,7 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <nav class="bg-slate-800 border-t border-slate-700">
+    <nav class="bg-slate-800 border-t border-slate-700" aria-label="التبويبات الرئيسية للمنصة">
       <div class="max-w-7xl mx-auto px-4 flex flex-wrap gap-1.5 py-2">
         <button id="tabBtn-services" onclick="switchTab('services')" class="tab-btn active text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">1. موسوعة الخدمات الـ14 الكاملة</button>
         <button id="tabBtn-diagnostic" onclick="switchTab('diagnostic')" class="tab-btn text-slate-200 hover:bg-slate-700 text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">2. المشخص الذكي وشجرة القرارات</button>
@@ -78,7 +78,7 @@
       <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col md:flex-row gap-3 items-center justify-between">
         <div class="w-full md:w-1/2">
           <label for="srvSearch" class="block text-xs font-bold text-slate-600 mb-1">ابحث في الخدمات الأربع عشرة أو المنصات أو المتطلبات:</label>
-          <input id="srvSearch" type="text" oninput="filterServices()" placeholder="مثال: رخصة بناء، فرز، قرار مساحي، تصحيح وضع، السجل العقاري..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-teal-600">
+          <input id="srvSearch" type="text" aria-label="بحث في الخدمات" oninput="filterServices()" placeholder="مثال: رخصة بناء، فرز، قرار مساحي، تصحيح وضع، السجل العقاري..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-teal-600">
         </div>
         <div class="w-full md:w-auto flex flex-wrap gap-1.5">
           <button onclick="setCategoryFilter('ALL')" id="catBtn-ALL" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-teal-700 text-white">الكل (14)</button>
