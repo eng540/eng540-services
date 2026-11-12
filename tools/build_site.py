@@ -58,6 +58,22 @@ SERVICE_FILES = [
     ('04-Technical-Field-Costs.html', 'الفني والتكاليف', '📐'),
     ('05-Problems-Cases-Exam.html', 'المشكلات والاختبار', '🧪'),
 ]
+# عناوين عربية للمجلدات الفرعية غير الخدمات (تظهر في التنقل والفهارس والرئيسية)
+SUBFOLDER_TITLES = {
+    'Drawings': 'دليل المخططات الهندسية',
+    'Equipment-And-Software': 'دليل المعدات والبرامج',
+    'Surveying': 'دليل الأعمال المساحية',
+    'Technical-Reports': 'دليل التقارير الفنية',
+    'Customer-Management': 'دليل إدارة العملاء والاستقبال',
+    'Office-Management': 'دليل إدارة المكتب',
+    'Pricing': 'دليل التسعير والفوترة والتحصيل',
+    'Quality-Control': 'دليل ضبط الجودة وقياس الأداء',
+    'Workflow': 'دليل تشغيل المعاملات وسير العمل',
+    'Lessons': 'دروس الأكاديمية',
+    'Exercises-Packages': 'حزم التمارين',
+    'Simulations': 'المحاكاات العملية',
+    'Exams': 'الاختبارات',
+}
 FILE_LABELS = {
     'README.md': 'نظرة شاملة', '01-Platform-Steps.md': 'خطوات المنصة',
     '02-Requirements-Documents.md': 'المتطلبات والمستندات',
@@ -284,7 +300,7 @@ def build_nav(rel_page, prefix):
                     continue
                 entries.append((FILE_LABELS.get(f, f[:-3]), posixpath.join(folder, f[:-3] + '.html')))
             for s in sorted(d for d in os.listdir(gdir) if os.path.isdir(os.path.join(gdir, d))):
-                stitle = SERVICE_TITLES.get(s, s.replace('-', ' '))
+                stitle = SERVICE_TITLES.get(s) or SUBFOLDER_TITLES.get(s, s.replace('-', ' '))
                 entries.append(('📁 ' + stitle, posixpath.join(folder, s, 'README.html')))
                 sdir = os.path.join(gdir, s)
                 for f in sorted(f for f in os.listdir(sdir) if f.endswith('.md')) if os.path.isdir(sdir) else []:
@@ -315,7 +331,7 @@ def build_synthetic_index(folder, label, prefix):
         cards += (f'<a class="card" href="{href}"><span class="card-t">'
                   f'{htmllib.escape(FILE_LABELS.get(f, f[:-3]))}</span></a>')
     for s in sorted(d for d in os.listdir(gdir) if os.path.isdir(os.path.join(gdir, d))):
-        stitle = SERVICE_TITLES.get(s, s.replace('-', ' '))
+        stitle = SERVICE_TITLES.get(s) or SUBFOLDER_TITLES.get(s, s.replace('-', ' '))
         sdir = os.path.join(gdir, s)
         n = sum(1 for _r, _d, fs in os.walk(sdir) for f in fs if f.endswith('.md'))
         note = '6 ملفات · خوارزمية 25 خطوة' if folder == '03-SERVICES' else f'{n} ملفاً'
