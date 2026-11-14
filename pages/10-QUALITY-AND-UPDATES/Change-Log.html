@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("eng540-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t){document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="color-scheme"]');if(m)m.setAttribute("content",t)}}catch(e){}</script>
 <title>سجل التغييرات (Change Log) — ENG540</title>
 <meta name="description" content="سجل التغييرات (Change Log) — موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية، بمصادر رسمية موثقة ووسوم تحقق.">
 <link rel="canonical" href="https://eng540.github.io/eng540-services/pages/10-QUALITY-AND-UPDATES/Change-Log.html">
@@ -40,7 +42,7 @@
     <nav class="breadcrumb" aria-label="مسار التنقل"><a href="../../pages/10-QUALITY-AND-UPDATES/README.html">الجودة والتحقق</a> <span class="crumb-sep">‹</span> <span>سجل التغييرات (Change Log)</span></nav>
     
     <div class="step-progress" id="stepProgress" data-total="0" hidden></div>
-    
+    <details class="page-toc"><summary>محتويات هذه الصفحة</summary><ol><li><a href="#sec-1">2026-11-10 — جولة الختام (14/14)</a></li><li><a href="#sec-2">2026-11-11 — الإصدار 3.0: المنصة التفاعلية + الإصلاح الجذري للمسارات</a></li><li><a href="#sec-3">2026-11-14 — الإصدار 4.0: إغلاق الفجوات المعرفية الرسمية + توحيد الهوية العالمية وإزالة الاعتماد الخارجي</a></li></ol></details>
     <article class="doc doc-app"><table>
 <thead>
 <tr>
@@ -79,6 +81,14 @@
 <li><strong>فصل البيانات عن الواجهة</strong>: المصدر المركزي <code>app-data.js</code> (بيانات الخدمات الـ14 والحاسبة والاختبار والنماذج) — <code>app.html</code> واجهة تحمّله؛ لافتة «أدوات إرشادية أولية» إلزامية فوق المحركات، والأرقام الرسمية إرشادية تُعتمد من الجهات مباشرة.</li>
 <li><strong>SEO وإتاحة</strong>: sitemap.xml (140 رابطاً) + robots.txt + صفحة 404 مفيدة + canonical/og لكل صفحة + إصلاح روابط نتائج البحث من أي عمق.</li>
 <li><strong>تعريف المؤلف بالخبرة</strong> (بطلب صريح من صاحب المنظومة): يُعرَّف بخبرته وأفكاره لا بجنسيته — حُذفت الإشارات الجنسية من صفحة المؤلف والهيرو والتذييلات والتطبيق وREADME، والتخصص يبقى لمنظومة الخدمات الهندسية السعودية.</li>
+</ul></div></section><section class="doc-sec" id="sec-3"><h2 class="sec-h"><a class="sec-anchor" href="#sec-3">#</a><span class="sec-t">2026-11-14 — الإصدار 4.0: إغلاق الفجوات المعرفية الرسمية + توحيد الهوية العالمية وإزالة الاعتماد الخارجي</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><ul>
+<li><strong>تحقق حكومي حي وإغلاق الفجوات المعرفية (#7، #8، #9، #11، #12)</strong>:</li>
+<li><strong>السجل العقاري (<code>https://rer.sa/</code>)</strong>: توثيق المنصة الرسمية وبوابات الأفراد والأعمال والتظلمات (<code>eservices.rer.sa</code>, <code>business.rer.sa/ar</code>, <code>grievance.rer.sa</code>) وكتالوج الخدمات الـ14 المعتمد رسمياً ومخرجه <strong>«صك تسجيل الملكية»</strong>، وتحديث <code>Real-Estate-Registry.md</code> والخدمة 12.</li>
+<li><strong>تصحيح وضع مبنى قائم (بلدي <code>10494</code> / <code>node/10931</code>)</strong>: إزالة التناقض القديم وتوثيق الخدمة الموحدة الرسمية (SLA المرحلة <code>10 أيام عمل</code>، تسجيل DGA <code>20260514994</code>) ومتطلباتها في الخدمة 11.</li>
+<li><strong>إصدار تقرير فني / سلامة المبنى (بلدي <code>10498</code> + الدفاع المدني <code>998.gov.sa</code>)</strong>: توثيق الهيكل الثلاثي الكامل (شهادة تأكيد السلامة عبر بلدي <code>10498</code> + بوابة سلامة وخدمة <code>app-saftyreport</code> وقوائم المكاتب المعتمدة عبر <code>998.gov.sa</code> + التقييم الاستشاري وفق <code>SBC 901</code>/<code>310</code>) في الخدمة 13 و<code>Other-Platforms.md</code>.</li>
+<li><strong>الهيئة السعودية للمهندسين (<code>saudieng.sa</code>) وهيئة الزكاة والضريبة والجمارك (<code>zatca.gov.sa</code>)</strong>: ترحيل النطاقات الرسمية المتحققة حياً إلى الفهارس المرجعية (<code>Official-Sources.md</code>، <code>Other-Platforms.md</code>، <code>Central-Services-Database.md</code>).</li>
+<li><strong>إصلاح معماري لواجهة الموسوعة (<code>build_site.py</code>)</strong>: استعادة بطاقات الطبقات التأسيسية (<code>00-STRATEGY</code>، <code>01-REGULATIONS</code>، <code>02-PLATFORMS</code>) التي كانت تُحذف سهواً في الصفحة الرئيسية، وفصل الطبقات الهندسية والتشغيلية (<code>04</code>–<code>10</code>) في قسم منظم، وإصلاح تداخل وسوم <code>&lt;a&gt;</code> غير القياسي، وتصحيح قواعد العدد والمعدود العربية (<code>ملف واحد</code> / <code>ملفان</code> / <code>3–10 ملفات</code> / <code>11+ ملفاً</code>).</li>
+<li><strong>توحيد التصميم العالمي للمنصة التفاعلية (<code>app.html</code> + <code>app-data.js</code>)</strong>: الاستغناء الكامل عن محرك <code>cdn.tailwindcss.com</code> الحي لصالح حزمة CSS إنتاجية ذاتية التحميل فائقة السرعة، وتوحيد خط <code>Tajawal</code> ونظام الوضع الداكن (<code>eng540-theme</code>) والهيدر والفوتر مع الموسوعة، وربط كل بطاقة خدمة بصفحتها الكاملة في الموسوعة والحالات العملية الـ9، وتوسيع اختبار الكفاءة إلى 10 أسئلة متوازنة بتوزيع إجابات متنوع ومعيار إتقان 90% متسق برمجياً، وإضافة طباعة/نسخ التقرير التشخيصي ووسوم SEO/OpenGraph الكاملة.</li>
 </ul></div></section></article>
     <footer class="doc-footer">
       <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>

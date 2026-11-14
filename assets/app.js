@@ -1,20 +1,41 @@
 /* ENG540 v2 — التفاعلية: وضع ليلي · تقدم قراءة · أقسام قابلة للطي · متتبع الخطوات · بحث */
 (function () {
-  /* ===== 1) الوضع الليلي ===== */
+  /* ===== 1) الوضع الليلي (نموذج ثلاثي الحالات: النظام/فاتح/داكن) ===== */
   var themeBtn = document.getElementById('themeBtn');
+  var themeMeta = document.querySelector('meta[name="color-scheme"]');
+  function sysPref() {
+    return (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
+    if (themeMeta) themeMeta.setAttribute('content', t);
     if (themeBtn) themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
-    try { localStorage.setItem('eng540-theme', t); } catch (e) {}
   }
-  try {
-    var saved = localStorage.getItem('eng540-theme');
-    if (saved) setTheme(saved);
-  } catch (e) {}
+  /* التطبيق الأولي: التفضيل المحفوظ، وإلا اتباع تفضيل النظام */
+  try { setTheme(localStorage.getItem('eng540-theme') || sysPref()); } catch (e) { setTheme('light'); }
   if (themeBtn) themeBtn.addEventListener('click', function () {
-    var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    setTheme(cur);
+    var rendered = document.documentElement.getAttribute('data-theme') || sysPref();
+    var target = rendered === 'dark' ? 'light' : 'dark';
+    try {
+      /* لا تثبيت إذا طابق الهدف تفضيل النظام — يزيل الحفظ ويعود لاتباع النظام */
+      if (target === sysPref()) localStorage.removeItem('eng540-theme');
+      else localStorage.setItem('eng540-theme', target);
+    } catch (e) {}
+    setTheme(target);
   });
+  /* تزامن بين التبويبات المفتوحة */
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'eng540-theme' && (e.newValue === 'light' || e.newValue === 'dark')
+        && e.newValue !== document.documentElement.getAttribute('data-theme')) setTheme(e.newValue);
+  });
+  /* اتباع تغيّر تفضيل النظام الحيّ (فقط عند غياب تفضيل محفوظ) */
+  if (window.matchMedia) {
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (ev) {
+      var stored = null;
+      try { stored = localStorage.getItem('eng540-theme'); } catch (e) {}
+      if (!stored) setTheme(ev.matches ? 'dark' : 'light');
+    });
+  }
 
   /* ===== 2) شريط تقدم القراءة ===== */
   var rp = document.getElementById('readProgress');

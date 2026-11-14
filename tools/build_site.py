@@ -21,6 +21,14 @@ REPO   = '/root/DSH_Projects/eng540-services'
 PAGES  = os.path.join(REPO, 'pages')
 ASSETS = os.path.join(REPO, 'assets')
 
+# مزامنة الوضع الليلي مع color-scheme الأصلية + منع وميض الوضع الخاطئ (Modern Web Guidance)
+THEME_BOOT = ('<meta name="color-scheme" content="light dark">\n'
+              '<script>try{var t=localStorage.getItem("eng540-theme");'
+              'if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";'
+              'if(t){document.documentElement.setAttribute("data-theme",t);'
+              'var m=document.querySelector(\'meta[name="color-scheme"]\');'
+              'if(m)m.setAttribute("content",t)}}catch(e){}</script>')
+
 GROUPS = [
     ('00-STRATEGY',   'الإطار الاستراتيجي'),
     ('01-REGULATIONS','الأنظمة واللوائح والمصادر'),
@@ -250,6 +258,7 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{THEME_BOOT}
 <title>{htmllib.escape(title)} — ENG540</title>
 <meta name="description" content="{htmllib.escape(title)} — موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية، بمصادر رسمية موثقة ووسوم تحقق.">
 <link rel="canonical" href="https://eng540.github.io/eng540-services/pages/{htmllib.escape(rel_page)}">
@@ -459,6 +468,7 @@ def main():
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+{THEME_BOOT}
 <title>ENG540 — منظومة الخدمات الهندسية السعودية</title>
 <meta name="description" content="موسوعة تشغيلية تفاعلية للخدمات الهندسية والمساحية والبلدية السعودية: 14 خدمة بخوارزمية 25 خطوة متتبعة، أكاديمية تدريب، حالات عملية، ونماذج — بمصادر رسمية موثقة.">
 <link rel="canonical" href="https://eng540.github.io/eng540-services/">
