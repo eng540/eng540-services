@@ -24,8 +24,9 @@ for f in FILES:
     refs = re.findall(r'(?:href|src)="([^"]+)"', html)
     for url in refs:
         checked += 1
-        if '${' in url or '<' in url:
-            continue  # قوالب JS في app.html — تُحل وقت التشغيل
+        if ('${' in url or '<' in url or "' +" in url or "+ '" in url
+                or '" +' in url or '+ "' in url):
+            continue  # قوالب وتركيب JS في app.html — تُحل وقت التشغيل
         u = url.split('#')[0].split('?')[0].strip()
         if not u or u.startswith(ext_skip):
             continue

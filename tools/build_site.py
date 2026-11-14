@@ -89,6 +89,17 @@ FILE_LABELS = {
     '04-Technical-Field-Costs.md': 'الفني والميداني والتكاليف',
     '05-Problems-Cases-Exam.md': 'المشكلات والحالات والاختبار',
 }
+
+def ar_files(n):
+    """صيغة العدد والمعدود العربية الصحيحة: ملف واحد / ملفان / 3–10 ملفات / 11+ ملفاً."""
+    if n == 1:
+        return 'ملف واحد'
+    if n == 2:
+        return 'ملفان'
+    if 3 <= n <= 10:
+        return f'{n} ملفات'
+    return f'{n} ملفاً'
+
 TAG_PATTERNS = [
     (r'✅\s*\[متحقق\]', '✅ متحقق', 'tag-ok'),
     (r'⚠️\s*\[يحتاج تحقق\]', '⚠️ يحتاج تحقق', 'tag-warn'),
@@ -290,7 +301,7 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
     <article class="doc doc-app">{body_html}</article>
     <footer class="doc-footer">
       <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف والتواصل</a></div>
-      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-10 · <a href="{link('10-QUALITY-AND-UPDATES/Knowledge-Gaps', prefix)}">الفجوات الموسومة</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-14 · <a href="{link('10-QUALITY-AND-UPDATES/Knowledge-Gaps', prefix)}">الفجوات الموسومة</a></div>
     </footer>
   </main>
 </div>
@@ -343,7 +354,7 @@ def build_synthetic_index(folder, label, prefix):
         stitle = SERVICE_TITLES.get(s) or SUBFOLDER_TITLES.get(s, s.replace('-', ' '))
         sdir = os.path.join(gdir, s)
         n = sum(1 for _r, _d, fs in os.walk(sdir) for f in fs if f.endswith('.md'))
-        note = '6 ملفات · خوارزمية 25 خطوة' if folder == '03-SERVICES' else f'{n} ملفاً'
+        note = '6 ملفات · خوارزمية 25 خطوة' if folder == '03-SERVICES' else ar_files(n)
         cards += (f'<a class="card" href="{link(posixpath.join(folder, s, "README.html"), prefix)}">'
                   f'<span class="card-n">{"خدمة " + s.split("-")[0] if folder == "03-SERVICES" else "📁"}</span>'
                   f'<span class="card-t">{htmllib.escape(stitle)}</span>'
@@ -439,9 +450,12 @@ def main():
         for f in fs:
             if f.endswith('.md'):
                 total_lines += sum(1 for _ in open(os.path.join(r, f), encoding='utf-8'))
-    svc_cards = ''
+    # أقسام الرئيسية: الإطار التأسيسي (00–02) + الخدمات (03) + الأدلة التشغيلية والجودة (04–10)
+    foundation_cards, ops_cards, services_section = '', '', ''
     for folder, label in GROUPS:
         gdir = os.path.join(SOURCE, folder)
+        if not os.path.isdir(gdir):
+            continue
         if folder == '03-SERVICES':
             cards = ''
             for s in SERVICE_TITLES:
@@ -449,21 +463,27 @@ def main():
                           f'<span class="card-n">خدمة {s.split("-")[0]}</span>'
                           f'<span class="card-t">{SERVICE_TITLES[s]}</span>'
                           f'<span class="card-d">6 ملفات · 25 خطوة · مصفوفة 18</span></a>')
-            svc_cards = ('<section class="section" id="services"><h2>الخدمات الـ14</h2>'
-                         '<p class="section-sub">اضغط أي خدمة لتبويباتها الست: الفهم، المنصة، المتطلبات، '
-                         'خوارزمية 25 خطوة المتتبعة، الفني والتكاليف، المشكلات والاختبار</p>'
-                         f'<div class="grid grid-14">{cards}</div></section>')
-        elif os.path.isdir(gdir):
-            n = sum(1 for _r, _d, fs in os.walk(gdir) for f in fs if f.endswith('.md'))
-            href = link(folder, '')  # يحل تلقائياً لأول صفحة موجودة
-            sub_items = ''
-            if folder == '06-PRACTICAL-CASES':
-                cases = sorted(f for f in os.listdir(gdir) if f.startswith('Case-'))
-                sub_items = '<div class="mini">' + ' · '.join(
-                    f'<a href="pages/06-PRACTICAL-CASES/{c[:-3]}.html">الحالة {c.split("-")[1]}</a>'
-                    for c in cases) + '</div>'
-            svc_cards += (f'<a class="card card-lg" href="{href}"><span class="card-t">{label}</span>'
-                          f'<span class="card-d">{n} ملفاً</span>{sub_items}</a>')
+            services_section = ('<section class="section" id="services"><h2>الخدمات الـ14</h2>'
+                                '<p class="section-sub">اضغط أي خدمة لتبويباتها الست: الفهم، المنصة، المتطلبات، '
+                                'خوارزمية 25 خطوة المتتبعة، الفني والتكاليف، المشكلات والاختبار</p>'
+                                f'<div class="grid grid-14">{cards}</div></section>')
+            continue
+        n = sum(1 for _r, _d, fs in os.walk(gdir) for f in fs if f.endswith('.md'))
+        href = link(folder, '')  # يحل تلقائياً لأول صفحة موجودة
+        card = (f'<a class="card card-lg" href="{href}"><span class="card-t">{label}</span>'
+                f'<span class="card-d">{ar_files(n)}</span></a>')
+        if folder == '06-PRACTICAL-CASES':
+            # منع تداخل وسوم <a>: البطاقة رابط مستقل، وروابط الحالات في حاوية منفصلة بجانبها
+            cases = sorted(f for f in os.listdir(gdir) if f.startswith('Case-') and f.endswith('.md'))
+            entry = ('<div class="card-stack">' + card + '<div class="mini">' + ' · '.join(
+                f'<a href="pages/06-PRACTICAL-CASES/{c[:-3]}.html">الحالة {c.split("-")[1]}</a>'
+                for c in cases) + '</div></div>')
+        else:
+            entry = card
+        if folder in ('00-STRATEGY', '01-REGULATIONS', '02-PLATFORMS'):
+            foundation_cards += entry
+        else:
+            ops_cards += entry
     home = f"""<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -510,10 +530,16 @@ def main():
 <a class="card" href="pages/03-SERVICES/01-Building-Permit/README.html"><span class="card-n">2</span><span class="card-t">أتقن خدمة كاملة</span><span class="card-d">ابدأ برخصة البناء — أم الخدمات — بتبويباتها الست</span></a>
 <a class="card" href="pages/08-TRAINING/Simulations/Simulation-01-Building-Permit.html"><span class="card-n">3</span><span class="card-t">طبّق واختبر</span><span class="card-d">محاكاة 9 محطات ثم الاختبار النهائي المجمّع</span></a>
 </div></section>
-{svc_cards}
+{services_section}
+<section class="section" id="foundation"><h2>الإطار التأسيسي والمرجعي</h2>
+<p class="section-sub">الاستراتيجية والأنظمة واللوائح والمصادر الرسمية وأدلة المنصات — أساس الفهم قبل دخول أي خدمة</p>
+<div class="grid grid-3">{foundation_cards}</div></section>
+<section class="section" id="operations"><h2>الأدلة التشغيلية والتخصصية والجودة</h2>
+<p class="section-sub">الأدلة الهندسية والمساحية، تشغيل المكتب، الحالات العملية الـ9، النماذج، الأكاديمية، القاموس، وسجلات الجودة والتحقق</p>
+<div class="grid grid-3">{ops_cards}</div></section>
 <section class="section" id="tools"><h2>⚡ الأدوات الذكية — المنصة التفاعلية</h2>
 <p class="section-sub">تطبيق تفاعلي يعمل داخل المتصفح مباشرة، مبني على بيانات الخدمات الـ14</p>
-<div class="grid grid-3">
+<div class="grid grid-4">
 <a class="card" href="app.html?view=diagnostic"><span class="card-n">أداة 1</span><span class="card-t">المشخّص الذكي وشجرة القرارات</span><span class="card-d">أجب عن 3 أسئلة عن العقار والصك والهدف ← خارطة طريق تشغيلية متسلسلة بالمنصات والتحذيرات</span></a>
 <a class="card" href="app.html?view=calculator"><span class="card-n">أداة 2</span><span class="card-t">حاسبة الرسوم البلدية والتسعير</span><span class="card-d">فصل الرسوم الحكومية عن أتعاب المكتب + الربحية المستهدفة — تقرير مالي فوري</span></a>
 <a class="card" href="app.html?view=academy"><span class="card-n">أداة 3</span><span class="card-t">اختبار الكفاءة التفاعلي</span><span class="card-d">حالات عملية باختيارات — تصحيح فوري وتفسير نظامي لكل سؤال ومعيار 90%</span></a>
@@ -543,7 +569,7 @@ def main():
 </main>
 <footer class="site-footer">
   <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
-  <div>ENG540 · إصدار 3.0 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
+  <div>ENG540 · إصدار 4.0 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
 </footer>
 <script src="assets/search-index.js"></script>
 <script src="assets/app.js"></script>
@@ -572,7 +598,7 @@ def main():
 <a class="chip" href="/eng540-services/pages/03-SERVICES/01-Building-Permit/README.html">الخدمة 1</a>
 <a class="chip" href="/eng540-services/sitemap.xml">فهرس كل الصفحات (sitemap)</a></p>
 </body></html>''')
-    print(f'✅ بناء v3: {count} صفحة + الرئيسية | {total_lines:,} سطر | sitemap: {len(urls)} رابطاً | robots+404 ✓')
+    print(f'✅ بناء v4: {count} صفحة + الرئيسية | {total_lines:,} سطر | sitemap: {len(urls)} رابطاً | robots+404 ✓')
 
 if __name__ == '__main__':
     main()

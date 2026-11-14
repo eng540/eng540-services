@@ -191,6 +191,11 @@ html[data-theme="dark"] .step-head{background:#182d33}
 .sp-reset:hover{border-color:var(--warn);color:var(--warn)}
 
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:1rem 0}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:1rem 0}
+/* حاوية بطاقة + روابط مصغرة بجانبها (بدل تداخل <a> داخل <a>) */
+.card-stack{display:flex;flex-direction:column;gap:.2rem}
+.card-stack .card{flex:1}
+.card-stack .mini{padding-inline:.25rem}
 .doc-app{padding-top:1.4rem}
 @media(max-width:900px){
   .doc-sec{margin:0 -1rem;padding:0 1rem}

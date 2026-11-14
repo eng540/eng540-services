@@ -1,767 +1,1051 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENG540 | منظومة المعرفة والتشغيل والأكاديمية التدريبية للخدمات الهندسية في السعودية</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f1f5f9;
-      color: #0f172a;
-    }
-    .tab-btn.active {
-      background-color: #0f766e;
-      color: #ffffff;
-      border-color: #0f766e;
-    }
-    .srv-card.selected {
-      border-color: #0f766e;
-      background-color: #f0fdfa;
-      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.15);
-    }
-    .ltr-num {
-      direction: ltr;
-      unicode-bidi: isolate;
-      display: inline-block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENG540 | المنصة التفاعلية — منظومة الخدمات الهندسية السعودية</title>
+<meta name="description" content="المنصة التفاعلية لمنظومة ENG540: موسوعة الخدمات الهندسية الـ14، المشخّص الذكي وشجرة القرارات، حاسبة الرسوم البلدية والتسعير، أكاديمية التدريب واختبار الكفاءة، والنماذج التشغيلية — بمصادر رسمية موثقة ووسوم تحقق.">
+<link rel="canonical" href="https://eng540.github.io/eng540-services/app.html">
+<meta property="og:title" content="ENG540 — المنصة التفاعلية للخدمات الهندسية السعودية">
+<meta property="og:description" content="مشخّص ذكي، حاسبة رسوم وتسعير، أكاديمية تدريب واختبار كفاءة، ونماذج تشغيلية — مبنية على بيانات الخدمات الـ14 بمصادر رسمية موثقة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eng540.github.io/eng540-services/app.html">
+<meta property="og:locale" content="ar_SA">
+<meta name="theme-color" content="#0f172a">
+<!-- MANDATORY: إعلان دعم الوضعين — يمنع وميض الثيم غير الصحيح قبل الرسم -->
+<meta name="color-scheme" content="light dark">
+<script>
+/* FOUC prevention only: يطبّق الثيم المحفوظ قبل رسم الصفحة */
+try {
+  var _t = localStorage.getItem("eng540-theme");
+  if (_t) document.querySelector('meta[name="color-scheme"]').content = _t;
+  if (_t) document.documentElement.dataset.theme = _t;
+} catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ENG540 — نظام تصميم المنصة التفاعلية (CSS ذاتي بلا أي إطار خارجي)
+   الوضعان (نظام/نهاري/ليلي) عبر color-scheme + light-dark() مع احتياطي prefers-color-scheme
+   ============================================================ */
+:root{
+  --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --primary:#0f766e; --primary-d:#115e59; --accent:#14b8a6;
+  --ok:#059669; --warn:#b45309; --danger:#b91c1c;
+  --soft:#f8fafc; --chipbg:#f1f5f9; --inputbg:#ffffff; --inputline:#cbd5e1;
+  --teal-bg:#f0fdfa; --teal-line:#99f6e4; --teal-ink:#134e4a;
+  --amber-bg:#fffbeb; --amber-line:#fde68a; --amber-ink:#92400e; --amber-head:#78350f;
+  --emerald-bg:#ecfdf5; --emerald-line:#a7f3d0; --emerald-ink:#065f46; --emerald-head:#064e3b;
+  --red-bg:#fef2f2; --red-line:#fecaca; --red-ink:#991b1b; --red-head:#7f1d1d;
+  --okbg:#ecfdf5; --okline:#6ee7b7;
+  --darkbox:#0f172a; --darkbox-ink:#d7e8ec;
+  --header:#0f172a; --header-sub:#cbd5e1; --header-accent:#5eead4; --tabs-bg:#1e293b;
+  --radius:12px;
+  /* MANDATORY: تفعيل الثيم على الجذر ليشمل واجهة المتصفح واللوحة الأولية */
+  color-scheme: light dark;
+}
+/* احتياطي الوضع الليلي للمتصفحات التي لا تدعم light-dark() */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1418; --card:#12222a; --ink:#dcebe8; --muted:#8aa5a0; --line:#24404a;
+    --primary:#2dd4bf; --primary-d:#5eead4; --accent:#2dd4bf;
+    --ok:#4ade80; --warn:#fbbf24; --danger:#f87171;
+    --soft:#0f1d23; --chipbg:#152a31; --inputbg:#0f1d23; --inputline:#2a4750;
+    --teal-bg:#0c2622; --teal-line:#1d4f47; --teal-ink:#5eead4;
+    --amber-bg:#241c08; --amber-line:#4d3d12; --amber-ink:#fcd34d; --amber-head:#fbbf24;
+    --emerald-bg:#0a2618; --emerald-line:#155e42; --emerald-ink:#86efac; --emerald-head:#4ade80;
+    --red-bg:#2a1212; --red-line:#5f2121; --red-ink:#fca5a5; --red-head:#f87171;
+    --okbg:#0a2618; --okline:#155e42;
+    --darkbox:#0a1418; --darkbox-ink:#cfe8e2;
+    --header:#0a1216; --header-sub:#a9c3bf; --header-accent:#5eead4; --tabs-bg:#12242b;
+  }
+}
+/* تجاوز التفضيل النظامي يدوياً */
+html[data-theme="dark"]{ color-scheme: dark; }
+html[data-theme="light"]{ color-scheme: light; }
+/* مطابقة <meta name="color-scheme"> مع خصائص CSS (الوسم وحده لا يكفي: CSS يفوز) */
+:root:has(> head > meta[name="color-scheme"][content="dark"]){ color-scheme: dark; }
+:root:has(> head > meta[name="color-scheme"][content="light"]){ color-scheme: light; }
+@supports (color: light-dark(#fff, #000)){
+  :root{
+    --bg:light-dark(#f1f5f9,#0b1418); --card:light-dark(#ffffff,#12222a);
+    --ink:light-dark(#0f172a,#dcebe8); --muted:light-dark(#64748b,#8aa5a0);
+    --line:light-dark(#e2e8f0,#24404a);
+    --primary:light-dark(#0f766e,#2dd4bf); --primary-d:light-dark(#115e59,#5eead4);
+    --accent:light-dark(#14b8a6,#2dd4bf);
+    --ok:light-dark(#059669,#4ade80); --warn:light-dark(#b45309,#fbbf24); --danger:light-dark(#b91c1c,#f87171);
+    --soft:light-dark(#f8fafc,#0f1d23); --chipbg:light-dark(#f1f5f9,#152a31);
+    --inputbg:light-dark(#ffffff,#0f1d23); --inputline:light-dark(#cbd5e1,#2a4750);
+    --teal-bg:light-dark(#f0fdfa,#0c2622); --teal-line:light-dark(#99f6e4,#1d4f47); --teal-ink:light-dark(#134e4a,#5eead4);
+    --amber-bg:light-dark(#fffbeb,#241c08); --amber-line:light-dark(#fde68a,#4d3d12);
+    --amber-ink:light-dark(#92400e,#fcd34d); --amber-head:light-dark(#78350f,#fbbf24);
+    --emerald-bg:light-dark(#ecfdf5,#0a2618); --emerald-line:light-dark(#a7f3d0,#155e42);
+    --emerald-ink:light-dark(#065f46,#86efac); --emerald-head:light-dark(#064e3b,#4ade80);
+    --red-bg:light-dark(#fef2f2,#2a1212); --red-line:light-dark(#fecaca,#5f2121);
+    --red-ink:light-dark(#991b1b,#fca5a5); --red-head:light-dark(#7f1d1d,#f87171);
+    --okbg:light-dark(#ecfdf5,#0a2618); --okline:light-dark(#6ee7b7,#155e42);
+    --darkbox:light-dark(#0f172a,#0a1418); --darkbox-ink:light-dark(#d7e8ec,#cfe8e2);
+    --header:light-dark(#0f172a,#0a1216); --header-sub:light-dark(#cbd5e1,#a9c3bf);
+    --header-accent:#5eead4; --tabs-bg:light-dark(#1e293b,#12242b);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;accent-color:var(--primary)}
+body{margin:0;font-family:'Tajawal',Tahoma,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:15px}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+p{margin:.25rem 0}
+.hidden{display:none !important}
+.ltr-num{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ===== الهيدر ===== */
+.app-header{background:var(--header);color:#fff;border-bottom:4px solid var(--accent)}
+.header-in{max-width:1200px;margin:0 auto;padding:1rem 1rem .7rem;display:flex;flex-direction:column;gap:.35rem}
+.brand-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.logo-badge{background:#0d9488;color:#fff;font-weight:800;padding:.25rem .7rem;border-radius:8px;letter-spacing:.5px;font-size:.8rem}
+.ver-badge{color:var(--header-sub);font-size:.72rem}
+.theme-btn{margin-inline-start:auto;background:var(--tabs-bg);border:1px solid var(--line);border-radius:8px;min-inline-size:38px;min-block-size:38px;font-size:1.05rem;cursor:pointer;color:#f1f5f9;font-family:inherit}
+.theme-btn:hover{border-color:var(--accent)}
+.header-in h1{font-size:1.3rem;font-weight:800;margin:.15rem 0 0}
+.header-sub{color:var(--header-sub);font-size:.78rem;margin:0}
+.author-line{color:var(--header-accent);font-size:.77rem;margin:.25rem 0 0;font-weight:700}
+.author-line a{color:var(--header-accent);text-decoration:underline}
+.quick-links{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.q-link{background:#0d9488;color:#fff;font-weight:700;font-size:.74rem;padding:.4rem .8rem;border-radius:8px}
+.q-link:hover{background:#0f766e;text-decoration:none}
+.q-link.alt{background:var(--tabs-bg);border:1px solid var(--line);color:var(--header-accent);font-weight:600}
+.q-link.alt:hover{background:#0d9488;color:#fff}
+.app-tabs{background:var(--tabs-bg);border-top:1px solid var(--line)}
+.tabs-in{max-width:1200px;margin:0 auto;padding:.5rem 1rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.tab-btn{background:transparent;border:1px solid transparent;color:#e2e8f0;font-family:inherit;font-size:.79rem;font-weight:700;padding:.5rem .9rem;border-radius:8px;cursor:pointer}
+.tab-btn:hover{background:rgba(148,163,184,.22)}
+.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* ===== التخطيط العام ===== */
+.app-main{max-width:1200px;margin:0 auto;padding:1.2rem 1rem 3rem;width:100%}
+.view{display:grid;gap:1.1rem}
+.notice{background:var(--teal-bg);border:1px solid var(--teal-line);color:var(--teal-ink);border-radius:10px;padding:.65rem 1rem;font-size:.77rem;line-height:1.85;margin-bottom:1.2rem}
+.notice a{font-weight:800;text-decoration:underline}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 2px 10px rgba(10,60,60,.05);padding:1.2rem}
+.panel-title{font-size:1.02rem;font-weight:800;margin:0 0 .2rem}
+.panel-sub{font-size:.75rem;color:var(--muted);margin:0 0 .9rem}
+.split{display:grid;grid-template-columns:1fr;gap:1.1rem}
+@media (min-width:1000px){
+  .split{grid-template-columns:340px 1fr}
+  .calc-split{grid-template-columns:5fr 7fr}
+}
+
+/* ===== أدوات النموذج ===== */
+.field-label{display:block;font-size:.72rem;font-weight:800;color:var(--muted);margin-bottom:.25rem}
+.txt{width:100%;border:1px solid var(--inputline);border-radius:10px;padding:.55rem .8rem;font-family:inherit;font-size:.85rem;background:var(--inputbg);color:var(--ink)}
+.txt:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.field{margin-bottom:.7rem}
+.row2{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.divider{border-top:1px solid var(--line);margin-top:.9rem;padding-top:.9rem}
+.sub-h{font-size:.76rem;font-weight:800;color:var(--primary-d);margin:.1rem 0 .6rem}
+.btn{display:inline-block;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:inherit;font-size:.75rem;font-weight:800;padding:.55rem .95rem;border-radius:9px;cursor:pointer}
+.btn:hover{background:var(--soft);text-decoration:none}
+.btn-primary{background:var(--primary);border-color:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-d)}
+.btn-dark{background:var(--darkbox);border-color:var(--darkbox);color:#fff}
+.btn-dark:hover{background:#1e293b}
+.btn-ghost{background:transparent;border-color:var(--primary);color:var(--primary)}
+.btn-ghost:hover{background:var(--teal-bg)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.8rem}
+.chip-btn{border:1px solid var(--line);background:var(--chipbg);color:var(--ink);font-family:inherit;font-size:.72rem;font-weight:800;padding:.45rem .8rem;border-radius:8px;cursor:pointer}
+.chip-btn:hover{background:var(--soft)}
+.chip-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.badge{background:var(--teal-bg);border:1px solid var(--teal-line);color:var(--teal-ink);font-size:.7rem;font-weight:800;padding:.4rem .8rem;border-radius:9px}
+
+/* ===== قائمة الخدمات ولوحة التفاصيل ===== */
+.toolbar{display:flex;flex-direction:column;gap:.8rem}
+@media (min-width:820px){.toolbar{flex-direction:row;align-items:flex-end;justify-content:space-between}.toolbar .search-field{flex:1;max-width:560px}.cat-row{justify-content:flex-end}}
+.cat-row{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.svc-list{display:flex;flex-direction:column;gap:.6rem;max-height:760px;overflow-y:auto;padding-inline-end:.35rem}
+.empty-box{font-size:.78rem;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.srv-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.srv-card:hover{border-color:var(--muted)}
+.srv-card.selected{border-color:var(--primary);background:var(--teal-bg);box-shadow:0 4px 12px rgba(15,118,110,.16)}
+.srv-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.25rem;gap:.4rem}
+.code-badge{background:var(--darkbox);color:var(--header-accent);font-size:.68rem;font-weight:800;padding:.15rem .5rem;border-radius:6px}
+.dur{font-size:.68rem;color:var(--muted)}
+.srv-card h3{font-size:.88rem;margin:0;font-weight:800;color:var(--ink)}
+.srv-card p{font-size:.75rem;color:var(--muted);margin:.25rem 0 0}
+.svc-head{display:flex;flex-direction:column;gap:.6rem;border-bottom:1px solid var(--line);padding-bottom:.85rem;margin-bottom:1rem}
+.svc-title-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.type-badge{background:var(--teal-bg);border:1px solid var(--teal-line);color:var(--teal-ink);font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:6px}
+.svc-head h2{font-size:1.15rem;margin:0;font-weight:800}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-bottom:1rem}
+.meta-box{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;font-size:.75rem}
+.meta-box .k{display:block;color:var(--muted);font-weight:800;font-size:.68rem}
+.meta-box .v{display:block;font-weight:700;margin-top:.15rem}
+.box{border-radius:12px;padding:.9rem 1rem;font-size:.79rem;border:1px solid var(--line);background:var(--card);margin-bottom:.85rem}
+.box h4{margin:0 0 .35rem;font-size:.81rem;font-weight:800}
+.box-teal{background:var(--teal-bg);border-color:var(--teal-line)}
+.box-teal h4{color:var(--teal-ink)}
+.box-dark{background:var(--darkbox);border-color:var(--darkbox);color:var(--darkbox-ink)}
+.box-dark h4{color:var(--header-accent);font-size:.72rem}
+.box-dark p{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;margin:0;line-height:1.9}
+.box-amber{background:var(--amber-bg);border-color:var(--amber-line)}
+.box-amber h4{color:var(--amber-head)}
+.box-amber p{color:var(--amber-ink)}
+.box-emerald{background:var(--emerald-bg);border-color:var(--emerald-line)}
+.box-emerald h4{color:var(--emerald-head)}
+.box-emerald p{color:var(--emerald-ink)}
+.box-red{background:var(--red-bg);border-color:var(--red-line)}
+.box-red h4{color:var(--red-head)}
+.box-red p{color:var(--red-ink)}
+.two-col{display:grid;grid-template-columns:1fr;gap:.85rem;margin-bottom:.85rem}
+@media (min-width:780px){.two-col{grid-template-columns:1fr 1fr}}
+ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
+.docs li{font-size:.75rem;margin:.25rem 0}
+.fee-line{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;font-size:.72rem;margin-top:.6rem}
+.link-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:1rem}
+.cs-label{font-size:.7rem;font-weight:800;color:var(--muted)}
+.cs-chip{display:inline-block;background:var(--teal-bg);border:1px solid var(--teal-line);color:var(--teal-ink);font-size:.7rem;font-weight:700;padding:.3rem .7rem;border-radius:999px}
+.cs-chip:hover{background:var(--primary);border-color:var(--primary);color:#fff;text-decoration:none}
+
+/* ===== المشخّص ===== */
+.diag-grid{display:grid;grid-template-columns:1fr;gap:.85rem;margin-bottom:.9rem}
+@media (min-width:820px){.diag-grid{grid-template-columns:repeat(3,1fr)}}
+.diag-result{margin-top:1rem;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:1rem}
+.route-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;border-bottom:1px solid var(--line);padding-bottom:.6rem;margin-bottom:.8rem}
+.route-head h3{font-size:.9rem;font-weight:800;color:var(--primary-d);margin:0}
+.platforms{font-size:.72rem;color:var(--muted)}
+.platforms b{color:var(--primary-d)}
+.route-step{display:flex;gap:.7rem;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.75rem .85rem;margin-bottom:.6rem;box-shadow:0 1px 4px rgba(10,60,60,.05)}
+.step-dot{flex:none;width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:.7rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:.15rem}
+.route-step h4{margin:0;font-size:.78rem;font-weight:800}
+.route-step p{margin:.2rem 0 0;font-size:.73rem;color:var(--muted)}
+
+/* ===== الحاسبة ===== */
+.fee-note{background:var(--amber-bg);border:1px solid var(--amber-line);color:var(--amber-ink);border-radius:8px;padding:.5rem .7rem;font-size:.7rem;margin-bottom:.6rem;line-height:1.8}
+.fee-note a{font-weight:800;text-decoration:underline}
+.calc-line{display:flex;justify-content:space-between;gap:.6rem;font-size:.75rem;margin:.32rem 0}
+.calc-line.profit{color:var(--ok);font-weight:700}
+.calc-total{border-top:1px solid var(--line);margin-top:.5rem;padding-top:.45rem;font-size:.85rem;font-weight:800;display:flex;justify-content:space-between;gap:.6rem}
+.calc-total .total-val{color:var(--primary-d)}
+.grand{background:var(--darkbox);color:#fff;border-radius:12px;padding:.9rem 1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.85rem}
+.grand-k{display:block;font-size:.72rem;color:var(--header-sub)}
+.grand-t{display:block;font-size:.82rem;font-weight:800;color:var(--header-accent);margin-top:.15rem}
+.grand-num{font-size:1.15rem;font-weight:800;background:var(--primary);padding:.4rem .9rem;border-radius:10px}
+
+/* ===== الأكاديمية والاختبار ===== */
+.academy-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.6rem;border-bottom:1px solid var(--line);padding-bottom:.75rem;margin-bottom:1rem}
+.stage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:.5rem;margin-bottom:1rem}
+.stage-btn{background:var(--card);border:1px solid var(--line);color:var(--ink);font-family:inherit;font-size:.72rem;font-weight:800;padding:.55rem .5rem;border-radius:9px;cursor:pointer}
+.stage-btn:hover{background:var(--soft)}
+.stage-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.stage-box{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.3rem;font-size:.78rem}
+.stage-box h4{margin:0 0 .3rem;font-size:.82rem;color:var(--primary-d)}
+.exam-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;border-top:1px solid var(--line);padding-top:1.1rem;margin-bottom:.9rem}
+.exam-head h3{font-size:.9rem;font-weight:800;margin:0}
+.q-card{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-bottom:.8rem}
+.q-text{font-size:.8rem;font-weight:800;margin:0 0 .5rem}
+.opt{display:flex;align-items:flex-start;gap:.45rem;font-size:.75rem;padding:.3rem .45rem;border-radius:7px;cursor:pointer}
+.opt:hover{background:var(--chipbg)}
+.opt input{accent-color:var(--primary);margin-top:.25rem;flex:none}
+.exp{margin-top:.6rem;padding:.55rem .7rem;border-radius:9px;font-size:.73rem}
+.exp.ok{background:var(--okbg);border:1px solid var(--okline);color:var(--emerald-ink)}
+.exp.no{background:var(--red-bg);border:1px solid var(--red-line);color:var(--red-ink)}
+.banner{padding:.9rem 1rem;border-radius:12px;font-size:.82rem;font-weight:800;border:1px solid;margin-bottom:.9rem}
+.banner.mastery{background:var(--emerald-bg);border-color:var(--okline);color:var(--emerald-head)}
+.banner.pass{background:var(--teal-bg);border-color:var(--teal-line);color:var(--teal-ink)}
+.banner.retry{background:var(--amber-bg);border-color:var(--amber-line);color:var(--amber-head)}
+
+/* ===== النماذج ===== */
+.tpl-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.9rem}
+.tpl-view{background:#0f2126;color:#d7e8ec;border-radius:12px;padding:1.1rem;font-size:.72rem;line-height:1.9;overflow-x:auto;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin:0;color-scheme:dark}
+
+/* ===== زر النسخ (وفق دليل copy-button) ===== */
+.copy{position:relative;display:inline-flex;align-items:center;gap:.5rem}
+.copy-button{min-inline-size:24px;min-block-size:24px;display:inline-flex;align-items:center;justify-content:center}
+.copy-button[data-copied]{background:var(--okbg);border-color:var(--okline);color:var(--emerald-head)}
+.copy-button[data-failed]{background:var(--red-bg);border-color:var(--red-line);color:var(--red-head)}
+.tip{font-size:.7rem;font-weight:800;color:var(--emerald-head);opacity:0;transition:opacity .15s}
+.copy-button[data-copied] + .tip,.copy-button[data-failed] + .tip{opacity:1}
+.copy-button[data-failed] + .tip{color:var(--red-head)}
+@media (prefers-reduced-motion: reduce){
+  .tip{transition:none}
+}
+
+/* ===== التذييل ===== */
+.app-footer{background:var(--header);border-top:4px solid var(--accent);color:var(--header-sub);font-size:.72rem;margin-top:2rem}
+.footer-in{max-width:1200px;margin:0 auto;padding:1.2rem 1rem;display:flex;flex-direction:column;gap:.3rem;align-items:center;text-align:center}
+.footer-in b{color:#fff}
+.footer-in a{color:var(--header-accent);text-decoration:underline}
+
+/* ===== الطباعة: تقرير المشخّص فقط ===== */
+@media print{
+  .app-header,.app-tabs,.notice,.app-footer,.btn-row,.theme-btn,.print-hide{display:none !important}
+  body{background:#fff;color:#000}
+  .app-main{max-width:none;padding:0}
+  #view-services,#view-calculator,#view-academy,#view-templates{display:none !important}
+  #view-diagnostic{display:block !important}
+  .panel{box-shadow:none;border:0;padding:0}
+  .diag-result{background:#fff;border:0;padding:0}
+  .box-dark{background:#fff !important;color:#000 !important;border:1px solid #000}
+  .box-dark h4{color:#000}
+  .route-step{break-inside:avoid;box-shadow:none}
+}
+</style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
 
-  <!-- Header Banner -->
-  <header class="bg-slate-900 text-white border-b-4 border-teal-600 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="bg-teal-600 text-white text-xs font-bold px-2.5 py-1 rounded">ENG540 SYSTEM</span>
-          <span class="text-slate-300 text-xs">الإصدار الموثق — نوفمبر 2026</span>
-        </div>
-        <h1 class="text-xl md:text-2xl font-bold mt-1">منظومة المعرفة والتشغيل للخدمات الهندسية في المملكة العربية السعودية</h1>
-        <p class="text-slate-300 text-xs md:text-sm mt-0.5">الموسوعة التشغيلية للخدمات الـ14 | المشخص الذكي وشجرة القرارات | حاسبة الرسوم والتسعير | أكاديمية التدريب والاختبارات</p>
-        <p class="text-teal-300 text-xs mt-1 font-bold">تقديم وتأليف: م. عبدالمجيد الفقيه — مهندس مدني · «صناعة الأثر لا مجرد الإنجاز» · <a href="https://wa.me/966532777678" class="underline hover:text-teal-200">واتساب 0532777678</a> · <a href="https://t.me/engineering540" class="underline hover:text-teal-200">قناة تيليجرام</a></p>
+<header class="app-header">
+  <div class="header-in">
+    <div class="brand-row">
+      <span class="logo-badge">ENG540</span>
+      <span class="ver-badge">الإصدار الموثق 4.0 — نوفمبر 2026 · تحقق المصادر: 2026-11-14</span>
+      <button id="themeBtn" class="theme-btn" type="button" title="الوضع الليلي/النهاري" aria-label="التبديل إلى الوضع الليلي">🌙</button>
+    </div>
+    <h1>منظومة المعرفة والتشغيل للخدمات الهندسية في المملكة العربية السعودية</h1>
+    <p class="header-sub">الموسوعة التشغيلية للخدمات الـ14 | المشخّص الذكي وشجرة القرارات | حاسبة الرسوم والتسعير | أكاديمية التدريب والاختبارات | النماذج التشغيلية</p>
+    <p class="author-line">تقديم وتأليف: <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · «صناعة الأثر لا مجرد الإنجاز» · <a href="https://wa.me/966532777678">واتساب 0532777678</a> · <a href="https://t.me/engineering540">قناة تيليجرام</a></p>
+    <div class="quick-links">
+      <a class="q-link" href="index.html">📚 الموسوعة المعرفية الكاملة</a>
+      <a class="q-link alt" href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+      <a class="q-link alt" href="https://balady.gov.sa" target="_blank" rel="noopener">منصة بلدي ↗</a>
+      <a class="q-link alt" href="https://najiz.sa" target="_blank" rel="noopener">ناجز / البورصة ↗</a>
+      <a class="q-link alt" href="https://rer.sa/" target="_blank" rel="noopener">السجل العقاري RER ↗</a>
+      <a class="q-link alt" href="https://998.gov.sa/" target="_blank" rel="noopener">الدفاع المدني 998 ↗</a>
+      <a class="q-link alt" href="https://subdivision.rega.gov.sa/" target="_blank" rel="noopener">فرز الوحدات ↗</a>
+    </div>
+  </div>
+  <nav class="app-tabs" aria-label="التبويبات الرئيسية للمنصة">
+    <div class="tabs-in">
+      <button id="tabBtn-services" type="button" onclick="switchTab('services')" class="tab-btn active">1. موسوعة الخدمات الـ14 الكاملة</button>
+      <button id="tabBtn-diagnostic" type="button" onclick="switchTab('diagnostic')" class="tab-btn">2. المشخّص الذكي وشجرة القرارات</button>
+      <button id="tabBtn-calculator" type="button" onclick="switchTab('calculator')" class="tab-btn">3. حاسبة الرسوم البلدية والتسعير</button>
+      <button id="tabBtn-academy" type="button" onclick="switchTab('academy')" class="tab-btn">4. أكاديمية التدريب والاختبار</button>
+      <button id="tabBtn-templates" type="button" onclick="switchTab('templates')" class="tab-btn">5. النماذج التشغيلية وإدارة المكتب</button>
+    </div>
+  </nav>
+</header>
+
+<main class="app-main">
+  <div class="notice">
+    ⚠️ <b>أدوات تعليمية وإرشادية أولية:</b> المشخّص يقدّم «توجيهاً أولياً» لا قراراً نظامياً، والحاسبة تعرض «تقديراً» لا فاتورة رسمية — الرسوم والمدد والاشتراطات النهائية تعتمدها الجهة المختصة لكل حالة، وتُتحقق من المنصة الرسمية قبل أي التزام. مصادر المنظومة وتواريخ التحقق في <a href="pages/10-QUALITY-AND-UPDATES/Verification-Log.html">سجل التحقق</a>.
+  </div>
+
+  <!-- TAB 1: SERVICES -->
+  <section id="view-services" class="view">
+    <div class="panel toolbar">
+      <div class="search-field">
+        <label class="field-label" for="srvSearch">ابحث في الخدمات الأربع عشرة أو المنصات أو المتطلبات:</label>
+        <input id="srvSearch" type="search" class="txt" oninput="filterServices()" placeholder="مثال: رخصة بناء، فرز، قرار مساحي، تصحيح وضع، السجل العقاري..." autocomplete="off">
       </div>
-      <div class="flex flex-wrap gap-2 text-xs">
-        <a href="index.html" class="bg-teal-600 hover:bg-teal-500 border border-teal-400 px-3 py-1.5 rounded text-white font-bold">📚 الموسوعة المعرفية الكاملة</a>
-        <a href="pages/00-STRATEGY/About-Author.html" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1.5 rounded text-teal-300 font-semibold">عن المؤلف</a>
-        <a href="https://balady.gov.sa" target="_blank" rel="noopener" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1.5 rounded text-teal-300 font-semibold">منصة بلدي ↗</a>
-        <a href="https://najiz.sa" target="_blank" rel="noopener" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1.5 rounded text-teal-300 font-semibold">ناجز / البورصة ↗</a>
-        <a href="https://rer.sa/" target="_blank" rel="noopener" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1.5 rounded text-teal-300 font-semibold">السجل العقاري RER ↗</a>
-        <a href="https://subdivision.rega.gov.sa/" target="_blank" rel="noopener" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1.5 rounded text-teal-300 font-semibold">فرز الوحدات ↗</a>
+      <div class="cat-row">
+        <button type="button" onclick="setCategoryFilter('ALL')" id="catBtn-ALL" class="chip-btn active">الكل (14)</button>
+        <button type="button" onclick="setCategoryFilter('BALADY')" id="catBtn-BALADY" class="chip-btn">خدمات بلدي والرخص</button>
+        <button type="button" onclick="setCategoryFilter('SURVEY')" id="catBtn-SURVEY" class="chip-btn">المساحة والفرز والتقسيم</button>
+        <button type="button" onclick="setCategoryFilter('DEED')" id="catBtn-DEED" class="chip-btn">الصكوك والسجل العقاري</button>
       </div>
     </div>
+    <div class="split">
+      <div id="serviceListContainer" class="svc-list" aria-label="قائمة الخدمات"></div>
+      <div id="serviceDetailContainer" class="panel"></div>
+    </div>
+  </section>
 
-    <!-- Navigation Tabs -->
-    <nav class="bg-slate-800 border-t border-slate-700" aria-label="التبويبات الرئيسية للمنصة">
-      <div class="max-w-7xl mx-auto px-4 flex flex-wrap gap-1.5 py-2">
-        <button id="tabBtn-services" onclick="switchTab('services')" class="tab-btn active text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">1. موسوعة الخدمات الـ14 الكاملة</button>
-        <button id="tabBtn-diagnostic" onclick="switchTab('diagnostic')" class="tab-btn text-slate-200 hover:bg-slate-700 text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">2. المشخص الذكي وشجرة القرارات</button>
-        <button id="tabBtn-calculator" onclick="switchTab('calculator')" class="tab-btn text-slate-200 hover:bg-slate-700 text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">3. حاسبة الرسوم البلدية والتسعير</button>
-        <button id="tabBtn-academy" onclick="switchTab('academy')" class="tab-btn text-slate-200 hover:bg-slate-700 text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">4. أكاديمية التدريب والمحاكاة والاختبار</button>
-        <button id="tabBtn-templates" onclick="switchTab('templates')" class="tab-btn text-slate-200 hover:bg-slate-700 text-xs md:text-sm font-semibold px-3.5 py-2 rounded border border-transparent transition">5. النماذج التشغيلية وإدارة المكتب</button>
+  <!-- TAB 2: DIAGNOSTIC -->
+  <section id="view-diagnostic" class="view hidden">
+    <div class="panel">
+      <h2 class="panel-title">المشخّص الذكي للمعاملات الهندسية والعقارية (Decision Tree Engine)</h2>
+      <p class="panel-sub">أدخل معطيات العميل والعقار ليقوم النظام بتشخيص المسار النظامي الإلزامي وترتيب الخدمات والمنصات وتنبيهات المخاطر:</p>
+      <div class="diag-grid">
+        <div>
+          <label class="field-label" for="diagPropType">1. نوع العقار وحالته الراهنة:</label>
+          <select id="diagPropType" class="txt" onchange="runDiagnostic()">
+            <option value="vacant_planned">أرض فضاء داخل مخطط تنظيمي معتمد</option>
+            <option value="vacant_raw">أرض خام كبيرة غير مقسمة داخل النطاق العمراني</option>
+            <option value="bldg_licensed">مبنى قائم مرخص ومطابق للرخصة</option>
+            <option value="bldg_unlicensed">مبنى قائم بدون رخصة أو به مخالفات وتعديلات</option>
+            <option value="bldg_old">مبنى قديم متهالك أو به تصدعات</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="diagDeedStatus">2. حالة وثيقة الملكية والنطاق الجغرافي:</label>
+          <select id="diagDeedStatus" class="txt" onchange="runDiagnostic()">
+            <option value="elec_updated">صك إلكتروني محدث ومكتمل (خارج المناطق المعلنة في RER)</option>
+            <option value="paper_old">صك ورقي قديم / ينقصه رقم القطعة أو المخطط أو به حفيظة</option>
+            <option value="rer_declared">العقار يقع داخل منطقة عقارية معلنة في السجل العقاري (rer.sa)</option>
+            <option value="mortgaged">صك إلكتروني مرهون لبنك أو جهة تمويل</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="diagGoal">3. الهدف النهائي الذي يطلبه العميل:</label>
+          <select id="diagGoal" class="txt" onchange="runDiagnostic()">
+            <option value="build_new">بناء مشروع جديد (فيلا / عمارة / تجاري)</option>
+            <option value="subdivide_units">فرز المبنى إلى وحدات مستقلة (شقق / معارض / دوبلكس)</option>
+            <option value="subdivide_land">تقسيم أو تجزئة الأرض إلى عدة قطع</option>
+            <option value="merge_deeds">دمج قطعتين متجاورتين في صك موحد</option>
+            <option value="occupancy">إصدار شهادة إشغال وإدخال الكهرباء</option>
+            <option value="renovate_comply">ترميم المبنى أو استخراج شهادة الامتثال</option>
+            <option value="demolish">هدم المبنى القائم وإزالته لإعادة البناء</option>
+          </select>
+        </div>
       </div>
-    </nav>
-  </header>
+      <div class="btn-row print-hide">
+        <button type="button" class="btn btn-ghost" onclick="window.print()">🖨️ طباعة التقرير</button>
+        <span class="copy">
+          <button type="button" class="btn btn-ghost copy-button" command="--copy" commandfor="diagPlainText" aria-label="نسخ خارطة الطريق التشغيلية">📋 نسخ التقرير</button>
+          <span class="tip" role="status"></span>
+        </span>
+      </div>
+      <pre id="diagPlainText" class="sr-only" aria-hidden="true"></pre>
+      <div id="diagnosticResultBox" class="diag-result"></div>
+    </div>
+  </section>
 
-  <!-- Main Workspace Container -->
-  <main class="max-w-7xl w-full mx-auto px-4 py-6 flex-1">
-    <div class="max-w-7xl mx-auto px-4 pt-3">
-      <div class="bg-teal-50 border border-teal-300 text-teal-900 rounded-lg px-4 py-2 text-xs leading-relaxed">
-        ⚠️ <b>أدوات تعليمية وإرشادية أولية:</b> المشخّص يقدم «توجيهاً أولياً» لا قراراً نظامياً، والحاسبة تعرض «تقديراً» لا فاتورة رسمية — الرسوم والمدد والاشتراطات النهائية تعتمدها الجهة المختصة لكل حالة، وتتحقق من المنصة الرسمية قبل أي التزام. مصادر المنظومة وتواريخ التحقق في <a href="pages/10-QUALITY-AND-UPDATES/Verification-Log.html" class="underline font-bold">سجل التحقق</a>.
+  <!-- TAB 3: CALCULATOR -->
+  <section id="view-calculator" class="view hidden">
+    <div class="split calc-split">
+      <div class="panel">
+        <h2 class="panel-title">مدخلات حاسبة الرسوم البلدية والتسعير التجاري</h2>
+        <p class="panel-sub">افصل دائماً بين الرسوم الحكومية (تُسدد باسم المالك) وأتعاب المكتب الخاضعة للضريبة.</p>
+        <div class="field">
+          <label class="field-label" for="calcClass">تصنيف الأمانة / البلدية (وفق لائحة الرسوم البلدية — قرار 23542):</label>
+          <select id="calcClass" class="txt" onchange="calculatePricing()">
+            <option value="0">التصنيف الأول (الرياض، مكة، جدة، الشرقية، المدينة)</option>
+            <option value="1">التصنيف الثاني</option>
+            <option value="2">التصنيف الثالث</option>
+            <option value="3">التصنيف الرابع</option>
+            <option value="4">التصنيف الخامس (والقرى التابعة للبلديات)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label" for="calcUsage">تصنيف استخدام المبنى في الرخصة:</label>
+          <select id="calcUsage" class="txt" onchange="calculatePricing()">
+            <option value="res">مبنى سكني (R-3 فلل / عمائر سكنية)</option>
+            <option value="res_comm">مبنى سكني تجاري</option>
+            <option value="comm">مبنى تجاري</option>
+          </select>
+        </div>
+        <div class="row3">
+          <div>
+            <label class="field-label" for="calcLandArea">مساحة الأرض (م²):</label>
+            <input id="calcLandArea" type="number" class="txt" value="600" min="50" oninput="calculatePricing()">
+          </div>
+          <div>
+            <label class="field-label" for="calcBuiltArea">مسطح البناء (م²):</label>
+            <input id="calcBuiltArea" type="number" class="txt" value="800" min="0" oninput="calculatePricing()">
+          </div>
+          <div>
+            <label class="field-label" for="calcFenceLen">طول السور (م.ط):</label>
+            <input id="calcFenceLen" type="number" class="txt" value="70" min="0" oninput="calculatePricing()">
+          </div>
+        </div>
+        <div class="divider">
+          <h3 class="sub-h">مدخلات تكلفة المكتب الهندسي والربحية المستهدفة:</h3>
+          <div class="row2">
+            <div>
+              <label class="field-label" for="calcEngHours">ساعات العمل الهندسي والمساحي:</label>
+              <input id="calcEngHours" type="number" class="txt" value="45" min="1" oninput="calculatePricing()">
+            </div>
+            <div>
+              <label class="field-label" for="calcHourRate">تكلفة الساعة التشغيلية (ريال):</label>
+              <input id="calcHourRate" type="number" class="txt" value="120" min="20" oninput="calculatePricing()">
+            </div>
+          </div>
+          <div class="row3" style="margin-top:.6rem">
+            <div>
+              <label class="field-label" for="calcExtCost">أطراف خارجية/تربة (ريال):</label>
+              <input id="calcExtCost" type="number" class="txt" value="2200" min="0" oninput="calculatePricing()">
+            </div>
+            <div>
+              <label class="field-label" for="calcOverheadPct">مصاريف إدارية (%):</label>
+              <input id="calcOverheadPct" type="number" class="txt" value="20" min="0" max="100" oninput="calculatePricing()">
+            </div>
+            <div>
+              <label class="field-label" for="calcMarginPct">هامش الربح المستهدف (%):</label>
+              <input id="calcMarginPct" type="number" class="txt" value="35" min="5" max="80" oninput="calculatePricing()">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title">التقرير المالي المفصل لعرض السعر</h2>
+        <p class="panel-sub">فصل الرسوم الحكومية عن أتعاب المكتب مع احتساب ضريبة القيمة المضافة وهامش الربحية.</p>
+        <div id="calcOutputContainer"></div>
+        <div class="fee-note" style="margin-top:.9rem">
+          <strong>قاعدة التسعير النظامية:</strong> الرسوم البلدية موثقة من <a href="https://momah.gov.sa/sites/default/files/2023-06/layht-rswm-alkhdmat-albldyt-alnmwdhj.pdf" target="_blank" rel="noopener">لائحة رسوم الخدمات البلدية (قرار 23542)</a> وتُسدد عبر فاتورة «سداد» باسم المالك مباشرة ولا تخضع لضريبة القيمة المضافة، بينما تخضع أتعاب المكتب الهندسي لضريبة القيمة المضافة (15%).
+        </div>
       </div>
     </div>
+  </section>
 
-
-    <!-- TAB 1: 14 SERVICES ENCYCLOPEDIA -->
-    <section id="view-services" class="space-y-6">
-      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col md:flex-row gap-3 items-center justify-between">
-        <div class="w-full md:w-1/2">
-          <label for="srvSearch" class="block text-xs font-bold text-slate-600 mb-1">ابحث في الخدمات الأربع عشرة أو المنصات أو المتطلبات:</label>
-          <input id="srvSearch" type="text" aria-label="بحث في الخدمات" oninput="filterServices()" placeholder="مثال: رخصة بناء، فرز، قرار مساحي، تصحيح وضع، السجل العقاري..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-teal-600">
+  <!-- TAB 4: ACADEMY -->
+  <section id="view-academy" class="view hidden">
+    <div class="panel">
+      <div class="academy-head">
+        <div>
+          <h2 class="panel-title">أكاديمية التدريب العملي ذات المراحل الثماني واختبار الكفاءة</h2>
+          <p class="panel-sub">تدرّب على المراحل الثماني، ونفّذ المحاكاة الخطوة بخطوة، واختبر كفاءتك في اتخاذ القرار الهندسي والنظامي.</p>
         </div>
-        <div class="w-full md:w-auto flex flex-wrap gap-1.5">
-          <button onclick="setCategoryFilter('ALL')" id="catBtn-ALL" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-teal-700 text-white">الكل (14)</button>
-          <button onclick="setCategoryFilter('BALADY')" id="catBtn-BALADY" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">خدمات بلدي والرخص</button>
-          <button onclick="setCategoryFilter('SURVEY')" id="catBtn-SURVEY" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">المساحة والفرز والتقسيم</button>
-          <button onclick="setCategoryFilter('DEED')" id="catBtn-DEED" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">الصكوك والسجل العقاري</button>
-        </div>
+        <div class="badge">تقدم مراحل التدريب: 8 / 8 جاهزة للتطبيق</div>
       </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Service Cards List -->
-        <div id="serviceListContainer" class="lg:col-span-4 space-y-2.5 max-h-[750px] overflow-y-auto pr-1"></div>
-
-        <!-- Selected Service 10-Section Detail View -->
-        <div id="serviceDetailContainer" class="lg:col-span-8 bg-white rounded-xl shadow-sm border border-slate-200 p-5"></div>
+      <div id="stageButtonsContainer" class="stage-grid"></div>
+      <div id="stageContentBox" class="stage-box"></div>
+      <div class="exam-head">
+        <h3>اختبار الكفاءة واتخاذ القرار الشامل (Mastery Exam — 10 حالات عملية · معيار الإتقان 90%)</h3>
+        <button type="button" onclick="gradeExam()" class="btn btn-primary">تصحيح الاختبار وإظهار النتيجة والتفسير النظامي</button>
       </div>
-    </section>
-
-    <!-- TAB 2: SMART DIAGNOSTIC & DECISION TREE -->
-    <section id="view-diagnostic" class="hidden space-y-6">
-      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h2 class="text-lg font-bold text-slate-900 mb-1">المشخص الذكي للمعاملات الهندسية والعقارية (Decision Tree Engine)</h2>
-        <p class="text-xs text-slate-600 mb-4">أدخل معطيات العميل والعقار ليقوم النظام بتشخيص المسار النظامي الإلزامي وترتيب الخدمات والمنصات وتنبيهات المخاطر:</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div>
-            <label for="diagPropType" class="block text-xs font-bold text-slate-700 mb-1">1. نوع العقار وحالته الراهنة:</label>
-            <select id="diagPropType" onchange="runDiagnostic()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
-              <option value="vacant_planned">أرض فضاء داخل مخطط تنظيمي معتمد</option>
-              <option value="vacant_raw">أرض خام كبيرة غير مقسمة داخل النطاق العمراني</option>
-              <option value="bldg_licensed">مبنى قائم مرخص ومطابق للرخصة</option>
-              <option value="bldg_unlicensed">مبنى قائم بدون رخصة أو به مخالفات وتعديلات</option>
-              <option value="bldg_old">مبنى قديم متهالك أو به تصدعات</option>
-            </select>
-          </div>
-          <div>
-            <label for="diagDeedStatus" class="block text-xs font-bold text-slate-700 mb-1">2. حالة وثيقة الملكية والنطاق الجغرافي:</label>
-            <select id="diagDeedStatus" onchange="runDiagnostic()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
-              <option value="elec_updated">صك إلكتروني محدث ومكتمل (خارج المناطق المعلنة في RER)</option>
-              <option value="paper_old">صك ورقي قديم / ينقصه رقم القطعة أو المخطط أو به حفيظة</option>
-              <option value="rer_declared">العقار يقع داخل منطقة عقارية معلنة في السجل العقاري (rer.sa)</option>
-              <option value="mortgaged">صك إلكتروني مرهون لبنك أو جهة تمويل</option>
-            </select>
-          </div>
-          <div>
-            <label for="diagGoal" class="block text-xs font-bold text-slate-700 mb-1">3. الهدف النهائي الذي يطلبه العميل:</label>
-            <select id="diagGoal" onchange="runDiagnostic()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
-              <option value="build_new">بناء مشروع جديد (فيلا / عمارة / تجاري)</option>
-              <option value="subdivide_units">فرز المبنى إلى وحدات مستقلة (شقق / معارض / دوبلكس)</option>
-              <option value="subdivide_land">تقسيم أو تجزئة الأرض إلى عدة قطع</option>
-              <option value="merge_deeds">دمج قطعتين متجاورتين في صك موحد</option>
-              <option value="occupancy">إصدار شهادة إشغال وإدخال الكهرباء</option>
-              <option value="renovate_comply">ترميم المبنى أو استخراج شهادة الامتثال</option>
-              <option value="demolish">هدم المبنى القائم وإزالته لإعادة البناء</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="diagnosticResultBox" class="mt-4 bg-slate-50 border border-slate-200 rounded-xl p-5"></div>
-      </div>
-    </section>
-
-    <!-- TAB 3: MUNICIPAL FEE & COMMERCIAL PRICING CALCULATOR -->
-    <section id="view-calculator" class="hidden space-y-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Calculator Inputs -->
-        <div class="lg:col-span-5 bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
-          <h2 class="text-base font-bold text-slate-900 border-b pb-2">مدخلات حاسبة الرسوم البلدية والتسعير التجاري</h2>
-
-          <div>
-            <label for="calcClass" class="block text-xs font-bold text-slate-700 mb-1">تصنيف الأمانة / البلدية (وفق لائحة الرسوم البلدية - قرار 23542):</label>
-            <select id="calcClass" onchange="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
-              <option value="0">التصنيف الأول (الرياض، مكة، جدة، الشرقية، المدينة)</option>
-              <option value="1">التصنيف الثاني</option>
-              <option value="2">التصنيف الثالث</option>
-              <option value="3">التصنيف الرابع</option>
-              <option value="4">التصنيف الخامس (والقرى التابعة للبلديات)</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="calcUsage" class="block text-xs font-bold text-slate-700 mb-1">تصنيف استخدام المبنى في الرخصة:</label>
-            <select id="calcUsage" onchange="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
-              <option value="res">مبنى سكني (R-3 فلل / عمائر سكنية)</option>
-              <option value="res_comm">مبنى سكني تجاري</option>
-              <option value="comm">مبنى تجاري</option>
-            </select>
-          </div>
-
-          <div class="grid grid-cols-3 gap-3">
-            <div>
-              <label for="calcLandArea" class="block text-xs font-bold text-slate-700 mb-1">مساحة الأرض (م²):</label>
-              <input id="calcLandArea" type="number" value="600" min="50" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-            </div>
-            <div>
-              <label for="calcBuiltArea" class="block text-xs font-bold text-slate-700 mb-1">مسطح البناء (م²):</label>
-              <input id="calcBuiltArea" type="number" value="800" min="0" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-            </div>
-            <div>
-              <label for="calcFenceLen" class="block text-xs font-bold text-slate-700 mb-1">طول السور (م.ط):</label>
-              <input id="calcFenceLen" type="number" value="70" min="0" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-            </div>
-          </div>
-
-          <div class="border-t pt-3 space-y-3">
-            <h3 class="text-xs font-bold text-teal-800">مدخلات تكلفة المكتب الهندسي والربحية المستهدفة:</h3>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label for="calcEngHours" class="block text-xs font-semibold text-slate-700 mb-1">ساعات العمل الهندسي والمساحي:</label>
-                <input id="calcEngHours" type="number" value="45" min="1" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-              </div>
-              <div>
-                <label for="calcHourRate" class="block text-xs font-semibold text-slate-700 mb-1">تكلفة الساعة التشغيلية (ريال):</label>
-                <input id="calcHourRate" type="number" value="120" min="20" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-              </div>
-            </div>
-            <div class="grid grid-cols-3 gap-3">
-              <div>
-                <label for="calcExtCost" class="block text-xs font-semibold text-slate-700 mb-1">أطراف خارجية/تربة (ريال):</label>
-                <input id="calcExtCost" type="number" value="2200" min="0" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-              </div>
-              <div>
-                <label for="calcOverheadPct" class="block text-xs font-semibold text-slate-700 mb-1">مصاريف إدارية (%):</label>
-                <input id="calcOverheadPct" type="number" value="20" min="0" max="100" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-              </div>
-              <div>
-                <label for="calcMarginPct" class="block text-xs font-semibold text-slate-700 mb-1">هامش الربح المستهدف (%):</label>
-                <input id="calcMarginPct" type="number" value="35" min="5" max="80" oninput="calculatePricing()" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Calculator Outputs -->
-        <div class="lg:col-span-7 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col justify-between">
-          <div>
-            <h2 class="text-base font-bold text-slate-900 border-b pb-2 mb-4">التقرير المالي المفصل لعرض السعر (فصل الرسوم الحكومية عن أتعاب المكتب)</h2>
-            <div id="calcOutputContainer" class="space-y-4"></div>
-          </div>
-          <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-900">
-            <strong>قاعدة التسعير النظامية:</strong> الرسوم البلدية أعلاه موثقة من <a href="https://momah.gov.sa/sites/default/files/2023-06/layht-rswm-alkhdmat-albldyt-alnmwdhj.pdf" target="_blank" rel="noopener" class="underline font-bold">لائحة رسوم الخدمات البلدية (قرار 23542)</a> وتُسدد عبر فاتورة «سداد» باسم المالك مباشرة ولا تخضع لضريبة القيمة المضافة، بينما تخضع أتعاب المكتب الهندسي لضريبة القيمة المضافة (15%).
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 4: 8-STAGE TRAINING ACADEMY & MASTERY EXAM -->
-    <section id="view-academy" class="hidden space-y-6">
-      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b pb-3 mb-4">
-          <div>
-            <h2 class="text-lg font-bold text-slate-900">أكاديمية التدريب العملي ذات المراحل الثماني واختبار الكفاءة (ENG540 Training Academy)</h2>
-            <p class="text-xs text-slate-600">تدرّب على المراحل الثماني، ونفّذ المحاكاة الخطوة بخطوة، واختبر كفاءتك في اتخاذ القرار الهندسي والنظامي:</p>
-          </div>
-          <div id="academyScoreBadge" class="bg-teal-50 border border-teal-200 text-teal-900 px-3 py-1.5 rounded-lg text-xs font-bold">تقدم مراحل التدريب: 8 / 8 جاهزة للتطبيق</div>
-        </div>
-
-        <!-- 8 Stages Interactive Selector -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 mb-5" id="stageButtonsContainer"></div>
-        <div id="stageContentBox" class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6"></div>
-
-        <!-- Mastery Exam Section -->
-        <div class="border-t pt-5">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-base font-bold text-slate-900">اختبار الكفاءة واتخاذ القرار الشامل (Mastery Exam - 6 حالات عملية)</h3>
-            <button onclick="gradeExam()" class="bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition">تصحيح الاختبار وإظهار النتيجة والتفسير النظامي</button>
-          </div>
-          <div id="examResultBanner" class="hidden mb-4 p-4 rounded-xl border text-sm font-bold"></div>
-          <div id="examQuestionsContainer" class="space-y-4"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 5: OPERATIONAL TEMPLATES & OFFICE MANAGEMENT -->
-    <section id="view-templates" class="hidden space-y-6">
-      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
-        <h2 class="text-lg font-bold text-slate-900 mb-1">النماذج التشغيلية الجاهزة للنسخ والدليل الداخلي لإدارة المكتب الهندسي</h2>
-        <p class="text-xs text-slate-600 mb-4">اختر أي نموذج تشغيلي لمعاينته ونسخه فوراً لاستخدامه مع العملاء والمهندسين والمساحين:</p>
-
-        <div class="flex flex-wrap gap-2 mb-4" id="templateButtonsContainer"></div>
-        <div class="relative">
-          <button onclick="copyActiveTemplate()" class="absolute left-3 top-3 bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold px-3 py-1.5 rounded shadow">نسخ النموذج للحافظة</button>
-          <span id="copyToast" class="hidden absolute left-40 top-3.5 bg-emerald-100 text-emerald-900 text-xs font-bold px-2.5 py-1 rounded">تم النسخ بنجاح!</span>
-          <pre id="templateViewerBox" class="bg-slate-900 text-slate-100 p-5 rounded-xl text-xs leading-relaxed overflow-x-auto whitespace-pre-wrap font-mono"></pre>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script src="app-data.js"></script>
-    <script>
-    let activeCategory = "ALL";
-    let selectedServiceCode = "SRV-01";
-
-    function switchTab(tabId) {
-      const tabs = ["services", "diagnostic", "calculator", "academy", "templates"];
-      tabs.forEach(t => {
-        const view = document.getElementById("view-" + t);
-        const btn = document.getElementById("tabBtn-" + t);
-        if (t === tabId) {
-          view.classList.remove("hidden");
-          btn.classList.add("active");
-        } else {
-          view.classList.add("hidden");
-          btn.classList.remove("active");
-        }
-      });
-    }
-
-    function setCategoryFilter(cat) {
-      activeCategory = cat;
-      ["ALL", "BALADY", "SURVEY", "DEED"].forEach(c => {
-        const btn = document.getElementById("catBtn-" + c);
-        if (c === cat) {
-          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-teal-700 text-white";
-        } else {
-          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
-        }
-      });
-      filterServices();
-    }
-
-    function filterServices() {
-      const q = (document.getElementById("srvSearch").value || "").trim().toLowerCase();
-      const filtered = SERVICES_DATA.filter(s => {
-        const matchCat = (activeCategory === "ALL") || (s.cat === activeCategory);
-        const hay = (s.title + " " + s.code + " " + s.platform + " " + s.definition + " " + s.docs.join(" ")).toLowerCase();
-        return matchCat && (!q || hay.includes(q));
-      });
-      renderServiceList(filtered);
-    }
-
-    function renderServiceList(list) {
-      const container = document.getElementById("serviceListContainer");
-      if (list.length === 0) {
-        container.innerHTML = `<div class="p-4 text-xs text-slate-500 bg-slate-50 rounded-lg border">لا توجد خدمات مطابقة للبحث.</div>`;
-        return;
-      }
-      if (!list.some(s => s.code === selectedServiceCode)) {
-        selectedServiceCode = list[0].code;
-      }
-      container.innerHTML = list.map(s => `
-        <div onclick="selectService('${s.code}')" class="srv-card cursor-pointer p-3.5 rounded-xl border transition ${s.code === selectedServiceCode ? 'selected border-teal-600' : 'bg-white border-slate-200 hover:border-slate-300'}">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-slate-800 text-teal-300 ltr-num">${s.code}</span>
-            <span class="text-[11px] text-slate-500">${s.duration.split('(')[0]}</span>
-          </div>
-          <h3 class="text-sm font-bold text-slate-900">${s.title}</h3>
-          <p class="text-xs text-slate-600 mt-1 line-clamp-2">${s.typeLabel}</p>
-        </div>
-      `).join("");
-      renderServiceDetail(selectedServiceCode);
-    }
-
-    function selectService(code) {
-      selectedServiceCode = code;
-      filterServices();
-    }
-
-    function renderServiceDetail(code) {
-      const s = SERVICES_DATA.find(item => item.code === code) || SERVICES_DATA[0];
-      const box = document.getElementById("serviceDetailContainer");
-      const docsHtml = s.docs.map(d => `<li class="text-xs text-slate-700">${d}</li>`).join("");
-      box.innerHTML = `
-        <div class="border-b pb-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-2">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="bg-teal-700 text-white text-xs font-bold px-2.5 py-0.5 rounded ltr-num">${s.code}</span>
-              <span class="text-xs font-semibold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded border border-teal-200">${s.typeLabel}</span>
-            </div>
-            <h2 class="text-lg md:text-xl font-bold text-slate-900 mt-1">${s.title}</h2>
-          </div>
-          <div class="flex gap-2">
-            <a href="${s.platformUrl}" target="_blank" rel="noopener" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-2 rounded-lg">فتح المنصة الرسمية ↗</a>
-            <a href="${s.sourceUrl}" target="_blank" rel="noopener" class="bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-300 text-xs font-bold px-3 py-2 rounded-lg">الدليل الرسمي الموثق ↗</a>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 text-xs">
-          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span class="font-bold text-slate-500 block">الجهة المسؤولة والمعتمدة:</span>
-            <span class="font-semibold text-slate-900 mt-0.5 block">${s.authority}</span>
-          </div>
-          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span class="font-bold text-slate-500 block">المنصة الإلكترونية:</span>
-            <span class="font-semibold text-teal-800 mt-0.5 block">${s.platform}</span>
-          </div>
-          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <span class="font-bold text-slate-500 block">الكود والمعيار الفني الحاكم:</span>
-            <span class="font-semibold text-slate-900 mt-0.5 block">${s.sbc}</span>
-          </div>
-        </div>
-
-        <div class="space-y-4 text-xs md:text-sm">
-          <div class="bg-teal-50/60 border border-teal-200 rounded-lg p-3.5">
-            <h4 class="font-bold text-teal-950 mb-1">أولاً: التعريف النظامي والهندسي ومتى تكون الخدمة إلزامية</h4>
-            <p class="text-slate-700 leading-relaxed mb-1.5">${s.definition}</p>
-            <p class="text-teal-900 font-semibold">• حالات الإلزام: ${s.mandatoryWhen}</p>
-          </div>
-
-          <div class="bg-slate-900 text-slate-100 rounded-lg p-3.5">
-            <h4 class="font-bold text-teal-300 mb-1 text-xs">ثانياً: مسار القوائم الفعلي وخطوات التنفيذ في المنصة الرقمية</h4>
-            <p class="text-xs leading-relaxed font-mono">${s.menuPath}</p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="border border-slate-200 rounded-lg p-3.5">
-              <h4 class="font-bold text-slate-900 mb-2">ثالثاً: المستندات والمتطلبات الإلزامية</h4>
-              <ul class="list-disc list-inside space-y-1">${docsHtml}</ul>
-            </div>
-            <div class="border border-slate-200 rounded-lg p-3.5">
-              <h4 class="font-bold text-slate-900 mb-2">رابعاً: الأعمال الهندسية والمساحية والفنية</h4>
-              <p class="text-xs text-slate-700 leading-relaxed mb-2">${s.engWorks}</p>
-              <div class="bg-slate-50 p-2 rounded border text-xs">
-                <strong class="text-slate-900">الرسوم الحكومية الرسمية:</strong> ${s.govFeeText}
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-amber-50 border border-amber-200 rounded-lg p-3.5">
-              <h4 class="font-bold text-amber-950 mb-1 text-xs">خامساً: المشكلات الاستثنائية وشجرة المعالجة</h4>
-              <p class="text-xs text-amber-900 leading-relaxed">${s.exceptions}</p>
-            </div>
-            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3.5">
-              <h4 class="font-bold text-emerald-950 mb-1 text-xs">سادساً: المخرج النهائي والخدمات اللاحقة (Cross-Sell)</h4>
-              <p class="text-xs text-emerald-900 mb-1"><strong>المخرج:</strong> ${s.deliverable}</p>
-              <p class="text-xs text-emerald-800"><strong>الخدمة التالية:</strong> ${s.nextService}</p>
-            </div>
-          </div>
-
-          <div class="mt-4 flex flex-wrap gap-2">
-            <a href="pages/03-SERVICES/${SRV_FOLDER[s.code]}/README.html" class="bg-teal-700 hover:bg-teal-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow">📚 الدليل المعرفي الكامل لهذه الخدمة (6 ملفات تفصيلية + خوارزمية 25 خطوة متتبعة)</a>
-            <a href="pages/03-SERVICES/${SRV_FOLDER[s.code]}/03-Executive-Workflow.html" class="bg-white hover:bg-slate-50 border border-teal-600 text-teal-700 text-xs font-bold px-4 py-2.5 rounded-lg">🧭 خوارزمية 25 خطوة</a>
-            <a href="pages/06-PRACTICAL-CASES/README.html" class="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold px-4 py-2.5 rounded-lg">📁 حالات عملية ذات صلة</a>
-          </div>
-        </div>
-      `;
-    }
-
-    // =========================================================================
-    // TAB 2: SMART DIAGNOSTIC & DECISION TREE ENGINE
-    // =========================================================================
-    function runDiagnostic() {
-      const prop = document.getElementById("diagPropType").value;
-      const deed = document.getElementById("diagDeedStatus").value;
-      const goal = document.getElementById("diagGoal").value;
-
-      const steps = [];
-      const warnings = [];
-      const platforms = new Set();
-
-      // Step A: Deed & RER Status Check
-      if (deed === "paper_old") {
-        steps.push({
-          title: "الخطوة التمهيدية الإلزامية (1): تحديث الصك الورقي واستكمال نواقصه [SRV-02]",
-          desc: "لا تقبل منصة بلدي أو منصة الفرز التعامل مع صك ورقي غير محدث. يجب رفع طلب «تحديث أو تعديل صك عقاري» عبر البورصة العقارية/ناجز مع إرفاق صورة الصك من الأمام والخلف. وإذا صدر إشعار نواقص لغياب رقم القطعة أو المخطط، يصدر المكتب الهندسي قراراً مساحياً وخطاب إفادة من الأمانة يقيد في وارد وزارة العدل."
-        });
-        platforms.add("البورصة العقارية / ناجز (najiz.sa)");
-        warnings.push("تنبيه حرج: يجب إرفاق الصورة الخلفية للصك حتى لو كانت فارغة تماماً لتفادي الرفض الشكلي في وزارة العدل.");
-      } else if (deed === "rer_declared") {
-        steps.push({
-          title: "الخطوة التمهيدية الإلزامية (1): التسجيل العيني الأول في السجل العقاري [SRV-12]",
-          desc: "بما أن العقار يقع داخل منطقة عقارية معلنة، يجب التحقق من إتمام «التسجيل العيني الأول» عبر منصة السجل العقاري (rer.sa) وإصدار «صك تسجيل الملكية» و«الصحيفة العقارية» برقم عقار فريد."
-        });
-        platforms.add("منصة السجل العقاري (rer.sa)");
-      } else if (deed === "mortgaged") {
-        warnings.push("تنبيه رهن عقاري: في حال كان الهدف هو فرز الوحدات أو التجزئة أو الدمج، يلزم توثيق «الموافقة على فرز عقار مرهون» من المرتهن (البنك/الجهة التمويلية) عبر وزارة العدل.");
-      }
-
-      // Step B: Property & Goal Routing
-      if (prop === "vacant_raw" && (goal === "build_new" || goal === "subdivide_land")) {
-        steps.push({
-          title: "المرحلة التخطيطية: الاعتماد الابتدائي والنهائي لمخطط تقسيم أرض خام [SRV-09]",
-          desc: "الأرض خام غير مخططة؛ لا يمكن إصدار رخص بناء مباشرة قبل تخطيطها. يجب إصدار قرار مساحي الغرض منه (اعتماد مخطط خاص) + صك مجاز للتخطيط من وزارة العدل + فكرة تصميمية + دراسة تربة + دراسة هيدرولوجية عبر منصة بلدي / منصة إتمام."
-        });
-        platforms.add("منصة بلدي (balady.gov.sa)");
-        platforms.add("منصة إتمام (etmam.momah.gov.sa)");
-      }
-
-      if (prop === "bldg_unlicensed") {
-        steps.push({
-          title: "مرحلة التقنين الإلزامية: إصدار رخصة تصحيح وضع مبنى قائم [SRV-11 & SRV-13]",
-          desc: "بما أن المبنى شُيد بدون رخصة (أو به مخالفات عن الرخصة)، لا يمكن استخراج شهادة إشغال أو فرز وحدات إلا بعد: (1) إصدار قرار مساحي، (2) رفع معماري كامل للوضع الراهن (As-Built)، (3) إعداد تقرير سلامة إنشائية وفق كود المباني القائمة (SBC 901)، (4) اعتماد تقارير وحسابات الوقاية من الحريق من الدفاع المدني عبر «بوابة سلامة»، و(5) سداد الغرامات والرسوم التي تحتسبها الأمانة في بلدي."
-        });
-        platforms.add("منصة بلدي + بوابة سلامة للدفاع المدني");
-        warnings.push("تحذير تنظيمي: إذا كان المبنى المخالف متعدياً على خط التنظيم (الشارع العام) أو أرض الجار، فلن يقبل التصحيح إلا بعد إزالة الجزء المتعدي.");
-      }
-
-      if (goal === "build_new") {
-        steps.push({
-          title: "المرحلة المساحية: إصدار قرار مساحي بغرض البناء واستلام الحدود [SRV-04 & SRV-08]",
-          desc: "تكليف مكتب هندسي مصنف مساحياً عبر بلدي لرفع الأرض بأجهزة GNSS/Total Station وإصدار القرار المساحي (صالح لسنة) وتثبيت البتر الركنية الأربع على الطبيعة."
-        });
-        steps.push({
-          title: "المرحلة الهندسية والبلدية: فحص التربة والتصميم وإصدار رخصة البناء [SRV-01]",
-          desc: "إجراء فحص التربة + إعداد المخططات الستة وفق الكود (SBC 1101/201 وSBC 601/602) + التعاقد مع المكتب المشرف والمقاول المصنف ووثيقة التأمين + سداد رسوم الرخصة وطباعتها."
-        });
-        platforms.add("منصة بلدي (balady.gov.sa)");
-      } else if (goal === "subdivide_units") {
-        steps.push({
-          title: "مرحلة المطابقة والإشغال: التحقق من رخصة البناء وشهادة الإشغال [SRV-06]",
-          desc: "التأكد من تطابق الوحدات المنفذة على الطبيعة مع رخصة البناء واستخراج شهادة الإشغال من منصة بلدي."
-        });
-        steps.push({
-          title: "مرحلة الفرز وإصدار الصكوك المستقلة: فرز الوحدات العقارية [SRV-03]",
-          desc: deed === "rer_declared"
-            ? "رفع مخططات الفرز والتقرير المساحي عبر خدمة «الفرز» في منصة السجل العقاري (rer.sa) لإصدار صك تسجيل ملكية مستقل لكل وحدة."
-            : "التقديم في منصة فرز الوحدات العقارية (subdivision.rega.gov.sa) وتكليف مكتب هندسي معتمد برفع مخططات DWG على محرك التحليل الآلي، ثم إصدار شهادة الفرز والصكوك المستقلة عبر البورصة العقارية/ناجز."
-        });
-        platforms.add("منصة فرز الوحدات العقارية (subdivision.rega.gov.sa)");
-      } else if (goal === "subdivide_land") {
-        steps.push({
-          title: "المرحلة المساحية والتخطيطية: قرار مساحي للتجزئة وطلب تجزئة الأراضي [SRV-04 & SRV-09]",
-          desc: "إصدار قرار مساحي الغرض منه (تجزئة الأراضي) ← رفع خدمة «إنشاء طلب دمج وتجزئة الأراضي» في بلدي مع مخطط التجزئة (مدة التنفيذ المعيارية 10 أيام) ← إصدار الصكوك المستقلة عبر البورصة العقارية أو السجل العقاري."
-        });
-        platforms.add("منصة بلدي + البورصة العقارية / السجل العقاري");
-      } else if (goal === "merge_deeds") {
-        steps.push({
-          title: "المرحلة المساحية والتوثيقية: قرار مساحي للدمج وإصدار الصك الموحد [SRV-04 & SRV-07]",
-          desc: "التحقق من تطابق المالك في الصكين وتلاصق القطعتين ← إصدار قرار مساحي بغرض (دمج الأراضي) ← اعتماد طلب الدمج في بلدي (10 أيام) ← إصدار الصك الموحد في البورصة العقارية أو خدمة الدمج في السجل العقاري (rer.sa)."
-        });
-        platforms.add("منصة بلدي + البورصة العقارية / السجل العقاري");
-      } else if (goal === "occupancy") {
-        steps.push({
-          title: "مرحلة الفحص والاعتماد: استكمال إشعارات الإشراف أو التقرير الفني وإصدار شهادة الإشغال [SRV-06]",
-          desc: "معاينة المبنى للتأكد من اكتمال الواجهات والرصيف ومطابقة الرخصة (ومضي 6 أشهر للرخص القديمة) ورفع التقرير الفني من المكتب الهندسي في بلدي لإصدار شهادة الإشغال."
-        });
-        platforms.add("منصة بلدي (balady.gov.sa)");
-      } else if (goal === "renovate_comply") {
-        steps.push({
-          title: "مرحلة الفحص والترخيص: تقرير فني (SBC 901) ورخصة ترميم وشهادة الامتثال [SRV-13, SRV-05, SRV-14]",
-          desc: "معاينة المبنى وإعداد تقرير فني وفق كود المباني القائمة SBC 901 ← إصدار رخصة ترميم من بلدي (صالحة لسنة) ← تنفيذ أعمال التأهيل وإزالة التشوهات البصرية ← إصدار شهادة الامتثال للمباني."
-        });
-        platforms.add("منصة بلدي (balady.gov.sa)");
-      } else if (goal === "demolish") {
-        steps.push({
-          title: "مرحلة الإخلاء وتصفية المرافق والهدم: إصدار رخصة هدم مبنى [SRV-10]",
-          desc: "التقديم في بلدي على رخصة هدم ← الإقرار بخلو المبنى من الإنسان والحيوان ← تصفية وفصل خدمات الكهرباء والمياه والاتصالات ← رفع خطة الهدم من المكتب الهندسي وسداد الرسوم ← الإشراف على الهدم وترحيل الأنقاض."
-        });
-        platforms.add("منصة بلدي + شركات الكهرباء والمياه والاتصالات");
-      }
-
-      const resBox = document.getElementById("diagnosticResultBox");
-      resBox.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-3 mb-3">
-          <h3 class="text-sm md:text-base font-bold text-teal-900">خارطة الطريق التشغيلية المشخصة لهذه المعاملة (${steps.length} مراحل متسلسلة)</h3>
-          <div class="text-xs font-semibold text-slate-700">المنصات المستخدمة: <span class="text-teal-800 font-bold">${Array.from(platforms).join(" + ")}</span></div>
-        </div>
-        <div class="space-y-3">
-          ${steps.map((st, idx) => `
-            <div class="bg-white p-3.5 rounded-lg border border-slate-200 shadow-sm flex gap-3 items-start">
-              <span class="bg-teal-700 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
-              <div>
-                <h4 class="text-xs md:text-sm font-bold text-slate-900">${st.title}</h4>
-                <p class="text-xs text-slate-600 mt-1 leading-relaxed">${st.desc}</p>
-              </div>
-            </div>
-          `).join("")}
-        </div>
-        ${warnings.length > 0 ? `
-          <div class="mt-4 bg-red-50 border border-red-200 rounded-lg p-3 space-y-1">
-            <h4 class="text-xs font-bold text-red-900">تنبيهات وضوابط نظامية حاكمة لهذه الحالة:</h4>
-            ${warnings.map(w => `<p class="text-xs text-red-800">• ${w}</p>`).join("")}
-          </div>
-        ` : ""}
-      `;
-    }
-
-    // =========================================================================
-    // TAB 3: MUNICIPAL FEE & COMMERCIAL PRICING CALCULATOR
-    // =========================================================================
-    ;
-
-    function calculatePricing() {
-      const clsIdx = parseInt(document.getElementById("calcClass").value || "0", 10);
-      const usage = document.getElementById("calcUsage").value || "res";
-      const landArea = Math.max(0, parseFloat(document.getElementById("calcLandArea").value || "0"));
-      const builtArea = Math.max(0, parseFloat(document.getElementById("calcBuiltArea").value || "0"));
-      const fenceLen = Math.max(0, parseFloat(document.getElementById("calcFenceLen").value || "0"));
-
-      const engHours = Math.max(0, parseFloat(document.getElementById("calcEngHours").value || "0"));
-      const hourRate = Math.max(0, parseFloat(document.getElementById("calcHourRate").value || "0"));
-      const extCost = Math.max(0, parseFloat(document.getElementById("calcExtCost").value || "0"));
-      const overheadPct = Math.min(100, Math.max(0, parseFloat(document.getElementById("calcOverheadPct").value || "0")));
-      const marginPct = Math.min(85, Math.max(1, parseFloat(document.getElementById("calcMarginPct").value || "30")));
-
-      const surveyRate = FEE_RATES.survey[clsIdx];
-      const bldgRate = FEE_RATES[usage][clsIdx];
-      const fenceRate = FEE_RATES.fence[clsIdx];
-
-      const govSurveyFee = landArea * surveyRate;
-      const govBldgFee = builtArea * bldgRate;
-      const govFenceFee = fenceLen * fenceRate;
-      const totalGovFee = govSurveyFee + govBldgFee + govFenceFee;
-
-      const directLabor = engHours * hourRate;
-      const directCost = directLabor + extCost;
-      const overheadCost = directCost * (overheadPct / 100.0);
-      const totalInternalCost = directCost + overheadCost;
-
-      const recommendedOfficeFeeExVat = totalInternalCost / (1.0 - (marginPct / 100.0));
-      const vatAmount = recommendedOfficeFeeExVat * 0.15;
-      const totalOfficeWithVat = recommendedOfficeFeeExVat + vatAmount;
-      const netProfit = recommendedOfficeFeeExVat - totalInternalCost;
-      const grandTotalClient = totalOfficeWithVat + totalGovFee;
-
-      const fmt = n => n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-      document.getElementById("calcOutputContainer").innerHTML = `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-            <h3 class="text-xs font-bold text-slate-800 border-b pb-2 mb-2.5">أولاً: الرسوم البلدية الحكومية (تُسدد عبر نظام سداد)</h3>
-              <div class="text-[11px] leading-relaxed text-amber-900 bg-amber-50 border border-amber-200 rounded p-2 mb-2">⚠️ أرقام الرسوم الحكومية هنا <b>إرشادية</b> من مرجع المنظومة ولم تُطابق مع حاسبة بلدي الرسمية — الرقم النهائي والملزم من <a href="https://apps.balady.gov.sa/Eservices/FeesCalculator" target="_blank" rel="noopener" class="underline font-bold">حاسبة رسوم بلدي</a> أو البلدية المختصة (تحقق 2026-11-13)</div>
-            <div class="space-y-2 text-xs">
-              <div class="flex justify-between"><span>رسم القرار المساحي (<span class="ltr-num">${landArea} m² × ${surveyRate.toFixed(2)}</span>):</span><strong class="ltr-num">${fmt(govSurveyFee)} SAR</strong></div>
-              <div class="flex justify-between"><span>رسم رخصة البناء (<span class="ltr-num">${builtArea} m² × ${bldgRate.toFixed(2)}</span>):</span><strong class="ltr-num">${fmt(govBldgFee)} SAR</strong></div>
-              <div class="flex justify-between"><span>رسم رخصة السور (<span class="ltr-num">${fenceLen} m × ${fenceRate.toFixed(2)}</span>):</span><strong class="ltr-num">${fmt(govFenceFee)} SAR</strong></div>
-              <div class="border-t pt-2 flex justify-between text-sm font-bold text-slate-900">
-                <span>إجمالي الرسوم الحكومية (سداد - غير خاضعة للضريبة):</span>
-                <span class="ltr-num text-teal-800">${fmt(totalGovFee)} SAR</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-teal-50/60 border border-teal-200 rounded-xl p-4">
-            <h3 class="text-xs font-bold text-teal-950 border-b border-teal-200 pb-2 mb-2.5">ثانياً: تسعير أتعاب المكتب الهندسي والربحية</h3>
-            <div class="space-y-2 text-xs">
-              <div class="flex justify-between"><span>التكلفة المباشرة (ساعات الفريق + الأطراف الخارجية):</span><strong class="ltr-num">${fmt(directCost)} SAR</strong></div>
-              <div class="flex justify-between"><span>المصاريف الإدارية المحملة (<span class="ltr-num">${overheadPct}%</span>):</span><strong class="ltr-num">${fmt(overheadCost)} SAR</strong></div>
-              <div class="flex justify-between"><span>إجمالي التكلفة الفعلية على المكتب:</span><strong class="ltr-num">${fmt(totalInternalCost)} SAR</strong></div>
-              <div class="border-t border-teal-200 pt-2 flex justify-between font-bold text-teal-950">
-                <span>أتعاب المكتب للعميل قبل الضريبة:</span>
-                <span class="ltr-num">${fmt(recommendedOfficeFeeExVat)} SAR</span>
-              </div>
-              <div class="flex justify-between"><span>ضريبة القيمة المضافة (<span class="ltr-num">15%</span> على أتعاب المكتب):</span><strong class="ltr-num">${fmt(vatAmount)} SAR</strong></div>
-              <div class="flex justify-between text-emerald-800 font-bold"><span>صافي ربح المكتب الهندسي (<span class="ltr-num">${marginPct}%</span>):</span><span class="ltr-num">+${fmt(netProfit)} SAR</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 text-white rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <div>
-            <span class="text-xs text-slate-300 block">إجمالي أتعاب المكتب شاملة الضريبة: <strong class="ltr-num text-white">${fmt(totalOfficeWithVat)} SAR</strong></span>
-            <span class="text-sm font-bold text-teal-300 block mt-0.5">التكلفة الكلية التقديرية على العميل (أتعاب المكتب بالضريبة + رسوم سداد):</span>
-          </div>
-          <div class="text-xl font-extrabold ltr-num bg-teal-700 px-4 py-2 rounded-lg">${fmt(grandTotalClient)} SAR</div>
-        </div>
-      `;
-    }
-
-    // =========================================================================
-    // TAB 4: 8-STAGE TRAINING ACADEMY & MASTERY EXAM
-    // =========================================================================
-    ;
-
-    let activeStageId = 1;
-
-    function renderStages() {
-      document.getElementById("stageButtonsContainer").innerHTML = TRAINING_STAGES.map(st => `
-        <button onclick="selectStage(${st.id})" class="p-2.5 rounded-lg border text-xs font-bold transition ${st.id === activeStageId ? 'bg-teal-700 text-white border-teal-700' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'}">
-          ${st.title}
-        </button>
-      `).join("");
-      const stObj = TRAINING_STAGES.find(s => s.id === activeStageId) || TRAINING_STAGES[0];
-      document.getElementById("stageContentBox").innerHTML = `
-        <h4 class="text-sm font-bold text-teal-900 mb-1">تفاصيل ${stObj.title}:</h4>
-        <p class="text-xs md:text-sm text-slate-700 leading-relaxed">${stObj.summary}</p>
-      `;
-    }
-
-    function selectStage(id) {
-      activeStageId = id;
-      renderStages();
-    }
-
-    ;
-
-    function renderExam() {
-      document.getElementById("examQuestionsContainer").innerHTML = EXAM_QUESTIONS.map((item, qIdx) => `
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-          <p class="text-xs md:text-sm font-bold text-slate-900 mb-2.5">${item.q}</p>
-          <div class="space-y-1.5">
-            ${item.options.map((opt, oIdx) => `
-              <label class="flex items-start gap-2 text-xs text-slate-700 cursor-pointer p-1.5 rounded hover:bg-slate-100">
-                <input type="radio" name="${item.id}" value="${oIdx}" class="mt-0.5">
-                <span>${opt}</span>
-              </label>
-            `).join("")}
-          </div>
-          <div id="exp-${item.id}" class="hidden mt-2.5 p-2.5 rounded-lg text-xs"></div>
-        </div>
-      `).join("");
-    }
-
-    function gradeExam() {
-      let score = 0;
-      EXAM_QUESTIONS.forEach(item => {
-        const checked = document.querySelector(`input[name="${item.id}"]:checked`);
-        const expBox = document.getElementById("exp-" + item.id);
-        expBox.classList.remove("hidden");
-        const val = checked ? parseInt(checked.value, 10) : -1;
-        if (val === item.correct) {
-          score++;
-          expBox.className = "mt-2.5 p-2.5 rounded-lg text-xs bg-emerald-50 border border-emerald-200 text-emerald-900";
-          expBox.innerHTML = `<strong>إجابة صحيحة!</strong> ${item.explanation}`;
-        } else {
-          expBox.className = "mt-2.5 p-2.5 rounded-lg text-xs bg-red-50 border border-red-200 text-red-900";
-          expBox.innerHTML = `<strong>إجابة غير صحيحة.</strong> التفسير النظامي: ${item.explanation}`;
-        }
-      });
-      const pct = Math.round((score / EXAM_QUESTIONS.length) * 100);
-      const banner = document.getElementById("examResultBanner");
-      banner.classList.remove("hidden");
-      if (pct >= 80) {
-        banner.className = "mb-4 p-4 rounded-xl border bg-emerald-50 border-emerald-300 text-emerald-950 text-sm font-bold";
-        banner.textContent = `نتيجة ممتازة (مجتاز): حصلت على ${score} من ${EXAM_QUESTIONS.length} (${pct}%) — أنت جاهز لإدارة وتشخيص المعاملات الهندسية باحترافية.`;
-      } else {
-        banner.className = "mb-4 p-4 rounded-xl border bg-amber-50 border-amber-300 text-amber-950 text-sm font-bold";
-        banner.textContent = `النتيجة: ${score} من ${EXAM_QUESTIONS.length} (${pct}%) — راجع التفسير النظامي أسفل كل سؤال للوصول إلى درجة الإتقان (90%+).`;
-      }
-    }
-
-    // =========================================================================
-    // TAB 5: OPERATIONAL TEMPLATES
-    // =========================================================================
-    ;
-
-    let activeTemplateId = "tpl-intake";
-
-    function renderTemplates() {
-      document.getElementById("templateButtonsContainer").innerHTML = TEMPLATES_DATA.map(t => `
-        <button onclick="selectTemplate('${t.id}')" class="px-3.5 py-2 rounded-lg text-xs font-bold border transition ${t.id === activeTemplateId ? 'bg-teal-700 text-white border-teal-700' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
-          ${t.name}
-        </button>
-      `).join("");
-      const tObj = TEMPLATES_DATA.find(t => t.id === activeTemplateId) || TEMPLATES_DATA[0];
-      document.getElementById("templateViewerBox").textContent = tObj.content;
-    }
-
-    function selectTemplate(id) {
-      activeTemplateId = id;
-      renderTemplates();
-    }
-
-    function copyActiveTemplate() {
-      const text = document.getElementById("templateViewerBox").textContent;
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand("copy");
-        const toast = document.getElementById("copyToast");
-        toast.classList.remove("hidden");
-        setTimeout(() => toast.classList.add("hidden"), 2000);
-      } catch (e) {}
-      document.body.removeChild(ta);
-    }
-
-const SRV_FOLDER = {"SRV-01":"01-Building-Permit","SRV-02":"02-Deed-Update","SRV-03":"03-Unit-Subdivision","SRV-04":"04-Survey-Decision","SRV-05":"05-Renovation-Permit","SRV-06":"06-Occupancy-Certificate","SRV-07":"07-Deed-Merging","SRV-08":"08-Survey-Sketch","SRV-09":"09-Land-Subdivision-Merging","SRV-10":"10-Demolition-Supervision","SRV-11":"11-Building-Status-Correction","SRV-12":"12-Real-Estate-Registration","SRV-13":"13-Building-Safety-Report","SRV-14":"14-Balady-Services"};
-
-    // Initialize all views on load
-    window.onload = function() {
-      const qp = new URLSearchParams(location.search);
-      const v = qp.get("view");
-      if (v && ["services","diagnostic","calculator","academy","templates"].includes(v)) switchTab(v);
-      const sv = qp.get("srv");
-      filterServices();
-      if (sv) selectService(sv);
-      runDiagnostic();
-      calculatePricing();
-      renderStages();
-      renderExam();
-      renderTemplates();
-    };
-  </script>
-  <footer class="bg-slate-900 border-t-4 border-teal-600 text-slate-300 text-xs">
-    <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-2">
-      <div>© 2026 <b class="text-white">م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html" class="text-teal-300 underline">عن المؤلف والتواصل</a></div>
-      <div>ENG540 — منظومة الخدمات الهندسية السعودية · الأرقام الرسمية (رسوم/مدد) إرشادية من مرجع المنظومة وتُسدد للجهات مباشرة · <a href="index.html" class="text-teal-300 underline">الموسوعة الكاملة</a></div>
+      <div id="examResultBanner" class="banner hidden" role="status"></div>
+      <div id="examQuestionsContainer"></div>
     </div>
-  </footer>
+  </section>
+
+  <!-- TAB 5: TEMPLATES -->
+  <section id="view-templates" class="view hidden">
+    <div class="panel">
+      <h2 class="panel-title">النماذج التشغيلية الجاهزة للنسخ والدليل الداخلي لإدارة المكتب الهندسي</h2>
+      <p class="panel-sub">اختر أي نموذج تشغيلي لمعاينته ونسخه فوراً لاستخدامه مع العملاء والمهندسين والمساحين.</p>
+      <div id="templateButtonsContainer" class="tpl-row"></div>
+      <div class="btn-row">
+        <span class="copy">
+          <button type="button" class="btn btn-primary copy-button" command="--copy" commandfor="templateViewerBox" aria-label="نسخ النموذج التشغيلي المعروض">📋 نسخ النموذج للحافظة</button>
+          <span class="tip" role="status"></span>
+        </span>
+      </div>
+      <pre id="templateViewerBox" class="tpl-view"></pre>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <div class="footer-in">
+    <div>© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+    <div>ENG540 — منظومة الخدمات الهندسية السعودية · الأرقام الرسمية (رسوم/مدد) إرشادية وتُسدد وتُعتمد من الجهات مباشرة · <a href="index.html">الموسوعة الكاملة</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
+  </div>
+</footer>
+
+<script src="app-data.js"></script>
+<script>
+/* ============================================================
+   ENG540 v4.0 — منطق المنصة التفاعلية (بلا أي مكتبة خارجية)
+   ============================================================ */
+
+/* ===== 0) الثيم: ثلاثي الحالات ومتزامن مع الموسوعة عبر eng540-theme ===== */
+(function theme(){
+  var KEY = "eng540-theme";
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var meta = document.querySelector('meta[name="color-scheme"]');
+  var btn = document.getElementById("themeBtn");
+  function stored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function rendered(){ return stored() || (mq.matches ? "dark" : "light"); }
+  function apply(){
+    var s = stored();
+    if (meta) meta.content = s || "light dark";
+    if (s) document.documentElement.dataset.theme = s;
+    else delete document.documentElement.dataset.theme;
+    if (btn){
+      var dark = rendered() === "dark";
+      btn.textContent = dark ? "☀️" : "🌙";
+      btn.setAttribute("aria-label", dark ? "التبديل إلى الوضع النهاري" : "التبديل إلى الوضع الليلي");
+    }
+  }
+  function toggle(){
+    /* الهدف = عكس المُعروض حالياً؛ ويُلغى التخزين عند العودة لتفضيل النظام */
+    var target = rendered() === "dark" ? "light" : "dark";
+    try {
+      if (target === (mq.matches ? "dark" : "light")) localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, target);
+    } catch(e){}
+    apply();
+  }
+  apply();
+  if (btn) btn.addEventListener("click", toggle);
+  if (mq.addEventListener) mq.addEventListener("change", apply);
+  else if (mq.addListener) mq.addListener(apply);
+  window.addEventListener("storage", function(e){ if (e.key === KEY) apply(); });
+})();
+
+/* ===== 1) النسخ إلى الحافظة (وفق دليل copy-button) ===== */
+var selectedText = "";
+var lastMessage = "";
+var timers = new WeakMap();
+
+function legacyCopy(text){
+  var field = document.createElement("textarea");
+  field.value = text;
+  field.setAttribute("readonly", "");
+  field.style.cssText = "position:fixed;inset-block-start:0;opacity:0";
+  document.body.append(field);
+  field.select();
+  try { return document.execCommand("copy"); } finally { field.remove(); }
+}
+
+function report(button, ok){
+  var tip = button.nextElementSibling; /* فقاعة role="status" */
+  if (!tip) return;
+  clearTimeout(timers.get(button));
+  button.removeAttribute("data-copied");
+  button.removeAttribute("data-failed");
+  var message = ok ? "تم النسخ" : "تعذر النسخ";
+  if (message === lastMessage) message += "\u00A0";
+  lastMessage = message;
+  tip.textContent = "";
+  void button.offsetWidth;
+  button.setAttribute(ok ? "data-copied" : "data-failed", "");
+  requestAnimationFrame(function(){ tip.textContent = message; });
+  timers.set(button, setTimeout(function(){
+    button.removeAttribute("data-copied");
+    button.removeAttribute("data-failed");
+    tip.textContent = "";
+  }, 2000));
+}
+
+async function copy(button, target, command){
+  var text = (command === "--copy-selection") ? selectedText
+    : target.matches("input, textarea") ? target.value
+    : target.innerText.trim();
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    report(button, true);
+  } catch (e) {
+    if (!legacyCopy(text)) report(button, false);
+    else report(button, true);
+  }
+}
+
+/* المسار الحديث: أوامر الاستدعاء (لا تتصاعد، لذا المراقبة في طور الالتقاط) */
+document.addEventListener("command", function(event){
+  if (event.command && event.command.indexOf("--copy") === 0){
+    copy(event.source, event.target, event.command);
+  }
+}, true);
+/* احتياطي المتصفحات بلا CommandEvent — يُسجَّل مسار واحد فقط */
+if (!("CommandEvent" in window)){
+  document.addEventListener("click", function(event){
+    var button = event.target.closest ? event.target.closest('button[command^="--copy"]') : null;
+    if (!button) return;
+    var target = document.getElementById(button.getAttribute("commandfor"));
+    if (target) copy(button, target, button.getAttribute("command"));
+  });
+}
+
+/* ===== 2) التبويبات والتصفية ===== */
+var activeCategory = "ALL";
+var selectedServiceCode = "SRV-01";
+var VIEWS = ["services", "diagnostic", "calculator", "academy", "templates"];
+
+function switchTab(tabId){
+  VIEWS.forEach(function(t){
+    var view = document.getElementById("view-" + t);
+    var btn = document.getElementById("tabBtn-" + t);
+    if (!view || !btn) return;
+    var on = (t === tabId);
+    view.classList.toggle("hidden", !on);
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-current", on ? "page" : "false");
+  });
+}
+
+function setCategoryFilter(cat){
+  activeCategory = cat;
+  ["ALL", "BALADY", "SURVEY", "DEED"].forEach(function(c){
+    var btn = document.getElementById("catBtn-" + c);
+    if (btn) btn.classList.toggle("active", c === cat);
+  });
+  filterServices();
+}
+
+function filterServices(){
+  var q = (document.getElementById("srvSearch").value || "").trim().toLowerCase();
+  var filtered = SERVICES_DATA.filter(function(s){
+    var matchCat = (activeCategory === "ALL") || (s.cat === activeCategory);
+    var hay = (s.title + " " + s.code + " " + s.platform + " " + s.definition + " " + s.docs.join(" ")).toLowerCase();
+    return matchCat && (!q || hay.indexOf(q) !== -1);
+  });
+  renderServiceList(filtered);
+}
+
+function renderServiceList(list){
+  var container = document.getElementById("serviceListContainer");
+  if (!list.length){
+    container.innerHTML = '<div class="empty-box">لا توجد خدمات مطابقة للبحث.</div>';
+    return;
+  }
+  if (!list.some(function(s){ return s.code === selectedServiceCode; })){
+    selectedServiceCode = list[0].code;
+  }
+  container.innerHTML = list.map(function(s){
+    return '<div onclick="selectService(\'' + s.code + '\')" class="srv-card' +
+      (s.code === selectedServiceCode ? " selected" : "") + '">' +
+      '<div class="srv-top"><span class="code-badge ltr-num">' + s.code + '</span>' +
+      '<span class="dur">' + s.duration.split("(")[0] + '</span></div>' +
+      '<h3>' + s.title + '</h3><p>' + s.typeLabel + '</p></div>';
+  }).join("");
+  renderServiceDetail(selectedServiceCode);
+}
+
+function selectService(code){
+  selectedServiceCode = code;
+  filterServices();
+}
+
+function renderServiceDetail(code){
+  var s = SERVICES_DATA.filter(function(x){ return x.code === code; })[0] || SERVICES_DATA[0];
+  var m = (typeof ENCYCLOPEDIA_MAP !== "undefined" && ENCYCLOPEDIA_MAP[s.code]) || { folder: null, cases: [] };
+  var box = document.getElementById("serviceDetailContainer");
+  var docsHtml = s.docs.map(function(d){ return "<li>" + d + "</li>"; }).join("");
+  var casesHtml = m.cases.length
+    ? m.cases.map(function(c){
+        return '<a class="cs-chip" href="pages/06-PRACTICAL-CASES/' + c[0] + '.html">' + c[1] + '</a>';
+      }).join(" ")
+    : '<span class="cs-label">لا توجد حالة عملية مرتبطة مباشرة بهذه الخدمة</span>';
+  var encLinks = m.folder
+    ? '<a class="btn btn-primary" href="pages/03-SERVICES/' + m.folder + '/README.html">📚 الدليل المعرفي الكامل لهذه الخدمة (6 ملفات + خوارزمية 25 خطوة)</a>' +
+      '<a class="btn btn-ghost" href="pages/03-SERVICES/' + m.folder + '/03-Executive-Workflow.html">🧭 خوارزمية 25 خطوة</a>'
+    : '<a class="btn btn-ghost" href="pages/03-SERVICES/README.html">📚 فهرس الخدمات في الموسوعة</a>';
+
+  box.innerHTML =
+    '<div class="svc-head">' +
+      '<div class="svc-title-row">' +
+        '<span class="code-badge ltr-num">' + s.code + '</span>' +
+        '<span class="type-badge">' + s.typeLabel + '</span>' +
+      '</div>' +
+      '<h2>' + s.title + '</h2>' +
+      '<div class="btn-row" style="margin:0">' +
+        '<a class="btn btn-dark" href="' + s.platformUrl + '" target="_blank" rel="noopener">فتح المنصة الرسمية ↗</a>' +
+        '<a class="btn btn-ghost" href="' + s.sourceUrl + '" target="_blank" rel="noopener">الدليل الرسمي الموثق ↗</a>' +
+      '</div>' +
+    '</div>' +
+    '<div class="meta-grid">' +
+      '<div class="meta-box"><span class="k">الجهة المسؤولة والمعتمدة:</span><span class="v">' + s.authority + '</span></div>' +
+      '<div class="meta-box"><span class="k">المنصة الإلكترونية:</span><span class="v">' + s.platform + '</span></div>' +
+      '<div class="meta-box"><span class="k">الكود والمعيار الفني الحاكم:</span><span class="v">' + s.sbc + '</span></div>' +
+      '<div class="meta-box"><span class="k">المدة الزمنية الموثقة:</span><span class="v">' + s.duration + '</span></div>' +
+    '</div>' +
+    '<div class="box box-teal">' +
+      '<h4>أولاً: التعريف النظامي والهندسي ومتى تكون الخدمة إلزامية</h4>' +
+      '<p>' + s.definition + '</p>' +
+      '<p><strong>• حالات الإلزام:</strong> ' + s.mandatoryWhen + '</p>' +
+    '</div>' +
+    '<div class="box box-dark">' +
+      '<h4>ثانياً: مسار القوائم الفعلي وخطوات التنفيذ في المنصة الرقمية</h4>' +
+      '<p>' + s.menuPath + '</p>' +
+    '</div>' +
+    '<div class="two-col">' +
+      '<div class="box">' +
+        '<h4>ثالثاً: المستندات والمتطلبات الإلزامية</h4>' +
+        '<ul class="docs">' + docsHtml + '</ul>' +
+      '</div>' +
+      '<div class="box">' +
+        '<h4>رابعاً: الأعمال الهندسية والمساحية والفنية</h4>' +
+        '<p>' + s.engWorks + '</p>' +
+        '<div class="fee-line"><strong>الرسوم الحكومية الرسمية:</strong> ' + s.govFeeText + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="two-col">' +
+      '<div class="box box-amber">' +
+        '<h4>خامساً: المشكلات الاستثنائية وشجرة المعالجة</h4>' +
+        '<p>' + s.exceptions + '</p>' +
+      '</div>' +
+      '<div class="box box-emerald">' +
+        '<h4>سادساً: المخرج النهائي والخدمات اللاحقة (Cross-Sell)</h4>' +
+        '<p><strong>المخرج:</strong> ' + s.deliverable + '</p>' +
+        '<p><strong>الخدمة التالية:</strong> ' + s.nextService + '</p>' +
+      '</div>' +
+    '</div>' +
+    '<div class="link-row">' + encLinks + '<span class="cs-label">📁 حالات عملية ذات صلة:</span>' + casesHtml + '</div>';
+}
+
+/* ===== 3) المشخّص الذكي ===== */
+function diagPlainText(steps, warnings, platforms){
+  var t = "خارطة الطريق التشغيلية — المشخّص الذكي ENG540\n";
+  t += "المنصات المستخدمة: " + Array.from(platforms).join(" + ") + "\n\n";
+  steps.forEach(function(st, i){
+    t += (i + 1) + ". " + st.title + "\n   " + st.desc + "\n\n";
+  });
+  if (warnings.length){
+    t += "تنبيهات وضوابط نظامية حاكمة لهذه الحالة:\n";
+    warnings.forEach(function(w){ t += "• " + w + "\n"; });
+  }
+  t += "\nملاحظة: توجيه إرشادي أولي لا قرار نظامي — المصادر وتواريخ التحقق في سجل التحقق: pages/10-QUALITY-AND-UPDATES/Verification-Log.html";
+  return t;
+}
+
+function runDiagnostic(){
+  var prop = document.getElementById("diagPropType").value;
+  var deed = document.getElementById("diagDeedStatus").value;
+  var goal = document.getElementById("diagGoal").value;
+
+  var steps = [], warnings = [], platforms = new Set();
+
+  if (deed === "paper_old"){
+    steps.push({
+      title: "الخطوة التمهيدية الإلزامية (1): تحديث الصك الورقي واستكمال نواقصه [SRV-02]",
+      desc: "لا تقبل منصة بلدي أو منصة الفرز التعامل مع صك ورقي غير محدث. يُرفع طلب «تحديث أو تعديل صك عقاري» عبر البورصة العقارية/ناجز مع إرفاق صورة الصك من الأمام والخلف. وإذا صدر إشعار نواقص لغياب رقم القطعة أو المخطط، يصدر المكتب الهندسي قراراً مساحياً وخطاب إفادة من الأمانة يُقيّد في وارد وزارة العدل."
+    });
+    platforms.add("البورصة العقارية / ناجز (najiz.sa)");
+    warnings.push("تنبيه حرج: يجب إرفاق الصورة الخلفية للصك حتى لو كانت فارغة تماماً لتفادي الرفض الشكلي في وزارة العدل.");
+  } else if (deed === "rer_declared"){
+    steps.push({
+      title: "الخطوة التمهيدية الإلزامية (1): التسجيل العيني الأول في السجل العقاري [SRV-12]",
+      desc: "بما أن العقار يقع داخل منطقة عقارية معلنة، يجب التحقق من إتمام «التسجيل العيني الأول» عبر منصة السجل العقاري (rer.sa) وإصدار «صك تسجيل الملكية» و«الصحيفة العقارية» برقم عقار فريد، مع إمكانية الاستعلام عبر «التحقق من وثائق ملكية العقار» و«بيانات سجل عقاري»."
+    });
+    platforms.add("منصة السجل العقاري (rer.sa)");
+  } else if (deed === "mortgaged"){
+    warnings.push("تنبيه رهن عقاري: في حال كان الهدف هو فرز الوحدات أو التجزئة أو الدمج، يلزم توثيق «الموافقة على فرز عقار مرهون» من المرتهن (البنك/الجهة التمويلية) عبر وزارة العدل.");
+  }
+
+  if (prop === "vacant_raw" && (goal === "build_new" || goal === "subdivide_land")){
+    steps.push({
+      title: "المرحلة التخطيطية: الاعتماد الابتدائي والنهائي لمخطط تقسيم أرض خام [SRV-09]",
+      desc: "الأرض خام غير مخططة؛ لا يمكن إصدار رخص بناء مباشرة قبل تخطيطها. المطلوب: قرار مساحي الغرض منه (اعتماد مخطط خاص) + صك مجاز للتخطيط من وزارة العدل + فكرة تصميمية + دراسة تربة + دراسة هيدرولوجية عبر منصة بلدي / منصة إتمام."
+    });
+    platforms.add("منصة بلدي (balady.gov.sa)");
+    platforms.add("منصة إتمام (etmam.momah.gov.sa)");
+  }
+
+  if (prop === "bldg_unlicensed"){
+    steps.push({
+      title: "مرحلة التقنين الإلزامية: إصدار رخصة تصحيح وضع مبنى قائم [SRV-11 & SRV-13]",
+      desc: "بما أن المبنى شُيد بدون رخصة (أو به مخالفات)، لا يمكن استخراج شهادة إشغال أو فرز وحدات إلا بعد: (1) إصدار قرار مساحي، (2) رفع معماري كامل للوضع الراهن (As-Built)، (3) تقرير سلامة إنشائية وفق كود المباني القائمة (SBC 901)، (4) اعتماد تقارير وحسابات الوقاية من الحريق عبر «بوابة سلامة»، و(5) سداد الغرامات التي تحتسبها الأمانة في بلدي (خدمة تصحيح الوضع 10494)."
+    });
+    platforms.add("منصة بلدي + بوابة سلامة للدفاع المدني (998.gov.sa)");
+    warnings.push("تحذير تنظيمي: إذا كان المبنى المخالف متعدياً على خط التنظيم (الشارع العام) أو أرض الجار، فلن يقبل التصحيح إلا بعد إزالة الجزء المتعدي.");
+  }
+
+  if (goal === "build_new"){
+    steps.push({
+      title: "المرحلة المساحية: إصدار قرار مساحي بغرض البناء واستلام الحدود [SRV-04 & SRV-08]",
+      desc: "تكليف مكتب هندسي مصنف مساحياً عبر بلدي لرفع الأرض بأجهزة GNSS/Total Station وإصدار القرار المساحي (صالح لسنة) وتثبيت البتر الركنية الأربع على الطبيعة."
+    });
+    steps.push({
+      title: "المرحلة الهندسية والبلدية: فحص التربة والتصميم وإصدار رخصة البناء [SRV-01]",
+      desc: "إجراء فحص التربة + إعداد المخططات الستة وفق الكود (SBC 1101/201 وSBC 601/602) + التعاقد مع المكتب المشرف والمقاول المصنف ووثيقة التأمين + سداد رسوم الرخصة وطباعتها."
+    });
+    platforms.add("منصة بلدي (balady.gov.sa)");
+  } else if (goal === "subdivide_units"){
+    steps.push({
+      title: "مرحلة المطابقة والإشغال: التحقق من رخصة البناء وشهادة الإشغال [SRV-06]",
+      desc: "التأكد من تطابق الوحدات المنفذة على الطبيعة مع رخصة البناء واستخراج شهادة الإشغال من منصة بلدي."
+    });
+    steps.push({
+      title: "مرحلة الفرز وإصدار الصكوك المستقلة: فرز الوحدات العقارية [SRV-03]",
+      desc: deed === "rer_declared"
+        ? "رفع مخططات الفرز والتقرير المساحي عبر خدمة «الفرز» في منصة السجل العقاري (rer.sa) لإصدار صك تسجيل ملكية مستقل لكل وحدة."
+        : "التقديم في منصة فرز الوحدات العقارية (subdivision.rega.gov.sa) وتكليف مكتب هندسي معتمد برفع مخططات DWG بمضلعات مغلقة على محرك التحليل الآلي، ثم إصدار شهادة الفرز والصكوك المستقلة عبر البورصة العقارية/ناجز."
+    });
+    platforms.add("منصة فرز الوحدات العقارية (subdivision.rega.gov.sa)");
+  } else if (goal === "subdivide_land"){
+    steps.push({
+      title: "المرحلة المساحية والتخطيطية: قرار مساحي للتجزئة وطلب تجزئة الأراضي [SRV-04 & SRV-09]",
+      desc: "إصدار قرار مساحي الغرض منه (تجزئة الأراضي) ← رفع خدمة «إنشاء طلب دمج وتجزئة الأراضي» في بلدي مع مخطط التجزئة (الزمن الأقصى المعلن 10 أيام عمل) ← إصدار الصكوك المستقلة عبر البورصة العقارية أو السجل العقاري."
+    });
+    platforms.add("منصة بلدي + البورصة العقارية / السجل العقاري");
+  } else if (goal === "merge_deeds"){
+    steps.push({
+      title: "المرحلة المساحية والتوثيقية: قرار مساحي للدمج وإصدار الصك الموحد [SRV-04 & SRV-07]",
+      desc: "التحقق من تطابق المالك في الصكين وتلاصق القطعتين ← إصدار قرار مساحي بغرض (دمج الأراضي) ← اعتماد طلب الدمج في بلدي (10 أيام) ← إصدار الصك الموحد في البورصة العقارية أو خدمة «الدمج» في السجل العقاري (rer.sa)."
+    });
+    platforms.add("منصة بلدي + البورصة العقارية / السجل العقاري");
+  } else if (goal === "occupancy"){
+    steps.push({
+      title: "مرحلة الفحص والاعتماد: استكمال إشعارات الإشراف أو التقرير الفني وإصدار شهادة الإشغال [SRV-06]",
+      desc: "معاينة المبنى للتأكد من اكتمال الواجهات والرصيف ومطابقة الرخصة (ومضي 6 أشهر للرخص القديمة) ورفع التقرير الفني من المكتب الهندسي في بلدي لإصدار شهادة الإشغال."
+    });
+    platforms.add("منصة بلدي (balady.gov.sa)");
+  } else if (goal === "renovate_comply"){
+    steps.push({
+      title: "مرحلة الفحص والترخيص: تقرير فني (SBC 901) ورخصة ترميم وشهادة الامتثال [SRV-13, SRV-05, SRV-14]",
+      desc: "معاينة المبنى وإصدار «شهادة تأكيد السلامة»/التقرير الفني عبر خدمة «إصدار تقرير فني» (10498) في بلدي وفق كود المباني القائمة SBC 901 ← إصدار رخصة ترميم (صالحة لسنة) ← تنفيذ أعمال التأهيل وإزالة التشوهات البصرية ← إصدار شهادة الامتثال للمباني."
+    });
+    platforms.add("منصة بلدي (balady.gov.sa)");
+  } else if (goal === "demolish"){
+    steps.push({
+      title: "مرحلة الإخلاء وتصفية المرافق والهدم: إصدار رخصة هدم مبنى [SRV-10]",
+      desc: "التقديم في بلدي على رخصة هدم ← الإقرار بخلو المبنى من الإنسان والحيوان ← تصفية وفصل خدمات الكهرباء والمياه والاتصالات ← رفع خطة الهدم من المكتب الهندسي وسداد الرسوم ← الإشراف على الهدم وترحيل الأنقاض."
+    });
+    platforms.add("منصة بلدي + شركات الكهرباء والمياه والاتصالات");
+  }
+
+  var plain = document.getElementById("diagPlainText");
+  if (plain) plain.textContent = diagPlainText(steps, warnings, platforms);
+
+  var resultBox = document.getElementById("diagnosticResultBox");
+  resultBox.innerHTML =
+    '<div class="route-head">' +
+      '<h3>خارطة الطريق التشغيلية المشخّصة لهذه المعاملة (' + steps.length + ' مراحل متسلسلة)</h3>' +
+      '<div class="platforms">المنصات المستخدمة: <b>' + Array.from(platforms).join(" + ") + '</b></div>' +
+    '</div>' +
+    steps.map(function(st, idx){
+      return '<div class="route-step"><span class="step-dot">' + (idx + 1) + '</span>' +
+        '<div><h4>' + st.title + '</h4><p>' + st.desc + '</p></div></div>';
+    }).join("") +
+    (warnings.length
+      ? '<div class="box box-red" style="margin-top:.8rem"><h4>تنبيهات وضوابط نظامية حاكمة لهذه الحالة:</h4>' +
+        warnings.map(function(w){ return '<p>• ' + w + '</p>'; }).join("") + '</div>'
+      : "");
+}
+
+/* ===== 4) حاسبة الرسوم والتسعير ===== */
+function calculatePricing(){
+  var clsIdx = parseInt(document.getElementById("calcClass").value || "0", 10);
+  var usage = document.getElementById("calcUsage").value || "res";
+  var landArea = Math.max(0, parseFloat(document.getElementById("calcLandArea").value || "0"));
+  var builtArea = Math.max(0, parseFloat(document.getElementById("calcBuiltArea").value || "0"));
+  var fenceLen = Math.max(0, parseFloat(document.getElementById("calcFenceLen").value || "0"));
+
+  var engHours = Math.max(0, parseFloat(document.getElementById("calcEngHours").value || "0"));
+  var hourRate = Math.max(0, parseFloat(document.getElementById("calcHourRate").value || "0"));
+  var extCost = Math.max(0, parseFloat(document.getElementById("calcExtCost").value || "0"));
+  var overheadPct = Math.min(100, Math.max(0, parseFloat(document.getElementById("calcOverheadPct").value || "0")));
+  var marginPct = Math.min(80, Math.max(5, parseFloat(document.getElementById("calcMarginPct").value || "35")));
+
+  var surveyRate = FEE_RATES.survey[clsIdx];
+  var bldgRate = FEE_RATES[usage][clsIdx];
+  var fenceRate = FEE_RATES.fence[clsIdx];
+
+  var govSurveyFee = landArea * surveyRate;
+  var govBldgFee = builtArea * bldgRate;
+  var govFenceFee = fenceLen * fenceRate;
+  var totalGovFee = govSurveyFee + govBldgFee + govFenceFee;
+
+  var directLabor = engHours * hourRate;
+  var directCost = directLabor + extCost;
+  var overheadCost = directCost * (overheadPct / 100.0);
+  var totalInternalCost = directCost + overheadCost;
+
+  var recommendedOfficeFeeExVat = totalInternalCost / (1.0 - (marginPct / 100.0));
+  var vatAmount = recommendedOfficeFeeExVat * 0.15;
+  var totalOfficeWithVat = recommendedOfficeFeeExVat + vatAmount;
+  var netProfit = recommendedOfficeFeeExVat - totalInternalCost;
+  var grandTotalClient = totalOfficeWithVat + totalGovFee;
+
+  function fmt(n){ return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function line(label, value, cls){
+    return '<div class="calc-line' + (cls ? " " + cls : "") + '"><span>' + label + '</span><b class="ltr-num">' + value + '</b></div>';
+  }
+
+  document.getElementById("calcOutputContainer").innerHTML =
+    '<div class="two-col" style="margin-bottom:0">' +
+      '<div class="box" style="margin:0">' +
+        '<h4>أولاً: الرسوم البلدية الحكومية (تُسدد عبر نظام سداد)</h4>' +
+        '<div class="fee-note">⚠️ أرقام الرسوم الحكومية هنا <b>إرشادية</b> 🧪 من مرجع المنظومة ولم تُطابق مع حاسبة بلدي الرسمية — الرقم النهائي والملزم من <a href="https://apps.balady.gov.sa/Eservices/FeesCalculator" target="_blank" rel="noopener">حاسبة رسوم بلدي</a> أو البلدية المختصة (تحقق 2026-11-14)</div>' +
+        line('رسم القرار المساحي (<span class="ltr-num">' + landArea + ' m² × ' + surveyRate.toFixed(2) + '</span>):', fmt(govSurveyFee) + " SAR") +
+        line('رسم رخصة البناء (<span class="ltr-num">' + builtArea + ' m² × ' + bldgRate.toFixed(2) + '</span>):', fmt(govBldgFee) + " SAR") +
+        line('رسم رخصة السور (<span class="ltr-num">' + fenceLen + ' m × ' + fenceRate.toFixed(2) + '</span>):', fmt(govFenceFee) + " SAR") +
+        '<div class="calc-total"><span>إجمالي الرسوم الحكومية (سداد — غير خاضعة للضريبة):</span><span class="ltr-num total-val">' + fmt(totalGovFee) + ' SAR</span></div>' +
+      '</div>' +
+      '<div class="box box-teal" style="margin:0">' +
+        '<h4>ثانياً: تسعير أتعاب المكتب الهندسي والربحية</h4>' +
+        line('التكلفة المباشرة (ساعات الفريق + الأطراف الخارجية):', fmt(directCost) + " SAR") +
+        line('المصاريف الإدارية المحمّلة (<span class="ltr-num">' + overheadPct + '%</span>):', fmt(overheadCost) + " SAR") +
+        line('إجمالي التكلفة الفعلية على المكتب:', fmt(totalInternalCost) + " SAR") +
+        '<div class="calc-total"><span>أتعاب المكتب للعميل قبل الضريبة:</span><span class="ltr-num">' + fmt(recommendedOfficeFeeExVat) + ' SAR</span></div>' +
+        line('ضريبة القيمة المضافة (<span class="ltr-num">15%</span> على أتعاب المكتب):', fmt(vatAmount) + " SAR") +
+        line('صافي ربح المكتب الهندسي (<span class="ltr-num">' + marginPct + '%</span>):', "+" + fmt(netProfit) + " SAR", "profit") +
+      '</div>' +
+    '</div>' +
+    '<div class="grand">' +
+      '<div>' +
+        '<span class="grand-k">إجمالي أتعاب المكتب شاملة الضريبة: <b class="ltr-num">' + fmt(totalOfficeWithVat) + ' SAR</b></span>' +
+        '<span class="grand-t">التكلفة الكلية التقديرية على العميل (أتعاب المكتب بالضريبة + رسوم سداد):</span>' +
+      '</div>' +
+      '<div class="grand-num ltr-num">' + fmt(grandTotalClient) + ' SAR</div>' +
+    '</div>';
+}
+
+/* ===== 5) الأكاديمية والاختبار ===== */
+var activeStageId = 1;
+
+function renderStages(){
+  document.getElementById("stageButtonsContainer").innerHTML = TRAINING_STAGES.map(function(st){
+    return '<button type="button" onclick="selectStage(' + st.id + ')" class="stage-btn' +
+      (st.id === activeStageId ? " active" : "") + '">' + st.title + '</button>';
+  }).join("");
+  var stObj = TRAINING_STAGES.filter(function(s){ return s.id === activeStageId; })[0] || TRAINING_STAGES[0];
+  document.getElementById("stageContentBox").innerHTML =
+    '<h4>تفاصيل ' + stObj.title + ':</h4><p>' + stObj.summary + '</p>';
+}
+
+function selectStage(id){
+  activeStageId = id;
+  renderStages();
+}
+
+function renderExam(){
+  document.getElementById("examQuestionsContainer").innerHTML = EXAM_QUESTIONS.map(function(item){
+    return '<div class="q-card">' +
+      '<p class="q-text">' + item.q + '</p>' +
+      item.options.map(function(opt, oIdx){
+        return '<label class="opt"><input type="radio" name="' + item.id + '" value="' + oIdx + '"><span>' + opt + '</span></label>';
+      }).join("") +
+      '<div id="exp-' + item.id + '" class="exp hidden"></div>' +
+    '</div>';
+  }).join("");
+}
+
+function gradeExam(){
+  var score = 0;
+  EXAM_QUESTIONS.forEach(function(item){
+    var checked = document.querySelector('input[name="' + item.id + '"]:checked');
+    var expBox = document.getElementById("exp-" + item.id);
+    var val = checked ? parseInt(checked.value, 10) : -1;
+    var ok = (val === item.correct);
+    if (ok) score++;
+    expBox.classList.remove("hidden");
+    expBox.className = "exp " + (ok ? "ok" : "no");
+    expBox.innerHTML = (ok ? "<strong>إجابة صحيحة!</strong> " : "<strong>إجابة غير صحيحة — التفسير النظامي:</strong> ") + item.explanation;
+  });
+  var total = EXAM_QUESTIONS.length;
+  var pct = Math.round((score / total) * 100);
+  var banner = document.getElementById("examResultBanner");
+  banner.classList.remove("hidden");
+  if (pct >= 90){
+    banner.className = "banner mastery";
+    banner.textContent = "🏆 إتقان كامل (" + pct + "%): " + score + " من " + total + " — أنت مؤهل لتشخيص وإدارة المعاملات الهندسية بمعيار المنظومة (90%+).";
+  } else if (pct >= 80){
+    banner.className = "banner pass";
+    banner.textContent = "✅ ناجح (" + pct + "%): " + score + " من " + total + " — راجع أسئلة التفسير المشار إليها أدناه للوصول إلى معيار الإتقان (90%).";
+  } else {
+    banner.className = "banner retry";
+    banner.textContent = "📚 النتيجة " + score + " من " + total + " (" + pct + "%) — أقل من حد الاجتياز (80%). راجع التفسير النظامي أسفل كل سؤال وأعد المحاولة بعد مراجعة أدلة الأكاديمية.";
+  }
+  banner.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+/* ===== 6) النماذج التشغيلية ===== */
+var activeTemplateId = "tpl-intake";
+
+function renderTemplates(){
+  document.getElementById("templateButtonsContainer").innerHTML = TEMPLATES_DATA.map(function(t){
+    return '<button type="button" onclick="selectTemplate(\'' + t.id + '\')" class="chip-btn' +
+      (t.id === activeTemplateId ? " active" : "") + '">' + t.name + '</button>';
+  }).join("");
+  var tObj = TEMPLATES_DATA.filter(function(t){ return t.id === activeTemplateId; })[0] || TEMPLATES_DATA[0];
+  document.getElementById("templateViewerBox").textContent = tObj.content;
+}
+
+function selectTemplate(id){
+  activeTemplateId = id;
+  renderTemplates();
+}
+
+/* ===== 7) التهيئة والروابط العميقة ===== */
+window.addEventListener("load", function(){
+  var qp = new URLSearchParams(location.search);
+  var v = qp.get("view");
+  if (v && VIEWS.indexOf(v) !== -1) switchTab(v);
+  var sv = qp.get("srv");
+  if (sv && SERVICES_DATA.some(function(s){ return s.code === sv; })) selectedServiceCode = sv;
+  filterServices();
+  runDiagnostic();
+  calculatePricing();
+  renderStages();
+  renderExam();
+  renderTemplates();
+});
+</script>
 </body>
 </html>
