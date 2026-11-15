@@ -306,7 +306,8 @@ def service_tabs(prefix, rel_page):
     if len(parts) >= 3 and parts[0] == '03-SERVICES':
         svc, cur = parts[1], parts[2]
         tabs = ''.join(
-            f'<a class="tab{" active" if f == cur else ""}" href="{f}">'
+            f'<a class="tab{" active" if f == cur else ""}" href="{f}"'
+            f'{" aria-current=\"page\"" if f == cur else ""}>'
             f'<span class="tab-ic">{ic}</span><span>{t}</span></a>'
             for f, t, ic in SERVICE_FILES)
         tabs += (f'<a class="tab tab-app" href="{prefix}app.html?view=services&srv=SRV-{svc.split("-")[0]}">'
@@ -315,11 +316,38 @@ def service_tabs(prefix, rel_page):
                 f'{SERVICE_TITLES.get(svc, svc)}</div><nav class="svc-tabs" aria-label="تبويبات الخدمة">{tabs}</nav></div>')
     return ''
 
+# صفحات سياسات المنصة (تُعرض في تذييل كل صفحة — خارج التنقل الجانبي المعرفي)
+POLICIES = [
+    ('About-Platform', 'من نحن'),
+    ('Scope', 'نطاق المنصة'),
+    ('Disclaimer', 'إخلاء المسؤولية'),
+    ('Privacy-Policy', 'الخصوصية'),
+    ('Terms-of-Use', 'شروط الاستخدام'),
+    ('Copyright', 'الحقوق'),
+    ('Sources-Policy', 'المصادر والتحقق'),
+    ('Contact', 'الإبلاغ عن خطأ'),
+]
+
+def policy_links(prefix):
+    return ' <span class="crumb-sep" aria-hidden="true">·</span> '.join(
+        f'<a href="{link("11-PLATFORM-POLICIES/" + slug, prefix)}">{t}</a>' for slug, t in POLICIES)
+
+def wrap_tables(html_text):
+    """تغليف الجداول بحاوية تمرير متاحة (role=region + تركيز لوحة مفاتيح)."""
+    return re.sub(
+        r'<table>.*?</table>',
+        lambda m: ('<div class="table-wrap" role="region" tabindex="0" '
+                   'aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة">'
+                   + m.group(0) + '</div>'),
+        html_text, flags=re.S)
+
 def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps_total):
     nav = build_nav(rel_page, prefix)
+    body_html = wrap_tables(body_html)
+    crumbs = [('الرئيسية', prefix + 'index.html')] + list(breadcrumb)
     bc = ' <span class="crumb-sep">‹</span> '.join(
-        f'<a href="{p}">{htmllib.escape(t)}</a>' if p else f'<span>{htmllib.escape(t)}</span>'
-        for t, p in breadcrumb)
+        f'<a href="{p}">{htmllib.escape(t)}</a>' if p else f'<span aria-current="page">{htmllib.escape(t)}</span>'
+        for t, p in crumbs)
     toc_html = ''
     if len(toc) >= 3:
         toc_html = ('<details class="page-toc"><summary>محتويات هذه الصفحة</summary><ol>'
@@ -331,6 +359,7 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="text-scale" content="scale">
 {THEME_BOOT}
 <title>{htmllib.escape(title)} — ENG540</title>
 <meta name="description" content="{htmllib.escape(title)} — موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية، بمصادر رسمية موثقة ووسوم تحقق.">
@@ -340,22 +369,25 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://eng540.github.io/eng540-services/pages/{htmllib.escape(rel_page)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}assets/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">تخطَّ إلى المحتوى</a>
 <div class="read-progress" id="readProgress"></div>
 <header class="site-header">
   <a class="brand" href="{prefix}index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
   <a class="app-btn" href="{prefix}app.html">⚡ المنصة التفاعلية</a>
   <a class="about-link" href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف</a>
-  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة… (Ctrl+K)" autocomplete="off" aria-label="بحث في الموسوعة"><div id="searchResults" class="search-results" hidden></div></div>
-  <button class="theme-btn" id="themeBtn" title="وضع ليلي/نهاري" aria-label="تبديل الوضع الليلي والنهاري">🌙</button>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة…" autocomplete="off" aria-label="بحث في الموسوعة" aria-expanded="false" aria-controls="searchResults"><span class="search-kbd" aria-hidden="true">Ctrl+K</span><div id="searchResults" class="search-results" hidden></div></div>
+  <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي والنهاري" aria-pressed="false">🌙</button>
 </header>
 <div class="layout">
-  <aside class="sidebar" id="sidebar">{nav}</aside>
-  <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
-  <main class="content">
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="sidebar" id="sidebar" aria-label="فهرس الأقسام">{nav}</aside>
+  <button class="menu-btn" id="menuBtn" aria-label="فتح قائمة الأقسام">☰</button>
+  <main class="content" id="main-content" tabindex="-1">
     <nav class="breadcrumb" aria-label="مسار التنقل">{bc}</nav>
     {tabs}
     {progress}
@@ -364,9 +396,12 @@ def render_page(title, body_html, prefix, rel_page, breadcrumb, tabs, toc, steps
     <footer class="doc-footer">
       <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="{link('00-STRATEGY/About-Author', prefix)}">عن المؤلف والتواصل</a></div>
       <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-14 · <a href="{link('10-QUALITY-AND-UPDATES/Knowledge-Gaps', prefix)}">الفجوات الموسومة</a></div>
+      <nav class="footer-policies" aria-label="سياسات المنصة">{policy_links(prefix)}</nav>
     </footer>
   </main>
 </div>
+<button class="top-btn" id="topBtn" aria-label="العودة إلى الأعلى">↑</button>
+<div id="searchStatus" class="visually-hidden" aria-live="polite"></div>
 <script src="{prefix}assets/search-index.js"></script>
 <script src="{prefix}assets/app.js"></script>
 </body></html>"""
@@ -391,7 +426,8 @@ def build_nav(rel_page, prefix):
                                         posixpath.join(folder, s, f[:-3] + '.html')))
         is_open = rel_page.startswith(folder)
         entries_html = ''.join(
-            f'<a class="nav-link{" current" if p == rel_page else ""}" href="{link(p, prefix)}">{t}</a>'
+            f'<a class="nav-link{" current" if p == rel_page else ""}" href="{link(p, prefix)}"'
+            f'{" aria-current=\"page\"" if p == rel_page else ""}>{t}</a>'
             for t, p in entries)
         items.append(f'<details class="nav-group{" open" if is_open else ""}"><summary>{label}</summary>{entries_html}</details>')
     return '\n'.join(items)
@@ -472,7 +508,10 @@ def main():
         for pat, label, cls in TAG_PATTERNS:
             body = re.sub(pat, f'<span class="tag {cls}">{label}</span>', body)
         steps_total = len(re.findall(r'^###\s+الخطوة\s+\d+', text, re.M))
-        grp = next((l for f2, l in GROUPS if rel_src.startswith(f2 + '/')), 'ENG540')
+        if rel_src.startswith('11-PLATFORM-POLICIES/'):
+            grp = 'سياسات المنصة'
+        else:
+            grp = next((l for f2, l in GROUPS if rel_src.startswith(f2 + '/')), 'ENG540')
         parts = rel_page.split('/')
         bc = [(grp, link(parts[0], prefix))]
         if len(parts) > 2:
@@ -553,6 +592,7 @@ def main():
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="text-scale" content="scale">
 {THEME_BOOT}
 <title>ENG540 — منظومة الخدمات الهندسية السعودية</title>
 <meta name="description" content="موسوعة تشغيلية تفاعلية للخدمات الهندسية والمساحية والبلدية السعودية: 14 خدمة بخوارزمية 25 خطوة متتبعة، أكاديمية تدريب، حالات عملية، ونماذج — بمصادر رسمية موثقة.">
@@ -634,7 +674,8 @@ def main():
 </main>
 <footer class="site-footer">
   <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
-  <div>ENG540 · إصدار 4.0 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
+  <nav class="footer-policies" aria-label="سياسات المنصة">{policy_links('')}</nav>
+  <div>ENG540 · إصدار 4.1 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
 </footer>
 <script src="assets/search-index.js"></script>
 <script src="assets/app.js"></script>
@@ -651,18 +692,26 @@ def main():
         f.write('</urlset>\n')
     open(os.path.join(REPO, 'robots.txt'), 'w', encoding='utf-8').write(
         'User-agent: *\nAllow: /\nSitemap: ' + BASE + 'sitemap.xml\n')
-    open(os.path.join(REPO, '404.html'), 'w', encoding='utf-8').write(
-        '''<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+    open(os.path.join(REPO, '404.html'), 'w', encoding='utf-8').write(f'''<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الصفحة غير موجودة — ENG540</title><link rel="stylesheet" href="/eng540-services/assets/style.css"></head>
-<body style="font-family:Tajawal,sans-serif;text-align:center;padding:5rem 1rem">
-<h1 style="color:#0f766e">404 — الصفحة غير موجودة</h1>
-<p>استخدم البحث أو عد إلى النقاط التالية:</p>
-<p><a class="chip" href="/eng540-services/">الرئيسية</a>
+<meta name="text-scale" content="scale">
+<title>الصفحة غير موجودة — ENG540</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/eng540-services/assets/style.css"></head>
+<body>
+<header class="site-header"><a class="brand" href="/eng540-services/"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a></header>
+<main style="max-width:640px;margin:0 auto;padding:4rem 1.2rem;text-align:center">
+<h1 style="color:var(--primary-d);font-size:1.6rem">404 — الصفحة غير موجودة</h1>
+<p style="color:var(--muted)">الرابط قد يكون تغيّر أو أن الصفحة نُقلت. جرّب البحث أو ابدأ من إحدى نقاط الدخول التالية:</p>
+<p style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
+<a class="chip" href="/eng540-services/">الرئيسية</a>
 <a class="chip" href="/eng540-services/app.html">⚡ المنصة التفاعلية</a>
-<a class="chip" href="/eng540-services/pages/03-SERVICES/01-Building-Permit/README.html">الخدمة 1</a>
-<a class="chip" href="/eng540-services/sitemap.xml">فهرس كل الصفحات (sitemap)</a></p>
-</body></html>''')
+<a class="chip" href="/eng540-services/pages/03-SERVICES/01-Building-Permit/README.html">دليل رخصة البناء</a>
+<a class="chip" href="/eng540-services/sitemap.xml">فهرس كل الصفحات</a></p>
+<p style="margin-top:2rem"><a href="/eng540-services/pages/11-PLATFORM-POLICIES/Contact.html" style="font-size:.85rem;color:var(--muted)">وجدت رابطًا مكسورًا؟ بلّغنا عنه</a></p>
+</main></body></html>''')
     print(f'✅ بناء v4: {count} صفحة + الرئيسية | {total_lines:,} سطر | sitemap: {len(urls)} رابطاً | robots+404 ✓')
 
 if __name__ == '__main__':
