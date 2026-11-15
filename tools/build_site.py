@@ -675,7 +675,7 @@ def main():
 <footer class="site-footer">
   <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="pages/00-STRATEGY/About-Author.html">عن المؤلف</a> · <a href="https://t.me/engineering540">تيليجرام</a></div>
   <nav class="footer-policies" aria-label="سياسات المنصة">{policy_links('')}</nav>
-  <div>ENG540 · إصدار 4.1 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
+  <div>ENG540 · إصدار 4.2 · {date.today().isoformat()} · المحتوى معرفي تعليمي ولا يغني عن الاعتماد المهني النظامي</div>
 </footer>
 <script src="assets/search-index.js"></script>
 <script src="assets/app.js"></script>
