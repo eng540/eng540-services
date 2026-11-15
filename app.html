@@ -177,6 +177,19 @@ p{margin:.25rem 0}
 .dur{font-size:.68rem;color:var(--muted)}
 .srv-card h3{font-size:.88rem;margin:0;font-weight:800;color:var(--ink)}
 .srv-card p{font-size:.75rem;color:var(--muted);margin:.25rem 0 0}
+/* بطاقة الخدمة كزر أصلي متاح بلوحة المفاتيح */
+button.srv-card{width:100%;text-align:start;font-family:inherit;display:block}
+.srv-card .srv-title{display:block;font-size:.88rem;font-weight:800;color:var(--ink)}
+.srv-card .srv-sub{display:block;font-size:.75rem;color:var(--muted);margin-top:.25rem}
+/* إظهار المفتوح: هامش أمان أعلى العنصر عند التمرير + وميض تعرّف */
+#serviceDetailContainer,#stageContentBox,#templateViewerBox,#examResultBanner{scroll-margin-top:16px}
+@keyframes revealFlash{0%{box-shadow:0 0 0 3px rgba(20,184,166,.5)}100%{box-shadow:0 0 0 3px rgba(20,184,166,0)}}
+.reveal-flash{animation:revealFlash 1.1s ease-out 1}
+/* زر العودة إلى القائمة — للشاشات الضيقة فقط حيث التفاصيل تحت القائمة */
+.back-to-list{display:none;margin-bottom:.7rem}
+@media (max-width:999px){
+  .back-to-list{display:inline-block}
+}
 .svc-head{display:flex;flex-direction:column;gap:.6rem;border-bottom:1px solid var(--line);padding-bottom:.85rem;margin-bottom:1rem}
 .svc-title-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .type-badge{background:var(--teal-bg);border:1px solid var(--teal-line);color:var(--teal-ink);font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:6px}
@@ -679,11 +692,12 @@ function renderServiceList(list){
     selectedServiceCode = list[0].code;
   }
   container.innerHTML = list.map(function(s){
-    return '<div onclick="selectService(\'' + s.code + '\')" class="srv-card' +
-      (s.code === selectedServiceCode ? " selected" : "") + '">' +
-      '<div class="srv-top"><span class="code-badge ltr-num">' + s.code + '</span>' +
-      '<span class="dur">' + s.duration.split("(")[0] + '</span></div>' +
-      '<h3>' + s.title + '</h3><p>' + s.typeLabel + '</p></div>';
+    var sel = (s.code === selectedServiceCode);
+    return '<button type="button" onclick="selectService(\'' + s.code + '\')" class="srv-card' +
+      (sel ? " selected" : "") + '"' + (sel ? ' aria-current="true"' : '') + '>' +
+      '<span class="srv-top"><span class="code-badge ltr-num">' + s.code + '</span>' +
+      '<span class="dur">' + s.duration.split("(")[0] + '</span></span>' +
+      '<span class="srv-title">' + s.title + '</span><span class="srv-sub">' + s.typeLabel + '</span></button>';
   }).join("");
   renderServiceDetail(selectedServiceCode);
 }
@@ -691,6 +705,7 @@ function renderServiceList(list){
 function selectService(code){
   selectedServiceCode = code;
   filterServices();
+  revealDetail(document.getElementById("serviceDetailContainer"), "h2");
 }
 
 function renderServiceDetail(code){
@@ -709,6 +724,7 @@ function renderServiceDetail(code){
     : '<a class="btn btn-ghost" href="pages/03-SERVICES/README.html">📚 فهرس الخدمات في الموسوعة</a>';
 
   box.innerHTML =
+    '<button type="button" class="back-to-list" onclick="backToServiceList()">↑ العودة إلى قائمة الخدمات</button>' +
     '<div class="svc-head">' +
       '<div class="svc-title-row">' +
         '<span class="code-badge ltr-num">' + s.code + '</span>' +
@@ -758,6 +774,27 @@ function renderServiceDetail(code){
       '</div>' +
     '</div>' +
     '<div class="link-row">' + encLinks + '<span class="cs-label">📁 حالات عملية ذات صلة:</span>' + casesHtml + '</div>';
+}
+
+/* ===== إظهار اللوحة المفتوحة داخل الشاشة (تمرير + تركيز + وميض) ===== */
+function revealDetail(el, focusSel){
+  if (!el) return;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try { el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } catch (e) {}
+  el.classList.remove("reveal-flash");
+  void el.offsetWidth;
+  el.classList.add("reveal-flash");
+  var h = el.querySelector(focusSel || "h2, h4") || el;
+  h.setAttribute("tabindex", "-1");
+  try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); }
+}
+function backToServiceList(){
+  var list = document.getElementById("serviceListContainer");
+  if (!list) return;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try { list.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } catch (e) {}
+  var sel = list.querySelector(".srv-card.selected");
+  if (sel) { try { sel.focus({ preventScroll: true }); } catch (e) { sel.focus(); } }
 }
 
 /* ===== 3) المشخّص الذكي ===== */
@@ -974,6 +1011,7 @@ function renderStages(){
 function selectStage(id){
   activeStageId = id;
   renderStages();
+  revealDetail(document.getElementById("stageContentBox"), "h4");
 }
 
 function renderExam(){
@@ -1032,6 +1070,7 @@ function renderTemplates(){
 function selectTemplate(id){
   activeTemplateId = id;
   renderTemplates();
+  revealDetail(document.getElementById("templateViewerBox"));
 }
 
 /* ===== 7) التهيئة والروابط العميقة ===== */
@@ -1040,8 +1079,10 @@ window.addEventListener("load", function(){
   var v = qp.get("view");
   if (v && VIEWS.indexOf(v) !== -1) switchTab(v);
   var sv = qp.get("srv");
-  if (sv && SERVICES_DATA.some(function(s){ return s.code === sv; })) selectedServiceCode = sv;
+  var hasSrv = !!(sv && SERVICES_DATA.some(function(s){ return s.code === sv; }));
+  if (hasSrv) selectedServiceCode = sv;
   filterServices();
+  if (hasSrv) revealDetail(document.getElementById("serviceDetailContainer"), "h2");
   runDiagnostic();
   calculatePricing();
   renderStages();
