@@ -21,6 +21,9 @@ REPO   = '/root/DSH_Projects/eng540-services'
 PAGES  = os.path.join(REPO, 'pages')
 ASSETS = os.path.join(REPO, 'assets')
 
+# ملفات التوثيق الداخلي للبناء — لا تُنشر للمستخدم النهائي (لا صفحة ولا فهرس ولا بحث)
+EXCLUDE_FILES = {'SUBAGENT-BRIEF.md'}
+
 # مزامنة الوضع الليلي مع color-scheme الأصلية + منع وميض الوضع الخاطئ (Modern Web Guidance)
 THEME_BOOT = ('<meta name="color-scheme" content="light dark">\n'
               '<script>try{var t=localStorage.getItem("eng540-theme");'
@@ -88,6 +91,65 @@ FILE_LABELS = {
     '03-Executive-Workflow.md': 'الخوارزمية الـ25 خطوة',
     '04-Technical-Field-Costs.md': 'الفني والميداني والتكاليف',
     '05-Problems-Cases-Exam.md': 'المشكلات والحالات والاختبار',
+    # الإطار الاستراتيجي
+    'Vision.md': 'وثيقة الرؤية',
+    'Knowledge-Standards.md': 'معايير التوثيق والوسوم',
+    'Services-Relations-Map.md': 'خريطة علاقات الخدمات',
+    'Central-Services-Database.md': 'قاعدة الخدمات المركزية',
+    'Learning-Objectives.md': 'خريطة الأهداف التعليمية',
+    'About-Author.md': 'عن المؤلف',
+    # الأنظمة واللوائح
+    'Regulations.md': 'الاشتراطات والمعايير التطبيقية',
+    'Laws.md': 'خريطة الأنظمة والتشريعات',
+    'Official-Sources.md': 'فهرس المصادر الرسمية',
+    # أدلة المنصات
+    'Balady.md': 'دليل منصة بلدي',
+    'Najiz.md': 'دليل ناجز',
+    'Other-Platforms.md': 'المنصات الأخرى',
+    'Real-Estate-Registry.md': 'دليل السجل العقاري',
+    # الأدلة الهندسية
+    'Surveying-Guide.md': 'دليل الأعمال المساحية',
+    'Technical-Reports-Guide.md': 'دليل التقارير الفنية',
+    'Drawings-Guide.md': 'دليل المخططات الهندسية',
+    'Equipment-Software-Guide.md': 'دليل المعدات والبرامج',
+    # أدلة التشغيل
+    'Customer-Journey-Guide.md': 'دليل رحلة العميل',
+    'Transaction-Operations-Guide.md': 'دليل تشغيل المعاملات',
+    'Pricing-Guide.md': 'دليل التسعير والفوترة والتحصيل',
+    'Quality-Performance-Guide.md': 'دليل ضبط الجودة وقياس الأداء',
+    'Office-Management-Guide.md': 'دليل إدارة المكتب',
+    # الحالات العملية (العناوين الرسمية)
+    'Case-01-Raw-Land-To-Building.md': 'الحالة 1: من أرض فضاء إلى مبنى مرخص',
+    'Case-02-Building-Without-Permit.md': 'الحالة 2: مبنى بلا رخصة',
+    'Case-03-Land-Data-Update.md': 'الحالة 3: تحديث بيانات أرض وصك',
+    'Case-04-Building-Needs-Restoration.md': 'الحالة 4: مبنى يحتاج ترميماً',
+    'Case-05-Multi-Unit-Subdivision.md': 'الحالة 5: فرز مبنى متعدد الوحدات',
+    'Case-06-Deeds-Merging.md': 'الحالة 6: دمج صكوك متجاورة',
+    'Case-07-Building-Safety-Report.md': 'الحالة 7: تقرير سلامة مبنى',
+    'Case-08-Land-Subdivision.md': 'الحالة 8: تجزئة أرض',
+    'Case-09-Real-Estate-Registration.md': 'الحالة 9: التسجيل العيني في السجل العقاري',
+    # النماذج التشغيلية
+    '01-Client-Intake-Form.md': 'نموذج استقبال العميل',
+    '02-Property-Inspection-Form.md': 'نموذج معاينة العقار',
+    '03-Document-Review-Checklist.md': 'قائمة مراجعة المستندات',
+    '04-Quotation-Template.md': 'نموذج عرض السعر',
+    '05-Transaction-Tracking-Form.md': 'نموذج تتبع المعاملة',
+    '06-Notes-Handling-Form.md': 'نموذج معالجة الملاحظات',
+    '07-Delivery-Form.md': 'نموذج التسليم',
+    '08-Satisfaction-Survey.md': 'استبيان رضا العميل',
+    '09-Pre-Submission-Checklist.md': 'قائمة التحقق قبل التقديم',
+    '10-Common-Errors-List.md': 'قائمة الأخطاء الشائعة',
+    # الأكاديمية
+    'Stage-1-Foundation.md': 'الدرس التأسيسي',
+    'Exercises-Pack.md': 'حزمة التمارين',
+    'Simulation-01-Building-Permit.md': 'محاكاة رخصة البناء',
+    'Final-Composite-Exam.md': 'الاختبار النهائي الشامل',
+    # الجودة والتحقق
+    'Knowledge-Gaps.md': 'سجل الفجوات المعرفية',
+    'Verification-Log.md': 'سجل التحقق',
+    'Change-Log.md': 'سجل التغييرات',
+    # القاموس
+    'Glossary.md': 'قاموس المصطلحات',
 }
 
 def ar_files(n):
@@ -316,7 +378,7 @@ def build_nav(rel_page, prefix):
         entries = []
         if os.path.isdir(gdir):
             for f in sorted(f for f in os.listdir(gdir) if f.endswith('.md')):
-                if f == 'About-Author.md':
+                if f == 'About-Author.md' or f in EXCLUDE_FILES:
                     continue
                 entries.append((FILE_LABELS.get(f, f[:-3]), posixpath.join(folder, f[:-3] + '.html')))
             for s in sorted(d for d in os.listdir(gdir) if os.path.isdir(os.path.join(gdir, d))):
@@ -324,7 +386,7 @@ def build_nav(rel_page, prefix):
                 entries.append(('📁 ' + stitle, posixpath.join(folder, s, 'README.html')))
                 sdir = os.path.join(gdir, s)
                 for f in sorted(f for f in os.listdir(sdir) if f.endswith('.md')) if os.path.isdir(sdir) else []:
-                    if f != 'README.md':
+                    if f != 'README.md' and f not in EXCLUDE_FILES:
                         entries.append(('&nbsp;&nbsp;↳ ' + FILE_LABELS.get(f, f[:-3]),
                                         posixpath.join(folder, s, f[:-3] + '.html')))
         is_open = rel_page.startswith(folder)
@@ -337,6 +399,7 @@ def build_nav(rel_page, prefix):
 def strip_md(text):
     t = re.sub(r'```.*?```', ' ', text, flags=re.S)
     t = re.sub(r'[#>*`|\-\[\]()]', ' ', t)
+    t = re.sub(r'[A-Za-z0-9/_-]+\.md\b', ' ', t)  # بقايا أهداف الروابط لا تدخل نص الفهرس
     return re.sub(r'\s+', ' ', t).strip()
 
 def build_synthetic_index(folder, label, prefix):
@@ -345,7 +408,7 @@ def build_synthetic_index(folder, label, prefix):
     gdir = os.path.join(SOURCE, folder)
     cards = ''
     for f in sorted(f for f in os.listdir(gdir) if f.endswith('.md')):
-        if f == 'About-Author.md':
+        if f == 'About-Author.md' or f in EXCLUDE_FILES:
             continue
         href = link(posixpath.join(folder, f[:-3] + '.html'), prefix)
         cards += (f'<a class="card" href="{href}"><span class="card-t">'
@@ -379,6 +442,8 @@ def main():
     md_files = []
     for root, _dirs, files in os.walk(SOURCE):
         for fname in sorted(f for f in files if f.endswith('.md')):
+            if fname in EXCLUDE_FILES:
+                continue
             md_files.append(os.path.relpath(os.path.join(root, fname), SOURCE))
     ALL_PAGES.clear()
     for rel_src in md_files:
