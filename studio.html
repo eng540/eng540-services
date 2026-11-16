@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ENG540 Studio v3.1 — استوديو إنتاج وتصدير فيديوهات الخوارزميات الهندسية والعقارية (5 حلقات متكاملة)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: dark; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo', sans-serif; }
+body {
+  background:#040d1a; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  height:100vh; width:100vw; overflow:hidden; color:#ffffff;
+}
+#topEpisodeBar {
+  height:48px; width:100%; background:#061526; border-bottom:1.5px solid rgba(212,175,82,0.4);
+  display:flex; align-items:center; justify-content:center; gap:8px; padding:0 12px; z-index:200; flex-wrap:wrap;
+}
+.ep-btn {
+  background:rgba(16, 45, 66, 0.9); color:#cbd5e1; border:1px solid rgba(245,208,102,0.3);
+  border-radius:999px; padding:4px 14px; font-size:12px; font-weight:800; cursor:pointer; transition:all 0.2s;
+}
+.ep-btn:hover, .ep-btn.active {
+  background:linear-gradient(135deg, #f5d066, #c59b27); color:#040d1a; border-color:#ffffff;
+}
+#stageArea {
+  flex:1; width:100%; display:flex; align-items:center; justify-content:center;
+  overflow:hidden; position:relative;
+  background: radial-gradient(circle at 50% 30%, #0d2840 0%, #040d1a 75%);
+}
+#wrap {
+  position:relative; overflow:hidden;
+  box-shadow: 0 0 80px rgba(0,0,0,.95);
+  border: 1px solid rgba(212, 175, 82, 0.3);
+}
+body.mode-vertical #wrap {
+  width: min(100vw, calc((100vh - 104px) * 0.5625));
+  height: min(calc(100vw * 1.7778), calc(100vh - 104px));
+}
+body.mode-horizontal #wrap {
+  width: min(100vw, calc((100vh - 104px) * 1.7778));
+  height: min(calc(100vw * 0.5625), calc(100vh - 104px));
+}
+#masterCanvas { width:100%; height:100%; display:block; cursor:pointer; }
+#dockedControls {
+  height:54px; width:100%; background:#05111d; border-top:1.5px solid rgba(226,184,75,.45);
+  display:flex; align-items:center; justify-content:center; gap:8px; padding:0 14px; z-index:200; flex-wrap:wrap;
+}
+.ctrl-btn {
+  background:linear-gradient(135deg, #164e63, #0c2536); color:#f8fafc;
+  border:1px solid rgba(226,184,75,.55); font-size:12px; font-weight:800;
+  padding:5px 12px; border-radius:18px; cursor:pointer; white-space:nowrap;
+}
+.ctrl-btn:hover, .ctrl-btn.active {
+  background:linear-gradient(135deg, #28b894, #115e4b); border-color:#ffe484; color:#ffffff;
+}
+.ctrl-btn.rec-btn { background:linear-gradient(135deg, #e11d48, #9f1239); border-color:#fda4af; }
+.ctrl-scrubber { width:140px; accent-color:#e2b84b; cursor:pointer; }
+.ctrl-time { font-size:12px; font-weight:800; color:#ffe484; min-width:78px; text-align:center; direction:ltr; }
+
+/* ===== تطويرات v3.1: شريط الحالة، محطات التنقل، وضع الاستكشاف، نص المشهد، الإتاحة ===== */
+body { height:100vh; height:100dvh; }
+:where(button, input, a):focus-visible { outline:3px solid #ffe484; outline-offset:2px; }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+#nowStrip { min-height:34px; width:100%; background:#04101c; border-bottom:1px solid rgba(212,175,82,.25);
+  display:flex; align-items:center; justify-content:center; gap:10px; padding:5px 12px;
+  font-size:12.5px; font-weight:800; color:#e2e8f0; text-align:center; flex-wrap:wrap; }
+#nowStrip .ns-ep { color:#f5d066; }
+#nowStrip .ns-sc { color:#6ee7b7; }
+#sceneDots { display:flex; gap:8px; justify-content:center; align-items:center; padding:6px 10px;
+  background:#04101c; border-top:1px solid rgba(212,175,82,.25); flex-wrap:wrap; min-height:46px; }
+.sd-btn { min-height:38px; border-radius:19px; border:1.5px solid rgba(245,208,102,.45); background:rgba(16,45,66,.9);
+  color:#e2e8f0; font-family:inherit; font-size:12px; font-weight:800; cursor:pointer; padding:4px 14px; }
+.sd-btn:hover { border-color:#ffe484; color:#fff; }
+.sd-btn.active { background:linear-gradient(135deg,#f5d066,#c59b27); color:#040d1a; border-color:#fff; }
+#captionBar { display:none; width:100%; background:#04101c; border-top:1px solid rgba(212,175,82,.3);
+  padding:8px 16px; font-size:13.5px; line-height:1.9; color:#e2e8f0; text-align:center; }
+#captionBar.show { display:block; }
+#captionBar .cap-label { color:#f5d066; font-weight:900; font-size:11.5px; display:block; margin-bottom:2px; }
+
+/* وضع الاستكشاف: حوار غير نمطي فوق المسرح فقط — أدوات التحكم تبقى فعّالة */
+#exploreOverlay { position:absolute; inset:0; margin:0; max-width:none; max-height:none;
+  width:100%; height:100%; border:none; background:rgba(3,9,18,.97); color:#e2e8f0;
+  overflow-y:auto; overscroll-behavior:contain; padding:16px; }
+#exploreOverlay:not([open]) { display:none; }
+#exploreOverlay::backdrop { display:none; }
+.exp-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.exp-title { font-size:17px; font-weight:900; color:#f5d066; margin:0; }
+.exp-sub { font-size:13px; font-weight:800; color:#cbd5e1; }
+.exp-close, .exp-nav { background:rgba(16,45,66,.9); color:#f8fafc; border:1px solid rgba(245,208,102,.5);
+  border-radius:999px; padding:9px 16px; font-family:inherit; font-size:13px; font-weight:800; cursor:pointer; min-height:44px; }
+.exp-close:hover, .exp-nav:hover { background:linear-gradient(135deg,#28b894,#115e4b); }
+.exp-card { border:1.5px solid rgba(245,208,102,.35); border-radius:16px; background:#0a1e30;
+  padding:14px 16px; margin:0 auto 12px; max-width:860px; }
+.exp-card-top { display:flex; align-items:center; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+.exp-num { min-width:46px; height:46px; border-radius:50%; display:inline-flex; align-items:center;
+  justify-content:center; font-weight:900; font-size:15px; color:#040d1a; flex:none; }
+.exp-tag { border:1px solid currentColor; border-radius:999px; padding:3px 12px; font-size:11.5px; font-weight:800; }
+.exp-card h3 { margin:8px 0 6px; font-size:16.5px; font-weight:900; color:#fff; }
+.exp-role { font-size:14.5px; line-height:2; color:#e2e8f0; user-select:text; margin:0; }
+.exp-link { display:inline-block; margin-top:10px; color:#6ee7b7; font-weight:800; font-size:13.5px;
+  text-decoration:none; border:1px solid rgba(110,231,183,.5); border-radius:10px; padding:9px 14px; min-height:44px; }
+.exp-link:hover { background:rgba(110,231,183,.12); text-decoration:none; }
+.exp-note { text-align:center; color:#64748b; font-size:12px; margin:14px 0 8px; }
+
+/* قائمة المزيد: popover أصلي (إغلاق خفيف + Esc من المتصفح) */
+#moreMenu { position:fixed; bottom:64px; inset-inline-start:12px; background:#0a1e30;
+  border:1.5px solid rgba(245,208,102,.5); border-radius:14px; padding:10px;
+  min-width:250px; box-shadow:0 10px 30px rgba(0,0,0,.6); }
+#moreMenu #secondaryCtrls { display:flex; flex-direction:column; gap:8px; align-items:stretch; }
+#moreMenu .ctrl-btn { text-align:start; white-space:normal; }
+#secondaryCtrls { display:contents; }
+#moreBtn { display:none; }
+@supports not (selector(:popover-open)) {
+  #moreMenu { display:none; }
+  #moreMenu.force-open { display:flex; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+@media (max-width:720px) {
+  #dockControls, #dockedControls { height:auto; min-height:54px; padding:6px 8px; row-gap:6px; }
+  .ctrl-btn { min-height:44px; padding:8px 12px; }
+  .ctrl-scrubber { flex:1 1 150px; min-height:30px; }
+  #moreBtn { display:inline-block; }
+}
+@media (max-width:560px) {
+  .ep-btn .ep-name { display:none; }
+  .ep-btn { min-height:40px; padding:5px 14px; }
+  .exp-title { font-size:15px; }
+  #nowStrip { font-size:11.5px; }
+}
+</style>
+</head>
+<body class="mode-vertical">
+
+<!-- شريط اختيار الحلقة من بين 5 فيديوهات جاهزة -->
+<div id="topEpisodeBar">
+  <span style="font-size:12px;font-weight:900;color:#f5d066;">🎬 اختر حلقة الفيديو:</span>
+  <button class="ep-btn active" onclick="loadEpisode(0)">1. خريطة المنصات الـ 12</button>
+  <button class="ep-btn" onclick="loadEpisode(1)">2. خوارزمية رخصة البناء</button>
+  <button class="ep-btn" onclick="loadEpisode(2)">3. خوارزمية فرز الوحدات</button>
+  <button class="ep-btn" onclick="loadEpisode(3)">4. خوارزمية شهادة الإشغال</button>
+  <button class="ep-btn" onclick="loadEpisode(4)">5. خوارزمية تصحيح مبنى قائم</button>
+</div>
+
+<!-- شريط الحالة: اسم الحلقة والمحطة الحالية -->
+<div id="nowStrip"><span class="ns-ep" id="nowEp">—</span><span aria-hidden="true">·</span><span class="ns-sc" id="nowSc">—</span></div>
+
+<div id="stageArea">
+  <div id="wrap">
+    <canvas id="masterCanvas" width="1080" height="1920"></canvas>
+  </div>
+
+  <!-- وضع الاستكشاف: حوار غير نمطي — أدوات التحكم تبقى فعّالة أثناء الفتح -->
+  <dialog id="exploreOverlay" aria-labelledby="expTitle" closedby="closerequest"></dialog>
+  <div id="srLive" class="sr-only" aria-live="polite"></div>
+</div>
+
+<!-- شريط محطات التنقل الأربع -->
+<div id="sceneDots" role="group" aria-label="التنقل بين محطات الحلقة"></div>
+
+<!-- نص المشهد (التعليق النصي الكامل) -->
+<div id="captionBar"><span class="cap-label">نص المشهد — التعليق النصي الكامل:</span> <span id="capText"></span></div>
+
+<div id="dockedControls">
+  <button class="ctrl-btn active" id="playPauseBtn" onclick="togglePlay()" aria-label="تشغيل أو إيقاف مؤقت">⏸ إيقاف مؤقت</button>
+  <button class="ctrl-btn" id="prevSceneBtn" onclick="jumpScene(-1)" aria-label="المحطة السابقة">⟶ المحطة السابقة</button>
+  <button class="ctrl-btn" id="nextSceneBtn" onclick="jumpScene(1)" aria-label="المحطة التالية">المحطة التالية ⟵</button>
+  <input type="range" id="scrubber" class="ctrl-scrubber" min="0" max="36000" step="100" value="0" oninput="onScrub(this.value)" aria-label="موضع التشغيل داخل الحلقة">
+  <span class="ctrl-time" id="timeLabel">00:00 / 00:36</span>
+  <button class="ctrl-btn" id="exploreBtn" onclick="toggleExplore()" aria-expanded="false" aria-label="فتح وضع استكشاف بطاقات المحطة">🔍 بطاقات المحطة</button>
+  <button class="ctrl-btn" id="capBtn" onclick="toggleCaptions()" aria-pressed="false" aria-label="إظهار نص المشهد الكامل">💬 نص المشهد</button>
+  <span id="secondaryCtrls">
+    <button class="ctrl-btn" id="speedBtn" onclick="cycleSpeed()">⚡ السرعة: 1x</button>
+    <button class="ctrl-btn" id="layoutBtn" onclick="toggleLayoutMode()">🖥 الأبعاد: ريلز 9:16 ⇄ يوتيوب 16:9</button>
+    <button class="ctrl-btn active" id="sfxBtn" onclick="toggleSfx()">🔔 نغمات الانتقال</button>
+    <button class="ctrl-btn" id="voiceBtn" onclick="toggleVoice()">🔊 التعليق الصوتي</button>
+    <button class="ctrl-btn rec-btn" id="recBtn" onclick="toggleVideoRecording()">🎥 تصدير فيديو هذه الحلقة (WebM)</button>
+  </span>
+  <button class="ctrl-btn" id="moreBtn" popovertarget="moreMenu" aria-label="خيارات إضافية">⋯ المزيد</button>
+</div>
+<div id="moreMenu" popover></div>
+
+<script>
+const TOTAL_MS = 36000; // 36 seconds per episode (4 scenes x 9s)
+
+const EPISODES = [
+  // Episode 0: The 12 Platforms Ecosystem
+  {
+    name: "ENG540_Episode1_Platforms_Map",
+    hubTitle: "المنظومة الرقمية",
+    hubSub: "12 مكوّناً في 4 مسارات",
+    scenes: [
+      {
+        id: 0, start: 0, end: 9000, badge: "المسار 1 : التراخيص والبلدية",
+        title: "1. منصات يفوّض فيها المالكُ «المكتب الهندسي»",
+        subtitle: "إصدار القرارات المساحية ورخص البناء وتراخيص السلامة", themeColor: "#28b894",
+        tts: "المسار الأول: منصات يفوض فيها المالك المكتب الهندسي؛ وتشمل منصة بلدي للرخص وشهادات الإشغال، ومركز إتمام للمطورين، وبوابة سلامة للدفاع المدني.",
+        takeaway: "✨ خطوة البداية: فوّض المكتب الهندسي عبر «بلدي» ليبدأ بالقرار المساحي أولاً!",
+        cards: [
+          { num: "01", title: "منصة بلدي (وزارة البلديات)", role: "إصدار القرار المساحي، رخصة البناء والترميم والتسوير، وشهادة الإشغال.", tag: "منصة رقمية تنفيذية", col: "#28b894" },
+          { num: "02", title: "مركز إتمام (خدمات المطورين)", role: "تأهيل المطورين واعتماد مخططات تقسيمات الأراضي الكبرى وتنسيق الخدمات.", tag: "مركز خدمات المطورين", col: "#f5d066" },
+          { num: "03", title: "بوابة سلامة (الدفاع المدني)", role: "اعتماد مخططات الوقاية من الحريق وإصدار تراخيص السلامة للمنشآت.", tag: "بوابة خدمة إلكترونية", col: "#f43f5e" }
+        ]
+      },
+      {
+        id: 1, start: 9000, end: 18000, badge: "المسار 2 : الملكية والتداول",
+        title: "2. منصات يباشرها «المالك والمستثمر» مباشرة",
+        subtitle: "تحديث الصكوك والإفراغ العقاري الفوري والتسجيل العيني", themeColor: "#f5d066",
+        tts: "المسار الثاني: منصات يباشرها المالك مباشرة؛ وهي منصة ناجز للوكالات وتحديث الصكوك، والبورصة العقارية للإفراغ والرهن، والسجل العقاري للتسجيل العيني.",
+        takeaway: "⚡ انتبه: البيع والإفراغ والرهن في «البورصة العقارية» يتم من جوالك مباشرة دون مكتب هندسي!",
+        cards: [
+          { num: "04", title: "منصة ناجز (وزارة العدل)", role: "إصدار الوكالات، التوثيق العدلي، وتحديث الصكوك الورقية إلى إلكترونية.", tag: "منصة عدلية مباشرة", col: "#f5d066" },
+          { num: "05", title: "البورصة العقارية (التداول)", role: "الإفراغ العقاري الفوري، البيع والشراء، وعمليات الرهن وفك الرهن الإلكتروني.", tag: "منصة تداول مباشر", col: "#28b894" },
+          { num: "06", title: "السجل العقاري (RER)", role: "التسجيل العيني الأول للعقارات وإصدار «رقم عقار» وصحيفة عقارية قطعية.", tag: "منصة تسجيل عيني", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 2, start: 18000, end: 27000, badge: "المسار 3 : التنظيم والفرز والتملك",
+        title: "3. منصات تعظيم قيمة العقار وتثبيت الملكيات",
+        subtitle: "تكامل الهيئة العامة للعقار مع الرفع المساحي الهندسي", themeColor: "#38bdf8",
+        tts: "المسار الثالث: منصات التنظيم والفرز والتملك؛ وتشمل الهيئة العامة للعقار، وخدمة فرز الوحدات العقارية لصكوك مستقلة، ومنصة إحكام لطلبات تملك العقارات.",
+        takeaway: "🏢 قاعدة الاستثمار: فرز العمارة لصكوك مستقلة يبدأ بضبط المواقف والمداخل منذ المخطط!",
+        cards: [
+          { num: "07", title: "الهيئة العامة للعقار (REGA)", role: "المرجعية التنظيمية للقطاع العقاري، وتشرف على السجل العقاري وفرز الوحدات.", tag: "جهة تنظيمية عليا", col: "#f5d066" },
+          { num: "08", title: "خدمة فرز الوحدات العقارية", role: "تقسيم المبنى إلى شقق أو أدوار مستقلة برفع مساحي من مكتب هندسي معتمد.", tag: "خدمة تابعة لـ REGA", col: "#28b894" },
+          { num: "09", title: "منصة إحكام (عقارات الدولة)", role: "دراسة طلبات تملك وتعديل العقارات بموجب كروكي إحداثيات من مكتب مدرج.", tag: "أمانة لجان التملك", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 3, start: 27000, end: 36000, badge: "المسار 4 : المرجعيات الفنية والمهنية",
+        title: "4. المثلث الفني الذي يضمن دقة وأمان مشروعك",
+        subtitle: "هيئة المهندسين + هيئة المساحة GEOSA + المكتب الهندسي", themeColor: "#a78bfa",
+        tts: "المسار الرابع: المرجعيات الفنية والمهنية؛ فالهيئة السعودية للمهندسين ترخص المكاتب، وهيئة المساحة جيوسا تضبط الشبكة الجيوديسية، لينفذ المكتب الهندسي أعمالك بدقة.",
+        takeaway: "📲 للاستشارات الهندسية وإدارة المعاملات البلدية والمساحية: م. عبدالمجيد الفقيه | 0532777678",
+        cards: [
+          { num: "10", title: "الهيئة السعودية للمهندسين (SCE)", role: "ترخيص المكاتب والشركات الهندسية والتصنيف المهني للمهندسين.", tag: "جهة تنظيمية مهنية", col: "#f5d066" },
+          { num: "11", title: "هيئة المساحة والجيومكانية (GEOSA)", role: "إدارة الشبكة الجيوديسية الوطنية وضبط المرجع المكاني لأجهزة الـ GPS.", tag: "مرجعية جيومكانية", col: "#38bdf8" },
+          { num: "12", title: "المكتب الهندسي المعتمد", role: "الذراع الفني المرخّص لإعداد المخططات، الرفع المساحي، السلامة، والفرز.", tag: "طرف مهني مشارك", col: "#28b894" }
+        ]
+      }
+    ]
+  },
+
+  // Episode 1: Building Permit Algorithm
+  {
+    name: "ENG540_Episode2_Building_Permit",
+    hubTitle: "رخصة البناء",
+    hubSub: "خوارزمية الـ 4 محطات",
+    scenes: [
+      {
+        id: 0, start: 0, end: 9000, badge: "المحطة 1 من 4 : الوثيقة والتفويض",
+        title: "كيف تصدر «رخصة البناء» من أول تقديم دون رفض؟",
+        subtitle: "المحطة الأولى: تجهيز الصك الإلكتروني وتفويض المكتب الهندسي", themeColor: "#f5d066",
+        tts: "لإصدار رخصة البناء دون تأخير، تبدأ المحطة الأولى بتحديث الصك إلكترونياً عبر ناجز، والتأكد من اكتمال الأطوال والمساحة، ثم تفويض المكتب الهندسي عبر منصة بلدي.",
+        takeaway: "✨ قاعدة البداية: الصك الورقي القديم لا يقبل إصدار رخصة بناء إلا بعد تحديثه إلكترونياً!",
+        cards: [
+          { num: "1.1", title: "تحديث الصك عبر منصة ناجز", role: "تحويل الصك اليدوي إلى صك إلكتروني مكتمل البيانات والأطوال والمساحة.", tag: "شرط ملكية أساسي", col: "#f5d066" },
+          { num: "1.2", title: "التحقق من المخطط التنظيمي", role: "التأكد من وقوع الأرض داخل النطاق العمراني المسموح بالبناء وتوفر الخدمات.", tag: "فحص تنظيمي", col: "#28b894" },
+          { num: "1.3", title: "تفويض المكتب الهندسي في بلدي", role: "الدخول عبر النفاذ الوطني لمنصة بلدي واختيار المكتب الهندسي المصمم.", tag: "إجراء إلكتروني", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 1, start: 9000, end: 18000, badge: "المحطة 2 من 4 : القرار المساحي",
+        title: "المحطة الثانية: الرفع المساحي وتثبيت أركان الأرض",
+        subtitle: "مطابقة أبعاد الصك مع الطبيعة قبل رسم خط واحد في المخطط!", themeColor: "#28b894",
+        tts: "المحطة الثانية: ينزل مساح المكتب الهندسي بجهاز الجي بي إس لتثبيت أركان الأرض الأربعة، ومطابقتها مع الشارع والمخطط، وإصدار قرار مساحي لغرض البناء.",
+        takeaway: "📋 تنبيه ذهبي: إياك أن تصمم المخطط المعماري على الصك قبل صدور القرار المساحي الحديث!",
+        cards: [
+          { num: "2.1", title: "الرفع المساحي بالـ GPS وتثبيت الأركان", role: "تثبيت نقاط حدود الأرض الأربعة بالحديد والإحداثيات الوطنية المعتمدة.", tag: "عمل ميداني مساحي", col: "#28b894" },
+          { num: "2.2", title: "كشف الشطفات وعروض الشوارع", role: "تحديد اتجاه الشمال، وعرض الشارع الفعلي، وأي شطفات أو غرف كهرباء.", tag: "مطابقة فنية", col: "#f5d066" },
+          { num: "2.3", title: "صدور «القرار المساحي» في بلدي", role: "الوثيقة الهندسية الرسمية التي تُبنى عليها الارتدادات ونسب البناء.", tag: "مخرج معتمد", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 2, start: 18000, end: 27000, badge: "المحطة 3 من 4 : التربة والتصميم",
+        title: "المحطة الثالثة: فحص التربة والتصميم الهندسي (SBC)",
+        subtitle: "تصميم معماري وإنشائي متزن يوفر الحديد ويطابق الكود", themeColor: "#38bdf8",
+        tts: "المحطة الثالثة: عمل جسات فحص التربة لتحديد عمق التأسيس ونوع الأساسات، ثم إعداد المخططات المعمارية والإنشائية وحسابات العزل الحراري وفق الكود السعودي.",
+        takeaway: "🔬 فحص التربة (بـ 3 آلاف ريال) يحميك من هدر 40 ألف ريال في حديد القواعد بالتخمين!",
+        cards: [
+          { num: "3.1", title: "تقرير فحص التربة الجيوتقني", role: "حفر الجسات وتحديد جهد التربة الآمن وعمق التأسيس ونوع الأسمنت المقاوم.", tag: "مختبر معتمد", col: "#f5d066" },
+          { num: "3.2", title: "التصميم المعماري والإنشائي", role: "توزيع الفراغات والمواقف والارتدادات وتصميم القواعد والأعمدة والأسقف.", tag: "كود SBC 1101/304", col: "#28b894" },
+          { num: "3.3", title: "الكهروميكانيكا والعزل الحراري", role: "اعتماد حسابات كود ترشيد الطاقة (SBC 602) للسقف والجدران والنوافذ.", tag: "كفاءة الطاقة", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 3, start: 27000, end: 36000, badge: "المحطة 4 من 4 : التعاقدات والصدور",
+        title: "المحطة الرابعة: الإشراف والتأمين وصدور الرخصة",
+        subtitle: "إتمام الربط النظامي وصدور رخصة البناء جاهزة للتنفيذ", themeColor: "#a78bfa",
+        tts: "المحطة الرابعة والأخيرة: التعاقد الإلكتروني مع مكتب هندسي مشرف ومقاول مصنف، وإصدار وثيقة التأمين ضد العيوب الخفية، وسداد الرسوم لتصدر رخصة البناء فوراً.",
+        takeaway: "📲 لإصدار القرار المساحي وتصميم المخططات ورخص البناء: م. عبدالمجيد الفقيه | 0532777678",
+        cards: [
+          { num: "4.1", title: "تعاقد المكتب المشرف والمقاول", role: "ربط الرخصة إلكترونياً بمكتب إشراف معتمد ومقاول مصنف في منصة مقاول.", tag: "تعاقد إلكتروني", col: "#28b894" },
+          { num: "4.2", title: "وثيقة تأمين العيوب الخفية", role: "إصدار التغطية التأمينية لهيكل المبنى والعزل لمدة 10 سنوات كاملة.", tag: "حماية عشرية", col: "#f5d066" },
+          { num: "4.3", title: "سداد الرسوم وصدور الرخصة", role: "سداد فاتورة البلدية عبر سداد وصدور رخصة البناء الرسمية فوراً!", tag: "اكتمال المعاملة", col: "#38bdf8" }
+        ]
+      }
+    ]
+  },
+
+  // Episode 2: Unit Subdivision (REGA)
+  {
+    name: "ENG540_Episode3_Unit_Subdivision",
+    hubTitle: "فرز الوحدات",
+    hubSub: "صك مستقل لكل شقة",
+    scenes: [
+      {
+        id: 0, start: 0, end: 9000, badge: "المحطة 1 من 4 : الجاهزية النظامية",
+        title: "كيف تفرز عمارتك إلى «صك مستقل لكل شقة أو دور»؟",
+        subtitle: "المحطة الأولى: مطابقة الرخصة وشهادة الإشغال والصك", themeColor: "#f5d066",
+        tts: "لفرز عمارتك أو فيلتك إلى صكوك مستقلة لكل وحدة عبر الهيئة العامة للعقار، تبدأ المحطة الأولى بالتحقق من مطابقة رخصة البناء وشهادة الإشغال والصك الإلكتروني.",
+        takeaway: "✨ شرط أساسي: لا يُقبل فرز أي مبنى مخالف لرخصة البناء إلا بعد تصحيح وضعه في بلدي!",
+        cards: [
+          { num: "1.1", title: "رخصة بناء مطابقة للواقع", role: "تطابق عدد الوحدات والأدوار المنفذة على الطبيعة مع رخصة البناء المعتمدة.", tag: "تطابق بلدي", col: "#f5d066" },
+          { num: "1.2", title: "شهادة الإشغال (إتمام البناء)", role: "توفر شهادة إشغال سارية تثبت اكتمال المبنى ومطابقته لاشتراطات الكود.", tag: "وثيقة إتمام", col: "#28b894" },
+          { num: "1.3", title: "صك ملكية إلكتروني محدّث", role: "صك إلكتروني فعال في ناجز/السجل العقاري خالٍ من أي إيقاف أو قيد يمنع الفرز.", tag: "سلامة الملكية", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 1, start: 9000, end: 18000, badge: "المحطة 2 من 4 : الاستقلالية الهندسية",
+        title: "المحطة الثانية: شروط الاستقلالية لكل وحدة في الموقع",
+        subtitle: "3 عناصر يفحصها المهندس في المبنى قبل رفع معاملة الفرز", themeColor: "#28b894",
+        tts: "المحطة الثانية: التحقق من الاستقلالية الهندسية لكل شقة أو دور؛ بوجود مدخل مستقل، وعداد كهرباء مستقل، وموقف سيارة نظامي مستقل لكل وحدة.",
+        takeaway: "🚗 السبب الأول لرفض فرز الشقق هو «نقص مواقف السيارات» عن عدد الوحدات؛ فاحسبها منذ المخطط!",
+        cards: [
+          { num: "2.1", title: "مدخل مستقل لكل وحدة عقارية", role: "اتصال كل شقة أو دور مباشرة بالأجزاء المشتركة (الممر أو الدرج) دون تداخل.", tag: "استقلالية معمارية", col: "#28b894" },
+          { num: "2.2", title: "موقف سيارة نظامي لكل وحدة", role: "تخصيص موقف صافي الأبعاد (2.5×5.5م) لكل وحدة سكنية داخل حدود العقار.", tag: "شرط المواقف", col: "#f5d066" },
+          { num: "2.3", title: "استقلالية العدادات والخدمات", role: "عداد كهرباء مستقل وشبكة تغذية مفصولة لكل وحدة يراد إصدار صك لها.", tag: "استقلالية خدمية", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 2, start: 18000, end: 27000, badge: "المحطة 3 من 4 : الرفع المساحي للفرز",
+        title: "المحطة الثالثة: حساب المساحات والأجزاء المشتركة",
+        subtitle: "دور المكتب الهندسي المعتمد في برنامج فرز الوحدات (REGA)", themeColor: "#38bdf8",
+        tts: "المحطة الثالثة: يقوم المكتب الهندسي المعتمد برفع المساحة الصافية لكل وحدة، وتحديد الأجزاء المشتركة كالدرج والمصعد والسطح، وحساب نصيب كل شقة من الأرض.",
+        takeaway: "📐 دقة الرفع المساحي للأجزاء الخاصة والمشتركة تمنع أي نزاع مستقبلي بين ملاك الشقق!",
+        cards: [
+          { num: "3.1", title: "الرفع المساحي لصافي كل وحدة", role: "قياس المساحة الداخلية الصافية لكل شقة أو دور أو ملحق بدقة السنتيمتر.", tag: "مساحة خاصة", col: "#38bdf8" },
+          { num: "3.2", title: "تحديد الأجزاء المشتركة والخاصة", role: "توصيف المواقف، غرف السائقين، الارتدادات، السطح، المصعد، وبيت الدرج.", tag: "توصيف المكوّنات", col: "#28b894" },
+          { num: "3.3", title: "معادلة النسب والأنصبة العقارية", role: "حساب النسبة المئوية لحصة كل وحدة في ملكية الأرض والأجزاء المشتركة.", tag: "حساب هندسي", col: "#f5d066" }
+        ]
+      },
+      {
+        id: 3, start: 27000, end: 36000, badge: "المحطة 4 من 4 : صدور الصكوك المستقلة",
+        title: "المحطة الرابعة: اعتماد محاضر الفرز وإصدار الصكوك",
+        subtitle: "تحويل المبنى إلى وحدات مستقلة جاهزة للبيع والتمويل البنكي", themeColor: "#a78bfa",
+        tts: "المحطة الرابعة: اعتماد محاضر الفرز في منصة فرز الوحدات العقارية، وإحالتها إلكترونياً لكتابة العدل وناجز ليصدر صك ملكية مستقل لكل شقة فوراً.",
+        takeaway: "📲 لخدمات فرز الوحدات العقارية والرفع المساحي المعتمد: م. عبدالمجيد الفقيه | 0532777678",
+        cards: [
+          { num: "4.1", title: "اعتماد «محضر الفرز» في المنصة", role: "مراجعة واعتماد المخططات وجداول المساحات في برنامج فرز الوحدات العقارية.", tag: "اعتماد REGA", col: "#f5d066" },
+          { num: "4.2", title: "الإحالة الآلية لكتابة العدل وناجز", role: "انتقال بيانات الوحدات المفروزة إلكترونياً لإصدار وثائق الملكية الجديدة.", tag: "تكامل عدلي", col: "#28b894" },
+          { num: "4.3", title: "صدور صك مستقل لكل شقة/دور", role: "جاهزية كل وحدة للبيع أو الرهن أو التمويل العقاري في البورصة العقارية!", tag: "تعظيم العائد", col: "#38bdf8" }
+        ]
+      }
+    ]
+  },
+
+  // Episode 3: Occupancy Certificate & Supervision
+  {
+    name: "ENG540_Episode4_Occupancy_Certificate",
+    hubTitle: "شهادة الإشغال",
+    hubSub: "تقارير الإشراف والكهرباء",
+    scenes: [
+      {
+        id: 0, start: 0, end: 9000, badge: "المحطة 1 من 4 : إشراف الأساسات",
+        title: "كيف تضمن صدور «شهادة الإشغال» فور انتهاء البناء؟",
+        subtitle: "المحطة الأولى: توثيق الحفر والقواعد والميدات قبل الدفان", themeColor: "#f5d066",
+        tts: "لضمان صدور شهادة الإشغال دون تعطل، تبدأ المحطة الأولى بتوثيق استلام حدود الحفر، وحدادة القواعد والرقاب والميدات، ورفع التقارير المصورة في بلدي قبل الصب.",
+        takeaway: "✨ إغفال رفع تقارير الأساسات في وقتها يوقف ملف شهادة الإشغال والتأمين في نهاية المشروع!",
+        cards: [
+          { num: "1.1", title: "استلام حدود الحفر والارتدادات", role: "التأكد من عدم تجاوز الحفر لحدود الأرض وتطابق الارتدادات مع الرخصة.", tag: "فحص مساحي", col: "#f5d066" },
+          { num: "1.2", title: "فحص حدادة القواعد والميدات", role: "استلام أقطار الحديد، الغطاء الخرساني، والعزل المائي قبل صب الخرسانة.", tag: "استلام إنشائي", col: "#28b894" },
+          { num: "1.3", title: "رفع تقارير التأسيس في بلدي", role: "توثيق المرحلة بالصور المعتمدة في منصة بلدي ولدى الفاحص الفني للتأمين.", tag: "توثيق رقمي", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 1, start: 9000, end: 18000, badge: "المحطة 2 من 4 : إشراف الهيكل الخرساني",
+        title: "المحطة الثانية: تقارير أعمدة وأسقف كل دور",
+        subtitle: "ضبط جودة الخرسانة والالتزام بالنسب النظامية للأدوار", themeColor: "#28b894",
+        tts: "المحطة الثانية: استلام حدادة ونجارة الأعمدة والأسقف لكل دور، وتوثيق نتائج اختبارات الخرسانة، والتأكد من عدم زيادة نسبة البناء في الملحق العلوي.",
+        takeaway: "🚨 زيادة مساحة الملحق العلوي عن النسبة المسموحة في الرخصة هي السبب الأول لرفض شهادة الإشغال!",
+        cards: [
+          { num: "2.1", title: "استلام الأعمدة والأسقف قبل الصب", role: "فحص تكثيف الكانات، سماكة السقف، وتأسيس فتحات السباكة والتكييف.", tag: "جودة الهيكل", col: "#28b894" },
+          { num: "2.2", title: "اختبارات الخرسانة والمكعبات", role: "إجراء اختبار الهبوط بالموقع وحفظ المكعبات لفحص الإجهاد بعد 28 يوماً.", tag: "ضبط الجودة", col: "#f5d066" },
+          { num: "2.3", title: "الالتزام بنسبة الملحق العلوي", role: "عدم تجاوز المساحة المرخصة للملحق أو فتح نوافذ كاشفة على الجيران.", tag: "مطابقة بلدية", col: "#f43f5e" }
+        ]
+      },
+      {
+        id: 2, start: 18000, end: 27000, badge: "المحطة 3 من 4 : العزل الحراري والواجهة",
+        title: "المحطة الثالثة: توثيق العزل الحراري والتشطيبات",
+        subtitle: "الشرط الإلزامي لإطلاق التيار الكهربائي من شركة الكهرباء", themeColor: "#38bdf8",
+        tts: "المحطة الثالثة: توثيق تركيب العزل الحراري للجدران والأسطح والنوافذ المزدوجة وفق كود ترشيد الطاقة، ومطابقة الواجهة الخارجية والرصيف مع الرخصة.",
+        takeaway: "❄️ شركة الكهرباء لا تطلق التيار للمبنى الجديد إلا بعد اعتماد تقارير «العزل الحراري وشهادة الإشغال»!",
+        cards: [
+          { num: "3.1", title: "توثيق منظومة العزل الحراري", role: "تصوير واعتماد عزل الجدران، ألواح فوم السطح، والنوافذ الدبل جلاس.", tag: "كود الطاقة 602", col: "#38bdf8" },
+          { num: "3.2", title: "سلامة التمديدات والوقاية", role: "فحص شبكات الكهرباء والتأريض والسباكة ومتطلبات السلامة للمبنى.", tag: "فحص كهروميكانيكي", col: "#28b894" },
+          { num: "3.3", title: "مطابقة الواجهة والرصيف الخارجي", role: "إنهاء تشطيب الواجهات وتنفيذ الرصيف ونظافة الموقع من مخلفات البناء.", tag: "المظهر الحضري", col: "#f5d066" }
+        ]
+      },
+      {
+        id: 3, start: 27000, end: 36000, badge: "المحطة 4 من 4 : الصدور وإطلاق الخدمات",
+        title: "المحطة الرابعة: صدور شهادة الإشغال وتفعيل التأمين",
+        subtitle: "إطلاق الكهرباء والمياه وجاهزية العقار للسكن أو الفرز", themeColor: "#a78bfa",
+        tts: "المحطة الرابعة: رفع التقرير الختامي من المكتب المشرف، وتفعيل وثيقة التأمين لعشر سنوات، وصدور شهادة الإشغال لإطلاق الكهرباء وفرز الوحدات فوراً.",
+        takeaway: "📲 لخدمات الإشراف الهندسي واستخراج شهادات الإشغال: م. عبدالمجيد الفقيه | 0532777678",
+        cards: [
+          { num: "4.1", title: "رفع التقرير الختامي في بلدي", role: "إقرار المكتب الهندسي المشرف باكتمال المبنى ومطابقته للمخططات المعتمدة.", tag: "إقفال الإشراف", col: "#28b894" },
+          { num: "4.2", title: "تفعيل وثيقة التأمين العشرية", role: "بدء سريان التغطية التأمينية ضد العيوب الخفية لمدة 10 سنوات كاملة.", tag: "أمان للمالك", col: "#f5d066" },
+          { num: "4.3", title: "صدور الشهادة وإطلاق الكهرباء", role: "إشعار شركة الكهرباء آلياً وإتاحة العقار للفرز والتمويل البنكي!", tag: "ثمرة الانضباط", col: "#38bdf8" }
+        ]
+      }
+    ]
+  },
+
+  // Episode 4: Status Correction & Structural Safety Report
+  {
+    name: "ENG540_Episode5_Building_Regularization",
+    hubTitle: "تصحيح وضع مبنى",
+    hubSub: "وتقرير السلامة الإنشائية",
+    scenes: [
+      {
+        id: 0, start: 0, end: 9000, badge: "المحطة 1 من 4 : الفحص التنظيمي والمساحي",
+        title: "كيف تصحّح وضع «مبنى قائم بدون رخصة» في 4 محطات؟",
+        subtitle: "المحطة الأولى: مطابقة حدود العقار وخطوط التنظيم", themeColor: "#f5d066",
+        tts: "لتصحيح وضع مبنى قائم بدون رخصة أو به مخالفات، تبدأ المحطة الأولى بالرفع المساحي للتأكد من عدم تعدي المبنى على الشارع أو الجيران وإصدار قرار مساحي للتصحيح.",
+        takeaway: "✨ الشرط الأول للتصحيح: ألا يكون المبنى متعدياً على خطوط التنظيم المعتمدة للشوارع!",
+        cards: [
+          { num: "1.1", title: "تحديث الصك ومطابقة الحدود", role: "التأكد من وجود صك إلكتروني محدّث ومطابقة أضلاع الأرض على الطبيعة.", tag: "فحص الوثيقة", col: "#f5d066" },
+          { num: "1.2", title: "عدم التعدي على الشارع والجار", role: "التحقق المساحي من وقوع المبنى بالكامل داخل حدود الملكية والخطوط التنظيمية.", tag: "سلامة الموقع", col: "#28b894" },
+          { num: "1.3", title: "قرار مساحي لغرض التصحيح", role: "إصدار قرار مساحي مخصص لخدمة تصحيح وضع مبنى قائم عبر منصة بلدي.", tag: "إجراء بلدي", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 1, start: 9000, end: 18000, badge: "المحطة 2 من 4 : مخططات الواقع (As-Built)",
+        title: "المحطة الثانية: الرفع المعماري للواقع الفعلي للمبنى",
+        subtitle: "رسم مخططات هندسية توثّق المبنى كما هو منفذ على الطبيعة", themeColor: "#28b894",
+        tts: "المحطة الثانية: نزول الفريق الهندسي لرفع مقاسات المبنى الفعلية، ورسم مخططات الوضع الراهن آز بيلت، وحصر المساحات المطابقة والمخالفة للارتدادات.",
+        takeaway: "📐 مخططات الواقع الفعلي (As-Built) هي الأساس الذي تُحسب عليه الرسوم وتُعتمد به الرخصة!",
+        cards: [
+          { num: "2.1", title: "الرفع المعماري لجميع الأدوار", role: "قياس الغرف، المناور، الدرج، والواجهات المنفذة فعلياً ورسمها هندسياً.", tag: "مخطط As-Built", col: "#28b894" },
+          { num: "2.2", title: "حصر المساحات ونسب البناء", role: "حساب مسطحات البناء الفعلية ومقارنتها بالنسب النظامية المسموحة بالمنطقة.", tag: "تدقيق المساحات", col: "#f5d066" },
+          { num: "2.3", title: "تحديد ملاحظات الارتداد والفتحات", role: "رصد أي نوافذ كاشفة على الجار أو بروزات تتطلب معالجة فنية.", tag: "تقرير المطابقة", col: "#38bdf8" }
+        ]
+      },
+      {
+        id: 2, start: 18000, end: 27000, badge: "المحطة 3 من 4 : تقرير السلامة الإنشائية",
+        title: "المحطة الثالثة: الفحص الإنشائي وتقرير سلامة المبنى",
+        subtitle: "إثبات متانة الأعمدة والأسقف والقواعد لتحمّل الأحمال بأمان", themeColor: "#38bdf8",
+        tts: "المحطة الثالثة: فحص العناصر الإنشائية للمبنى بصرياً وبأجهزة الاختبار غير المتلفة، وإصدار تقرير سلامة إنشائية معتمد يثبت متانة المبنى وأمانه.",
+        takeaway: "🔬 تقرير السلامة الإنشائية المعتمد هو الوثيقة الحاسمة لقبول تصحيح المبنى أو إضافة دور علوي!",
+        cards: [
+          { num: "3.1", title: "الفحص البصري والاختبارات الفنية", role: "فحص الأعمدة والأسقف بالمطرقة والموجات والقلوب الخرسانية عند الحاجة.", tag: "فحص إنشائي", col: "#38bdf8" },
+          { num: "3.2", title: "إصدار شهادة وتقرير السلامة", role: "اعتماد التقرير الهندسي الذي يثبت سلامة الهيكل الخرساني وخلوه من الخطورة.", tag: "تقرير معتمد", col: "#28b894" },
+          { num: "3.3", title: "متطلبات الأمن والسلامة (للتجاري)", role: "استيفاء اشتراطات الدفاع المدني ومخارج الطوارئ للمباني التجارية والعمائر.", tag: "بوابة سلامة", col: "#f5d066" }
+        ]
+      },
+      {
+        id: 3, start: 27000, end: 36000, badge: "المحطة 4 من 4 : الرخصة والفرز والتمويل",
+        title: "المحطة الرابعة: صدور رخصة التصحيح وشهادة الإشغال",
+        subtitle: "تحويل العقار من «مبنى موقوف» إلى «أصل نظامي قابل للفرز والبيع»", themeColor: "#a78bfa",
+        tts: "المحطة الرابعة: معالجة الملاحظات وسداد الرسوم المقررة لإصدار رخصة تصحيح وضع المبنى وشهادة الإشغال، مما يفتح لك باب فرز الوحدات والتمويل البنكي فوراً.",
+        takeaway: "📲 لتصحيح أوضاع المباني القائمة وإعداد تقارير السلامة الإنشائية: م. عبدالمجيد الفقيه | 0532777678",
+        cards: [
+          { num: "4.1", title: "معالجة المخالفات القابلة للتصحيح", role: "إغلاق الفتحات الكاشفة على الجار وتحسين الواجهة وفق اشتراطات الأمانة.", tag: "معالجة ميدانية", col: "#f5d066" },
+          { num: "4.2", title: "إصدار رخصة تصحيح وضع مبنى", role: "اعتماد المخططات النهائية وسداد الرسوم البلدية وصدور الرخصة الرسمية.", tag: "ترخيص نظامي", col: "#28b894" },
+          { num: "4.3", title: "شهادة الإشغال والفرز والتمويل", role: "استخراج شهادة الإشغال وإتاحة المبنى لفرز الشقق والبيع بالتمويل العقاري!", tag: "مضاعفة القيمة", col: "#38bdf8" }
+        ]
+      }
+    ]
+  }
+];
+
+let currentEpisodeIdx = 0;
+let currentMs = 0, isPlaying = true, playbackSpeed = 1.0, lastTick = performance.now();
+let sfxEnabled = true, voiceEnabled = false, lastSceneId = -1, audioCtx = null;
+let mediaRecorder = null, recordedChunks = [], isRecording = false;
+
+const canvas = document.getElementById('masterCanvas');
+const ctx = canvas.getContext('2d');
+
+const STARS = Array.from({ length: 65 }, (_, i) => ({
+  x: (Math.sin(i * 45.23) * 0.5 + 0.5),
+  y: (Math.cos(i * 91.17) * 0.5 + 0.5),
+  r: 1.2 + (i % 3) * 0.9,
+  spd: 0.015 + (i % 5) * 0.008,
+  col: i % 2 === 0 ? '#f5d066' : '#28b894'
+}));
+
+function loadEpisode(idx) {
+  currentEpisodeIdx = idx;
+  currentMs = 0;
+  lastSceneId = -1;
+  document.querySelectorAll('.ep-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  renderFrame(0);
+  updateUI();
+  updateNow(); buildDots(); updateCaption();
+  if (document.getElementById('exploreOverlay').open) renderExplore();
+}
+
+function playChime(freq = 587.33) {
+  if (!sfxEnabled) return;
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, now);
+    osc.frequency.exponentialRampToValueAtTime(freq * 1.25, now + 0.18);
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(0.08, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0005, now + 0.45);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(now); osc.stop(now + 0.48);
+  } catch (e) {}
+}
+
+function speakArabic(text) {
+  if (!voiceEnabled || !window.speechSynthesis) return;
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ar-SA'; u.rate = 1.02;
+    window.speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+function drawRoundedRect(ctx, x, y, w, h, r, fill, stroke, lineWidth = 2) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lineWidth; ctx.stroke(); }
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '', curY = y;
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' ';
+    if (ctx.measureText(testLine).width > maxWidth && n > 0) {
+      ctx.fillText(line.trim(), x, curY);
+      line = words[n] + ' '; curY += lineHeight;
+    } else { line = testLine; }
+  }
+  ctx.fillText(line.trim(), x, curY);
+  return curY + lineHeight;
+}
+
+function renderFrame(ms) {
+  const isHoriz = document.body.classList.contains('mode-horizontal');
+  const W = isHoriz ? 1920 : 1080, H = isHoriz ? 1080 : 1920;
+  if (canvas.width !== W || canvas.height !== H) { canvas.width = W; canvas.height = H; }
+
+  const sec = ms / 1000;
+  const ep = EPISODES[currentEpisodeIdx];
+  const scene = ep.scenes.find(s => ms >= s.start && ms < s.end) || ep.scenes[0];
+  const localMs = ms - scene.start;
+
+  if (scene.id !== lastSceneId) {
+    lastSceneId = scene.id;
+    playChime(440 + scene.id * 60);
+    speakArabic(scene.tts);
+    updateNow(); updateCaption(); syncDots(); announceScene();
+  }
+
+  const grad = ctx.createRadialGradient(W * 0.5, H * 0.32, 50, W * 0.5, H * 0.5, Math.max(W, H) * 0.75);
+  grad.addColorStop(0, '#11324d'); grad.addColorStop(0.55, '#071626'); grad.addColorStop(1, '#030912');
+  ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+
+  ctx.strokeStyle = 'rgba(245, 208, 102, 0.04)'; ctx.lineWidth = 1;
+  for (let gx = 0; gx < W; gx += 80) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+  for (let gy = 0; gy < H; gy += 80) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+
+  STARS.forEach(st => {
+    const sx = (st.x * W + (REDUCED ? 0 : sec) * 25 * st.spd * 60) % W;
+    const sy = ((st.y * H - (REDUCED ? 0 : sec) * 18 * st.spd * 60) % H + H) % H;
+    ctx.fillStyle = st.col; ctx.globalAlpha = 0.55;
+    ctx.beginPath(); ctx.arc(sx, sy, st.r, 0, Math.PI * 2); ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+
+  const padX = isHoriz ? 70 : 48, topY = isHoriz ? 45 : 65;
+  drawRoundedRect(ctx, W - padX - 310, topY, 310, 56, 28, 'rgba(14, 40, 60, 0.95)', '#d4af52', 2.5);
+  ctx.fillStyle = '#ffffff'; ctx.font = '900 23px Cairo'; ctx.textAlign = 'center';
+  ctx.fillText('إبداعات هندسية | ENG540', W - padX - 155, topY + 37);
+
+  drawRoundedRect(ctx, padX, topY, 440, 56, 28, 'rgba(16, 52, 68, 0.95)', scene.themeColor, 2.5);
+  ctx.fillStyle = scene.themeColor; ctx.font = '800 21px Cairo';
+  ctx.fillText(scene.badge, padX + 220, topY + 37);
+
+  ctx.fillStyle = '#ffffff'; ctx.font = isHoriz ? '900 42px Cairo' : '900 45px Cairo'; ctx.textAlign = 'center';
+  let titleY = topY + (isHoriz ? 112 : 130);
+  titleY = wrapText(ctx, scene.title, W / 2, titleY, W - padX * 2, isHoriz ? 58 : 64);
+
+  ctx.fillStyle = '#ffe484'; ctx.font = isHoriz ? '700 24px Cairo' : '700 27px Cairo';
+  titleY = wrapText(ctx, scene.subtitle, W / 2, titleY + 6, W - padX * 2, 42);
+
+  const hubCx = isHoriz ? W * 0.25 : W * 0.5, hubCy = isHoriz ? H * 0.54 : titleY + 165, hubR = isHoriz ? 135 : 115;
+  ctx.save(); ctx.translate(hubCx, hubCy);
+  ctx.strokeStyle = 'rgba(40, 184, 148, 0.35)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(0, 0, hubR * 1.35, 0, Math.PI * 2); ctx.stroke();
+  ctx.rotate(sec * 0.7); ctx.strokeStyle = scene.themeColor; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(0, 0, hubR * 1.18, 0, 1.3); ctx.stroke();
+  ctx.beginPath(); ctx.arc(0, 0, hubR * 1.18, Math.PI, Math.PI + 1.3); ctx.stroke();
+  ctx.restore();
+
+  drawRoundedRect(ctx, hubCx - hubR, hubCy - hubR * 0.62, hubR * 2, hubR * 1.24, 26, '#0a2236', '#f5d066', 3);
+  ctx.fillStyle = '#f5d066'; ctx.font = '900 23px Cairo'; ctx.textAlign = 'center';
+  ctx.fillText(ep.hubTitle, hubCx, hubCy - 8);
+  ctx.fillStyle = '#ffffff'; ctx.font = '800 18px Cairo';
+  ctx.fillText(ep.hubSub, hubCx, hubCy + 22);
+  ctx.fillStyle = '#6ee7b7'; ctx.font = '700 15px Cairo';
+  ctx.fillText(`المحطة ${scene.id + 1} من 4`, hubCx, hubCy + 50);
+
+  const cards = scene.cards;
+  const cardsStartX = isHoriz ? W * 0.46 : padX, cardsWidth = isHoriz ? W * 0.50 : W - padX * 2;
+  let cardsStartY = isHoriz ? topY + 180 : hubCy + hubR + 45;
+  const cardGap = isHoriz ? 20 : 24;
+  const cardH = isHoriz ? 180 : 245;
+
+  cards.forEach((c, idx) => {
+    const cProg = Math.max(0, Math.min(1, (localMs - idx * 140) / 480));
+    const cEase = REDUCED ? 1 : (1 - Math.pow(1 - cProg, 3));
+    const cy = cardsStartY + idx * (cardH + cardGap) + (1 - cEase) * 45;
+    ctx.globalAlpha = cEase;
+
+    ctx.strokeStyle = c.col; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(hubCx, hubCy + (isHoriz ? 0 : hubR * 0.62)); ctx.lineTo(cardsStartX + cardsWidth * 0.5, cy); ctx.stroke();
+
+    drawRoundedRect(ctx, cardsStartX, cy, cardsWidth, cardH, 24, 'rgba(9, 28, 46, 0.96)', c.col, 3);
+    const badgeX = cardsStartX + cardsWidth - 52, badgeY = cy + 48;
+    ctx.fillStyle = c.col; ctx.beginPath(); ctx.arc(badgeX, badgeY, 34, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#040d1a'; ctx.font = '900 20px Cairo'; ctx.textAlign = 'center';
+    ctx.fillText(c.num, badgeX, badgeY + 8);
+
+    drawRoundedRect(ctx, cardsStartX + 24, cy + 20, 220, 42, 21, 'rgba(255,255,255,0.08)', c.col, 1.5);
+    ctx.fillStyle = c.col; ctx.font = '800 17px Cairo';
+    ctx.fillText(c.tag, cardsStartX + 134, cy + 48);
+
+    ctx.fillStyle = '#ffffff'; ctx.font = '900 27px Cairo'; ctx.textAlign = 'right';
+    ctx.fillText(c.title, badgeX - 48, cy + 54);
+
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 22px Cairo';
+    wrapText(ctx, c.role, cardsStartX + cardsWidth - 32, cy + 108, cardsWidth - 64, 38);
+    ctx.globalAlpha = 1;
+  });
+
+  const takeY = H - (isHoriz ? 168 : 225), takeH = isHoriz ? 86 : 118;
+  drawRoundedRect(ctx, padX, takeY, W - padX * 2, takeH, 22, 'rgba(14, 42, 62, 0.98)', '#f5d066', 3);
+  ctx.fillStyle = '#fef08a'; ctx.font = isHoriz ? '800 22px Cairo' : '800 24px Cairo'; ctx.textAlign = 'center';
+  wrapText(ctx, scene.takeaway, W / 2, takeY + (isHoriz ? 38 : 45), W - padX * 2 - 48, 38);
+
+  const footY = H - (isHoriz ? 68 : 88);
+  drawRoundedRect(ctx, padX, footY, W - padX * 2, isHoriz ? 52 : 64, 16, 'rgba(5, 15, 26, 0.96)', 'rgba(212, 175, 82, 0.5)', 2);
+  ctx.fillStyle = '#ffffff'; ctx.font = isHoriz ? '800 19px Cairo' : '800 21px Cairo'; ctx.textAlign = 'right';
+  ctx.fillText('م. عبدالمجيد الفقيه | مهندس مدني — صناعة الأثر لا مجرد الإنجاز', W - padX - 24, footY + (isHoriz ? 33 : 40));
+  ctx.fillStyle = '#f5d066'; ctx.textAlign = 'left';
+  ctx.fillText('@ENG540 | 0532777678', padX + 24, footY + (isHoriz ? 33 : 40));
+
+  ctx.fillStyle = '#28b894'; ctx.fillRect(0, H - 8, (ms / TOTAL_MS) * W, 8);
+}
+
+function formatTime(ms) {
+  const s = Math.floor(ms / 1000);
+  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+}
+function updateUI() {
+  document.getElementById('scrubber').value = Math.floor(currentMs);
+  document.getElementById('timeLabel').textContent = `${formatTime(currentMs)} / ${formatTime(TOTAL_MS)}`;
+}
+function togglePlay() {
+  isPlaying = !isPlaying;
+  const btn = document.getElementById('playPauseBtn');
+  btn.textContent = isPlaying ? '⏸ إيقاف مؤقت' : '▶ تشغيل الفيديو';
+  btn.classList.toggle('active', isPlaying);
+  lastTick = performance.now();
+}
+function cycleSpeed() {
+  const speeds = [1.0, 1.25, 1.5, 0.75];
+  playbackSpeed = speeds[(speeds.indexOf(playbackSpeed) + 1) % speeds.length];
+  document.getElementById('speedBtn').textContent = `⚡ السرعة: ${playbackSpeed}x`;
+  prefs.speed = playbackSpeed; savePrefs();
+}
+function toggleLayoutMode() {
+  document.body.classList.toggle('mode-horizontal');
+  document.body.classList.toggle('mode-vertical');
+  renderFrame(currentMs);
+  prefs.layout = document.body.classList.contains('mode-horizontal') ? 'horizontal' : 'vertical';
+  savePrefs(); fitStage();
+}
+function onScrub(val) {
+  currentMs = Number(val);
+  renderFrame(currentMs);
+  updateUI();
+  syncDots(); updateNow(); updateCaption();
+  if (document.getElementById('exploreOverlay').open) renderExplore();
+}
+function toggleSfx() {
+  sfxEnabled = !sfxEnabled;
+  const btn = document.getElementById('sfxBtn');
+  btn.classList.toggle('active', sfxEnabled);
+  btn.textContent = sfxEnabled ? '🔔 نغمات الانتقال' : '🔕 صامت';
+  prefs.sfx = sfxEnabled; savePrefs();
+}
+function toggleVoice() {
+  voiceEnabled = !voiceEnabled;
+  const btn = document.getElementById('voiceBtn');
+  btn.classList.toggle('active', voiceEnabled);
+  btn.textContent = voiceEnabled ? '🔊 التعليق: مفعل' : '🔊 التعليق الصوتي';
+  prefs.voice = voiceEnabled; savePrefs();
+}
+function toggleVideoRecording() {
+  const btn = document.getElementById('recBtn');
+  if (isRecording && mediaRecorder && mediaRecorder.state !== 'inactive') { mediaRecorder.stop(); return; }
+  try {
+    if (document.getElementById('exploreOverlay').open) closeExplore();
+    const stream = canvas.captureStream(30);
+    const mimeType = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+    recordedChunks = [];
+    mediaRecorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 6000000 });
+    mediaRecorder.ondataavailable = e => { if (e.data && e.data.size > 0) recordedChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      isRecording = false;
+      btn.textContent = '🎥 تصدير فيديو هذه الحلقة (WebM)';
+      const url = URL.createObjectURL(new Blob(recordedChunks, { type: mimeType }));
+      const a = document.createElement('a'); a.href = url;
+      a.download = EPISODES[currentEpisodeIdx].name + '.webm';
+      a.click();
+    };
+    currentMs = 0; isPlaying = true; isRecording = true;
+    btn.textContent = '⏹ جارٍ تسجيل الحلقة.. اضغط للحفظ الآن';
+    mediaRecorder.start(200);
+  } catch (err) { btn.textContent = '⚠️ المتصفح لا يدعم التسجيل المباشر'; }
+}
+function loop(now) {
+  if (isPlaying) {
+    currentMs += (now - lastTick) * playbackSpeed;
+    if (currentMs >= TOTAL_MS) {
+      if (isRecording && mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+      currentMs = currentMs % TOTAL_MS;
+    }
+    renderFrame(currentMs); updateUI();
+  }
+  lastTick = now; requestAnimationFrame(loop);
+}
+
+/* ═══════ تطويرات v3.1: التنقل، وضع الاستكشاف، نص المشهد، الإتاحة، التفضيلات ═══════ */
+
+// خريطة الروابط الموثقة إلى موسوعة ENG540 — صفحات تم التحقق من وجودها فعلياً فقط.
+// المفتاح: "رقم الحلقة-رقم المحطة-رقم البطاقة" (فهارس تبدأ من 0). البطاقات غير المدرجة تبقى بلا رابط.
+const ENC_BASE = 'https://eng540.github.io/eng540-services/pages/';
+const EP_LINKS = {
+  "0-0-0": "02-PLATFORMS/Balady.html", "0-0-1": "00-STRATEGY/Central-Services-Database.html", "0-0-2": "02-PLATFORMS/Other-Platforms.html",
+  "0-1-3": "02-PLATFORMS/Najiz.html", "0-1-4": "00-STRATEGY/Central-Services-Database.html", "0-1-5": "02-PLATFORMS/Real-Estate-Registry.html",
+  "0-2-6": "03-SERVICES/03-Unit-Subdivision/README.html", "0-2-7": "03-SERVICES/03-Unit-Subdivision/README.html",
+  "0-3-9": "02-PLATFORMS/Other-Platforms.html", "0-3-10": "02-PLATFORMS/Other-Platforms.html",
+  "1-0-0": "03-SERVICES/02-Deed-Update/README.html", "1-0-1": "03-SERVICES/01-Building-Permit/02-Requirements-Documents.html", "1-0-2": "02-PLATFORMS/Balady.html",
+  "1-1-0": "03-SERVICES/04-Survey-Decision/README.html", "1-1-1": "03-SERVICES/04-Survey-Decision/04-Technical-Field-Costs.html", "1-1-2": "03-SERVICES/04-Survey-Decision/README.html",
+  "1-2-0": "03-SERVICES/01-Building-Permit/04-Technical-Field-Costs.html", "1-2-1": "03-SERVICES/01-Building-Permit/04-Technical-Field-Costs.html", "1-2-2": "03-SERVICES/01-Building-Permit/04-Technical-Field-Costs.html",
+  "1-3-0": "05-OPERATIONS/Workflow/Engineering-Supervision-Card.html", "1-3-1": "02-PLATFORMS/Balady.html", "1-3-2": "03-SERVICES/01-Building-Permit/README.html",
+  "2-0-0": "03-SERVICES/03-Unit-Subdivision/02-Requirements-Documents.html", "2-0-1": "03-SERVICES/06-Occupancy-Certificate/README.html", "2-0-2": "03-SERVICES/02-Deed-Update/README.html",
+  "2-1-0": "03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html", "2-1-1": "03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html", "2-1-2": "03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html",
+  "2-2-0": "03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html", "2-2-1": "03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html", "2-2-2": "03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html",
+  "2-3-0": "03-SERVICES/03-Unit-Subdivision/README.html", "2-3-1": "02-PLATFORMS/Najiz.html", "2-3-2": "03-SERVICES/03-Unit-Subdivision/README.html",
+  "3-0-0": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html", "3-0-1": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html", "3-0-2": "02-PLATFORMS/Balady.html",
+  "3-1-0": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html", "3-1-1": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html", "3-1-2": "03-SERVICES/06-Occupancy-Certificate/02-Requirements-Documents.html",
+  "3-2-0": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html", "3-2-1": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html", "3-2-2": "03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html",
+  "3-3-0": "03-SERVICES/06-Occupancy-Certificate/README.html", "3-3-1": "02-PLATFORMS/Balady.html", "3-3-2": "03-SERVICES/06-Occupancy-Certificate/README.html",
+  "4-0-0": "03-SERVICES/02-Deed-Update/README.html", "4-0-1": "03-SERVICES/04-Survey-Decision/README.html", "4-0-2": "03-SERVICES/04-Survey-Decision/README.html",
+  "4-1-0": "03-SERVICES/11-Building-Status-Correction/04-Technical-Field-Costs.html", "4-1-1": "03-SERVICES/11-Building-Status-Correction/04-Technical-Field-Costs.html", "4-1-2": "03-SERVICES/11-Building-Status-Correction/04-Technical-Field-Costs.html",
+  "4-2-0": "03-SERVICES/13-Building-Safety-Report/README.html", "4-2-1": "03-SERVICES/13-Building-Safety-Report/README.html", "4-2-2": "02-PLATFORMS/Other-Platforms.html",
+  "4-3-0": "03-SERVICES/11-Building-Status-Correction/README.html", "4-3-1": "03-SERVICES/11-Building-Status-Correction/README.html", "4-3-2": "03-SERVICES/06-Occupancy-Certificate/README.html"
+};
+
+const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PREFS_KEY = 'eng540-studio-prefs';
+let prefs = {};
+try { prefs = JSON.parse(localStorage.getItem(PREFS_KEY) || '{}'); } catch (e) { prefs = {}; }
+function savePrefs() { try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch (e) {} }
+
+let exploreOpen = false, wasPlayingBeforeExplore = false;
+
+function currentScene() {
+  const ep = EPISODES[currentEpisodeIdx];
+  return ep.scenes.find(s => currentMs >= s.start && currentMs < s.end) || ep.scenes[0];
+}
+function esc(t) {
+  return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function announceScene() {
+  const sc = currentScene();
+  document.getElementById('srLive').textContent = 'المحطة ' + (sc.id + 1) + ' من 4: ' + sc.title;
+}
+function updateNow() {
+  const ep = EPISODES[currentEpisodeIdx], sc = currentScene();
+  document.getElementById('nowEp').textContent = 'الحلقة ' + (currentEpisodeIdx + 1) + ': ' + ep.hubTitle + ' (' + ep.hubSub + ')';
+  document.getElementById('nowSc').textContent = 'المحطة ' + (sc.id + 1) + ' من 4: ' + sc.title;
+}
+
+/* ── التنقل بين المحطات ── */
+function jumpScene(dir) {
+  const ep = EPISODES[currentEpisodeIdx];
+  const sc = currentScene();
+  const idx = sc.id + dir;
+  if (idx >= 0 && idx < ep.scenes.length) {
+    currentMs = ep.scenes[idx].start + 1;
+    lastSceneId = -1;
+    renderFrame(currentMs); updateUI(); syncDots();
+  } else if (dir > 0 && currentEpisodeIdx < EPISODES.length - 1) {
+    loadEpisode(currentEpisodeIdx + 1); // نهاية الحلقة → الحلقة التالية
+  } else if (dir < 0 && currentEpisodeIdx > 0) {
+    loadEpisode(currentEpisodeIdx - 1); // بداية الحلقة → الحلقة السابقة
+  }
+  announceScene();
+}
+function buildDots() {
+  const ep = EPISODES[currentEpisodeIdx];
+  const box = document.getElementById('sceneDots');
+  box.innerHTML = ep.scenes.map((sc, i) =>
+    '<button type="button" class="sd-btn" data-i="' + i + '" aria-label="الانتقال إلى المحطة ' + (i + 1) + ' من 4: ' + esc(sc.title) + '">المحطة ' + (i + 1) + '</button>'
+  ).join('');
+  box.querySelectorAll('.sd-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      currentMs = EPISODES[currentEpisodeIdx].scenes[Number(b.dataset.i)].start + 1;
+      lastSceneId = -1;
+      renderFrame(currentMs); updateUI(); syncDots(); announceScene();
+      if (exploreOpen) renderExplore();
+    });
+  });
+  syncDots();
+}
+function syncDots() {
+  const sc = currentScene();
+  document.querySelectorAll('#sceneDots .sd-btn').forEach((b, i) => b.classList.toggle('active', i === sc.id));
+}
+
+/* ── نص المشهد (التعليق النصي الكامل) ── */
+function toggleCaptions(force) {
+  const bar = document.getElementById('captionBar');
+  const on = (typeof force === 'boolean') ? force : !bar.classList.contains('show');
+  bar.classList.toggle('show', on);
+  document.getElementById('capBtn').classList.toggle('active', on);
+  document.getElementById('capBtn').setAttribute('aria-pressed', String(on));
+  prefs.captions = on; savePrefs();
+  if (on) updateCaption();
+  fitStage();
+}
+function updateCaption() {
+  if (!document.getElementById('captionBar').classList.contains('show')) return;
+  document.getElementById('capText').textContent = currentScene().tts;
+}
+
+/* ── وضع الاستكشاف: حوار غير نمطي، مصدره الوحيد بيانات EPISODES ── */
+function renderExplore() {
+  const ep = EPISODES[currentEpisodeIdx], sc = currentScene();
+  const ei = currentEpisodeIdx;
+  const cards = sc.cards.map((c, ci) => {
+    const link = EP_LINKS[ei + '-' + sc.id + '-' + ci];
+    return '<article class="exp-card">' +
+      '<div class="exp-card-top"><span class="exp-num" style="background:' + c.col + '">' + esc(c.num) + '</span>' +
+      '<span class="exp-tag" style="color:' + c.col + '">' + esc(c.tag) + '</span></div>' +
+      '<h3>' + esc(c.num) + ' — ' + esc(c.title) + '</h3>' +
+      '<p class="exp-role">' + esc(c.role) + '</p>' +
+      (link ? '<a class="exp-link" href="' + ENC_BASE + link + '" target="_blank" rel="noopener">📘 الصفحة المرتبطة في موسوعة ENG540 ↗</a>' : '') +
+      '</article>';
+  }).join('');
+  document.getElementById('exploreOverlay').innerHTML =
+    '<div class="exp-head">' +
+      '<div><h2 id="expTitle" class="exp-title">🔍 استكشاف المحطة ' + (sc.id + 1) + ' من 4: ' + esc(sc.title) + '</h2>' +
+      '<div class="exp-sub">الحلقة ' + (ei + 1) + ': ' + esc(ep.hubTitle) + ' (' + esc(ep.hubSub) + ') — ' + esc(sc.subtitle) + '</div></div>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<button type="button" class="exp-nav" onclick="expScene(-1)">المحطة السابقة</button>' +
+        '<button type="button" class="exp-nav" onclick="expScene(1)">المحطة التالية</button>' +
+        '<button type="button" class="exp-close" onclick="closeExplore()" autofocus>✕ عودة إلى العرض</button>' +
+      '</div></div>' +
+    cards +
+    '<p class="exp-note">نصوص هذه البطاقات من بيانات الحلقة نفسها التي يرسمها العرض السينمائي — قابلة للتحديد والنسخ.</p>';
+}
+function toggleExplore() {
+  const d = document.getElementById('exploreOverlay');
+  if (d.open) { d.close(); return; }
+  exploreOpen = true;
+  wasPlayingBeforeExplore = isPlaying;
+  if (isPlaying) togglePlay();               // إيقاف مؤقت حفظاً لموضع التشغيل
+  renderExplore();
+  d.show();                                   // غير نمطي: أدوات التحكم تبقى فعّالة
+  document.getElementById('exploreBtn').setAttribute('aria-expanded', 'true');
+  announceScene();
+}
+function closeExplore() {
+  const d = document.getElementById('exploreOverlay');
+  if (d.open) d.close();
+}
+function expScene(dir) {
+  jumpScene(dir);
+  renderExplore();
+  syncDots();
+}
+document.getElementById('exploreOverlay').addEventListener('close', () => {
+  exploreOpen = false;
+  document.getElementById('exploreBtn').setAttribute('aria-expanded', 'false');
+  if (wasPlayingBeforeExplore && !isPlaying) togglePlay(); // استئناف من الموضع نفسه
+});
+
+/* ── ملاءمة المسرح مع أي ارتفاع لأشرطة الواجهة ── */
+function fitStage() {
+  const isHoriz = document.body.classList.contains('mode-horizontal');
+  const ar = isHoriz ? 16 / 9 : 9 / 16;
+  const box = document.getElementById('stageArea');
+  const aw = box.clientWidth - 8, ah = box.clientHeight - 8;
+  if (aw <= 0 || ah <= 0) return;
+  let w = Math.min(aw, ah * ar), h = w / ar;
+  if (h > ah) { h = ah; w = h * ar; }
+  const wrap = document.getElementById('wrap');
+  wrap.style.width = Math.floor(w) + 'px';
+  wrap.style.height = Math.floor(h) + 'px';
+}
+
+/* ── إتاحة لوحة المفاتيح ── */
+document.addEventListener('keydown', (e) => {
+  if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+  const d = document.getElementById('exploreOverlay');
+  if (d.open) { if (e.key === 'Escape') d.close(); return; }
+  if (e.key === ' ' || e.key === 'Spacebar') { togglePlay(); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft') { jumpScene(1); e.preventDefault(); }   // RTL: يسار = تقدم
+  else if (e.key === 'ArrowRight') { jumpScene(-1); e.preventDefault(); } // يمين = رجوع
+  else if (e.key === 'e' || e.key === 'E' || e.key === 'ة') { toggleExplore(); e.preventDefault(); }
+  else if (/^[1-5]$/.test(e.key)) { loadEpisode(Number(e.key) - 1); announceScene(); }
+});
+
+/* ── نقر المسرح = إيقاف/تشغيل · سحب أفقي = تبديل الحلقة ── */
+canvas.addEventListener('click', () => { if (!document.getElementById('exploreOverlay').open) togglePlay(); });
+let touchX = 0, touchY = 0;
+canvas.addEventListener('touchstart', (e) => { const t = e.changedTouches[0]; touchX = t.clientX; touchY = t.clientY; }, { passive: true });
+canvas.addEventListener('touchend', (e) => {
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touchX, dy = t.clientY - touchY;
+  if (Math.abs(dx) > 60 && Math.abs(dy) < 42) {
+    const next = (currentEpisodeIdx + (dx < 0 ? 1 : EPISODES.length - 1)) % EPISODES.length;
+    loadEpisode(next); announceScene();
+  }
+}, { passive: true });
+
+/* ── إيقاف التشغيل عند إخفاء الصفحة ── */
+document.addEventListener('visibilitychange', () => { if (document.hidden && isPlaying) togglePlay(); });
+
+/* ── نقل أدوات التحكم الثانوية إلى قائمة «المزيد» على الشاشات الضيقة ── */
+const mqControls = window.matchMedia('(max-width: 720px)');
+function relayoutControls() {
+  const secondary = document.getElementById('secondaryCtrls');
+  const menu = document.getElementById('moreMenu');
+  const bar = document.getElementById('dockedControls');
+  const moreBtn = document.getElementById('moreBtn');
+  if (mqControls.matches) {
+    if (!menu.contains(secondary)) menu.appendChild(secondary);
+    if (typeof menu.showPopover !== 'function') {
+      moreBtn.onclick = () => menu.classList.toggle('force-open');
+    }
+  } else {
+    if (!bar.contains(secondary)) bar.insertBefore(secondary, moreBtn);
+    menu.classList.remove('force-open');
+  }
+}
+if (mqControls.addEventListener) mqControls.addEventListener('change', relayoutControls);
+else if (mqControls.addListener) mqControls.addListener(relayoutControls);
+
+/* ── تطبيق التفضيلات المحفوظة ── */
+function applyPrefs() {
+  try {
+    if (prefs.layout === 'horizontal' && !document.body.classList.contains('mode-horizontal')) {
+      document.body.classList.toggle('mode-horizontal');
+      document.body.classList.toggle('mode-vertical');
+    }
+    if (typeof prefs.speed === 'number') {
+      playbackSpeed = prefs.speed;
+      document.getElementById('speedBtn').textContent = `⚡ السرعة: ${playbackSpeed}x`;
+    }
+    if (prefs.sfx === false) toggleSfx();
+    if (prefs.voice === true) toggleVoice();
+    if (prefs.captions === true) toggleCaptions(true);
+  } catch (e) {}
+}
+
+/* ═══ نهاية تطويرات v3.1 ═══ */
+
+window.addEventListener('load', () => {
+  applyPrefs();
+  buildDots();
+  updateNow();
+  relayoutControls();
+  fitStage();
+  window.addEventListener('resize', fitStage);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => { fitStage(); renderFrame(0); lastTick = performance.now(); requestAnimationFrame(loop); });
+  } else { renderFrame(0); requestAnimationFrame(loop); }
+});
+</script>
+</body>
+</html>
