@@ -68,6 +68,7 @@ SERVICE_FILES = [
     ('03-Executive-Workflow.html', 'خوارزمية 25 خطوة', '🧭'),
     ('04-Technical-Field-Costs.html', 'الفني والتكاليف', '📐'),
     ('05-Problems-Cases-Exam.html', 'المشكلات والاختبار', '🧪'),
+    ('06-Verification-Card.html', 'بطاقة التحقق', '✅'),
 ]
 # عناوين عربية للمجلدات الفرعية غير الخدمات (تظهر في التنقل والفهارس والرئيسية)
 SUBFOLDER_TITLES = {
@@ -91,10 +92,12 @@ FILE_LABELS = {
     '03-Executive-Workflow.md': 'الخوارزمية الـ25 خطوة',
     '04-Technical-Field-Costs.md': 'الفني والميداني والتكاليف',
     '05-Problems-Cases-Exam.md': 'المشكلات والحالات والاختبار',
+    '06-Verification-Card.md': 'بطاقة التحقق والتأشير',
     # الإطار الاستراتيجي
     'Vision.md': 'وثيقة الرؤية',
     'Knowledge-Standards.md': 'معايير التوثيق والوسوم',
     'Services-Relations-Map.md': 'خريطة علاقات الخدمات',
+    'Service-Sequence-Matrix.md': 'مصفوفة التتابع الإلزامي',
     'Central-Services-Database.md': 'قاعدة الخدمات المركزية',
     'Learning-Objectives.md': 'خريطة الأهداف التعليمية',
     'About-Author.md': 'عن المؤلف',
@@ -118,6 +121,9 @@ FILE_LABELS = {
     'Pricing-Guide.md': 'دليل التسعير والفوترة والتحصيل',
     'Quality-Performance-Guide.md': 'دليل ضبط الجودة وقياس الأداء',
     'Office-Management-Guide.md': 'دليل إدارة المكتب',
+    'Job-Verification-Checklists.md': 'قوائم تحقق الوظائف',
+    'Office-Governance-Playbook.md': 'دليل حوكمة المكتب',
+    'Engineering-Supervision-Card.md': 'بطاقة الإشراف على البناء',
     # الحالات العملية (العناوين الرسمية)
     'Case-01-Raw-Land-To-Building.md': 'الحالة 1: من أرض فضاء إلى مبنى مرخص',
     'Case-02-Building-Without-Permit.md': 'الحالة 2: مبنى بلا رخصة',
@@ -305,11 +311,13 @@ def service_tabs(prefix, rel_page):
     parts = rel_page.split('/')
     if len(parts) >= 3 and parts[0] == '03-SERVICES':
         svc, cur = parts[1], parts[2]
+        _avail = [(f, t, ic) for (f, t, ic) in SERVICE_FILES
+                  if os.path.exists(os.path.join(SOURCE, '03-SERVICES', svc, f.replace('.html', '.md')))]
         tabs = ''.join(
             f'<a class="tab{" active" if f == cur else ""}" href="{f}"'
             f'{" aria-current=\"page\"" if f == cur else ""}>'
             f'<span class="tab-ic">{ic}</span><span>{t}</span></a>'
-            for f, t, ic in SERVICE_FILES)
+            for f, t, ic in _avail)
         tabs += (f'<a class="tab tab-app" href="{prefix}app.html?view=services&srv=SRV-{svc.split("-")[0]}">'
                  '⚡ هذه الخدمة في المنصة التفاعلية</a>')
         return (f'<div class="svc-hub"><div class="svc-hub-t">الخدمة {svc.split("-")[0]} — '
@@ -453,7 +461,7 @@ def build_synthetic_index(folder, label, prefix):
         stitle = SERVICE_TITLES.get(s) or SUBFOLDER_TITLES.get(s, s.replace('-', ' '))
         sdir = os.path.join(gdir, s)
         n = sum(1 for _r, _d, fs in os.walk(sdir) for f in fs if f.endswith('.md'))
-        note = '6 ملفات · خوارزمية 25 خطوة' if folder == '03-SERVICES' else ar_files(n)
+        note = (f'{ar_files(n)} · خوارزمية 25 خطوة' if folder == '03-SERVICES' else ar_files(n))
         cards += (f'<a class="card" href="{link(posixpath.join(folder, s, "README.html"), prefix)}">'
                   f'<span class="card-n">{"خدمة " + s.split("-")[0] if folder == "03-SERVICES" else "📁"}</span>'
                   f'<span class="card-t">{htmllib.escape(stitle)}</span>'
@@ -563,13 +571,15 @@ def main():
         if folder == '03-SERVICES':
             cards = ''
             for s in SERVICE_TITLES:
+                _n = sum(1 for _r, _d, fs in os.walk(os.path.join(SOURCE, '03-SERVICES', s)) for f in fs if f.endswith('.md'))
+                _vc = ' · بطاقة تحقق' if os.path.exists(os.path.join(SOURCE, '03-SERVICES', s, '06-Verification-Card.md')) else ''
                 cards += (f'<a class="card" href="pages/03-SERVICES/{s}/README.html">'
                           f'<span class="card-n">خدمة {s.split("-")[0]}</span>'
                           f'<span class="card-t">{SERVICE_TITLES[s]}</span>'
-                          f'<span class="card-d">6 ملفات · 25 خطوة · مصفوفة 18</span></a>')
+                          f'<span class="card-d">{ar_files(_n)} · 25 خطوة · مصفوفة 18{_vc}</span></a>')
             services_section = ('<section class="section" id="services"><h2>الخدمات الـ14</h2>'
-                                '<p class="section-sub">اضغط أي خدمة لتبويباتها الست: الفهم، المنصة، المتطلبات، '
-                                'خوارزمية 25 خطوة المتتبعة، الفني والتكاليف، المشكلات والاختبار</p>'
+                                '<p class="section-sub">اضغط أي خدمة لتبويباتها: الفهم، المنصة، المتطلبات، '
+                                'خوارزمية 25 خطوة المتتبعة، الفني والتكاليف، المشكلات والاختبار، وبطاقة التحقق للتأشير</p>'
                                 f'<div class="grid grid-14">{cards}</div></section>')
             continue
         n = sum(1 for _r, _d, fs in os.walk(gdir) for f in fs if f.endswith('.md'))

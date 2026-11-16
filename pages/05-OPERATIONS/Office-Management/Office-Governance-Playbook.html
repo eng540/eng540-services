@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="text-scale" content="scale">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("eng540-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t){document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="color-scheme"]');if(m)m.setAttribute("content",t)}}catch(e){}</script>
+<title>دليل حوكمة المكتب التنفيذي — ENG540</title>
+<meta name="description" content="دليل حوكمة المكتب التنفيذي — موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية، بمصادر رسمية موثقة ووسوم تحقق.">
+<link rel="canonical" href="https://eng540.github.io/eng540-services/pages/05-OPERATIONS/Office-Management/Office-Governance-Playbook.html">
+<meta property="og:title" content="دليل حوكمة المكتب التنفيذي — ENG540">
+<meta property="og:description" content="موسوعة ENG540 التشغيلية للخدمات الهندسية السعودية — مصادر رسمية موثقة.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://eng540.github.io/eng540-services/pages/05-OPERATIONS/Office-Management/Office-Governance-Playbook.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">تخطَّ إلى المحتوى</a>
+<div class="read-progress" id="readProgress"></div>
+<header class="site-header">
+  <a class="brand" href="../../../index.html"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a>
+  <a class="app-btn" href="../../../app.html">⚡ المنصة التفاعلية</a>
+  <a class="about-link" href="../../../pages/00-STRATEGY/About-Author.html">عن المؤلف</a>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الموسوعة…" autocomplete="off" aria-label="بحث في الموسوعة" aria-expanded="false" aria-controls="searchResults"><span class="search-kbd" aria-hidden="true">Ctrl+K</span><div id="searchResults" class="search-results" hidden></div></div>
+  <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي والنهاري" aria-pressed="false">🌙</button>
+</header>
+<div class="layout">
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="sidebar" id="sidebar" aria-label="فهرس الأقسام"><details class="nav-group"><summary>الإطار الاستراتيجي</summary><a class="nav-link" href="../../../pages/00-STRATEGY/Central-Services-Database.html">قاعدة الخدمات المركزية</a><a class="nav-link" href="../../../pages/00-STRATEGY/Knowledge-Standards.html">معايير التوثيق والوسوم</a><a class="nav-link" href="../../../pages/00-STRATEGY/Learning-Objectives.html">خريطة الأهداف التعليمية</a><a class="nav-link" href="../../../pages/00-STRATEGY/Service-Sequence-Matrix.html">مصفوفة التتابع الإلزامي</a><a class="nav-link" href="../../../pages/00-STRATEGY/Services-Relations-Map.html">خريطة علاقات الخدمات</a><a class="nav-link" href="../../../pages/00-STRATEGY/Vision.html">وثيقة الرؤية</a></details>
+<details class="nav-group"><summary>الأنظمة واللوائح والمصادر</summary><a class="nav-link" href="../../../pages/01-REGULATIONS/Laws.html">خريطة الأنظمة والتشريعات</a><a class="nav-link" href="../../../pages/01-REGULATIONS/Official-Sources.html">فهرس المصادر الرسمية</a><a class="nav-link" href="../../../pages/01-REGULATIONS/Regulations.html">الاشتراطات والمعايير التطبيقية</a></details>
+<details class="nav-group"><summary>أدلة المنصات</summary><a class="nav-link" href="../../../pages/02-PLATFORMS/Balady.html">دليل منصة بلدي</a><a class="nav-link" href="../../../pages/02-PLATFORMS/Najiz.html">دليل ناجز</a><a class="nav-link" href="../../../pages/02-PLATFORMS/Other-Platforms.html">المنصات الأخرى</a><a class="nav-link" href="../../../pages/02-PLATFORMS/Real-Estate-Registry.html">دليل السجل العقاري</a></details>
+<details class="nav-group"><summary>الخدمات الـ14</summary><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/README.html">📁 إصدار رخصة بناء</a><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/01-Building-Permit/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/README.html">📁 تحديث الصكوك</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/02-Deed-Update/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/README.html">📁 فرز الوحدات العقارية</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/03-Unit-Subdivision/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/README.html">📁 إصدار قرار مساحي</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/04-Survey-Decision/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/README.html">📁 إصدار رخصة ترميم</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/05-Renovation-Permit/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/README.html">📁 إصدار شهادة إشغال</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/06-Occupancy-Certificate/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/07-Deed-Merging/README.html">📁 دمج الصكوك</a><a class="nav-link" href="../../../pages/03-SERVICES/07-Deed-Merging/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/07-Deed-Merging/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/07-Deed-Merging/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/07-Deed-Merging/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/07-Deed-Merging/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/README.html">📁 إعداد كروكي مساحي</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/08-Survey-Sketch/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/README.html">📁 تقسيم ودمج الأراضي</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/09-Land-Subdivision-Merging/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/README.html">📁 الإشراف على رخصة الهدم</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/10-Demolition-Supervision/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/README.html">📁 تصحيح وضع مبنى</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/11-Building-Status-Correction/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/README.html">📁 التسجيل العيني للعقار</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/12-Real-Estate-Registration/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/README.html">📁 إعداد تقرير سلامة المبنى</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/13-Building-Safety-Report/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/README.html">📁 خدمات منصة بلدي</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/01-Platform-Steps.html">&nbsp;&nbsp;↳ خطوات المنصة</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/02-Requirements-Documents.html">&nbsp;&nbsp;↳ المتطلبات والمستندات</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/03-Executive-Workflow.html">&nbsp;&nbsp;↳ الخوارزمية الـ25 خطوة</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/04-Technical-Field-Costs.html">&nbsp;&nbsp;↳ الفني والميداني والتكاليف</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/05-Problems-Cases-Exam.html">&nbsp;&nbsp;↳ المشكلات والحالات والاختبار</a><a class="nav-link" href="../../../pages/03-SERVICES/14-Balady-Services/06-Verification-Card.html">&nbsp;&nbsp;↳ بطاقة التحقق والتأشير</a></details>
+<details class="nav-group"><summary>الأدلة الهندسية والمساحية</summary><a class="nav-link" href="../../../pages/04-ENGINEERING/Drawings/Drawings-Guide.html">📁 دليل المخططات الهندسية</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Drawings/Drawings-Guide.html">&nbsp;&nbsp;↳ دليل المخططات الهندسية</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">📁 دليل المعدات والبرامج</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide.html">&nbsp;&nbsp;↳ دليل المعدات والبرامج</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Surveying/Surveying-Guide.html">📁 دليل الأعمال المساحية</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Surveying/Surveying-Guide.html">&nbsp;&nbsp;↳ دليل الأعمال المساحية</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">📁 دليل التقارير الفنية</a><a class="nav-link" href="../../../pages/04-ENGINEERING/Technical-Reports/Technical-Reports-Guide.html">&nbsp;&nbsp;↳ دليل التقارير الفنية</a></details>
+<details class="nav-group open"><summary>الدليل التشغيلي للمكتب</summary><a class="nav-link" href="../../../pages/05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">📁 دليل إدارة العملاء والاستقبال</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Customer-Management/Customer-Journey-Guide.html">&nbsp;&nbsp;↳ دليل رحلة العميل</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Office-Management/Job-Verification-Checklists.html">📁 دليل إدارة المكتب</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Office-Management/Job-Verification-Checklists.html">&nbsp;&nbsp;↳ قوائم تحقق الوظائف</a><a class="nav-link current" href="../../../pages/05-OPERATIONS/Office-Management/Office-Governance-Playbook.html" aria-current="page">&nbsp;&nbsp;↳ دليل حوكمة المكتب</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Office-Management/Office-Management-Guide.html">&nbsp;&nbsp;↳ دليل إدارة المكتب</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Pricing/Pricing-Guide.html">📁 دليل التسعير والفوترة والتحصيل</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Pricing/Pricing-Guide.html">&nbsp;&nbsp;↳ دليل التسعير والفوترة والتحصيل</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">📁 دليل ضبط الجودة وقياس الأداء</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Quality-Control/Quality-Performance-Guide.html">&nbsp;&nbsp;↳ دليل ضبط الجودة وقياس الأداء</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Workflow/Engineering-Supervision-Card.html">📁 دليل تشغيل المعاملات وسير العمل</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Workflow/Engineering-Supervision-Card.html">&nbsp;&nbsp;↳ بطاقة الإشراف على البناء</a><a class="nav-link" href="../../../pages/05-OPERATIONS/Workflow/Transaction-Operations-Guide.html">&nbsp;&nbsp;↳ دليل تشغيل المعاملات</a></details>
+<details class="nav-group"><summary>الحالات العملية</summary><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-01-Raw-Land-To-Building.html">الحالة 1: من أرض فضاء إلى مبنى مرخص</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-02-Building-Without-Permit.html">الحالة 2: مبنى بلا رخصة</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-03-Land-Data-Update.html">الحالة 3: تحديث بيانات أرض وصك</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-04-Building-Needs-Restoration.html">الحالة 4: مبنى يحتاج ترميماً</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-05-Multi-Unit-Subdivision.html">الحالة 5: فرز مبنى متعدد الوحدات</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-06-Deeds-Merging.html">الحالة 6: دمج صكوك متجاورة</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-07-Building-Safety-Report.html">الحالة 7: تقرير سلامة مبنى</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-08-Land-Subdivision.html">الحالة 8: تجزئة أرض</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/Case-09-Real-Estate-Registration.html">الحالة 9: التسجيل العيني في السجل العقاري</a><a class="nav-link" href="../../../pages/06-PRACTICAL-CASES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>النماذج التشغيلية</summary><a class="nav-link" href="../../../pages/07-TEMPLATES/01-Client-Intake-Form.html">نموذج استقبال العميل</a><a class="nav-link" href="../../../pages/07-TEMPLATES/02-Property-Inspection-Form.html">نموذج معاينة العقار</a><a class="nav-link" href="../../../pages/07-TEMPLATES/03-Document-Review-Checklist.html">قائمة مراجعة المستندات</a><a class="nav-link" href="../../../pages/07-TEMPLATES/04-Quotation-Template.html">نموذج عرض السعر</a><a class="nav-link" href="../../../pages/07-TEMPLATES/05-Transaction-Tracking-Form.html">نموذج تتبع المعاملة</a><a class="nav-link" href="../../../pages/07-TEMPLATES/06-Notes-Handling-Form.html">نموذج معالجة الملاحظات</a><a class="nav-link" href="../../../pages/07-TEMPLATES/07-Delivery-Form.html">نموذج التسليم</a><a class="nav-link" href="../../../pages/07-TEMPLATES/08-Satisfaction-Survey.html">استبيان رضا العميل</a><a class="nav-link" href="../../../pages/07-TEMPLATES/09-Pre-Submission-Checklist.html">قائمة التحقق قبل التقديم</a><a class="nav-link" href="../../../pages/07-TEMPLATES/10-Common-Errors-List.html">قائمة الأخطاء الشائعة</a><a class="nav-link" href="../../../pages/07-TEMPLATES/README.html">نظرة شاملة</a></details>
+<details class="nav-group"><summary>أكاديمية التدريب</summary><a class="nav-link" href="../../../pages/08-TRAINING/README.html">نظرة شاملة</a><a class="nav-link" href="../../../pages/08-TRAINING/Exams/Final-Composite-Exam.html">📁 الاختبارات</a><a class="nav-link" href="../../../pages/08-TRAINING/Exams/Final-Composite-Exam.html">&nbsp;&nbsp;↳ الاختبار النهائي الشامل</a><a class="nav-link" href="../../../pages/08-TRAINING/Exercises/Exercises-Pack.html">📁 Exercises</a><a class="nav-link" href="../../../pages/08-TRAINING/Exercises/Exercises-Pack.html">&nbsp;&nbsp;↳ حزمة التمارين</a><a class="nav-link" href="../../../pages/08-TRAINING/Lessons/Stage-1-Foundation.html">📁 دروس الأكاديمية</a><a class="nav-link" href="../../../pages/08-TRAINING/Lessons/Stage-1-Foundation.html">&nbsp;&nbsp;↳ الدرس التأسيسي</a><a class="nav-link" href="../../../pages/08-TRAINING/Simulations/Simulation-01-Building-Permit.html">📁 المحاكاات العملية</a><a class="nav-link" href="../../../pages/08-TRAINING/Simulations/Simulation-01-Building-Permit.html">&nbsp;&nbsp;↳ محاكاة رخصة البناء</a></details>
+<details class="nav-group"><summary>قاموس المصطلحات</summary><a class="nav-link" href="../../../pages/09-GLOSSARY/Glossary.html">قاموس المصطلحات</a></details>
+<details class="nav-group"><summary>الجودة والتحقق</summary><a class="nav-link" href="../../../pages/10-QUALITY-AND-UPDATES/Change-Log.html">سجل التغييرات</a><a class="nav-link" href="../../../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">سجل الفجوات المعرفية</a><a class="nav-link" href="../../../pages/10-QUALITY-AND-UPDATES/Verification-Log.html">سجل التحقق</a></details></aside>
+  <button class="menu-btn" id="menuBtn" aria-label="فتح قائمة الأقسام">☰</button>
+  <main class="content" id="main-content" tabindex="-1">
+    <nav class="breadcrumb" aria-label="مسار التنقل"><a href="../../../index.html">الرئيسية</a> <span class="crumb-sep">‹</span> <a href="../../../pages/05-OPERATIONS/README.html">الدليل التشغيلي للمكتب</a> <span class="crumb-sep">‹</span> <a href="../../../pages/05-OPERATIONS/Office-Management/Job-Verification-Checklists.html">Office-Management</a> <span class="crumb-sep">‹</span> <span aria-current="page">دليل حوكمة المكتب التنفيذي</span></nav>
+    
+    <div class="step-progress" id="stepProgress" data-total="0" hidden></div>
+    <details class="page-toc"><summary>محتويات هذه الصفحة</summary><ol><li><a href="#sec-1">1. التصنيف الثلاثي للمعاملات (مقترح للمكتب باعتماده داخليًا 💼)</a></li><li><a href="#sec-2">2. أزمنة الفحص الفني (SLA) 💼</a></li><li><a href="#sec-3">3. مؤشرات الأداء المستهدفة (KPIs) 💼</a></li><li><a href="#sec-4">4. دورة حياة المعاملة (أربع مراحل متسلسلة)</a></li><li><a href="#sec-5">5. حزم المهام التخصصية الخمس</a></li><li><a href="#sec-6">6. سجل المخاطر التشغيلية (13 خطرًا)</a></li><li><a href="#sec-7">7. خارطة تفعيل الدليل بالمكتب — ثلاث مراحل (المرحلة الأولى خلال 30 يومًا) 💼</a></li></ol></details>
+    <article class="doc doc-app"><blockquote>
+<p>إصدار 1.0 · تاريخ التحقق: 2026-11-15
+منظومة تشغيلية لضبط جودة إنجاز الخدمات الهندسية والبلدية والعقارية الـ14 داخل المكتب: تصنيف المعاملات، أزمنة الفحص، مستهدفات الأداء، دورة الحياة، حزم المهام، وسجل المخاطر.</p>
+</blockquote>
+<hr /><section class="doc-sec" id="sec-1"><h2 class="sec-h"><a class="sec-anchor" href="#sec-1">#</a><span class="sec-t">1. التصنيف الثلاثي للمعاملات (مقترح للمكتب باعتماده داخليًا 💼)</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><p>تصنيف مقترح للمعاملات الهندسية والبلدية وفق 3 مستويات لتحديد الجهد المطلوب وصلاحية الاعتماد:</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>المستوى</th>
+<th>المخاطر النظامية والإنشائية</th>
+<th>حالة الوثائق والمسار</th>
+<th>المدة المتوقعة</th>
+<th>الموارد المطلوبة</th>
+<th>القيادة والاعتماد</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>المستوى 1: منخفض (مسار مباشر)</strong></td>
+<td>لا توجد مخاطر إنشائية أو عوائق تنظيمية؛ مستندات مكتملة ومطابقة 100%.</td>
+<td>إجراء إلكتروني مباشر (حساب رسوم، تجديد، تحديث صك مكتمل، أو حصر كميات لمخطط جاهز).</td>
+<td>أقل من 24–48 ساعة.</td>
+<td>مهندس واحد ينجز الفحص والرفع والجدولة مباشرة.</td>
+<td>المهندس المنفذ بالمكتب وفق قوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td><strong>المستوى 2: متوسط (مسار قياسي)</strong></td>
+<td>لا توجد مخالفات جسيمة؛ يتطلب ضبطًا تصميميًا ومساحيًا مطابقًا لكود البناء SBC.</td>
+<td>صك إلكتروني سارٍ؛ يتطلب رفعًا مساحيًا ومخططات وتدقيقًا عبر بلدي أو فرز أو إتمام.</td>
+<td>من 2 إلى 5 أيام عمل.</td>
+<td>مهندس التراخيص/التصميم + مساح ميداني + مراجعة جودة.</td>
+<td>منسق التراخيص / المهندس المسؤول مع اعتماد إدارة المكتب.</td>
+</tr>
+<tr>
+<td><strong>المستوى 3: عالٍ (مسار مركب / حرج)</strong></td>
+<td>مخالفات بناء قائمة، أو اشتباه بعيوب إنشائية، أو تداخل حدود صكوك يتطلب لجانًا.</td>
+<td>يتطلب أكثر من جهتين (الأمانة، الدفاع المدني، لجنة المخالفات، المحكمة/إحكام).</td>
+<td>أكثر من 5 أيام عمل (حسب اللجان والجهات).</td>
+<td>فريق المكتب الهندسي + فحص مختبري غير متلف + استشاري سلامة.</td>
+<td>مدير المكتب الهندسي بالتنسيق المباشر مع الجهات المختصة.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>معايير التصنيف السبعة التفصيلية</h3>
+<p>يكفي تحقق معيار واحد لرفع المعاملة إلى المستوى الأعلى، ويُعاد التصنيف كلما ظهرت معطيات فنية أو تنظيمية جديدة؛ وخفض مستوى المعاملة قرار يصدر بعد زوال العائق النظامي أو الفني ويُوثق في سجل المعاملة مع سببه.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>المعيار</th>
+<th>المستوى 1: مباشرة (محدودة)</th>
+<th>المستوى 2: قياسية (متوسطة)</th>
+<th>المستوى 3: مركبة / حرجة (عالية)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. السلامة الإنشائية</td>
+<td>لا توجد أي مخاطر؛ مبنى سليم أو أرض فضاء جاهزة.</td>
+<td>ملاحظات تنفيذية أو تشطيبات قابلة للمعالجة القياسية.</td>
+<td>شروخ إنشائية، هبوط، أو مبنى قائم بدون رخصة يتطلب فحصًا معمقًا.</td>
+</tr>
+<tr>
+<td>2. موقف المنصة الرسمية</td>
+<td>الطلب سلك إلكترونيًا بدون ملاحظات أو نواقص.</td>
+<td>يتطلب تدقيقًا بلديًا أو معالجة ملاحظة فنية اعتيادية.</td>
+<td>رفض سابق، إيقاف صك، أو يتطلب لجنة مخالفات أو إفادة محكمة/إحكام.</td>
+</tr>
+<tr>
+<td>3. المدة المتوقعة للإنجاز</td>
+<td>أقل من 24 إلى 48 ساعة عمل.</td>
+<td>من 2 إلى 5 أيام عمل.</td>
+<td>أكثر من 5 أيام عمل (حسب إجراءات اللجان والجهات).</td>
+</tr>
+<tr>
+<td>4. عدد الخدمات / العقارات</td>
+<td>خدمة واحدة لعقار واحد واضح البيانات.</td>
+<td>من خدمتين إلى 3 خدمات مترابطة (مثل: قرار مساحي + رخصة بناء).</td>
+<td>أكثر من 3 خدمات متداخلة أو مشروع متعدد الوحدات/القطع.</td>
+</tr>
+<tr>
+<td>5. مساحة البناء / عدد الوحدات</td>
+<td>فيلا سكنية أو أرض حتى 600 م² (أو حتى 4 وحدات فرز).</td>
+<td>مبنى سكني/تجاري من 600 إلى 2,500 م² (أو 5 إلى 20 وحدة فرز).</td>
+<td>مجمع/مشروع أكبر من 2,500 م² أو أكثر من 20 وحدة أو منشأة حيوية.</td>
+</tr>
+<tr>
+<td>6. حالة وثائق الملكية</td>
+<td>صك إلكتروني محدث ومطابق للطبيعة 100%.</td>
+<td>صك إلكتروني يتطلب تحديث بيانات أو قرار مساحي جديد.</td>
+<td>صك ورقي قديم به نواقص أطوال/حدود أو تداخل يتطلب تعديلًا وتقييدًا.</td>
+</tr>
+<tr>
+<td>7. الموارد والجهات</td>
+<td>ينجزها المهندس المختص داخليًا بالكامل.</td>
+<td>تنسيق بين المساحة والتصميم والمنصة داخل المكتب.</td>
+<td>مختبر فحص خرسانة/تربة + استشاري دفاع مدني + جهات حكومية متعددة.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>حوكمة التصنيف: من يدير ومن يُشعر</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>المستوى</th>
+<th>من يدير المعاملة داخل المكتب</th>
+<th>من يُشعر ويُنسق معه</th>
+<th>دورية تحديث حالة الطلب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>المستوى 1</td>
+<td>المهندس المنفذ / منسق التراخيص</td>
+<td>العميل (المالك/المفوض) عبر قنوات المكتب المعتمدة خلال 30 دقيقة من الفحص، والمنصة الإلكترونية المختصة.</td>
+<td>عند الإنجاز والإغلاق (أو فور صدور الوثيقة).</td>
+</tr>
+<tr>
+<td>المستوى 2</td>
+<td>المهندس المسؤول عن الحزمة بالتنسيق مع إدارة المكتب</td>
+<td>العميل، والمنصة الحكومية المختصة (بلدي / فرز / إتمام)، ومختبر التربة/التأمين عند الحاجة.</td>
+<td>تحديث يومي منتظم (وعند اجتياز كل مرحلة بالمنصة).</td>
+</tr>
+<tr>
+<td>المستوى 3</td>
+<td>مدير المكتب الهندسي مع منسق التراخيص والفريق الفني</td>
+<td>المالك/المطور، الأمانة/البلدية، الدفاع المدني (في تقارير السلامة)، وزارة العدل/إحكام (في نواقص الصكوك)، والمختبر المعتمد.</td>
+<td>كل 6–12 ساعة (وتقرير مرحلي عقب كل إجراء رسمي).</td>
+</tr>
+</tbody>
+</table></div></div></section><section class="doc-sec" id="sec-2"><h2 class="sec-h"><a class="sec-anchor" href="#sec-2">#</a><span class="sec-t">2. أزمنة الفحص الفني (SLA) 💼</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><p>مسار مقترح من 7 مراحل لإدارة طلب العميل داخل المكتب الهندسي من الاستلام حتى الإغلاق — التشخيص أولاً والتجهيز الفني يسير بالتوازي. الزمن الإجمالي المستهدف للتشخيص وتجهيز ملف الرفع بعد اكتمال الوثائق: <strong>أقل من 4 ساعات عمل</strong>. أزمنة قياسية مقترحة تُعتمد أو تُعدَّل بعد التجربة بالمكتب.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>المرحلة</th>
+<th>الإجراء</th>
+<th>الزمن المستهدف</th>
+<th>المخرج</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>استقبال الطلب</td>
+<td>خلال 5 دقائق</td>
+<td>قيد الطلب (ن1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>التصنيف المبدئي</td>
+<td>خلال 15 دقيقة</td>
+<td>التقرير الفوري (ن2)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>تدقيق المسوغات</td>
+<td>خلال 45 دقيقة</td>
+<td>التشخيص الأولي (ن3)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>التعاقد والتفويض</td>
+<td>خلال 30 دقيقة</td>
+<td>التفويض الإلكتروني</td>
+</tr>
+<tr>
+<td>5</td>
+<td>الإنجاز والرفع</td>
+<td>خلال 120 دقيقة</td>
+<td>رقم طلب المنصة</td>
+</tr>
+<tr>
+<td>6</td>
+<td>التدقيق النهائي</td>
+<td>خلال 15 دقيقة</td>
+<td>اعتماد النموذج (ن8)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>التسليم والأرشفة</td>
+<td>خلال 10 دقائق</td>
+<td>التقرير الختامي (ن5)</td>
+</tr>
+</tbody>
+</table></div>
+<p>أزمنة الفحص المبدئي لحزم المهام الخمس: الرخص الإنشائية 40 دقيقة · المساحة وتقسيم الأراضي 45 دقيقة · الفرز والتسجيل والصكوك 35 دقيقة · الفحص والسلامة والإشغال 40 دقيقة · الإشراف والكميات والرسوم 45 دقيقة — بحد أقصى 60 دقيقة لأي معاملة، عبر 32 نقطة تدقيق حرجة تُفحص قبل رفع الطلب في المنصات الحكومية. ⚠️ توجد صياغة أخرى تعتمد زمنًا موحدًا (45 دقيقة) لجميع الحزم؛ المعتمد هنا هو التفصيل المتطابق في موضعين.</p></div></section><section class="doc-sec" id="sec-3"><h2 class="sec-h"><a class="sec-anchor" href="#sec-3">#</a><span class="sec-t">3. مؤشرات الأداء المستهدفة (KPIs) 💼</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><p>مستهدفات أداء مقترحة لضبط جودة إنجاز الخدمات الهندسية الـ14 داخل المكتب الهندسي — تُراجعها إدارة المكتب شهريًا وبعد كل معاملة من المستوى 2 فأعلى لضمان استدامة الجودة وسرعة الإنجاز.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>مؤشر الأداء الرئيسي</th>
+<th>المستهدف المقترح للاعتماد بالمكتب</th>
+<th>نقطة بداية القياس</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>التصنيف الأولي للمعاملة</td>
+<td>15 دقيقة أو أقل</td>
+<td>لحظة استلام الطلب</td>
+</tr>
+<tr>
+<td>2</td>
+<td>تدقيق المستندات والمخططات</td>
+<td>45 دقيقة مستهدفة، و60 دقيقة حدًا أقصى</td>
+<td>اكتمال إرسال المرفقات</td>
+</tr>
+<tr>
+<td>3</td>
+<td>تأمين مسار المنصة والتفويض</td>
+<td>15–30 دقيقة أو أقل</td>
+<td>توثيق اتفاقية المكتب</td>
+</tr>
+<tr>
+<td>4</td>
+<td>التقرير التشخيصي الأولي (ن3)</td>
+<td>60 دقيقة أو أقل</td>
+<td>بدء الفحص الفني</td>
+</tr>
+<tr>
+<td>5</td>
+<td>إنجاز معاملات المستوى 1</td>
+<td>24 إلى 48 ساعة عمل أو أقل</td>
+<td>سداد الرسوم والتفويض</td>
+</tr>
+<tr>
+<td>6</td>
+<td>إنجاز معاملات المستوى 2</td>
+<td>من 2 إلى 5 أيام عمل (رفع ومعالجة)</td>
+<td>فتح الطلب بالمنصة</td>
+</tr>
+<tr>
+<td>7</td>
+<td>إنجاز معاملات المستوى 3</td>
+<td>حسب الجدول المعتمد مع الجهات واللجان</td>
+<td>إعلان خطة المعالجة</td>
+</tr>
+<tr>
+<td>8</td>
+<td>جاهزية القوالب وأدوات التدقيق</td>
+<td>100% قبل كل دورة عمل، و95% خلالها</td>
+<td>الفحص الدوري الشهري</td>
+</tr>
+<tr>
+<td>9</td>
+<td>التجارب المعيارية وتحديث الأدلة</td>
+<td>مراجعتان سنويًا لكل حزمة مهام</td>
+<td>بداية السنة الميلادية</td>
+</tr>
+<tr>
+<td>10</td>
+<td>الأخطاء الجسيمة في الكود أو المساحة</td>
+<td>صفر (0 أخطاء مقبولة)</td>
+<td>كل معاملة أو زيارة</td>
+</tr>
+<tr>
+<td>11</td>
+<td>التقرير الختامي والأرشفة (ن5)</td>
+<td>72 ساعة أو أقل</td>
+<td>إصدار الوثيقة / الإغلاق</td>
+</tr>
+</tbody>
+</table></div>
+<p>مستهدفات صارمة مضافة: مطابقة 100% للمخرجات مع اشتراطات كود البناء السعودي واللوائح · معالجة وإعادة رفع أي ملاحظة فنية في المستوى 2 خلال 12 ساعة.</p></div></section><section class="doc-sec" id="sec-4"><h2 class="sec-h"><a class="sec-anchor" href="#sec-4">#</a><span class="sec-t">4. دورة حياة المعاملة (أربع مراحل متسلسلة)</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>المرحلة</th>
+<th>الدور الوظيفي المسؤول</th>
+<th>أهم الإجراءات التنفيذية والنظامية</th>
+<th>التوقيت المستهدف 💼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. قبل التقديم (التأهيل والفحص)</td>
+<td>مهندس الاستقبال والتدقيق (أو منسق التراخيص بالمكتب)</td>
+<td>التحقق من سريان الصك الإلكتروني عبر ناجز أو السجل العقاري RER ومطابقة الهوية · فحص الاشتراطات التنظيمية للقطعة (الاستخدام، الارتدادات، الأدوار) والرفع المساحي المبدئي · تحديد مستوى تعقيد المعاملة (1 أو 2 أو 3) وحساب الرسوم البلدية وتوثيق عقد المكتب الهندسي.</td>
+<td>قبل رفع الطلب (خلال 45–60 دقيقة من استلام الوثائق)</td>
+</tr>
+<tr>
+<td>2. عند البدء (التجهيز والرفع)</td>
+<td>المهندس المختص بالخدمة (تراخيص / مساحة / فرز)</td>
+<td>إعداد المخططات المعمارية والإنشائية والكروكيات المساحية وفق مرجع GEOSA / SANSRS وكود SBC · فتح الطلب الإلكتروني على المنصة المختصة (بلدي / فرز / إتمام) وقبول تفويض المالك للمكتب · رفع المرفقات الهندسية بصيغ معتمدة (DWG, PDF, SHP) وإصدار فاتورة سداد الرسوم النظامية.</td>
+<td>فور اكتمال المسوغات (خلال 24–72 ساعة حسب نوع المعاملة)</td>
+</tr>
+<tr>
+<td>3. أثناء المعالجة (المتابعة والإشراف)</td>
+<td>مهندس الإشراف والفحص + مسؤول متابعة المنصات</td>
+<td>الرصد اليومي لحالة الطلب في المنصة والرد الفوري على ملاحظات مدقق البلدية أو الجهات · تنفيذ الزيارات الميدانية المجدولة (فحص المبنى القائم، أو استلام مراحل البناء والردم والخرسانات) · استكمال متطلبات الجهات المساندة (تأمين العيوب الخفية، شهادة الدفاع المدني، خطابات الإفادة).</td>
+<td>على مدار دورة المعاملة (الرد على أي ملاحظة خلال 24 ساعة كحد أقصى)</td>
+</tr>
+<tr>
+<td>4. بعد الإصدار (التسليم والأرشفة)</td>
+<td>مدقق الجودة والتوثيق + اعتماد مدير المكتب</td>
+<td>تطبيق قائمة الفحص النهائي (النموذج 8) والتحقق من دقة بيانات الرخصة أو الشهادة أو الصك الصادر · تسليم العميل الحزمة النهائية (الوثيقة الرسمية + المخططات المعتمدة + جدول الكميات/التقرير) · أرشفة ملف المعاملة رقميًا في سجل المكتب الهندسي وإصدار التقرير الختامي (ن5).</td>
+<td>إغلاق المعاملة والأرشفة خلال 24 إلى 72 ساعة من الإصدار</td>
+</tr>
+</tbody>
+</table></div></div></section><section class="doc-sec" id="sec-5"><h2 class="sec-h"><a class="sec-anchor" href="#sec-5">#</a><span class="sec-t">5. حزم المهام التخصصية الخمس</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><p>تصنيف وظيفي مرن يتيح توزيع العمل على أقسام مختصة أو إدارته عبر مهندس شامل حسب حجم المكتب الهندسي؛ كل حزمة تغطي دورة الخدمة من الفحص حتى الإصدار الرسمي دون تعثر، ويمكن لمهندس واحد إدارة أكثر من حزمة في المكاتب الصغيرة والمتوسطة 💼.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>حزمة المهام</th>
+<th>الخدمات المشمولة (14 خدمة)</th>
+<th>المنصات والأدوات القياسية</th>
+<th>نطاق التطبيق</th>
+<th>زمن الفحص</th>
+<th>نقاط التدقيق</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. حزمة الرخص الإنشائية والبلدية</td>
+<td>رخصة البناء (01) · تصحيح وضع مبنى قائم (11) · رخصة الترميم (05) · خدمات بلدي (14)</td>
+<td>منصة بلدي · كود البناء SBC · AutoCAD · حاسبة الرسوم البلدية</td>
+<td>الأمانات والبلديات بالمملكة</td>
+<td>40 دقيقة</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2. حزمة المساحة وتقسيم الأراضي والمخططات</td>
+<td>القرار المساحي (04) · تقسيم ودمج الأراضي (09) · إعداد الكروكي المساحي والتنظيمي (08)</td>
+<td>منصة بلدي · مركز إتمام · GEOSA · SANSRS · أجهزة الرصد · GIS</td>
+<td>الأراضي الفضاء والمخططات</td>
+<td>45 دقيقة</td>
+<td>8</td>
+</tr>
+<tr>
+<td>3. حزمة الفرز والتسجيل والصكوك</td>
+<td>فرز الوحدات العقارية (03) · تحديث وتعديل الصكوك (02) · التسجيل العيني الأول للعقار (12)</td>
+<td>برنامج فرز REGA · السجل العقاري RER · بوابة ناجز · منصة إحكام</td>
+<td>الوحدات العقارية والصكوك</td>
+<td>35 دقيقة</td>
+<td>8</td>
+</tr>
+<tr>
+<td>4. حزمة الفحص والسلامة والإشغال</td>
+<td>شهادة الإشغال (06) · الإشراف على الهدم ورخصه (10) · تقرير سلامة المبنى (13)</td>
+<td>بلدي (الإشغال) · كود SBC 901 · الدفاع المدني (998) · المختبرات المعتمدة</td>
+<td>المباني القائمة وقيد الإنشاء</td>
+<td>40 دقيقة</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5. حزمة الإشراف والكميات والرسوم</td>
+<td>الإشراف الهندسي على البناء (عملية مكتبية) · حساب الرسوم البلدية والجهد الهندسي وحصر الكميات BOQ (من خدمات بلدي 14)</td>
+<td>تقارير مراحل البناء في بلدي · لائحة الرسوم البلدية · قوالب Excel القياسية</td>
+<td>المشاريع السكنية والتجارية</td>
+<td>45 دقيقة</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<p>الإجمالي: 14 خدمة هندسية وبلدية وعقارية موثقة بمسار 25 خطوة · 32 نقطة تدقيق حرجة · 84 محورًا معرفيًا (6 تبويبات معرفية لكل خدمة) · حد أقصى 60 دقيقة للفحص المبدئي · يُدار بكفاءة عبر كادر مدمج (1–3 مهندسين + مساح) أو فريق موسع.</p></div></section><section class="doc-sec" id="sec-6"><h2 class="sec-h"><a class="sec-anchor" href="#sec-6">#</a><span class="sec-t">6. سجل المخاطر التشغيلية (13 خطرًا)</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><p>الدرجة = الاحتمالية × الشدة (لكل منهما من 1 إلى 5؛ الحد الأقصى 25 درجة) — مرجع إلزامي للفحص الوقائي قبل رفع أي معاملة لأي منصة حكومية.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>الخطر الفني أو النظامي</th>
+<th>الدور المسؤول بالمكتب</th>
+<th>الخدمات الأكثر تأثرًا</th>
+<th>الاحتمالية × الشدة = الدرجة</th>
+<th>التصنيف</th>
+<th>الإجراء الوقائي والمعالج</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>تعارض أطوال ومساحة الصك مع الطبيعة أو المخطط التنظيمي</td>
+<td>مهندس المساحة / التراخيص</td>
+<td>القرار المساحي، تحديث الصكوك، تقسيم الأراضي</td>
+<td>5 × 5 = 25 ⚠️</td>
+<td>عالٍ</td>
+<td>مطابقة الكروكي مع المصور الجوي والمخطط المعتمد واستخراج إفادة الأمانة قبل الرفع.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>مخالفة الارتدادات أو نسب البناء واشتراطات الكود SBC</td>
+<td>مهندس التراخيص والتصميم</td>
+<td>رخص البناء، تصحيح وضع قائم، شهادة الإشغال</td>
+<td>5 × 4 = 20</td>
+<td>عالٍ</td>
+<td>فحص اللوحات على قائمة تدقيق SBC ومحرك اشتراطات بلدي قبل الاعتماد.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>نقص تقارير الإشراف المرحلية أو وثيقة التأمين الإلزامي</td>
+<td>مهندس الإشراف والإشغال</td>
+<td>شهادة الإشغال، الإشراف الهندسي، رخص البناء</td>
+<td>4 × 5 = 20 ⚠️</td>
+<td>عالٍ</td>
+<td>ربط جدول صب الخرسانات برفع تقارير بلدي وتأكيد سريان وثيقة التأمين قبل التنفيذ.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>أخطاء حساب المساحات والأجزاء المشتركة في الفرز</td>
+<td>مهندس الفرز والصكوك</td>
+<td>فرز الوحدات العقارية، التسجيل العيني RER</td>
+<td>4 × 4 = 16</td>
+<td>عالٍ</td>
+<td>تشغيل الفحص الهندسي لطبقات CAD ومراجعة معادلات التمتير في شيت الحصر.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>وجود شروخ إنشائية أو هبوط في مبنى قائم يراد تصحيحه</td>
+<td>مدير المكتب / مهندس الفحص</td>
+<td>تقرير سلامة المبنى، تصحيح وضع قائم، الترميم</td>
+<td>3 × 5 = 15</td>
+<td>عالٍ</td>
+<td>فحص وقائي مزدوج واعتماد مدير المكتب الهندسي.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>نواقص بيانات الصك الورقي (رقم القطعة/المخطط/الهوية)</td>
+<td>منسق الصكوك والمنصات</td>
+<td>تحديث الصكوك عبر ناجز، التسجيل العيني الأول</td>
+<td>4 × 3 = 12</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>عدم تطابق طبقات ملفات CAD مع المحرك الآلي للفرز/بلدي</td>
+<td>مهندس المخططات والـ CAD</td>
+<td>فرز الوحدات العقارية، القرار المساحي، الرخص</td>
+<td>4 × 3 = 12</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>إغفال بنود مخفية أو أخطاء تمتير في جداول الكميات BOQ</td>
+<td>مهندس الكميات والتسعير</td>
+<td>حصر الكميات، تقارير الترميم، وتقدير التكاليف</td>
+<td>3 × 4 = 12</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>عدم فصل خدمات الكهرباء والمياه قبل الشروع في الهدم</td>
+<td>مهندس الإشراف والسلامة</td>
+<td>إصدار رخصة هدم، الإشراف الهندسي على الهدم</td>
+<td>3 × 4 = 12</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>انتهاء صلاحية القرار المساحي (سنة) قبل إصدار الرخصة</td>
+<td>منسق متابعة المنصات</td>
+<td>إصدار رخصة بناء، تقسيم ودمج الأراضي</td>
+<td>3 × 3 = 9</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>نقص متطلبات الوقاية من الحريق في المباني التجارية</td>
+<td>مهندس الفحص والسلامة</td>
+<td>شهادة الإشغال، تصحيح وضع قائم، الرخص التجارية</td>
+<td>3 × 3 = 9</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>تأخر العميل في قبول التفويض أو سداد فاتورة الرسوم</td>
+<td>منسق استقبال العملاء</td>
+<td>جميع خدمات منصتي بلدي وبرنامج الفرز</td>
+<td>4 × 2 = 8</td>
+<td>متوسط</td>
+<td>ضبط بقوائم التدقيق القياسية.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>توقف مؤقت أو صيانة دورية في إحدى المنصات الحكومية</td>
+<td>منسق التشغيل والمنصات</td>
+<td>جميع الخدمات الإلكترونية بالمنصات</td>
+<td>2 × 3 = 6</td>
+<td>منخفض</td>
+<td>إدارة بالإجراءات الاعتيادية.</td>
+</tr>
+</tbody>
+</table></div>
+<p>مفتاح مستويات الخطر: ● عالٍ (15–25): يتطلب فحصًا وقائيًا مزدوجًا واعتماد مدير المكتب الهندسي · ● متوسط (8–14): يُضبط بقوائم التدقيق القياسية · ● منخفض (أقل من 8): يُدار بالإجراءات الاعتيادية.</p></div></section><section class="doc-sec" id="sec-7"><h2 class="sec-h"><a class="sec-anchor" href="#sec-7">#</a><span class="sec-t">7. خارطة تفعيل الدليل بالمكتب — ثلاث مراحل (المرحلة الأولى خلال 30 يومًا) 💼</span><button class="sec-toggle" type="button" aria-label="طوي/فتح المقطع">▾</button></h2><div class="sec-body"><p>خارطة طريق عملية لتوطين إجراءات العمل والنماذج التسعة ورفع كفاءة إنجاز المعاملات:</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>المرحلة</th>
+<th>الأيام</th>
+<th>المحور</th>
+<th>الإجراءات</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>المرحلة 1</td>
+<td>1–30</td>
+<td>التأسيس وتخصيص النماذج</td>
+<td>مواءمة قوائم الخدمات الـ14 مع نطاق المكتب: تخصيص قوائم المتطلبات والرسوم وفق الأمانات والبلديات التي يخدمها المكتب · تحديد توزيع المهام والصلاحيات: تسمية المهندس المسؤول (أو دمج المهام) وفق الكادر الفعلي للمكتب · تفعيل دليل المنصات والاتصال: تثبيت الروابط المباشرة وأرقام التواصل مع البلديات والجهات.</td>
+</tr>
+<tr>
+<td>المرحلة 2</td>
+<td>31–60</td>
+<td>التجهيز وتوحيد القوالب</td>
+<td>تطبيق قائمة الـ32 نقطة تدقيق حرجة: ربط كل نقطة تدقيق بقائمة الفحص المسبق قبل رفع أي معاملة · توحيد قوالب CAD وحاسبات الرسوم وجداول الكميات BOQ: ضبط طبقات الرسم الآلي لبرنامج الفرز ومنصة بلدي · تنظيم التنسيق مع المختبرات المساندة: توثيق آلية طلب فحوصات التربة والخرسانة والسلامة.</td>
+</tr>
+<tr>
+<td>المرحلة 3</td>
+<td>61–90</td>
+<td>القياس والتحسين المستمر</td>
+<td>قياس أزمنة الإنجاز الفعلية: تطبيق خوارزمية الـ25 خطوة على المعاملات الجارية ورصد نقاط التأخير · تقييم كفاءة النماذج التسعة (ن1–ن9): مراجعة سجلات الاستقبال والفحص النهائي (ن8) وتبسيطها · تحديث قاعدة المعرفة الداخلية: توثيق الحالات العملية والملاحظات البلدية المتكررة وطرق حلها.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>النماذج التسعة المخصصة خلال دورة الجاهزية</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="جدول بيانات — يمكن تمريره أفقيًا لعرض بقية الأعمدة"><table>
+<thead>
+<tr>
+<th>النموذج</th>
+<th>الاسم</th>
+<th>الغرض والبيانات الأساسية</th>
+<th>الموعد المقترح للإصدار</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ن1</td>
+<td>سجل استقبال وتصنيف طلب خدمة</td>
+<td>رقم الطلب، اسم العميل، الصك، الخدمة، مستوى التصنيف (1/2/3)، والمنصة.</td>
+<td>خلال 5 دقائق من الاستلام</td>
+</tr>
+<tr>
+<td>ن2</td>
+<td>التقرير الفوري للمعاينة / الاستلام</td>
+<td>يوثق حالة الوثائق الأولية أو المعاينة الميدانية السريعة.</td>
+<td>خلال 15 دقيقة</td>
+</tr>
+<tr>
+<td>ن3</td>
+<td>التقرير التشخيصي الأولي للمعاملة</td>
+<td>يحدد الاشتراطات، النواقص، الرسوم البلدية، وخطة الإنجاز.</td>
+<td>خلال 60 دقيقة</td>
+</tr>
+<tr>
+<td>ن4</td>
+<td>تقرير المتابعة الدوري والإشراف</td>
+<td>يوثق مراحل التقدم في المنصة الحكومية أو استلامات الموقع ونسبة الإنجاز.</td>
+<td>يوميًا في المستوى 2، وكل 6–12 ساعة في المستوى 3 (أو عقب كل زيارة)</td>
+</tr>
+<tr>
+<td>ن5</td>
+<td>التقرير الختامي وحصر الكميات والتكلفة</td>
+<td>يوثق الوثيقة الصادرة والتكاليف والدروس المستفادة.</td>
+<td>خلال 72 ساعة من الإغلاق</td>
+</tr>
+<tr>
+<td>ن6</td>
+<td>قائمة متابعة وتسليم المهام اليومية</td>
+<td>توثق حالة المعاملات المفتوحة والمهل الحرجة بين العمل الميداني والمكتبي.</td>
+<td>يوميًا</td>
+</tr>
+<tr>
+<td>ن7</td>
+<td>قائمة فحص جاهزية القوالب والملفات</td>
+<td>فحص دوري لقوالب CAD، قوائم الكود SBC، جداول BOQ، وروابط المنصات.</td>
+<td>فحص دوري شهري</td>
+</tr>
+<tr>
+<td>ن8</td>
+<td>قائمة الفحص النهائي قبل الإغلاق والتسليم</td>
+<td>الوثيقة الإلزامية لاعتماد دقة الرخصة/الشهادة/الصك/BOQ قبل التسليم للعميل.</td>
+<td>قبل كل تسليم</td>
+</tr>
+<tr>
+<td>ن9</td>
+<td>نموذج تقييم تجربة معيارية (دراسة حالة)</td>
+<td>قياس سرعة ودقة إنجاز معاملة قياسية بالمكتب ورصد نقاط التحسين.</td>
+<td>مراجعتان سنويًا لكل حزمة مهام</td>
+</tr>
+</tbody>
+</table></div></div></section></article>
+    <footer class="doc-footer">
+      <div class="copyright">© 2026 <b>م. عبدالمجيد الفقيه — مهندس مدني</b> · جميع الحقوق محفوظة · <a href="../../../pages/00-STRATEGY/About-Author.html">عن المؤلف والتواصل</a></div>
+      <div>ENG540 — منظومة الخدمات الهندسية السعودية · تحقق المصادر: 2026-11-14 · <a href="../../../pages/10-QUALITY-AND-UPDATES/Knowledge-Gaps.html">الفجوات الموسومة</a></div>
+      <nav class="footer-policies" aria-label="سياسات المنصة"><a href="../../../pages/11-PLATFORM-POLICIES/About-Platform.html">من نحن</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Scope.html">نطاق المنصة</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Disclaimer.html">إخلاء المسؤولية</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Privacy-Policy.html">الخصوصية</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Terms-of-Use.html">شروط الاستخدام</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Copyright.html">الحقوق</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Sources-Policy.html">المصادر والتحقق</a> <span class="crumb-sep" aria-hidden="true">·</span> <a href="../../../pages/11-PLATFORM-POLICIES/Contact.html">الإبلاغ عن خطأ</a></nav>
+    </footer>
+  </main>
+</div>
+<button class="top-btn" id="topBtn" aria-label="العودة إلى الأعلى">↑</button>
+<div id="searchStatus" class="visually-hidden" aria-live="polite"></div>
+<script src="../../../assets/search-index.js"></script>
+<script src="../../../assets/app.js"></script>
+</body></html>
