@@ -99,6 +99,8 @@ a{color:var(--primary);text-decoration:none}
 a:hover{text-decoration:underline}
 p{margin:.25rem 0}
 .hidden{display:none !important}
+.panel,.split,.app-main{min-width:0}
+@media (max-width:640px){.panel{padding:.9rem .8rem}}
 .ltr-num{direction:ltr;unicode-bidi:isolate;display:inline-block}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -134,9 +136,9 @@ p{margin:.25rem 0}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 2px 10px rgba(10,60,60,.05);padding:1.2rem}
 .panel-title{font-size:1.02rem;font-weight:800;margin:0 0 .2rem}
 .panel-sub{font-size:.75rem;color:var(--muted);margin:0 0 .9rem}
-.split{display:grid;grid-template-columns:1fr;gap:1.1rem}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:1.1rem}
 @media (min-width:1000px){
-  .split{grid-template-columns:340px 1fr}
+  .split{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
   .calc-split{grid-template-columns:5fr 7fr}
 }
 
@@ -274,14 +276,15 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
 
 /* ===== النماذج ===== */
 /* النماذج: تنقل مرحلي + رأس + ورقة عرض */
-.tpl-nav{display:grid;gap:.9rem;margin-bottom:1rem}
-.tpl-group-t{font-size:.72rem;font-weight:800;color:var(--primary-d);margin-bottom:.35rem;display:flex;align-items:center;gap:.45rem}
+.tpl-nav{display:grid;grid-template-columns:minmax(0,1fr);gap:.9rem;margin-bottom:1rem;min-width:0}
+.tpl-group{min-width:0}
+.tpl-group-t{font-size:.72rem;font-weight:800;color:var(--primary-d);margin-bottom:.35rem;display:flex;align-items:center;gap:.45rem;min-width:0}
 .tpl-group-t::after{content:"";flex:1;height:1px;background:var(--line)}
 .tpl-group-chips{display:flex;flex-wrap:wrap;gap:.45rem}
-.tpl-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:.7rem;border:1px solid var(--line);border-inline-start:4px solid var(--primary);border-radius:12px;padding:.85rem 1rem;margin-bottom:.9rem;background:var(--soft)}
+.tpl-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:.7rem;min-width:0;border:1px solid var(--line);border-inline-start:4px solid var(--primary);border-radius:12px;padding:.85rem 1rem;margin-bottom:.9rem;background:var(--soft)}
 .tpl-head-info h3{margin:.3rem 0 0;font-size:1rem;font-weight:800;color:var(--ink)}
 .tpl-head-info p{margin:.15rem 0 0;font-size:.78rem;color:var(--muted)}
-.tpl-view{background:#fff;color:#1a2430;border:1px solid #dbe3e1;border-radius:12px;padding:1.3rem 1.4rem;font-size:.78rem;line-height:2.05;overflow-x:auto;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin:0;color-scheme:light;box-shadow:0 2px 10px rgba(15,23,42,.06)}
+.tpl-view{background:#fff;color:#1a2430;border:1px solid #dbe3e1;border-radius:12px;padding:1.3rem 1.4rem;font-size:.78rem;line-height:2.05;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin:0;color-scheme:light;box-shadow:0 2px 10px rgba(15,23,42,.06);max-width:100%;min-width:0}
 /* طباعة النموذج وحده على A4 */
 #printArea{display:none}
 @media print{
@@ -407,9 +410,12 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
           <select id="diagDeedStatus" class="txt" onchange="runDiagnostic()">
             <option value="elec_updated">صك إلكتروني محدث ومكتمل (خارج المناطق المعلنة في RER)</option>
             <option value="paper_old">صك ورقي قديم / ينقصه رقم القطعة أو المخطط أو به حفيظة</option>
-            <option value="rer_declared">العقار يقع داخل منطقة عقارية معلنة في السجل العقاري (rer.sa)</option>
-            <option value="mortgaged">صك إلكتروني مرهون لبنك أو جهة تمويل</option>
+            <option value="rer_declared">داخل منطقة عقارية معلنة ولم يُستكمل التسجيل العيني الأول</option>
+            <option value="rer_registered">العقار مسجل عينياً بالفعل وله صك تسجيل ملكية (RER)</option>
           </select>
+          <label class="field-label" style="margin-top:.5rem;display:flex;align-items:center;gap:.4rem;font-weight:400">
+            <input type="checkbox" id="diagMortgaged" onchange="runDiagnostic()"> العقار مرهون لبنك أو جهة تمويل (يمكن جمعه مع أي حالة ملكية أعلاه)
+          </label>
         </div>
         <div>
           <label class="field-label" for="diagGoal">3. الهدف النهائي الذي يطلبه العميل:</label>
@@ -419,7 +425,8 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
             <option value="subdivide_land">تقسيم أو تجزئة الأرض إلى عدة قطع</option>
             <option value="merge_deeds">دمج قطعتين متجاورتين في صك موحد</option>
             <option value="occupancy">إصدار شهادة إشغال وإدخال الكهرباء</option>
-            <option value="renovate_comply">ترميم المبنى أو استخراج شهادة الامتثال</option>
+            <option value="renovate">ترميم المبنى القائم</option>
+            <option value="compliance">استخراج شهادة الامتثال للمباني</option>
             <option value="demolish">هدم المبنى القائم وإزالته لإعادة البناء</option>
           </select>
         </div>
@@ -445,7 +452,7 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
         <div class="field">
           <label class="field-label" for="calcClass">تصنيف الأمانة / البلدية (وفق لائحة الرسوم البلدية — قرار 23542):</label>
           <select id="calcClass" class="txt" onchange="calculatePricing()">
-            <option value="0">التصنيف الأول (الرياض، مكة، جدة، الشرقية، المدينة)</option>
+            <option value="0">التصنيف الأول (الرياض، مكة، جدة، الدمام والخبر والظهران، المدينة)</option>
             <option value="1">التصنيف الثاني</option>
             <option value="2">التصنيف الثالث</option>
             <option value="3">التصنيف الرابع</option>
@@ -455,7 +462,7 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
         <div class="field">
           <label class="field-label" for="calcUsage">تصنيف استخدام المبنى في الرخصة:</label>
           <select id="calcUsage" class="txt" onchange="calculatePricing()">
-            <option value="res">مبنى سكني (R-3 فلل / عمائر سكنية)</option>
+            <option value="res">مبنى سكني (فلل ومساكن حتى 3 طوابق — نطاق SBC 1101-1102؛ وللعمائر كودها حسب الإشغال)</option>
             <option value="res_comm">مبنى سكني تجاري</option>
             <option value="comm">مبنى تجاري</option>
           </select>
@@ -701,11 +708,22 @@ function setCategoryFilter(cat){
   filterServices();
 }
 
+/* تطبيع عربي للبحث: التشكيل والتطويل والهمزات والتاء المربوطة والألف المقصورة (اشغال = إشغال) */
+function normAr(t){
+  return (t || "")
+    .replace(/[\u064B-\u0652\u0670\u0640]/g, "")
+    .replace(/[أإآٱ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/[ىئ]/g, "ي")
+    .replace(/ؤ/g, "و")
+    .toLowerCase();
+}
+
 function filterServices(){
-  var q = (document.getElementById("srvSearch").value || "").trim().toLowerCase();
+  var q = normAr((document.getElementById("srvSearch").value || "").trim());
   var filtered = SERVICES_DATA.filter(function(s){
     var matchCat = (activeCategory === "ALL") || (s.cat === activeCategory);
-    var hay = (s.title + " " + s.code + " " + s.platform + " " + s.definition + " " + s.docs.join(" ")).toLowerCase();
+    var hay = normAr(s.title + " " + s.code + " " + s.platform + " " + s.definition + " " + s.docs.join(" "));
     return matchCat && (!q || hay.indexOf(q) !== -1);
   });
   renderServiceList(filtered);
@@ -715,6 +733,9 @@ function renderServiceList(list){
   var container = document.getElementById("serviceListContainer");
   if (!list.length){
     container.innerHTML = '<div class="empty-box">لا توجد خدمات مطابقة للبحث.</div>';
+    /* امسح بطاقة التفاصيل القديمة حتى لا تعرض خدمة لا تطابق النتيجة الصفرية */
+    document.getElementById("serviceDetailContainer").innerHTML =
+      '<div class="empty-box">لا توجد خدمة مطابقة لعرض تفاصيلها — عدّل كلمة البحث أو التصنيف.</div>';
     return;
   }
   if (!list.some(function(s){ return s.code === selectedServiceCode; })){
@@ -761,8 +782,8 @@ function renderServiceDetail(code){
       '</div>' +
       '<h2>' + s.title + '</h2>' +
       '<div class="btn-row" style="margin:0">' +
-        '<a class="btn btn-dark" href="' + s.platformUrl + '" target="_blank" rel="noopener">فتح المنصة الرسمية ↗</a>' +
-        '<a class="btn btn-ghost" href="' + s.sourceUrl + '" target="_blank" rel="noopener">الدليل الرسمي الموثق ↗</a>' +
+        '<a class="btn btn-dark" href="' + s.platformUrl + '" target="_blank" rel="noopener">فتح ' + (s.platformUrlLabel || 'المنصة الرسمية') + ' ↗</a>' +
+        '<a class="btn btn-ghost" href="' + s.sourceUrl + '" target="_blank" rel="noopener">فتح ' + (s.sourceUrlLabel || 'الدليل الرسمي الموثق') + ' ↗</a>' +
       '</div>' +
     '</div>' +
     '<div class="meta-grid">' +
@@ -845,6 +866,7 @@ function runDiagnostic(){
   var prop = document.getElementById("diagPropType").value;
   var deed = document.getElementById("diagDeedStatus").value;
   var goal = document.getElementById("diagGoal").value;
+  var mortgaged = !!(document.getElementById("diagMortgaged") || {}).checked;
 
   var steps = [], warnings = [], platforms = new Set();
 
@@ -855,14 +877,42 @@ function runDiagnostic(){
     });
     platforms.add("البورصة العقارية / ناجز (najiz.sa)");
     warnings.push("تنبيه حرج: يجب إرفاق الصورة الخلفية للصك حتى لو كانت فارغة تماماً لتفادي الرفض الشكلي في وزارة العدل.");
+  } else if (deed === "rer_registered"){
+    platforms.add("منصة السجل العقاري (rer.sa)");
   } else if (deed === "rer_declared"){
     steps.push({
       title: "الخطوة التمهيدية الإلزامية (1): التسجيل العيني الأول في السجل العقاري [SRV-12]",
       desc: "بما أن العقار يقع داخل منطقة عقارية معلنة، يجب التحقق من إتمام «التسجيل العيني الأول» عبر منصة السجل العقاري (rer.sa) وإصدار «صك تسجيل الملكية» و«الصحيفة العقارية» برقم عقار فريد، مع إمكانية الاستعلام عبر «التحقق من وثائق ملكية العقار» و«بيانات سجل عقاري»."
     });
     platforms.add("منصة السجل العقاري (rer.sa)");
-  } else if (deed === "mortgaged"){
+  }
+
+  if (mortgaged){
     warnings.push("تنبيه رهن عقاري: في حال كان الهدف هو فرز الوحدات أو التجزئة أو الدمج، يلزم توثيق «الموافقة على فرز عقار مرهون» من المرتهن (البنك/الجهة التمويلية) عبر وزارة العدل.");
+  }
+
+  /* حارس التركيبات المستحيلة: الأرض الفضاء/الخام لا مبنى عليها، فلا إشغال ولا ترميم ولا هدم ولا فرز وحدات */
+  var landNoBuilding = (prop === "vacant_planned" || prop === "vacant_raw");
+  var buildingOnlyGoals = (goal === "occupancy" || goal === "renovate" || goal === "compliance" || goal === "demolish" || goal === "subdivide_units");
+  if (landNoBuilding && buildingOnlyGoals){
+    warnings.push("تركيبة غير منطقية: الهدف المختار يفترض مبنى قائماً، بينما نوع العقار المدخل أرض بلا مبنى. راجع المدخلات: إن كان هناك مبنى فعلاً فحدّث «نوع العقار وحالته»، وإلا فالهدف الصحيح غالباً «بناء مشروع جديد» أو «تقسيم/تجزئة الأرض».");
+    var resultBox0 = document.getElementById("diagnosticResultBox");
+    resultBox0.innerHTML = '<div class="box box-red"><h4>تعذّر بناء خارطة طريق لهذه التركيبة</h4>' +
+      warnings.map(function(w){ return '<p>• ' + w + '</p>'; }).join("") + '</div>';
+    var plain0 = document.getElementById("diagPlainText");
+    if (plain0) plain0.textContent = diagPlainText([], warnings, platforms);
+    return;
+  }
+
+  if (prop === "bldg_old"){
+    steps.push({
+      title: "مرحلة أولوية السلامة: فحص إنشائي وتقرير فني للمبنى المتهالك [SRV-13]",
+      desc: "لأن المبنى قديماً متهالكاً أو متصدعاً، يتقدم تقييم السلامة الإنشائية (SBC 901) عبر خدمة «إصدار تقرير فني» (10498) في بلدي على أي مسار آخر: فالحكم الهندسي بأن المبنى «خطر داهم» يوجّه فوراً للإخلاء وإبلاغ الجهات المختصة (998/911) ثم الهدم، وبحالته الصالحة للتدعيم يوجّه للترميم."
+    });
+    platforms.add("منصة بلدي (balady.gov.sa)");
+    if (goal === "occupancy"){
+      warnings.push("تنبيه سلامة: لا تُطلب شهادة إشغال لمبنى متصدع قبل الحكم على سلامته الإنشائية؛ التقرير الفني شرط مسبق هنا.");
+    }
   }
 
   if (prop === "vacant_raw" && (goal === "build_new" || goal === "subdivide_land")){
@@ -874,7 +924,9 @@ function runDiagnostic(){
     platforms.add("منصة إتمام (etmam.momah.gov.sa)");
   }
 
-  if (prop === "bldg_unlicensed"){
+  if (prop === "bldg_unlicensed" && goal === "demolish"){
+    warnings.push("رخصة الهدم تقبل رخصة بناء أو قراراً مساحياً (بطاقة خدمة إصدار رخصة هدم ودليل الرخص الإنشائية) ✅ — لا يُشترط تقنين وضع المبنى وترخيصه قبل هدمه؛ تُراجع متطلبات الحالة مع البلدية المختصة.");
+  } else if (prop === "bldg_unlicensed"){
     steps.push({
       title: "مرحلة التقنين الإلزامية: إصدار رخصة تصحيح وضع مبنى قائم [SRV-11 & SRV-13]",
       desc: "بما أن المبنى شُيد بدون رخصة (أو به مخالفات)، لا يمكن استخراج شهادة إشغال أو فرز وحدات إلا بعد: (1) إصدار قرار مساحي، (2) رفع معماري كامل للوضع الراهن (As-Built)، (3) تقرير سلامة إنشائية وفق كود المباني القائمة (SBC 901)، (4) اعتماد تقارير وحسابات الوقاية من الحريق عبر «بوابة سلامة»، و(5) سداد الغرامات التي تحتسبها الأمانة في بلدي (خدمة تصحيح الوضع 10494)."
@@ -886,7 +938,7 @@ function runDiagnostic(){
   if (goal === "build_new"){
     steps.push({
       title: "المرحلة المساحية: إصدار قرار مساحي بغرض البناء واستلام الحدود [SRV-04 & SRV-08]",
-      desc: "تكليف مكتب هندسي مصنف مساحياً عبر بلدي لرفع الأرض بأجهزة GNSS/Total Station وإصدار القرار المساحي (صالح لسنة) وتثبيت البتر الركنية الأربع على الطبيعة."
+      desc: "تكليف مكتب هندسي مصنف مساحياً عبر بلدي لرفع الأرض بأجهزة GNSS/Total Station وإصدار القرار المساحي (صالح لـ 3 سنوات وفق بلدي) وتثبيت جميع أركان وحدود القطعة على الطبيعة بحسب شكلها."
     });
     steps.push({
       title: "المرحلة الهندسية والبلدية: فحص التربة والتصميم وإصدار رخصة البناء [SRV-01]",
@@ -900,11 +952,12 @@ function runDiagnostic(){
     });
     steps.push({
       title: "مرحلة الفرز وإصدار الصكوك المستقلة: فرز الوحدات العقارية [SRV-03]",
-      desc: deed === "rer_declared"
+      desc: (deed === "rer_declared" || deed === "rer_registered")
         ? "رفع مخططات الفرز والتقرير المساحي عبر خدمة «الفرز» في منصة السجل العقاري (rer.sa) لإصدار صك تسجيل ملكية مستقل لكل وحدة."
         : "التقديم في منصة فرز الوحدات العقارية (subdivision.rega.gov.sa) وتكليف مكتب هندسي معتمد برفع مخططات DWG بمضلعات مغلقة على محرك التحليل الآلي، ثم إصدار شهادة الفرز والصكوك المستقلة عبر البورصة العقارية/ناجز."
     });
-    platforms.add("منصة فرز الوحدات العقارية (subdivision.rega.gov.sa)");
+    if (deed === "rer_declared" || deed === "rer_registered") platforms.add("منصة السجل العقاري (rer.sa)");
+    else platforms.add("منصة فرز الوحدات العقارية (subdivision.rega.gov.sa)");
   } else if (goal === "subdivide_land"){
     steps.push({
       title: "المرحلة المساحية والتخطيطية: قرار مساحي للتجزئة وطلب تجزئة الأراضي [SRV-04 & SRV-09]",
@@ -923,10 +976,16 @@ function runDiagnostic(){
       desc: "معاينة المبنى للتأكد من اكتمال الواجهات والرصيف ومطابقة الرخصة (ومضي 6 أشهر للرخص القديمة) ورفع التقرير الفني من المكتب الهندسي في بلدي لإصدار شهادة الإشغال."
     });
     platforms.add("منصة بلدي (balady.gov.sa)");
-  } else if (goal === "renovate_comply"){
+  } else if (goal === "renovate"){
     steps.push({
-      title: "مرحلة الفحص والترخيص: تقرير فني (SBC 901) ورخصة ترميم وشهادة الامتثال [SRV-13, SRV-05, SRV-14]",
-      desc: "معاينة المبنى وإصدار «شهادة تأكيد السلامة»/التقرير الفني عبر خدمة «إصدار تقرير فني» (10498) في بلدي وفق كود المباني القائمة SBC 901 ← إصدار رخصة ترميم (صالحة لسنة) ← تنفيذ أعمال التأهيل وإزالة التشوهات البصرية ← إصدار شهادة الامتثال للمباني."
+      title: "مرحلة الفحص والترخيص: تقرير فني (SBC 901) ورخصة ترميم [SRV-13, SRV-05]",
+      desc: "معاينة المبنى وإصدار «شهادة تأكيد السلامة»/التقرير الفني عبر خدمة «إصدار تقرير فني» (10498) في بلدي وفق كود المباني القائمة SBC 901 ← إصدار رخصة ترميم (صالحة لسنة) ← تنفيذ أعمال الترميم المقيدة بإصلاح القائم دون إضافة مكون أو تغيير إنشائي."
+    });
+    platforms.add("منصة بلدي (balady.gov.sa)");
+  } else if (goal === "compliance"){
+    steps.push({
+      title: "مرحلة إزالة التشوهات وإصدار شهادة الامتثال للمباني [SRV-14]",
+      desc: "شهادة الامتثال مسار مستقل لا يستلزم ترميماً إنشائياً بذاته: معاينة عناصر التشوه البصري للواجهة والرصيف ← إزالة المخالفات البصرية ← إصدار شهادة الامتثال عبر بلدي. لا تُدمج مع رخصة الترميم إلا إذا قرر الفحص حاجة إنشائية فعلية."
     });
     platforms.add("منصة بلدي (balady.gov.sa)");
   } else if (goal === "demolish"){
@@ -957,24 +1016,49 @@ function runDiagnostic(){
 }
 
 /* ===== 4) حاسبة الرسوم والتسعير ===== */
+/* قراءة حقل رقمي مع تمييز الفراغ عن الصفر ورفض NaN/Infinity: يعيد {v, note} */
+function readNum(id, opt){
+  opt = opt || {};
+  var raw = (document.getElementById(id).value || "").trim();
+  if (raw === "") return { v: (opt.empty !== undefined ? opt.empty : 0), note: null };
+  var n = parseFloat(raw);
+  if (!isFinite(n)) return { v: (opt.empty !== undefined ? opt.empty : 0), note: "قيمة غير رقمية في «" + id + "» — عوملت كصفر" };
+  if (opt.min !== undefined && n < opt.min) return { v: opt.min, note: "القيمة «" + raw + "» أدنى من الحد الأدنى " + opt.min + " — استُخدم " + opt.min };
+  if (opt.max !== undefined && n > opt.max) return { v: opt.max, note: "القيمة «" + raw + "» أعلى من الحد الأقصى " + opt.max + " — استُخدم " + opt.max };
+  return { v: n, note: null };
+}
+
 function calculatePricing(){
   var clsIdx = parseInt(document.getElementById("calcClass").value || "0", 10);
   var usage = document.getElementById("calcUsage").value || "res";
-  var landArea = Math.max(0, parseFloat(document.getElementById("calcLandArea").value || "0"));
-  var builtArea = Math.max(0, parseFloat(document.getElementById("calcBuiltArea").value || "0"));
-  var fenceLen = Math.max(0, parseFloat(document.getElementById("calcFenceLen").value || "0"));
+  var notes = [];
+  function take(id, opt){ var r = readNum(id, opt); if (r.note) notes.push(r.note); return r.v; }
 
-  var engHours = Math.max(0, parseFloat(document.getElementById("calcEngHours").value || "0"));
-  var hourRate = Math.max(0, parseFloat(document.getElementById("calcHourRate").value || "0"));
-  var extCost = Math.max(0, parseFloat(document.getElementById("calcExtCost").value || "0"));
-  var overheadPct = Math.min(100, Math.max(0, parseFloat(document.getElementById("calcOverheadPct").value || "0")));
-  var marginPct = Math.min(80, Math.max(5, parseFloat(document.getElementById("calcMarginPct").value || "35")));
+  var landArea  = take("calcLandArea",  { min: 0 });
+  var builtArea = take("calcBuiltArea", { min: 0 });
+  var fenceLen  = take("calcFenceLen",  { min: 0 });
 
-  var surveyRate = FEE_RATES.survey[clsIdx];
+  var engHours  = take("calcEngHours",  { min: 0 });
+  var hourRate  = take("calcHourRate",  { min: 0 });
+  var extCost   = take("calcExtCost",   { min: 0 });
+  var overheadPct = take("calcOverheadPct", { min: 0, max: 100 });
+  var marginPct   = take("calcMarginPct",   { min: 0, max: 80, empty: 35 }); /* الفراغ = الافتراضي 35%، والصفر خيار صحيح (بلا هامش) */
+
   var bldgRate = FEE_RATES[usage][clsIdx];
   var fenceRate = FEE_RATES.fence[clsIdx];
 
-  var govSurveyFee = landArea * surveyRate;
+  /* القرار المساحي بشرائح تراكمية (البند 18 من لائحة رسوم الخدمات البلدية):
+     كل جزء من المساحة يُحتسب بمعدل شريحته، لا معدل واحد على كامل المساحة. */
+  var surveyRate = FEE_SURVEY_TIERS[0].rates[clsIdx];
+  var govSurveyFee = 0, remaining = landArea, prevLimit = 0;
+  for (var ti = 0; ti < FEE_SURVEY_TIERS.length && remaining > 0; ti++){
+    var tier = FEE_SURVEY_TIERS[ti];
+    var cap = (tier.upTo === null) ? Infinity : tier.upTo;
+    var chunk = Math.min(remaining, cap - prevLimit);
+    govSurveyFee += chunk * tier.rates[clsIdx];
+    remaining -= chunk;
+    prevLimit = cap;
+  }
   var govBldgFee = builtArea * bldgRate;
   var govFenceFee = fenceLen * fenceRate;
   var totalGovFee = govSurveyFee + govBldgFee + govFenceFee;
@@ -990,17 +1074,21 @@ function calculatePricing(){
   var netProfit = recommendedOfficeFeeExVat - totalInternalCost;
   var grandTotalClient = totalOfficeWithVat + totalGovFee;
 
-  function fmt(n){ return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function fmt(n){ return isFinite(n) ? n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"; }
   function line(label, value, cls){
     return '<div class="calc-line' + (cls ? " " + cls : "") + '"><span>' + label + '</span><b class="ltr-num">' + value + '</b></div>';
   }
 
   document.getElementById("calcOutputContainer").innerHTML =
+    (notes.length
+      ? '<div class="box box-amber" style="margin-bottom:.8rem"><h4>تنبيهات إدخال طُبقت على هذا الحساب:</h4>' +
+        notes.map(function(n){ return '<p>• ' + n + '</p>'; }).join("") + '</div>'
+      : '') +
     '<div class="two-col" style="margin-bottom:0">' +
       '<div class="box" style="margin:0">' +
         '<h4>أولاً: الرسوم البلدية الحكومية (تُسدد عبر نظام سداد)</h4>' +
-        '<div class="fee-note">⚠️ أرقام الرسوم الحكومية هنا <b>إرشادية</b> 🧪 من مرجع المنظومة ولم تُطابق مع حاسبة بلدي الرسمية — الرقم النهائي والملزم من <a href="https://apps.balady.gov.sa/Eservices/FeesCalculator" target="_blank" rel="noopener">حاسبة رسوم بلدي</a> أو البلدية المختصة (تحقق 2026-11-14)</div>' +
-        line('رسم القرار المساحي (<span class="ltr-num">' + landArea + ' m² × ' + surveyRate.toFixed(2) + '</span>):', fmt(govSurveyFee) + " SAR") +
+        '<div class="fee-note">⚠️ أرقام الرسوم الحكومية هنا <b>إرشادية</b> 🧪 من مرجع المنظومة — الرقم النهائي والملزم من <a href="https://apps.balady.gov.sa/Eservices/FeesCalculator" target="_blank" rel="noopener">حاسبة رسوم بلدي</a> أو البلدية المختصة (تحقق 2026-11-14). الرسوم البلدية عبر سداد لا تخضع للضريبة، لكن لا يُعمَّم ذلك على مقابل المنصات الأخرى (مثال: طلب الفرز الإلكتروني 200 ريال غير شامل الضريبة).</div>' +
+        line('رسم القرار المساحي بشرائح تراكمية (<span class="ltr-num">' + landArea + ' m² — تبدأ من ' + surveyRate.toFixed(2) + ' ريال/م² للشريحة الأولى</span>):', fmt(govSurveyFee) + " SAR") +
         line('رسم رخصة البناء (<span class="ltr-num">' + builtArea + ' m² × ' + bldgRate.toFixed(2) + '</span>):', fmt(govBldgFee) + " SAR") +
         line('رسم رخصة السور (<span class="ltr-num">' + fenceLen + ' m × ' + fenceRate.toFixed(2) + '</span>):', fmt(govFenceFee) + " SAR") +
         '<div class="calc-total"><span>إجمالي الرسوم الحكومية (سداد — غير خاضعة للضريبة):</span><span class="ltr-num total-val">' + fmt(totalGovFee) + ' SAR</span></div>' +
@@ -1011,7 +1099,7 @@ function calculatePricing(){
         line('المصاريف الإدارية المحمّلة (<span class="ltr-num">' + overheadPct + '%</span>):', fmt(overheadCost) + " SAR") +
         line('إجمالي التكلفة الفعلية على المكتب:', fmt(totalInternalCost) + " SAR") +
         '<div class="calc-total"><span>أتعاب المكتب للعميل قبل الضريبة:</span><span class="ltr-num">' + fmt(recommendedOfficeFeeExVat) + ' SAR</span></div>' +
-        line('ضريبة القيمة المضافة (<span class="ltr-num">15%</span> على أتعاب المكتب):', fmt(vatAmount) + " SAR") +
+        line('ضريبة القيمة المضافة (<span class="ltr-num">15%</span> — افتراض مكتب مسجل وخاضع للضريبة؛ تُعدل بحسب حالة التسجيل الفعلية في زاتكا):', fmt(vatAmount) + " SAR") +
         line('صافي ربح المكتب الهندسي (<span class="ltr-num">' + marginPct + '%</span>):', "+" + fmt(netProfit) + " SAR", "profit") +
       '</div>' +
     '</div>' +
