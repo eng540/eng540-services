@@ -185,11 +185,29 @@ def page_prefix(rel_page):
 
 ALL_PAGES = set()  # مسارات html النهائية نسبةً إلى pages/
 
+# أهداف رمزية بالمقاطع العربية «...» تُستخدم في المصدر بدل مسارات فعلية —
+# بلا هذا الجدول كان مولّد الروابط يسقط على الصفحة نفسها (روابط ذاتية، ملاحظة تدقيق B07).
+SYMBOLIC_ALIASES = {
+    '«دليل ناجز»': '02-PLATFORMS/Najiz',
+    '«دليل منصة بلدي»': '02-PLATFORMS/Balady',
+    '«دليل السجل العقاري»': '02-PLATFORMS/Real-Estate-Registry',
+    '«دليل المنصات الأخرى»': '02-PLATFORMS/Other-Platforms',
+    '«دليل الأعمال المساحية»': '04-ENGINEERING/Surveying/Surveying-Guide',
+    '«دليل المعدات والبرامج»': '04-ENGINEERING/Equipment-And-Software/Equipment-Software-Guide',
+    '«معايير التوثيق والوسوم»': '00-STRATEGY/Knowledge-Standards',
+    '«خريطة علاقات الخدمات»': '00-STRATEGY/Services-Relations-Map',
+    '«قاموس المصطلحات»': '09-GLOSSARY/Glossary',
+    '«وثيقة الرؤية»': '00-STRATEGY/Vision',
+}
+
 def resolve_pages_link(p):
     """يحل مساراً (بامتداد أو مجلداً) إلى صفحة موجودة فعلاً في ALL_PAGES."""
     p = str(p).strip().rstrip('/')
     if not p:
         return None
+    p = SYMBOLIC_ALIASES.get(p, p)
+    if p.endswith('.md'):
+        p = p[:-3]
     cands = [p if p.endswith('.html') else p + '.html',
              p.rstrip('/') + '/README.html']
     for c in cands:
@@ -221,7 +239,7 @@ def rel_href_fix(html_text, page_dir, prefix):
         if href.startswith(('http', 'mailto:', 'tel:', '#', 'data:')) \
            or '${' in href or '?' in href:
             return m.group(0)
-        target = posixpath.normpath(posixpath.join(page_dir, href))
+        target = SYMBOLIC_ALIASES.get(htmllib.unescape(href)) or posixpath.normpath(posixpath.join(page_dir, href))
         if target.startswith('..'):
             return m.group(0)
         return 'href="' + htmllib.escape(link(target, prefix)) + '"'
