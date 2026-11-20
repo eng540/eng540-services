@@ -100,6 +100,7 @@
         bar.hidden = false;
         bar.innerHTML = '<div class="sp-head">تقدمك في هذه الخوارزمية: <b>' + n + ' / ' + total + '</b></div>' +
           '<div class="sp-bar"><div class="sp-fill" style="width:' + (total ? (n / total * 100) : 0) + '%"></div></div>';
+        if (reset) bar.appendChild(reset);
       }
     }
     cards.forEach(function (c) {
