@@ -57,6 +57,8 @@ body{
   margin:0;font-family:var(--font-body);background:var(--bg);color:var(--ink);
   line-height:1.9;font-size:1rem;-webkit-text-size-adjust:100%;
 }
+/* منع التمرير الأفقي العَرَضي على الجوال: العناصر الثابتة خارج الشاشة (القائمة الجانبية وخلفيتها) كانت توسّع مساحة التمرير في RTL — الجداول الواسعة تبقى قابلة للتمرير داخل .table-wrap */
+html,body{overflow-x:clip}
 a{color:var(--primary);text-decoration:none}
 a:hover{text-decoration:underline}
 img,svg{max-width:100%}
