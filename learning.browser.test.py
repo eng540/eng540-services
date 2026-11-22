@@ -1,0 +1,126 @@
+"""UI regression: python learning.browser.test.py (pip install playwright; playwright install chromium).
+Uses only local files, no authenticated accounts. Screenshots in $LEARNING_TEST_OUTPUT or a temp folder.
+"""
+from pathlib import Path
+import os, tempfile, json
+from playwright.sync_api import sync_playwright
+ROOT=Path(__file__).resolve().parent
+OUT=Path(os.environ.get('LEARNING_TEST_OUTPUT',tempfile.mkdtemp(prefix='eng540-learning-')))
+OUT.mkdir(parents=True,exist_ok=True)
+URL=(ROOT/'app.html').as_uri()
+checks=0
+def check(value,message):
+ global checks
+ assert value,message
+ checks+=1
+with sync_playwright() as p:
+ browser=p.chromium.launch(headless=True,args=['--no-sandbox'])
+ context=browser.new_context(viewport={'width':1440,'height':1000})
+ page=context.new_page();errors=[]
+ page.on('pageerror',lambda e:errors.append(str(e)))
+ page.goto(URL+'?view=academy');page.wait_for_load_state('load')
+ check(page.locator('#academyProgress').inner_text().endswith('0 / 8'),'fresh honest progress')
+ page.locator('#academyCoverage summary').click()
+ coverage=page.locator('#academyCoverage').inner_text()
+ check('undefined' not in coverage and 'SRV-14' in coverage,'coverage labels and all services')
+ page.locator('#academyCoverage summary').click()
+ page.locator('#academyStart').click()
+ check(page.locator('fieldset.q-card').count()==5,'five stage questions')
+ page.locator('#academyGrade').click()
+ check('دون إجابة' in page.locator('#examResultBanner').inner_text(),'blank submission blocked')
+ check(page.evaluate('Object.keys(academyState.records).length')==0,'blank submission not recorded')
+ ids=page.locator('fieldset.q-card').evaluate_all('(els)=>els.map(x=>x.dataset.question)')
+ page.locator(f'input[name="{ids[0]}"]').first.check()
+ saved=page.evaluate('JSON.stringify(academyState.sessions[1])')
+ page.reload();page.wait_for_load_state('load')
+ check(page.evaluate('JSON.stringify(academyState.sessions[1])')==saved,'attempt and option order resume after reload')
+ check(page.locator('input:checked').count()==1,'partial answer persists')
+ # Use the data key only to supply correct test inputs. All user interactions use normal controls.
+ for stage in range(1,8):
+  page.locator(f'#stageButtonsContainer button:nth-child({stage})').click()
+  if not page.locator('fieldset.q-card').count():page.locator('#academyStart').click()
+  answers=page.evaluate('academyState.sessions[activeStageId].items.map(x=>({id:x.id,correct:questionById(x.id).correct}))')
+  for answer in answers:page.locator(f'input[name="{answer["id"]}"][value="{answer["correct"]}"]').check()
+  page.locator('#academyGrade').click()
+  check(page.locator('#academyGrade').is_hidden(),'graded attempt locked')
+  count=page.evaluate(f'academyState.records[{stage}].attempts')
+  check(count==1,'one recorded attempt per grade')
+  if stage==1:
+   page.locator('#academyReview').click();check(page.locator('fieldset.q-card').count()==0,'correct attempt has no mistakes')
+   page.locator('#academyReview').click();check(page.locator('fieldset.q-card').count()==5,'return to all questions')
+ check(page.evaluate('stagePassed(6)') is False,'simulation required for stage six')
+ page.locator('#stageButtonsContainer button:nth-child(6)').click()
+ station=page.evaluate('academyState.simulation.index')
+ page.get_by_role('button',name='وعده بالرخصة خلال أسبوع',exact=True).click()
+ check(page.evaluate('academyState.simulation.index')==station,'wrong simulation decision does not advance')
+ check('راجع القرار' in page.locator('.sim-feedback').inner_text(),'simulation feedback visible')
+ for i in range(9):
+  label=page.evaluate('ACADEMY_SIMULATION[academyState.simulation.index].options[ACADEMY_SIMULATION[academyState.simulation.index].correct]')
+  page.get_by_role('button',name=label,exact=True).click()
+ check(page.evaluate('academyState.simulation.done&&stagePassed(6)'),'nine-station simulation complete')
+ page.locator('#stageButtonsContainer button:nth-child(8)').click();page.locator('#academyStart').click()
+ check(page.locator('fieldset.q-card').count()==21,'balanced final has 21 questions')
+ answers=page.evaluate('academyState.sessions[8].items.map(x=>({id:x.id,correct:questionById(x.id).correct}))')
+ for answer in answers:page.locator(f'input[name="{answer["id"]}"][value="{answer["correct"]}"]').check()
+ page.locator('#academyGrade').click()
+ check(page.locator('#academyProgress').inner_text().endswith('8 / 8'),'all stages complete')
+ check(page.evaluate('completedAcademy()'),'completion gates satisfied')
+ page.reload();page.wait_for_load_state('load');check(page.evaluate('completedAcademy()'),'completed progress persists')
+ page.locator('#examResultBanner').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'academy-final-desktop.png'))
+ page.locator('#stageButtonsContainer button:nth-child(6)').click();page.locator('#academySimulation').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'academy-simulation-desktop.png'))
+ # Fresh diagnostic starts with unknown, not an automatically approved scenario.
+ page.locator('#tabBtn-diagnostic').click()
+ check(page.locator('#diag-goal').input_value()=='unknown','unknown default')
+ check('غير كافية' in page.locator('#diagnosticResultBox').inner_text(),'initial missing-data result')
+ check(page.locator('#diag-field-permit').is_hidden(),'irrelevant permit question hidden')
+ base={'role':'owner','goal':'merge','property':'land_planned','document':'electronic','registration':'outside','authority':'verified','safety':'no_signs','use':'residential','mortgage':'no','issue':'none','adjacent':'no','ownership':'same'}
+ for key,value in base.items():page.select_option('#diag-'+key,value)
+ page.fill('#diag-city','جدة')
+ check('القطع غير متجاورة' in page.locator('#diagnosticResultBox').inner_text(),'nonadjacent merger warning visible')
+ check('القطع غير متجاورة' in page.locator('#diagPlainText').text_content(),'copy includes blocker')
+ page.select_option('#diag-adjacent','yes')
+ check('توجيه أولي مشروط' in page.locator('.diag-status').inner_text(),'complete inputs only conditional')
+ page.select_option('#diag-goal','renovate');page.select_option('#diag-property','building');page.select_option('#diag-permit','missing');page.select_option('#diag-scope','addition')
+ check('نطاق العمل ليس إصلاح' in page.locator('#diagnosticResultBox').inner_text(),'scope mismatch is actionable')
+ check('لا يثبت انعدامه' in page.locator('#diagnosticResultBox').inner_text(),'missing digital record not assumed no permit')
+ page.select_option('#diag-scope','new');page.select_option('#diag-goal','technical')
+ check('تعارض نطاق' not in page.locator('#diagnosticResultBox').inner_text(),'hidden stale scope does not affect new goal')
+ page.select_option('#diag-goal','units');page.select_option('#diag-property','land_planned');page.select_option('#diag-unitMode','offplan');page.select_option('#diag-offplanApproval','verified');page.select_option('#diag-independence','reviewed')
+ check('تعارض مدخلات' not in page.locator('#diagnosticResultBox').inner_text(),'off-plan vacant plot not falsely contradictory')
+ check('لا تصدر صكوك' in page.locator('#diagnosticResultBox').inner_text(),'off-plan deed issuance limit visible')
+ page.select_option('#diag-property','construction');page.select_option('#diag-permit','matching')
+ check('المبنى تحت التنفيذ: لا تعتبره' not in page.locator('#diagnosticResultBox').inner_text(),'off-plan construction not ordinary subdivision block')
+ page.select_option('#diag-safety','immediate')
+ check('أولوية عاجلة' in page.locator('.diag-status').inner_text(),'urgent safety override')
+ check(page.locator('.route-step').count()==1,'urgent result suppresses normal permit sequence')
+ page.locator('.diag-status').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'diagnostic-safety-desktop.png'))
+ page.emulate_media(media='print')
+ check(page.locator('#diagPrintReport').is_visible(),'print report visible')
+ check(page.locator('#diagnosticFields').is_hidden(),'print excludes interactive form')
+ check('أولوية عاجلة' in page.locator('#diagPrintReport').inner_text(),'print safety matches screen')
+ page.pdf(path=str(OUT/'diagnostic-report.pdf'),format='A4',print_background=True)
+ page.emulate_media(media='screen')
+ page.get_by_role('button',name='مسح مدخلات الحالة',exact=True).click()
+ check(page.locator('#diag-safety').input_value()=='unknown','case reset clears sensitive context')
+ # Existing sections still initialize.
+ page.locator('#tabBtn-services').click();check(page.locator('.srv-card').count()==14,'fourteen service cards retained')
+ page.locator('#tabBtn-calculator').click();check(page.locator('#view-calculator').is_visible(),'calculator renders')
+ page.locator('#tabBtn-templates').click();check(len(page.locator('#templateViewerBox').inner_text())>100,'templates intact')
+ # Mobile and dark/light render, plus no horizontal overflow.
+ mobile=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,device_scale_factor=1)
+ mp=mobile.new_page();mp.on('pageerror',lambda e:errors.append(str(e)));mp.goto(URL+'?view=academy');mp.wait_for_load_state('load')
+ mp.locator('#academyStart').click();mp.locator('#stageContentBox').scroll_into_view_if_needed();mp.screenshot(path=str(OUT/'academy-mobile-light.png'))
+ check(mp.evaluate('document.documentElement.scrollWidth<=innerWidth'),'mobile academy no page overflow')
+ mp.locator('#stageButtonsContainer button:nth-child(6)').click();mp.locator('#academySimulation').scroll_into_view_if_needed();mp.screenshot(path=str(OUT/'simulation-mobile-light.png'))
+ mp.locator('#tabBtn-diagnostic').click();mp.select_option('#diag-goal','occupancy');mp.select_option('#diag-property','building');mp.select_option('#diag-permit','unlicensed');mp.select_option('#diag-safety','concern')
+ mp.locator('#diagnosticResultBox').scroll_into_view_if_needed();mp.screenshot(path=str(OUT/'diagnostic-mobile-light.png'))
+ check(mp.evaluate('document.documentElement.scrollWidth<=innerWidth'),'mobile diagnostic no page overflow')
+ # Theme button sits outside the scroll position. Clicking via locator uses real event.
+ mp.locator('.theme-btn').click();mp.locator('#diagnosticResultBox').scroll_into_view_if_needed();mp.screenshot(path=str(OUT/'diagnostic-mobile-dark.png'))
+ check('المعلومات الناقصة' in mp.locator('#diagnosticResultBox').inner_text(),'missing info visible on mobile')
+ check(not errors,'no uncaught browser errors: '+repr(errors))
+ # Confirm cancel and accept for deleting only local academy state.
+ page.locator('#tabBtn-academy').click();page.once('dialog',lambda d:d.dismiss());page.get_by_role('button',name='حذف تقدم الأكاديمية من هذا المتصفح',exact=True).click();check(page.evaluate('completedAcademy()'),'cancel reset preserves progress')
+ page.once('dialog',lambda d:d.accept());page.get_by_role('button',name='حذف تقدم الأكاديمية من هذا المتصفح',exact=True).click();check(page.locator('#academyProgress').inner_text().endswith('0 / 8'),'confirmed reset clears progress')
+ browser.close()
+print(json.dumps({'passed':True,'uiChecks':checks,'screenshots':str(OUT)},ensure_ascii=False))
