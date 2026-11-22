@@ -257,11 +257,14 @@ html[data-theme="light"] .theme-btn{background:#2a3950;border-color:#41526b}
   position:sticky;inset-inline-start:0;z-index:2;background:var(--card);
   box-shadow:-1px 0 0 var(--line);
 }
+/* خلية الرأس في العمود الأول: تبقى على خلفية الرأس الداكنة (إصلاح تباين) */
+.table-wrap thead th:first-child{background:var(--slate-800);z-index:4}
 html[data-theme="dark"] .table-wrap thead th{background:#1b3340}
 html[data-theme="dark"] .table-wrap tbody tr:nth-child(even) td,
 html[data-theme="dark"] .table-wrap tbody tr:nth-child(even) th{background:#15262e}
 html[data-theme="dark"] .table-wrap th:first-child,
 html[data-theme="dark"] .table-wrap td:first-child{background:var(--card)}
+html[data-theme="dark"] .table-wrap thead th:first-child{background:#1b3340}
 
 /* ===== 8) وسوم التحقق (مطابقة AA في الوضعين) ===== */
 .tag{
