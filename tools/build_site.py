@@ -688,7 +688,7 @@ def main():
     <a class="chip" href="https://t.me/engineering540">✈️ قناة تيليجرام</a>
     <a class="chip chip-more" href="pages/00-STRATEGY/About-Author.html">عن المؤلف ←</a>
   </div>
-  <p class="section-sub">أقدم هذا المحتوى لمن يهمه الأمر — المهندس في بدايته، موظف المكتب، مالك الأرض، والمقاول — لأجد أثري هنا حيث يقرأ.</p>
+  <p class="section-sub">أقدم هذا المحتوى لمن يهمه الأمر — المهندس في بدايته، موظف المكتب، مالك الأرض، والمقاول — لأجد أثري هنا حيث يُقرأ.</p>
 </div>
 </section>
 <section class="section"><h2>نظام التحقق</h2>
@@ -720,26 +720,48 @@ def main():
         f.write('</urlset>\n')
     open(os.path.join(REPO, 'robots.txt'), 'w', encoding='utf-8').write(
         'User-agent: *\nAllow: /\nSitemap: ' + BASE + 'sitemap.xml\n')
-    open(os.path.join(REPO, '404.html'), 'w', encoding='utf-8').write(f'''<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+    open(os.path.join(REPO, '404.html'), 'w', encoding='utf-8').write('''<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="text-scale" content="scale">
 <title>الصفحة غير موجودة — ENG540</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/eng540-services/assets/style.css"></head>
+<style>
+/* مضمّن ذاتياً: تعمل الصفحة على النشرين (GitHub Pages تحت /eng540-services/ وRailway من الجذر) */
+:root{--primary:#0f766e;--primary-d:#115e59;--bg:#f8fafc;--card:#fff;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1418;--card:#132028;--ink:#e2e8f0;--muted:#94a3b8;--line:#1e293b}}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+.site-header{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.2rem;background:var(--primary-d);color:#fff}
+.brand{display:flex;align-items:center;gap:.6rem;color:#fff;text-decoration:none}
+.logo{background:#fff;color:var(--primary-d);font-weight:800;padding:.15rem .55rem;border-radius:.5rem;font-size:.95rem}
+.brand-t{font-weight:700;font-size:.95rem}
+.chip{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--primary-d);text-decoration:none;font-weight:700;padding:.45rem .9rem;border-radius:999px;font-size:.9rem}
+.chip:hover{border-color:var(--primary);box-shadow:0 1px 6px rgba(15,118,110,.18)}
+main a:not(.chip){color:var(--primary)}
+@media(prefers-color-scheme:dark){.chip{color:#5eead4}}
+</style></head>
 <body>
-<header class="site-header"><a class="brand" href="/eng540-services/"><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a></header>
+<header class="site-header"><a class="brand" data-root href=""><span class="logo">ENG540</span><span class="brand-t">الخدمات الهندسية السعودية</span></a></header>
 <main style="max-width:640px;margin:0 auto;padding:4rem 1.2rem;text-align:center">
 <h1 style="color:var(--primary-d);font-size:1.6rem">404 — الصفحة غير موجودة</h1>
 <p style="color:var(--muted)">الرابط قد يكون تغيّر أو أن الصفحة نُقلت. جرّب البحث أو ابدأ من إحدى نقاط الدخول التالية:</p>
 <p style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
-<a class="chip" href="/eng540-services/">الرئيسية</a>
-<a class="chip" href="/eng540-services/app.html">⚡ المنصة التفاعلية</a>
-<a class="chip" href="/eng540-services/pages/03-SERVICES/01-Building-Permit/README.html">دليل رخصة البناء</a>
-<a class="chip" href="/eng540-services/sitemap.xml">فهرس كل الصفحات</a></p>
-<p style="margin-top:2rem"><a href="/eng540-services/pages/11-PLATFORM-POLICIES/Contact.html" style="font-size:.85rem;color:var(--muted)">وجدت رابطًا مكسورًا؟ بلّغنا عنه</a></p>
-</main></body></html>''')
+<a class="chip" data-root href="">الرئيسية</a>
+<a class="chip" data-root href="app.html">⚡ المنصة التفاعلية</a>
+<a class="chip" data-root href="pages/03-SERVICES/01-Building-Permit/README.html">دليل رخصة البناء</a>
+<a class="chip" data-root href="sitemap.xml">فهرس كل الصفحات</a></p>
+<p style="margin-top:2rem"><a data-root href="pages/11-PLATFORM-POLICIES/Contact.html" style="font-size:.85rem;color:var(--muted)">وجدت رابطًا مكسورًا؟ بلّغنا عنه</a></p>
+</main>
+<script>
+/* جذر النشر يختلف بين المضيفين: /eng540-services/ على GitHub Pages و/ على Railway */
+(function(){
+  var root = location.hostname.indexOf('github.io') !== -1 ? '/eng540-services/' : '/';
+  document.querySelectorAll('a[data-root]').forEach(function(a){ a.href = root + a.getAttribute('href'); });
+})();
+</script></body></html>
+''')
     print(f'✅ بناء v4: {count} صفحة + الرئيسية | {total_lines:,} سطر | sitemap: {len(urls)} رابطاً | robots+404 ✓')
 
 if __name__ == '__main__':

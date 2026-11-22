@@ -58,6 +58,11 @@ body.mode-horizontal #wrap {
 .ctrl-scrubber { width:140px; accent-color:#e2b84b; cursor:pointer; }
 .ctrl-time { font-size:12px; font-weight:800; color:#ffe484; min-width:78px; text-align:center; direction:ltr; }
 
+/* Responsive shell: wrapped bars own their height instead of covering the stage. */
+#topEpisodeBar { height:auto; min-height:48px; padding:6px 12px; }
+#topEpisodeBar, #nowStrip, #sceneDots, #captionBar, #dockedControls { flex-shrink:0; }
+#stageArea { min-height:0; }
+
 /* ===== تطويرات v3.1: شريط الحالة، محطات التنقل، وضع الاستكشاف، نص المشهد، الإتاحة ===== */
 body { height:100vh; height:100dvh; }
 :where(button, input, a):focus-visible { outline:3px solid #ffe484; outline-offset:2px; }
