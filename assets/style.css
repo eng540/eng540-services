@@ -210,7 +210,7 @@ html[data-theme="light"] .theme-btn{background:#2a3950;border-color:#41526b}
   direction:ltr;text-align:left;background:#0f2126;color:#d7e8ec;
   padding:1rem 1.2rem;border-radius:var(--r-md);overflow-x:auto;font-size:.86rem;line-height:1.7;
 }
-.doc code{direction:ltr;unicode-bidi:embed;background:var(--bg);padding:.1rem .4rem;border-radius:5px;font-size:.88em;border:1px solid var(--line)}
+.doc code{direction:ltr;unicode-bidi:embed;background:var(--bg);padding:.1rem .4rem;border-radius:5px;font-size:.88em;border:1px solid var(--line);overflow-wrap:anywhere} /* الروابط الطويلة داخل السطر تلتف بدل أن تُقصّ — الكتل pre تحتفظ بتمريرها الخاص */
 .doc pre code{background:none;padding:0;border:0}
 .doc-footer{margin-top:1.6rem;font-size:.8rem;color:var(--muted);text-align:center;border-top:1px solid var(--line);padding-top:1rem}
 .doc-footer .copyright{margin-bottom:.3rem;color:var(--ink);font-size:.85rem}
