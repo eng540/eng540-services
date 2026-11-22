@@ -673,9 +673,9 @@ def main():
 <section class="section" id="tools"><h2>⚡ الأدوات الذكية — المنصة التفاعلية</h2>
 <p class="section-sub">تطبيق تفاعلي يعمل داخل المتصفح مباشرة، مبني على بيانات الخدمات الـ14</p>
 <div class="grid grid-4">
-<a class="card" href="app.html?view=diagnostic"><span class="card-n">أداة 1</span><span class="card-t">المشخّص الذكي وشجرة القرارات</span><span class="card-d">أجب عن 3 أسئلة عن العقار والصك والهدف ← خارطة طريق تشغيلية متسلسلة بالمنصات والتحذيرات</span></a>
+<a class="card" href="app.html?view=diagnostic"><span class="card-n">أداة 1</span><span class="card-t">المشخّص الذكي وشجرة القرارات</span><span class="card-d">أدخل المعطيات المتاحة ← نواقص وعوائق ومسار أولي مشروط بالمراجعة، مع أولوية السلامة</span></a>
 <a class="card" href="app.html?view=calculator"><span class="card-n">أداة 2</span><span class="card-t">حاسبة الرسوم البلدية والتسعير</span><span class="card-d">فصل الرسوم الحكومية عن أتعاب المكتب + الربحية المستهدفة — تقرير مالي فوري</span></a>
-<a class="card" href="app.html?view=academy"><span class="card-n">أداة 3</span><span class="card-t">اختبار الكفاءة التفاعلي</span><span class="card-d">حالات عملية باختيارات — تصحيح فوري وتفسير نظامي لكل سؤال ومعيار 90%</span></a>
+<a class="card" href="app.html?view=academy"><span class="card-n">أداة 3</span><span class="card-t">اختبار الكفاءة التفاعلي</span><span class="card-d">تقييمات مرتبطة بالمراحل وبنك أسئلة ومحاكاة قرارات واختبار نهائي متوازن، مع مصادر وتقدم محفوظ محلياً</span></a>
 <a class="card" href="app.html?view=templates"><span class="card-n">أداة 4</span><span class="card-t">النماذج الجاهزة للنسخ</span><span class="card-d">عقود وعروض أسعار ونماذج تشغيلية بضغطة نسخ واحدة</span></a>
 </div></section>
 <section class="section" id="author"><h2>عن المؤلف</h2>
