@@ -1,0 +1,46 @@
+/* Learning and case triage: reuse the platform's color tokens and RTL layout. */
+[hidden]{display:none!important}
+.learning-note,.question-meta{color:var(--muted);font-size:.8rem;line-height:1.8}
+#academyCompletion,#academyAttemptInfo{font-size:.85rem;line-height:1.9}
+.coverage-box{border:1px solid var(--line);border-radius:12px;padding:1rem;margin:1rem 0;background:var(--soft);font-size:.85rem;line-height:1.9}
+.coverage-box summary,.diag-snapshot summary{cursor:pointer;font-weight:800;min-height:30px}
+.table-scroll{overflow:auto;margin:1rem 0}
+.coverage-box table{border-collapse:collapse;width:100%;min-width:440px;text-align:right}
+.coverage-box caption{font-size:.8rem;text-align:right;padding:.5rem 0}
+.coverage-box th,.coverage-box td{border:1px solid var(--line);padding:.55rem}
+.service-coverage{columns:2;column-gap:2rem;padding-inline-start:1.3rem}
+.service-coverage li{break-inside:avoid}
+#stageContentBox{font-size:.9rem;line-height:1.9}
+#stageContentBox li{margin:.25rem 0}
+.stage-btn{min-height:44px;font-size:.8rem}
+.learning-refs{font-size:.8rem;line-height:1.9;overflow-wrap:anywhere}
+.learning-refs a,.coverage-box a,#diagnosticResultBox a{color:var(--primary-d);text-decoration:underline;text-underline-offset:3px}
+#examQuestionsContainer fieldset{min-width:0;margin:1rem 0;padding:1rem;border:1px solid var(--line)}
+#examQuestionsContainer legend{padding:0 .4rem;max-width:100%;font-size:.95rem}
+#examQuestionsContainer .opt{font-size:.9rem;min-height:44px;align-items:flex-start;padding:.6rem;border-radius:7px;border:1px solid transparent;cursor:pointer}
+#examQuestionsContainer .opt:has(input:checked){border-color:var(--primary);background:var(--soft)}
+#examQuestionsContainer input{flex-shrink:0;margin-top:.3rem;accent-color:var(--primary)}
+#examQuestionsContainer .exp{font-size:.9rem;line-height:1.9}
+#examResultBanner{font-size:.9rem;line-height:1.9;margin-top:1rem}
+#academySimulation{border-top:2px solid var(--line);margin-top:1rem;padding-top:1rem}
+.sim-options{display:flex;flex-direction:column;align-items:stretch;gap:.6rem}
+.sim-options button{text-align:right;white-space:normal;font-size:.9rem;line-height:1.8;padding:.65rem}
+.sim-feedback{margin-top:.7rem;border-inline-start:3px solid var(--primary);padding:.6rem .8rem;font-weight:700}
+.learning-reset{border-top:1px solid var(--line);margin-top:1.3rem;padding-top:1rem}
+.learning-empty{padding:1rem;border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+#diagnosticFields{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+#diagnosticFields .txt{min-height:46px;width:100%;font-size:.9rem}
+#diagnosticFields label{font-size:.85rem}
+.diag-status{border:1px solid var(--line);border-inline-start:5px solid var(--primary);background:var(--soft);border-radius:10px;padding:1rem;margin-bottom:1rem}
+.diag-status h3{font-size:1.1rem;margin:0 0 .5rem}
+.diag-status p{margin:0;font-size:.9rem}
+.status-urgent,.status-conflict,.status-blocked{border-inline-start-color:#dc2626}
+.status-incomplete{border-inline-start-color:#d97706}
+.diag-snapshot{padding:.7rem;border:1px solid var(--line);border-radius:10px;font-size:.85rem}
+.diag-list{margin:1rem 0;font-size:.9rem;line-height:1.9}
+.diag-list h4{margin:.3rem 0}
+.diag-list ul{margin:.3rem 0;padding-inline-start:1.4rem}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:760px){#diagnosticFields{grid-template-columns:repeat(2,minmax(0,1fr))}.service-coverage{columns:1}.sim-options button{font-size:.85rem}.academy-head{display:block}.academy-head .badge{display:inline-block;margin-top:.5rem}}
+@media(max-width:480px){#diagnosticFields{grid-template-columns:minmax(0,1fr)}.stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-btn{font-size:.85rem}.btn-row{align-items:stretch}.btn-row button{white-space:normal;line-height:1.6}.q-card{padding:.7rem!important}#examQuestionsContainer legend{font-size:.9rem}}
+@media print{body:not(.printing-template) #view-diagnostic .panel>*:not(#diagPrintReport){display:none!important}body:not(.printing-template) #diagPrintReport{display:block!important;white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;font-size:11pt;line-height:1.7;color:#000;background:#fff;border:0;direction:rtl}.printing-template #view-diagnostic{display:none!important}}

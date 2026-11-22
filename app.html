@@ -330,6 +330,7 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
   .route-step{break-inside:avoid;box-shadow:none}
 }
 </style>
+<link rel="stylesheet" href="learning.css">
 </head>
 <body>
 
@@ -393,46 +394,11 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
   <section id="view-diagnostic" class="view hidden">
     <div class="panel">
       <h2 class="panel-title">المشخّص الذكي للمعاملات الهندسية والعقارية (Decision Tree Engine)</h2>
-      <p class="panel-sub">أدخل معطيات العميل والعقار ليقوم النظام بتشخيص المسار النظامي الإلزامي وترتيب الخدمات والمنصات وتنبيهات المخاطر:</p>
-      <div class="diag-grid">
-        <div>
-          <label class="field-label" for="diagPropType">1. نوع العقار وحالته الراهنة:</label>
-          <select id="diagPropType" class="txt" onchange="runDiagnostic()">
-            <option value="vacant_planned">أرض فضاء داخل مخطط تنظيمي معتمد</option>
-            <option value="vacant_raw">أرض خام كبيرة غير مقسمة داخل النطاق العمراني</option>
-            <option value="bldg_licensed">مبنى قائم مرخص ومطابق للرخصة</option>
-            <option value="bldg_unlicensed">مبنى قائم بدون رخصة أو به مخالفات وتعديلات</option>
-            <option value="bldg_old">مبنى قديم متهالك أو به تصدعات</option>
-          </select>
-        </div>
-        <div>
-          <label class="field-label" for="diagDeedStatus">2. حالة وثيقة الملكية والنطاق الجغرافي:</label>
-          <select id="diagDeedStatus" class="txt" onchange="runDiagnostic()">
-            <option value="elec_updated">صك إلكتروني محدث ومكتمل (خارج المناطق المعلنة في RER)</option>
-            <option value="paper_old">صك ورقي قديم / ينقصه رقم القطعة أو المخطط أو به حفيظة</option>
-            <option value="rer_declared">داخل منطقة عقارية معلنة ولم يُستكمل التسجيل العيني الأول</option>
-            <option value="rer_registered">العقار مسجل عينياً بالفعل وله صك تسجيل ملكية (RER)</option>
-          </select>
-          <label class="field-label" style="margin-top:.5rem;display:flex;align-items:center;gap:.4rem;font-weight:400">
-            <input type="checkbox" id="diagMortgaged" onchange="runDiagnostic()"> العقار مرهون لبنك أو جهة تمويل (يمكن جمعه مع أي حالة ملكية أعلاه)
-          </label>
-        </div>
-        <div>
-          <label class="field-label" for="diagGoal">3. الهدف النهائي الذي يطلبه العميل:</label>
-          <select id="diagGoal" class="txt" onchange="runDiagnostic()">
-            <option value="build_new">بناء مشروع جديد (فيلا / عمارة / تجاري)</option>
-            <option value="subdivide_units">فرز المبنى إلى وحدات مستقلة (شقق / معارض / دوبلكس)</option>
-            <option value="subdivide_land">تقسيم أو تجزئة الأرض إلى عدة قطع</option>
-            <option value="merge_deeds">دمج قطعتين متجاورتين في صك موحد</option>
-            <option value="occupancy">إصدار شهادة إشغال وإدخال الكهرباء</option>
-            <option value="renovate">ترميم المبنى القائم</option>
-            <option value="compliance">استخراج شهادة الامتثال للمباني</option>
-            <option value="demolish">هدم المبنى القائم وإزالته لإعادة البناء</option>
-          </select>
-        </div>
-      </div>
+      <p class="panel-sub">أداة فرز أولي للحالة: ابدأ بما تعرفه واترك المجهول صريحاً. تعرض المعلومات الناقصة والعوائق والمسار المشروط ومراجع القراءة، ولا تصدر قرار أهلية أو حكماً بالسلامة. لا تدخل أرقام هوية أو وثائق أو عنواناً تفصيلياً؛ المدخلات لا تحفظ ولا ترسل لخادم.</p>
+      <div id="diagnosticFields" class="diag-grid print-hide"></div>
       <div class="btn-row print-hide">
         <button type="button" class="btn btn-ghost" onclick="window.print()">🖨️ طباعة التقرير</button>
+        <button type="button" class="btn btn-ghost" onclick="resetDiagnostic()">مسح مدخلات الحالة</button>
         <span class="copy">
           <button type="button" class="btn btn-ghost copy-button" command="--copy" commandfor="diagPlainText" aria-label="نسخ خارطة الطريق التشغيلية">📋 نسخ التقرير</button>
           <span class="tip" role="status"></span>
@@ -440,6 +406,7 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
       </div>
       <pre id="diagPlainText" class="sr-only" aria-hidden="true"></pre>
       <div id="diagnosticResultBox" class="diag-result"></div>
+      <pre id="diagPrintReport" hidden></pre>
     </div>
   </section>
 
@@ -525,19 +492,27 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
     <div class="panel">
       <div class="academy-head">
         <div>
-          <h2 class="panel-title">أكاديمية التدريب العملي ذات المراحل الثماني واختبار الكفاءة</h2>
-          <p class="panel-sub">تدرّب على المراحل الثماني، ونفّذ المحاكاة الخطوة بخطوة، واختبر كفاءتك في اتخاذ القرار الهندسي والنظامي.</p>
+          <h2 class="panel-title">أكاديمية التدريب والتقييم المرتبط بالمراحل</h2>
+          <p class="panel-sub">سبع مهارات بتقييمات مستقلة، ومحاكاة قرارات من تسع محطات، ومرحلة ثامنة لاختبار تكاملي متوازن. بنك 56 سؤالاً، لا عشرة أسئلة ثابتة.</p>
         </div>
-        <div class="badge">تقدم مراحل التدريب: 8 / 8 جاهزة للتطبيق</div>
+        <div id="academyProgress" class="badge" aria-live="polite">مراحل مجتازة: 0 / 8</div>
       </div>
-      <div id="stageButtonsContainer" class="stage-grid"></div>
+      <p id="academyCompletion"></p>
+      <p id="academyStorage" class="learning-note"></p>
+      <details id="academyCoverage" class="coverage-box"></details>
+      <div id="stageButtonsContainer" class="stage-grid" aria-label="مراحل الأكاديمية"></div>
       <div id="stageContentBox" class="stage-box"></div>
-      <div class="exam-head">
-        <h3>اختبار الكفاءة واتخاذ القرار الشامل (Mastery Exam — 10 حالات عملية · معيار الإتقان 90%)</h3>
-        <button type="button" onclick="gradeExam()" class="btn btn-primary">تصحيح الاختبار وإظهار النتيجة والتفسير النظامي</button>
+      <div class="exam-head"><h3 id="examTitle">تقييم المرحلة</h3></div>
+      <p id="academyAttemptInfo"></p>
+      <div class="btn-row">
+        <button id="academyStart" type="button" onclick="startAssessment()" class="btn btn-primary">ابدأ التقييم</button>
+        <button id="academyGrade" type="button" onclick="gradeExam()" class="btn btn-primary" hidden>تصحيح الإجابات</button>
+        <button id="academyReview" type="button" onclick="toggleAcademyReview()" class="btn btn-ghost" hidden>مراجعة الأخطاء فقط</button>
+        <span id="academyAnswered" role="status"></span>
       </div>
       <div id="examResultBanner" class="banner hidden" role="status"></div>
       <div id="examQuestionsContainer"></div>
+      <div class="learning-reset"><button type="button" class="btn btn-ghost" onclick="resetAcademy()">حذف تقدم الأكاديمية من هذا المتصفح</button></div>
     </div>
   </section>
 
@@ -577,6 +552,9 @@ ul.docs{margin:.3rem 0 0;padding-inline-start:1.2rem}
 
 <div id="printArea" aria-hidden="true"></div>
 <script src="app-data.js"></script>
+<script src="learning-data.js"></script>
+<script src="learning.js"></script>
+<script src="diagnostic.js"></script>
 <script>
 /* ============================================================
    ENG540 v4.2 — منطق المنصة التفاعلية (بلا أي مكتبة خارجية)
@@ -847,174 +825,6 @@ function backToServiceList(){
   if (sel) { try { sel.focus({ preventScroll: true }); } catch (e) { sel.focus(); } }
 }
 
-/* ===== 3) المشخّص الذكي ===== */
-function diagPlainText(steps, warnings, platforms){
-  var t = "خارطة الطريق التشغيلية — المشخّص الذكي ENG540\n";
-  t += "المنصات المستخدمة: " + Array.from(platforms).join(" + ") + "\n\n";
-  steps.forEach(function(st, i){
-    t += (i + 1) + ". " + st.title + "\n   " + st.desc + "\n\n";
-  });
-  if (warnings.length){
-    t += "تنبيهات وضوابط نظامية حاكمة لهذه الحالة:\n";
-    warnings.forEach(function(w){ t += "• " + w + "\n"; });
-  }
-  t += "\nملاحظة: توجيه إرشادي أولي لا قرار نظامي — المصادر وتواريخ التحقق في «سجل التحقق» بالموسوعة";
-  return t;
-}
-
-function runDiagnostic(){
-  var prop = document.getElementById("diagPropType").value;
-  var deed = document.getElementById("diagDeedStatus").value;
-  var goal = document.getElementById("diagGoal").value;
-  var mortgaged = !!(document.getElementById("diagMortgaged") || {}).checked;
-
-  var steps = [], warnings = [], platforms = new Set();
-
-  if (deed === "paper_old"){
-    steps.push({
-      title: "الخطوة التمهيدية الإلزامية (1): تحديث الصك الورقي واستكمال نواقصه [SRV-02]",
-      desc: "لا تقبل منصة بلدي أو منصة الفرز التعامل مع صك ورقي غير محدث. يُرفع طلب «تحديث أو تعديل صك عقاري» عبر البورصة العقارية/ناجز مع إرفاق صورة الصك من الأمام والخلف. وإذا صدر إشعار نواقص لغياب رقم القطعة أو المخطط، يصدر المكتب الهندسي قراراً مساحياً وخطاب إفادة من الأمانة يُقيّد في وارد وزارة العدل."
-    });
-    platforms.add("البورصة العقارية / ناجز (najiz.sa)");
-    warnings.push("تنبيه حرج: يجب إرفاق الصورة الخلفية للصك حتى لو كانت فارغة تماماً لتفادي الرفض الشكلي في وزارة العدل.");
-  } else if (deed === "rer_registered"){
-    platforms.add("منصة السجل العقاري (rer.sa)");
-  } else if (deed === "rer_declared"){
-    steps.push({
-      title: "الخطوة التمهيدية الإلزامية (1): التسجيل العيني الأول في السجل العقاري [SRV-12]",
-      desc: "بما أن العقار يقع داخل منطقة عقارية معلنة، يجب التحقق من إتمام «التسجيل العيني الأول» عبر منصة السجل العقاري (rer.sa) وإصدار «صك تسجيل الملكية» و«الصحيفة العقارية» برقم عقار فريد، مع إمكانية الاستعلام عبر «التحقق من وثائق ملكية العقار» و«بيانات سجل عقاري»."
-    });
-    platforms.add("منصة السجل العقاري (rer.sa)");
-  }
-
-  if (mortgaged){
-    warnings.push("تنبيه رهن عقاري: في حال كان الهدف هو فرز الوحدات أو التجزئة أو الدمج، يلزم توثيق «الموافقة على فرز عقار مرهون» من المرتهن (البنك/الجهة التمويلية) عبر وزارة العدل.");
-  }
-
-  /* حارس التركيبات المستحيلة: الأرض الفضاء/الخام لا مبنى عليها، فلا إشغال ولا ترميم ولا هدم ولا فرز وحدات */
-  var landNoBuilding = (prop === "vacant_planned" || prop === "vacant_raw");
-  var buildingOnlyGoals = (goal === "occupancy" || goal === "renovate" || goal === "compliance" || goal === "demolish" || goal === "subdivide_units");
-  if (landNoBuilding && buildingOnlyGoals){
-    warnings.push("تركيبة غير منطقية: الهدف المختار يفترض مبنى قائماً، بينما نوع العقار المدخل أرض بلا مبنى. راجع المدخلات: إن كان هناك مبنى فعلاً فحدّث «نوع العقار وحالته»، وإلا فالهدف الصحيح غالباً «بناء مشروع جديد» أو «تقسيم/تجزئة الأرض».");
-    var resultBox0 = document.getElementById("diagnosticResultBox");
-    resultBox0.innerHTML = '<div class="box box-red"><h4>تعذّر بناء خارطة طريق لهذه التركيبة</h4>' +
-      warnings.map(function(w){ return '<p>• ' + w + '</p>'; }).join("") + '</div>';
-    var plain0 = document.getElementById("diagPlainText");
-    if (plain0) plain0.textContent = diagPlainText([], warnings, platforms);
-    return;
-  }
-
-  if (prop === "bldg_old"){
-    steps.push({
-      title: "مرحلة أولوية السلامة: فحص إنشائي وتقرير فني للمبنى المتهالك [SRV-13]",
-      desc: "لأن المبنى قديماً متهالكاً أو متصدعاً، يتقدم تقييم السلامة الإنشائية (SBC 901) عبر خدمة «إصدار تقرير فني» (10498) في بلدي على أي مسار آخر: فالحكم الهندسي بأن المبنى «خطر داهم» يوجّه فوراً للإخلاء وإبلاغ الجهات المختصة (998/911) ثم الهدم، وبحالته الصالحة للتدعيم يوجّه للترميم."
-    });
-    platforms.add("منصة بلدي (balady.gov.sa)");
-    if (goal === "occupancy"){
-      warnings.push("تنبيه سلامة: لا تُطلب شهادة إشغال لمبنى متصدع قبل الحكم على سلامته الإنشائية؛ التقرير الفني شرط مسبق هنا.");
-    }
-  }
-
-  if (prop === "vacant_raw" && (goal === "build_new" || goal === "subdivide_land")){
-    steps.push({
-      title: "المرحلة التخطيطية: الاعتماد الابتدائي والنهائي لمخطط تقسيم أرض خام [SRV-09]",
-      desc: "الأرض خام غير مخططة؛ لا يمكن إصدار رخص بناء مباشرة قبل تخطيطها. المطلوب: قرار مساحي الغرض منه (اعتماد مخطط خاص) + صك مجاز للتخطيط من وزارة العدل + فكرة تصميمية + دراسة تربة + دراسة هيدرولوجية عبر منصة بلدي / منصة إتمام."
-    });
-    platforms.add("منصة بلدي (balady.gov.sa)");
-    platforms.add("منصة إتمام (etmam.momah.gov.sa)");
-  }
-
-  if (prop === "bldg_unlicensed" && goal === "demolish"){
-    warnings.push("رخصة الهدم تقبل رخصة بناء أو قراراً مساحياً (بطاقة خدمة إصدار رخصة هدم ودليل الرخص الإنشائية) ✅ — لا يُشترط تقنين وضع المبنى وترخيصه قبل هدمه؛ تُراجع متطلبات الحالة مع البلدية المختصة.");
-  } else if (prop === "bldg_unlicensed"){
-    steps.push({
-      title: "مرحلة التقنين الإلزامية: إصدار رخصة تصحيح وضع مبنى قائم [SRV-11 & SRV-13]",
-      desc: "بما أن المبنى شُيد بدون رخصة (أو به مخالفات)، لا يمكن استخراج شهادة إشغال أو فرز وحدات إلا بعد: (1) إصدار قرار مساحي، (2) رفع معماري كامل للوضع الراهن (As-Built)، (3) تقرير سلامة إنشائية وفق كود المباني القائمة (SBC 901)، (4) اعتماد تقارير وحسابات الوقاية من الحريق عبر «بوابة سلامة»، و(5) سداد الغرامات التي تحتسبها الأمانة في بلدي (خدمة تصحيح الوضع 10494)."
-    });
-    platforms.add("منصة بلدي + بوابة سلامة للدفاع المدني (998.gov.sa)");
-    warnings.push("تحذير تنظيمي: إذا كان المبنى المخالف متعدياً على خط التنظيم (الشارع العام) أو أرض الجار، فلن يقبل التصحيح إلا بعد إزالة الجزء المتعدي.");
-  }
-
-  if (goal === "build_new"){
-    steps.push({
-      title: "المرحلة المساحية: إصدار قرار مساحي بغرض البناء واستلام الحدود [SRV-04 & SRV-08]",
-      desc: "تكليف مكتب هندسي مصنف مساحياً عبر بلدي لرفع الأرض بأجهزة GNSS/Total Station وإصدار القرار المساحي (صالح لـ 3 سنوات وفق بلدي) وتثبيت جميع أركان وحدود القطعة على الطبيعة بحسب شكلها."
-    });
-    steps.push({
-      title: "المرحلة الهندسية والبلدية: فحص التربة والتصميم وإصدار رخصة البناء [SRV-01]",
-      desc: "إجراء فحص التربة + إعداد المخططات الستة وفق الكود (SBC 1101/201 وSBC 601/602) + التعاقد مع المكتب المشرف والمقاول المصنف ووثيقة التأمين + سداد رسوم الرخصة وطباعتها."
-    });
-    platforms.add("منصة بلدي (balady.gov.sa)");
-  } else if (goal === "subdivide_units"){
-    steps.push({
-      title: "مرحلة المطابقة والإشغال: التحقق من رخصة البناء وشهادة الإشغال [SRV-06]",
-      desc: "التأكد من تطابق الوحدات المنفذة على الطبيعة مع رخصة البناء واستخراج شهادة الإشغال من منصة بلدي."
-    });
-    steps.push({
-      title: "مرحلة الفرز وإصدار الصكوك المستقلة: فرز الوحدات العقارية [SRV-03]",
-      desc: (deed === "rer_declared" || deed === "rer_registered")
-        ? "رفع مخططات الفرز والتقرير المساحي عبر خدمة «الفرز» في منصة السجل العقاري (rer.sa) لإصدار صك تسجيل ملكية مستقل لكل وحدة."
-        : "التقديم في منصة فرز الوحدات العقارية (subdivision.rega.gov.sa) وتكليف مكتب هندسي معتمد برفع مخططات DWG بمضلعات مغلقة على محرك التحليل الآلي، ثم إصدار شهادة الفرز والصكوك المستقلة عبر البورصة العقارية/ناجز."
-    });
-    if (deed === "rer_declared" || deed === "rer_registered") platforms.add("منصة السجل العقاري (rer.sa)");
-    else platforms.add("منصة فرز الوحدات العقارية (subdivision.rega.gov.sa)");
-  } else if (goal === "subdivide_land"){
-    steps.push({
-      title: "المرحلة المساحية والتخطيطية: قرار مساحي للتجزئة وطلب تجزئة الأراضي [SRV-04 & SRV-09]",
-      desc: "إصدار قرار مساحي الغرض منه (تجزئة الأراضي) ← رفع خدمة «إنشاء طلب دمج وتجزئة الأراضي» في بلدي مع مخطط التجزئة (الزمن الأقصى المعلن 10 أيام عمل) ← إصدار الصكوك المستقلة عبر البورصة العقارية أو السجل العقاري."
-    });
-    platforms.add("منصة بلدي + البورصة العقارية / السجل العقاري");
-  } else if (goal === "merge_deeds"){
-    steps.push({
-      title: "المرحلة المساحية والتوثيقية: قرار مساحي للدمج وإصدار الصك الموحد [SRV-04 & SRV-07]",
-      desc: "التحقق من تطابق المالك في الصكين وتلاصق القطعتين ← إصدار قرار مساحي بغرض (دمج الأراضي) ← اعتماد طلب الدمج في بلدي (10 أيام) ← إصدار الصك الموحد في البورصة العقارية أو خدمة «الدمج» في السجل العقاري (rer.sa)."
-    });
-    platforms.add("منصة بلدي + البورصة العقارية / السجل العقاري");
-  } else if (goal === "occupancy"){
-    steps.push({
-      title: "مرحلة الفحص والاعتماد: استكمال إشعارات الإشراف أو التقرير الفني وإصدار شهادة الإشغال [SRV-06]",
-      desc: "معاينة المبنى للتأكد من اكتمال الواجهات والرصيف ومطابقة الرخصة (ومضي 6 أشهر للرخص القديمة) ورفع التقرير الفني من المكتب الهندسي في بلدي لإصدار شهادة الإشغال."
-    });
-    platforms.add("منصة بلدي (balady.gov.sa)");
-  } else if (goal === "renovate"){
-    steps.push({
-      title: "مرحلة الفحص والترخيص: تقرير فني (SBC 901) ورخصة ترميم [SRV-13, SRV-05]",
-      desc: "معاينة المبنى وإصدار «شهادة تأكيد السلامة»/التقرير الفني عبر خدمة «إصدار تقرير فني» (10498) في بلدي وفق كود المباني القائمة SBC 901 ← إصدار رخصة ترميم (صالحة لسنة) ← تنفيذ أعمال الترميم المقيدة بإصلاح القائم دون إضافة مكون أو تغيير إنشائي."
-    });
-    platforms.add("منصة بلدي (balady.gov.sa)");
-  } else if (goal === "compliance"){
-    steps.push({
-      title: "مرحلة إزالة التشوهات وإصدار شهادة الامتثال للمباني [SRV-14]",
-      desc: "شهادة الامتثال مسار مستقل لا يستلزم ترميماً إنشائياً بذاته: معاينة عناصر التشوه البصري للواجهة والرصيف ← إزالة المخالفات البصرية ← إصدار شهادة الامتثال عبر بلدي. لا تُدمج مع رخصة الترميم إلا إذا قرر الفحص حاجة إنشائية فعلية."
-    });
-    platforms.add("منصة بلدي (balady.gov.sa)");
-  } else if (goal === "demolish"){
-    steps.push({
-      title: "مرحلة الإخلاء وتصفية المرافق والهدم: إصدار رخصة هدم مبنى [SRV-10]",
-      desc: "التقديم في بلدي على رخصة هدم ← الإقرار بخلو المبنى من الإنسان والحيوان ← تصفية وفصل خدمات الكهرباء والمياه والاتصالات ← رفع خطة الهدم من المكتب الهندسي وسداد الرسوم ← الإشراف على الهدم وترحيل الأنقاض."
-    });
-    platforms.add("منصة بلدي + شركات الكهرباء والمياه والاتصالات");
-  }
-
-  var plain = document.getElementById("diagPlainText");
-  if (plain) plain.textContent = diagPlainText(steps, warnings, platforms);
-
-  var resultBox = document.getElementById("diagnosticResultBox");
-  resultBox.innerHTML =
-    '<div class="route-head">' +
-      '<h3>خارطة الطريق التشغيلية المشخّصة لهذه المعاملة (' + steps.length + ' مراحل متسلسلة)</h3>' +
-      '<div class="platforms">المنصات المستخدمة: <b>' + Array.from(platforms).join(" + ") + '</b></div>' +
-    '</div>' +
-    steps.map(function(st, idx){
-      return '<div class="route-step"><span class="step-dot">' + (idx + 1) + '</span>' +
-        '<div><h4>' + st.title + '</h4><p>' + st.desc + '</p></div></div>';
-    }).join("") +
-    (warnings.length
-      ? '<div class="box box-red" style="margin-top:.8rem"><h4>تنبيهات وضوابط نظامية حاكمة لهذه الحالة:</h4>' +
-        warnings.map(function(w){ return '<p>• ' + w + '</p>'; }).join("") + '</div>'
-      : "");
-}
-
 /* ===== 4) حاسبة الرسوم والتسعير ===== */
 /* قراءة حقل رقمي مع تمييز الفراغ عن الصفر ورفض NaN/Infinity: يعيد {v, note} */
 function readNum(id, opt){
@@ -1110,66 +920,6 @@ function calculatePricing(){
       '</div>' +
       '<div class="grand-num ltr-num">' + fmt(grandTotalClient) + ' SAR</div>' +
     '</div>';
-}
-
-/* ===== 5) الأكاديمية والاختبار ===== */
-var activeStageId = 1;
-
-function renderStages(){
-  document.getElementById("stageButtonsContainer").innerHTML = TRAINING_STAGES.map(function(st){
-    return '<button type="button" onclick="selectStage(' + st.id + ')" class="stage-btn' +
-      (st.id === activeStageId ? " active" : "") + '">' + st.title + '</button>';
-  }).join("");
-  var stObj = TRAINING_STAGES.filter(function(s){ return s.id === activeStageId; })[0] || TRAINING_STAGES[0];
-  document.getElementById("stageContentBox").innerHTML =
-    '<h4>تفاصيل ' + stObj.title + ':</h4><p>' + stObj.summary + '</p>';
-}
-
-function selectStage(id){
-  activeStageId = id;
-  renderStages();
-  revealDetail(document.getElementById("stageContentBox"), "h4");
-}
-
-function renderExam(){
-  document.getElementById("examQuestionsContainer").innerHTML = EXAM_QUESTIONS.map(function(item){
-    return '<div class="q-card">' +
-      '<p class="q-text">' + item.q + '</p>' +
-      item.options.map(function(opt, oIdx){
-        return '<label class="opt"><input type="radio" name="' + item.id + '" value="' + oIdx + '"><span>' + opt + '</span></label>';
-      }).join("") +
-      '<div id="exp-' + item.id + '" class="exp hidden"></div>' +
-    '</div>';
-  }).join("");
-}
-
-function gradeExam(){
-  var score = 0;
-  EXAM_QUESTIONS.forEach(function(item){
-    var checked = document.querySelector('input[name="' + item.id + '"]:checked');
-    var expBox = document.getElementById("exp-" + item.id);
-    var val = checked ? parseInt(checked.value, 10) : -1;
-    var ok = (val === item.correct);
-    if (ok) score++;
-    expBox.classList.remove("hidden");
-    expBox.className = "exp " + (ok ? "ok" : "no");
-    expBox.innerHTML = (ok ? "<strong>إجابة صحيحة!</strong> " : "<strong>إجابة غير صحيحة — التفسير النظامي:</strong> ") + item.explanation;
-  });
-  var total = EXAM_QUESTIONS.length;
-  var pct = Math.round((score / total) * 100);
-  var banner = document.getElementById("examResultBanner");
-  banner.classList.remove("hidden");
-  if (pct >= 90){
-    banner.className = "banner mastery";
-    banner.textContent = "🏆 إتقان كامل (" + pct + "%): " + score + " من " + total + " — أنت مؤهل لتشخيص وإدارة المعاملات الهندسية بمعيار المنظومة (90%+).";
-  } else if (pct >= 80){
-    banner.className = "banner pass";
-    banner.textContent = "✅ ناجح (" + pct + "%): " + score + " من " + total + " — راجع أسئلة التفسير المشار إليها أدناه للوصول إلى معيار الإتقان (90%).";
-  } else {
-    banner.className = "banner retry";
-    banner.textContent = "📚 النتيجة " + score + " من " + total + " (" + pct + "%) — أقل من حد الاجتياز (80%). راجع التفسير النظامي أسفل كل سؤال وأعد المحاولة بعد مراجعة أدلة الأكاديمية.";
-  }
-  banner.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 /* ===== 6) النماذج التشغيلية ===== */
